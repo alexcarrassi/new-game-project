@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=4 uid="uid://b4mgxnha0hp1y"]
+
+[ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="1_dvup1"]
+[ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_3imfn"]
+[ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://player.gd" id="2_iafiv"]
+[ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="4_iafiv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iafiv"]
+radius = 6.0
+height = 16.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//AQAAAAAAAAAEAP//AQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AQAAAAAAAAAHAP//AQAAAAAAAAA=")
+tile_set = ExtResource("1_dvup1")
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+script = ExtResource("2_iafiv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(8, -16)
+texture = ExtResource("2_3imfn")
+region_enabled = true
+region_rect = Rect2(2, 35, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(8, -16)
+shape = SubResource("CapsuleShape2D_iafiv")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+
+[node name="InputDebug" type="CanvasLayer" parent="."]
+script = ExtResource("4_iafiv")
+
+[node name="Control" type="Control" parent="InputDebug"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="InputDebug/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="InputDebug/Control/MarginContainer"]
+layout_mode = 2
