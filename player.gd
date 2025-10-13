@@ -44,11 +44,15 @@ func exposeInputSnapshot() -> String:
 	
 	var buffersSnapshot = "buffers[jump: %.5f , attack: %.2f]" % [self.buffer_times["jump"], self.buffer_times["attack"]]
 	
+	var coyote = "coyote: %.2f" % [self.coyote_time]
+	
 	var speedSnapshot = "speed h: %.2f  ,  speed v: %.2f" % [self.velocity.x, self.velocity.y] 
 	
 	var stateSnapShot = "state: %s" % [self.state]
 	
-	return self.inputState.toString() + "\n" + buffersSnapshot  + "\n" + speedSnapshot + "\n" + stateSnapShot
+	var animation = "animation: %s" % [self.animationPlayer.current_animation]
+	
+	return inputSnapshot + "\n" + buffersSnapshot + "\n" + coyote + "\n" + speedSnapshot + "\n" + stateSnapShot + "\n" + animation
 
 		
 func move_horizontal(delta: float, accel: float, decel: float) -> void :		
@@ -81,8 +85,8 @@ func handle_animation() -> void:
 		CharacterState.FALLING:
 			animation = "movement/jump_fall"
 			pass
-					
-	if(not animationPlayer.current_animation == animation )	 :			
+	
+	if( not animationPlayer.current_animation == animation ):
 		self.animationPlayer.play(animation) 
 		
 			
@@ -107,7 +111,9 @@ func _physics_process(delta: float) -> void:
 			self.move_horizontal(delta, self.ground_accel, self.ground_decel)
 
 			# jumping
-			if( self.buffer_times['jump'] != 0):
+			if( self.buffer_times['jump'] != 0 && self.coyote_time != 0) :
+				self.animationPlayer.play("movement/jump_rise_start")
+				self.animationPlayer.queue("movement/jump_rise")
 				self.velocity.y = -self.jump_force
 				self.buffer_times['jump'] = 0
 				self.coyote_time = 0
@@ -118,8 +124,19 @@ func _physics_process(delta: float) -> void:
 			
 			pass
 		CharacterState.FALLING:
+			self.animationPlayer.play("movement/jump_fall_start")
+			self.animationPlayer.queue("movement/jump_fall")
+
 			self.gravity_multiplier = self.gravity_multiplier_falling
 			self.move_horizontal(delta, self.air_accel, self.air_decel)
+			
+						# jumping
+			if( self.buffer_times['jump'] != 0 && self.coyote_time != 0) :
+				self.animationPlayer.play("movement/jump_rise_start")
+				self.animationPlayer.queue("movement/jump_rise")
+				self.velocity.y = -self.jump_force
+				self.buffer_times['jump'] = 0
+				self.coyote_time = 0
 			pass			
 			
 	#Physics integrations
