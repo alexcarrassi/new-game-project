@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b4mgxnha0hp1y"]
+[gd_scene load_steps=17 format=4 uid="uid://b4mgxnha0hp1y"]
 
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="1_dvup1"]
 [ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_3imfn"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="4_iafiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iafiv"]
-size = Vector2(14.25, 14)
+size = Vector2(14, 13.999999)
 
 [sub_resource type="Animation" id="Animation_iafiv"]
 length = 0.001
@@ -29,15 +29,70 @@ tracks/1/path = NodePath("Sprite2D:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.033333335),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(1.5, 35, 70, 34)]
+"values": [Rect2(1.5, 33.5, 70, 71)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kdijb"]
 _data = {
 &"RESET": SubResource("Animation_iafiv")
+}
+
+[sub_resource type="Animation" id="Animation_e3hfu"]
+length = 0.40000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2, 71, 16, 16)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334, 0.36666667, 0.36676666, 0.36686665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"end_attack"
+}, {
+"args": [],
+"method": &"freeAnimationLock"
+}, {
+"args": [],
+"method": &"end_attack"
+}, {
+"args": [],
+"method": &"freeAnimationLock"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pl2qr"]
+_data = {
+&"attack": SubResource("Animation_e3hfu")
 }
 
 [sub_resource type="Animation" id="Animation_8q3i6"]
@@ -64,9 +119,9 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.26666668),
-"transitions": PackedFloat32Array(1, 1e-05),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(1, 34, 70, 34), Rect2(1.5, 34, 70, 34)]
+"values": [Rect2(2, 35, 16, 16), Rect2(20, 35, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_sb6k4"]
@@ -94,7 +149,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(0.5, 35, 70, 34)]
+"values": [Rect2(54, 53, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_qlag8"]
@@ -123,7 +178,21 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.18333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(0, 35, 70, 34), Rect2(0.5, 35, 70, 34)]
+"values": [Rect2(36, 53, 16, 16), Rect2(54, 53, 16, 16)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.18333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"freeAnimationLock"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_5itje"]
@@ -152,7 +221,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(0.5, 35, 70, 34)]
+"values": [Rect2(2, 53, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_kdijb"]
@@ -178,10 +247,24 @@ tracks/1/path = NodePath("Sprite2D:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 5.016667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.18333334, 5.016667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Rect2(1, 35, 70, 34), Rect2(0.5, 35, 70, 34)]
+"values": [Rect2(2, 53, 16, 16), Rect2(2, 53, 16, 16), Rect2(0.5, 35, 70, 34)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.18333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"freeAnimationLock"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_qrmce"]
@@ -207,10 +290,10 @@ tracks/1/path = NodePath("Sprite2D:region_rect")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(1.5, 34, 70, 34)]
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(38, 35, 16, 16), Rect2(55, 35, 16, 16)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qlag8"]
@@ -237,7 +320,7 @@ air_accel = 1000.0
 air_decel = 1400.0
 jump_force = 350.0
 buffers = {
-&"attack": 0.1,
+&"attack": 1.0,
 &"jump": 0.1
 }
 gravity_multiplier_rising = 1.0
@@ -246,16 +329,13 @@ max_fall_speed = 400.0
 max_rise_speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(7, -16.275)
-scale = Vector2(1, 0.9735293)
+position = Vector2(7, -17)
 texture = ExtResource("2_3imfn")
-hframes = 4
-vframes = 2
 region_enabled = true
-region_rect = Rect2(1.5, 35, 70, 34)
+region_rect = Rect2(1.5, 33.5, 70, 71)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(7.125, -15)
+position = Vector2(7, -16)
 shape = SubResource("RectangleShape2D_iafiv")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -264,6 +344,7 @@ zoom = Vector2(2, 2)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
 &"": SubResource("AnimationLibrary_kdijb"),
+&"act": SubResource("AnimationLibrary_pl2qr"),
 &"movement": SubResource("AnimationLibrary_qlag8")
 }
 
