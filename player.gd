@@ -1,5 +1,4 @@
-class_name Player
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 #ITSIMSCET  
 @onready var sprite2D: Sprite2D = $Sprite2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
@@ -35,6 +34,8 @@ var inputState: InputState
 var locomotionState: LocomotionState = LocomotionState.GROUNDED
 var actState: ActState = ActState.NONE
 
+@onready var locoState: StateMachine_Locomotion = $StateMachine_Locomotion
+
 
 var oneShot_animation_locked = false
 
@@ -45,6 +46,7 @@ func _ready() -> void:
 	self.up_direction = Vector2.UP
 	self.floor_max_angle = deg_to_rad(45)
 	self.floor_snap_length = 6.0
+	
 	
 func exposeInputSnapshot() -> String:
 	var inputSnapshot = self.inputState.toString()
@@ -149,68 +151,68 @@ func _physics_process(delta: float) -> void:
 			#countdown? Not sure.
 			pass	
 	
-	
-	#LOCOMOTION
-	match(self.locomotionState) :
-		LocomotionState.GROUNDED:
-			self.gravity_multiplier = 1.0
-			# horizontal movement
-			self.move_horizontal(delta, self.ground_accel, self.ground_decel)
-
-			# jumping
-			if( self.buffer_times['jump'] > 0.0 && self.coyote_time > 0.0) :
-				self.animationPlayer.play("movement/jump_rise_start")
-				self.oneShot_animation_locked = true
-				self.velocity.y = -self.jump_force
-				self.buffer_times['jump'] = 0
-				self.coyote_time = 0
-			pass	
-		LocomotionState.RISING:
-			self.gravity_multiplier = self.gravity_multiplier_rising
-			self.move_horizontal(delta, self.air_accel, self.air_decel)
-			
-			pass
-		LocomotionState.FALLING:
-			self.gravity_multiplier = self.gravity_multiplier_falling
-			self.move_horizontal(delta, self.air_accel, self.air_decel)
-			
-						# jumping
-			if( self.buffer_times['jump'] != 0 && self.coyote_time != 0) :
-				self.animationPlayer.play("movement/jump_rise_start")
-				self.oneShot_animation_locked = true
-
-				self.velocity.y = -self.jump_force
-				self.buffer_times['jump'] = 0
-				self.coyote_time = 0
-			pass			
-			
-	#Physics integrations
-	self.velocity.y += self.get_gravity().y * self.gravity_multiplier * delta
-	self.velocity.y = clamp(self.velocity.y, -self.max_rise_speed, self.max_fall_speed)
-
-
-	self.move_and_slide()
-	
-	#Read facts and decide current state
-	if(  self.is_on_floor() ):
-		self.locomotionState = LocomotionState.GROUNDED
-	else: 
-		if(self.velocity.y < 0): 
-			self.locomotionState = LocomotionState.RISING 
-		else :
-			self.locomotionState = LocomotionState.FALLING	
-	
-	#Update late timers (physics dependant)
-	#coyote
-	if( self.locomotionState == LocomotionState.GROUNDED):
-		self.coyote_time = coyote_max
-	else :
-		self.coyote_time = max(0, self.coyote_time - delta)	
-		
-	#State transition
-	
-	#animate
-	self.handle_animation()
+	#
+	##LOCOMOTION
+	#match(self.locomotionState) :
+		#LocomotionState.GROUNDED:
+			#self.gravity_multiplier = 1.0
+			## horizontal movement
+			#self.move_horizontal(delta, self.ground_accel, self.ground_decel)
+#
+			## jumping
+			#if( self.buffer_times['jump'] > 0.0 && self.coyote_time > 0.0) :
+				#self.animationPlayer.play("movement/jump_rise_start")
+				#self.oneShot_animation_locked = true
+				#self.velocity.y = -self.jump_force
+				#self.buffer_times['jump'] = 0
+				#self.coyote_time = 0
+			#pass	
+		#LocomotionState.RISING:
+			#self.gravity_multiplier = self.gravity_multiplier_rising
+			#self.move_horizontal(delta, self.air_accel, self.air_decel)
+			#
+			#pass
+		#LocomotionState.FALLING:
+			#self.gravity_multiplier = self.gravity_multiplier_falling
+			#self.move_horizontal(delta, self.air_accel, self.air_decel)
+			#
+						## jumping
+			#if( self.buffer_times['jump'] != 0 && self.coyote_time != 0) :
+				#self.animationPlayer.play("movement/jump_rise_start")
+				#self.oneShot_animation_locked = true
+#
+				#self.velocity.y = -self.jump_force
+				#self.buffer_times['jump'] = 0
+				#self.coyote_time = 0
+			#pass			
+			#
+	##Physics integrations
+	#self.velocity.y += self.get_gravity().y * self.gravity_multiplier * delta
+	#self.velocity.y = clamp(self.velocity.y, -self.max_rise_speed, self.max_fall_speed)
+#
+#
+	#self.move_and_slide()
+	#
+	##Read facts and decide current state
+	#if(  self.is_on_floor() ):
+		#self.locomotionState = LocomotionState.GROUNDED
+	#else: 
+		#if(self.velocity.y < 0): 
+			#self.locomotionState = LocomotionState.RISING 
+		#else :
+			#self.locomotionState = LocomotionState.FALLING	
+	#
+	##Update late timers (physics dependant)
+	##coyote
+	#if( self.locomotionState == LocomotionState.GROUNDED):
+		#self.coyote_time = coyote_max
+	#else :
+		#self.coyote_time = max(0, self.coyote_time - delta)	
+		#
+	##State transition
+	#
+	##animate
+	#self.handle_animation()
 
 		
 enum LocomotionState{ 

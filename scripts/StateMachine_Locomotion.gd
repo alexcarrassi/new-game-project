@@ -1,0 +1,1 @@
+class_name  StateMachine_Locomotion extends StateMachine

@@ -1,9 +1,14 @@
-[gd_scene load_steps=17 format=4 uid="uid://b4mgxnha0hp1y"]
+[gd_scene load_steps=22 format=4 uid="uid://b4mgxnha0hp1y"]
 
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="1_dvup1"]
 [ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_3imfn"]
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://player.gd" id="2_iafiv"]
 [ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="4_iafiv"]
+[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://scripts/StateMachine_Locomotion.gd" id="4_qrmce"]
+[ext_resource type="Script" uid="uid://vwygst2u1v4o" path="res://scripts/State_Locomotion_Idle.gd" id="5_8q3i6"]
+[ext_resource type="Script" uid="uid://ddmvao6elrk3t" path="res://scripts/State_Locomotion_Falling.gd" id="6_8q3i6"]
+[ext_resource type="Script" uid="uid://uoyc84dvmybc" path="res://scripts/State_Locomotion_Running.gd" id="6_qlag8"]
+[ext_resource type="Script" uid="uid://dvrp2qg2igcl2" path="res://scripts/State_Locomotion_Jumping.gd" id="8_5itje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iafiv"]
 size = Vector2(14, 13.999999)
@@ -347,6 +352,21 @@ libraries = {
 &"act": SubResource("AnimationLibrary_pl2qr"),
 &"movement": SubResource("AnimationLibrary_qlag8")
 }
+
+[node name="StateMachine_Locomotion" type="Node" parent="Player"]
+script = ExtResource("4_qrmce")
+
+[node name="IDLE" type="Node" parent="Player/StateMachine_Locomotion"]
+script = ExtResource("5_8q3i6")
+
+[node name="RUNNING" type="Node" parent="Player/StateMachine_Locomotion"]
+script = ExtResource("6_qlag8")
+
+[node name="FALLING" type="Node" parent="Player/StateMachine_Locomotion"]
+script = ExtResource("6_8q3i6")
+
+[node name="JUMPING" type="Node" parent="Player/StateMachine_Locomotion"]
+script = ExtResource("8_5itje")
 
 [node name="InputDebug" type="CanvasLayer" parent="."]
 script = ExtResource("4_iafiv")
