@@ -1,7 +1,11 @@
 class_name State_Locomotion_Idle extends State
 
+
+func _ready() -> void:
+	self.main_animation = "movement/idle"
+
 func enter(previous_state_path: String, data: Dictionary) -> void:
-	self.player.animationPlayer.play("movement/idle")
+	player.coyote_time = player.coyote_max
 	pass
 	
 #the physics update is also used for physics-based state transitions
@@ -16,12 +20,15 @@ func physics_update(delta: float) -> void:
 		#move and slide
 	self.player.move_and_slide()
 	
-	player.coyote_time = 0
+	
+	if( self.player.velocity.x != 0):
+		self.player.sprite2D.flip_h = player.velocity.x < 0.0
+
 	
 		#read facts and state transition
 	if not( self.player.is_on_floor() ) :
 		self.finished.emit("FALLING")
-	elif ( self.player.buffers["jump"] > 0.0):
+	elif ( self.player.buffer_times["jump"] > 0.0):
 		self.finished.emit("JUMPING")
 	elif( abs( self.player.inputState.haxis) > 0.0 ):
 		self.finished.emit("RUNNING")	

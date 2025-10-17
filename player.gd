@@ -31,11 +31,9 @@ var gravity_multiplier: float = 1.0
 
 
 var inputState: InputState
-var locomotionState: LocomotionState = LocomotionState.GROUNDED
-var actState: ActState = ActState.NONE
 
-@onready var locoState: StateMachine_Locomotion = $StateMachine_Locomotion
-
+@onready var locomotionState: StateMachine_Locomotion = $StateMachine_Locomotion
+@onready var actState: StateMachine_Act = $StateMachine_Act
 
 var oneShot_animation_locked = false
 
@@ -57,61 +55,23 @@ func exposeInputSnapshot() -> String:
 	
 	var speedSnapshot = "speed h: %.2f  ,  speed v: %.2f" % [self.velocity.x, self.velocity.y] 
 	
-	var stateSnapShot = "loco: %s ,  act: %s" % [self.locomotionState, self.actState]
+	var stateSnapShot = "loco: %s ,  act: %s" % [self.locomotionState.state.name, self.actState.state.name]
 	
 	var animation = "locked: %s , animation: %s" % [self.oneShot_animation_locked, self.animationPlayer.current_animation]
 	
 	return inputSnapshot + "\n" + buffersSnapshot + "\n" + coyote + "\n" + speedSnapshot + "\n" + stateSnapShot + "\n" + animation
 
-		
-func move_horizontal(delta: float, accel: float, decel: float) -> void :		
-	var targetSpeed = inputState.haxis * self.max_run_speed
-	var rate = accel if abs(inputState.haxis) > 0.0 else decel 
-	# turn boost
-	# If our current targetSpeed and Velocity are in opposite directions
-	if( targetSpeed * rate < 0.0): 
-	#if signi( targetSpeed ) != 0 and signi(self.velocity.x) != 0 and (signi(targetSpeed) != signi(self.velocity.x)):
-		rate *= 3
-	
-	self.velocity.x = move_toward(self.velocity.x, targetSpeed, rate * delta)
-			
-			
-func handle_animation() -> void: 
-	if( self.velocity.x != 0):
-		self.sprite2D.flip_h = self.velocity.x < 0
 
-	if( self.oneShot_animation_locked):
-		return 
-		
-	var animation = "movement/idle"
-	match( self.locomotionState):
-		LocomotionState.GROUNDED:
-			if( abs(self.velocity.x) > 0.0) :
-				animation = "movement/run"
-			else:
-				animation = "movement/idle"	
-			pass
-		LocomotionState.RISING:
-			animation = "movement/jump_rise"
-			pass
-		LocomotionState.FALLING:
-			animation = "movement/jump_fall"
-			pass
-	
-	if( not self.animationPlayer.current_animation == animation ):
-		self.animationPlayer.play(animation) 
-		
-
-func spit_bubble() -> void:
-	#self.animationPlayer.queue_free()
-	self.actState = ActState.ATTACK
-	self.animationPlayer.play("act/attack")
-	self.oneShot_animation_locked = true
-	pass
-
-func end_attack() -> void: 
-	self.actState = ActState.NONE	
-	
+#func spit_bubble() -> void:
+	##self.animationPlayer.queue_free()
+	#self.actState = ActState.ATTACK
+	#self.animationPlayer.play("act/attack")
+	#self.oneShot_animation_locked = true
+	#pass
+#
+#func end_attack() -> void: 
+	#self.actState = ActState.NONE	
+	#
 	
 				
 func _physics_process(delta: float) -> void:
@@ -132,96 +92,13 @@ func _physics_process(delta: float) -> void:
 	if(self.inputState.attack):
 		self.buffer_times["attack"] = buffers["attack"]
 	else:
-		self.buffer_times["attack"] =max(0, self.buffer_times["attack"] - delta)
+		self.buffer_times["attack"] = max(0, self.buffer_times["attack"] - delta)
 	
 	#State logic (State your intentions)
 	
 	
-	#ACT
-	match(self.actState):
-		ActState.NONE:
-			
-			if(self.buffer_times["attack"] > 0.0) :
-				#consume and perform the attack
-				self.buffer_times["attack"] = 0
-				self.spit_bubble()	
-			pass
 
-		ActState.ATTACK:
-			#countdown? Not sure.
-			pass	
-	
-	#
-	##LOCOMOTION
-	#match(self.locomotionState) :
-		#LocomotionState.GROUNDED:
-			#self.gravity_multiplier = 1.0
-			## horizontal movement
-			#self.move_horizontal(delta, self.ground_accel, self.ground_decel)
-#
-			## jumping
-			#if( self.buffer_times['jump'] > 0.0 && self.coyote_time > 0.0) :
-				#self.animationPlayer.play("movement/jump_rise_start")
-				#self.oneShot_animation_locked = true
-				#self.velocity.y = -self.jump_force
-				#self.buffer_times['jump'] = 0
-				#self.coyote_time = 0
-			#pass	
-		#LocomotionState.RISING:
-			#self.gravity_multiplier = self.gravity_multiplier_rising
-			#self.move_horizontal(delta, self.air_accel, self.air_decel)
-			#
-			#pass
-		#LocomotionState.FALLING:
-			#self.gravity_multiplier = self.gravity_multiplier_falling
-			#self.move_horizontal(delta, self.air_accel, self.air_decel)
-			#
-						## jumping
-			#if( self.buffer_times['jump'] != 0 && self.coyote_time != 0) :
-				#self.animationPlayer.play("movement/jump_rise_start")
-				#self.oneShot_animation_locked = true
-#
-				#self.velocity.y = -self.jump_force
-				#self.buffer_times['jump'] = 0
-				#self.coyote_time = 0
-			#pass			
-			#
-	##Physics integrations
-	#self.velocity.y += self.get_gravity().y * self.gravity_multiplier * delta
-	#self.velocity.y = clamp(self.velocity.y, -self.max_rise_speed, self.max_fall_speed)
-#
-#
-	#self.move_and_slide()
-	#
-	##Read facts and decide current state
-	#if(  self.is_on_floor() ):
-		#self.locomotionState = LocomotionState.GROUNDED
-	#else: 
-		#if(self.velocity.y < 0): 
-			#self.locomotionState = LocomotionState.RISING 
-		#else :
-			#self.locomotionState = LocomotionState.FALLING	
-	#
-	##Update late timers (physics dependant)
-	##coyote
-	#if( self.locomotionState == LocomotionState.GROUNDED):
-		#self.coyote_time = coyote_max
-	#else :
-		#self.coyote_time = max(0, self.coyote_time - delta)	
-		#
-	##State transition
-	#
-	##animate
-	#self.handle_animation()
 
-		
-enum LocomotionState{ 
-	GROUNDED, RISING, FALLING
-}
-
-enum ActState{
-	NONE, ATTACK
-}
 
 class InputState:
 	var haxis: float = 0.0
@@ -249,7 +126,7 @@ class InputState:
 		
 		s.jump_pressed = Input.is_action_just_pressed("ui_jump")
 		s.jump_held = Input.is_action_pressed("ui_jump")
-		s.attack = Input.is_action_pressed("attack")
+		s.attack = Input.is_action_just_pressed("attack")
 		
 		return s
 		

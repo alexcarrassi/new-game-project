@@ -8,8 +8,14 @@ class_name StateMachine extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	var player = self.get_parent() as Player
+	var animationController = player.get_node("AnimationPlayer") as AnimationController
+	
+	
 	for state_node: State in self.find_children("*", "State"):
 		state_node.finished.connect(self._transition_to_next_state)
+		state_node.player = self.get_parent() as Player
+		state_node.animationController = animationController
 		
 	
 	#then we wait for our owner to be fully ready

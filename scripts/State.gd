@@ -1,12 +1,13 @@
 class_name State extends Node
 
 var player: Player
+var animationController: AnimationController
+var main_animation : String
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await self.get_parent().get_parent().ready
-	player = self.get_parent().get_parent() as Player
-	var test = 1
+	pass
 
 
 func enter(prev_state_path: String, data: Dictionary) -> void :
