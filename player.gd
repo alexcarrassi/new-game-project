@@ -57,7 +57,7 @@ func exposeInputSnapshot() -> String:
 	
 	var stateSnapShot = "loco: %s ,  act: %s" % [self.locomotionState.state.name, self.actState.state.name]
 	
-	var animation = "locked: %s , animation: %s" % [self.oneShot_animation_locked, self.animationPlayer.current_animation]
+	var animation = "locked: %s , animation: %s" % [self.animationPlayer.animationLock != null, self.animationPlayer.current_animation]
 	
 	return inputSnapshot + "\n" + buffersSnapshot + "\n" + coyote + "\n" + speedSnapshot + "\n" + stateSnapShot + "\n" + animation
 

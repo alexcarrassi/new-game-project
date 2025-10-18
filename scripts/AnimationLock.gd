@@ -1,11 +1,9 @@
 class_name AnimationLock extends RefCounted	
 
 var prio: int
-var frames: int
+var lockTotal: float
+var current : float = 0
 
-func _init(prio: int, frames: int) -> void:
+func _init(prio: int, lockTotal: float) -> void:
 	self.prio = prio
-	self.frames = frames 
-
-func tick() -> void:
-	self.frames -= 1
+	self.lockTotal = lockTotal

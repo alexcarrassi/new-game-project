@@ -82,7 +82,7 @@ tracks/2/path = NodePath("StateMachine_Act/ATTACK")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.36666667),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -343,6 +343,7 @@ shape = SubResource("RectangleShape2D_iafiv")
 zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+callback_mode_process = 0
 libraries = {
 &"": SubResource("AnimationLibrary_kdijb"),
 &"act": SubResource("AnimationLibrary_pl2qr"),

@@ -37,12 +37,12 @@ func request_oneShot(animation_name: String, lock: AnimationLock = null) -> void
 func _physics_process(delta: float) -> void:
 	
 	if( self.animationLock != null) :
-		self.animationLock.tick() 
-		if( self.animationLock.frames <= 0) :
+
+		if(self.current_animation_position >= self.animationLock.lockTotal):
 			self.animationLock = null
-	
-	
-	if( self.animationLock != null and self.animationLock.prio >= StatePriority.ACT):
+		
+
+	if( self.animationLock != null ):
 		return
 	# Locomotion automation
 	var curr_state_animation = sm_locomotion.state.main_animation
