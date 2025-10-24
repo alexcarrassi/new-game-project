@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=20 format=3 uid="uid://b2kwfbabyr0bm"]
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/NES - Bubble Bobble - Enemies & Bosses - Enemies.png" id="1_s72y3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bdke1vsx62ams" path="res://enemies/State_Machine_Locomotion_Enemy.gd" id="3_i7sgb"]
 [ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://enemies/zenchan/Idle.gd" id="4_dne8i"]
 [ext_resource type="Script" uid="uid://bju7fthcpdhx8" path="res://enemies/zenchan/Running.gd" id="5_fbiw4"]
+[ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://enemies/zenchan/falling.gd" id="7_jxh4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s72y3"]
 size = Vector2(16, 16)
@@ -32,7 +33,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_fbiw4"]
 resource_name = "FALL"
-length = 0.10000334
+length = 0.66667
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -41,10 +42,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(26, 5, 16, 16)]
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(5, 5, 16, 16), Rect2(26, 5, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_aigf2"]
@@ -181,8 +182,16 @@ region_rect = Rect2(5, 5, 16, 16)
 script = ExtResource("3_i7sgb")
 initial_state = NodePath("IDLE")
 
-[node name="RUN" type="Node" parent="StateMachine_Locomotion_Enemy"]
+[node name="RUNNING" type="Node" parent="StateMachine_Locomotion_Enemy"]
 script = ExtResource("5_fbiw4")
 
 [node name="IDLE" type="Node" parent="StateMachine_Locomotion_Enemy"]
 script = ExtResource("4_dne8i")
+
+[node name="FALLING" type="Node" parent="StateMachine_Locomotion_Enemy"]
+script = ExtResource("7_jxh4g")
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="Wall_front" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(10, 0)

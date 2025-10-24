@@ -23,7 +23,7 @@ func _ready() -> void:
 	#then we wait for our owner to be fully ready
 	await self.owner.ready	
 	
-	self.state_transitioned.emit("", self.state, {})
+	self.state_transitioned.emit(null, self.state, {})
 	self.state.enter("", {})
 
 
@@ -41,6 +41,7 @@ func _transition_to_next_state(target_state_path: String, transition_data: Dicti
 	self.state.enter(prev_state.name, transition_data)	
 	
 	transition_data["effects"] = prev_state.exitEffects() + next_state.enterEffects() 
+	print("Transition from %s to %s" % [prev_state.name, next_state.name])
 	print(transition_data)
 	
 	self.state_transitioned.emit( prev_state, next_state, transition_data)

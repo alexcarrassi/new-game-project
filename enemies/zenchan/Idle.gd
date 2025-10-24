@@ -8,9 +8,18 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func update(delta: float) -> void:
 	pass
 	
-func physics_process( delta: float) -> void:
-	self.body.velocity.y -= self.body.get_gravity().y *  self.body.gravity_multiplier * delta
-	self.body.velocity.y = clamp(self.body.elocity.y, -self.MAX_RISE_VELOCITY, self.MAX_FALL_VELOCITY)
+func physics_update( delta: float) -> void:
+	self.body.velocity.y += self.body.get_gravity().y *  self.body.gravity_multiplier * delta
+	self.body.velocity.y = clamp(self.body.velocity.y, -self.body.MAX_RISE_VELOCITY, self.body.MAX_FALL_VELOCITY)
+	
+	
+	self.body.move_and_slide()
+	
+	if not( self.body.is_on_floor()) :
+		print("not on floor")
+		self.finished.emit("FALLING")
+
+	

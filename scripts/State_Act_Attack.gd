@@ -1,7 +1,7 @@
 class_name State_Attack extends State
 
 @export var bubble: PackedScene
-
+var timer: Timer
 
 
 func _ready() -> void:
@@ -28,8 +28,20 @@ func enter(prev_state_path: String, data: Dictionary ):
 	bubble.global_position = Vector2(self.body.position.x, self.body.position.y - self.body.sprite2D.get_rect().size.y/2 )
 	get_tree().current_scene.add_child(bubble)
 	
+	self.timer = Timer.new()
+	self.timer.one_shot = true
+	self.timer.wait_time = 0.3
+	self.timer.timeout.connect(self.endAttack)
+	self.add_child(self.timer)
+
+	self.timer.start()
+	
+	print(self.timer)
 	
 	
+func exit() -> void:
+	self.timer.stop()
+	self.timer.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

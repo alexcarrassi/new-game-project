@@ -28,8 +28,6 @@ var buffer_times : Dictionary = {"jump" = 0.0, "attack" = 0.0}
 
 var gravity_multiplier: float = 1.0
 
-
-
 var inputState: InputState
 
 @onready var locomotionState: StateMachine_Locomotion = $StateMachine_Locomotion
