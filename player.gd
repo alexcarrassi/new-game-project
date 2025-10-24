@@ -45,6 +45,8 @@ func _ready() -> void:
 	self.floor_max_angle = deg_to_rad(45)
 	self.floor_snap_length = 6.0
 	
+	self.locomotionState.state_transitioned.connect( self.animationPlayer.onStateTransition)	
+	self.actState.state_transitioned.connect( self.animationPlayer.onStateTransition)
 	
 func exposeInputSnapshot() -> String:
 	var inputSnapshot = self.inputState.toString()
@@ -60,19 +62,6 @@ func exposeInputSnapshot() -> String:
 	var animation = "locked: %s , animation: %s" % [self.animationPlayer.animationLock != null, self.animationPlayer.current_animation]
 	
 	return inputSnapshot + "\n" + buffersSnapshot + "\n" + coyote + "\n" + speedSnapshot + "\n" + stateSnapShot + "\n" + animation
-
-
-#func spit_bubble() -> void:
-	##self.animationPlayer.queue_free()
-	#self.actState = ActState.ATTACK
-	#self.animationPlayer.play("act/attack")
-	#self.oneShot_animation_locked = true
-	#pass
-#
-#func end_attack() -> void: 
-	#self.actState = ActState.NONE	
-	#
-	
 				
 func _physics_process(delta: float) -> void:
 	

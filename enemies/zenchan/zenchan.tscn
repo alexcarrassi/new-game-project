@@ -1,0 +1,188 @@
+[gd_scene load_steps=19 format=3 uid="uid://b2kwfbabyr0bm"]
+
+[ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://enemies/zenchan/zenchan.gd" id="1_aigf2"]
+[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/NES - Bubble Bobble - Enemies & Bosses - Enemies.png" id="1_s72y3"]
+[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://scripts/animation_player.gd" id="2_6hnld"]
+[ext_resource type="Script" uid="uid://bdke1vsx62ams" path="res://enemies/State_Machine_Locomotion_Enemy.gd" id="3_i7sgb"]
+[ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://enemies/zenchan/Idle.gd" id="4_dne8i"]
+[ext_resource type="Script" uid="uid://bju7fthcpdhx8" path="res://enemies/zenchan/Running.gd" id="5_fbiw4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s72y3"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_i7sgb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 5, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dne8i"]
+_data = {
+&"RESET": SubResource("Animation_i7sgb")
+}
+
+[sub_resource type="Animation" id="Animation_fbiw4"]
+resource_name = "FALL"
+length = 0.10000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(26, 5, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_aigf2"]
+resource_name = "IDLE"
+length = 0.7000034
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(5, 5, 16, 16), Rect2(26, 5, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_s72y3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 5, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_j704g"]
+length = 0.40000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(5, 5, 16, 16), Rect2(26, 5, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7sgb"]
+_data = {
+&"FALL": SubResource("Animation_fbiw4"),
+&"IDLE": SubResource("Animation_aigf2"),
+&"RESET": SubResource("Animation_s72y3"),
+&"RUN": SubResource("Animation_j704g")
+}
+
+[sub_resource type="Animation" id="Animation_00q3p"]
+length = 0.13333668
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(68, 5, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_tqq7e"]
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(47, 5, 16, 16), Rect2(68, 5, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_kn3fv"]
+length = 0.26667002
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(47, 5, 16, 16), Rect2(68, 5, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytvao"]
+_data = {
+&"FALL": SubResource("Animation_00q3p"),
+&"IDLE": SubResource("Animation_tqq7e"),
+&"RUN": SubResource("Animation_kn3fv")
+}
+
+[node name="Zenchan" type="CharacterBody2D"]
+script = ExtResource("1_aigf2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s72y3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dne8i"),
+&"NORMAL": SubResource("AnimationLibrary_i7sgb"),
+&"RAGE": SubResource("AnimationLibrary_ytvao")
+}
+script = ExtResource("2_6hnld")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s72y3")
+region_enabled = true
+region_rect = Rect2(5, 5, 16, 16)
+
+[node name="StateMachine_Locomotion_Enemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_i7sgb")
+initial_state = NodePath("IDLE")
+
+[node name="RUN" type="Node" parent="StateMachine_Locomotion_Enemy"]
+script = ExtResource("5_fbiw4")
+
+[node name="IDLE" type="Node" parent="StateMachine_Locomotion_Enemy"]
+script = ExtResource("4_dne8i")

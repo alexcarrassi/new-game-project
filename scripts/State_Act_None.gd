@@ -5,8 +5,11 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	
 func physics_update(delta: float) -> void:
 	
-	var inputState = self.player.inputState
+	var inputState = self.body.inputState
 		
-	if (self.player.buffer_times['attack'] > 0.0):
-		self.finished.emit("ATTACK")
+	if (self.body.buffer_times['attack'] > 0.0):
+		var transition_data = { 
+			"domain" : "act",
+		}
+		self.finished.emit("ATTACK", transition_data)
 	
