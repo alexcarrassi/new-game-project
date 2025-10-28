@@ -292,6 +292,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_ivps1")
 ground_accel = 3800.0
 ground_decel = 4000.0

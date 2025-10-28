@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=23 format=3 uid="uid://b2kwfbabyr0bm"]
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/NES - Bubble Bobble - Enemies & Bosses - Enemies.png" id="1_s72y3"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://enemies/zenchan/Idle.gd" id="4_dne8i"]
 [ext_resource type="Script" uid="uid://bju7fthcpdhx8" path="res://enemies/zenchan/Running.gd" id="5_fbiw4"]
 [ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://enemies/zenchan/falling.gd" id="7_jxh4g"]
+[ext_resource type="Script" uid="uid://bfx36clb6wkhh" path="res://enemies/zenchan/Jump_up.gd" id="8_6dyg7"]
+[ext_resource type="Script" uid="uid://dhxhusuigbtbb" path="res://enemies/zenchan/Jump_forward.gd" id="9_e7xus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s72y3"]
 size = Vector2(16, 16)
@@ -96,10 +98,28 @@ tracks/0/keys = {
 "values": [Rect2(5, 5, 16, 16), Rect2(26, 5, 16, 16)]
 }
 
+[sub_resource type="Animation" id="Animation_6dyg7"]
+resource_name = "JUMP_UP"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(26, 5, 16, 16)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i7sgb"]
 _data = {
 &"FALL": SubResource("Animation_fbiw4"),
 &"IDLE": SubResource("Animation_aigf2"),
+&"JUMP_UP": SubResource("Animation_6dyg7"),
 &"RESET": SubResource("Animation_s72y3"),
 &"RUN": SubResource("Animation_j704g")
 }
@@ -160,7 +180,10 @@ _data = {
 }
 
 [node name="Zenchan" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_aigf2")
+DECISION_PERIOD = 0.66
+JUMP_VELOCITY = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s72y3")
@@ -178,6 +201,8 @@ texture = ExtResource("1_s72y3")
 region_enabled = true
 region_rect = Rect2(5, 5, 16, 16)
 
+[node name="Decision_Timer" type="Timer" parent="."]
+
 [node name="StateMachine_Locomotion_Enemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_i7sgb")
 initial_state = NodePath("IDLE")
@@ -191,7 +216,21 @@ script = ExtResource("4_dne8i")
 [node name="FALLING" type="Node" parent="StateMachine_Locomotion_Enemy"]
 script = ExtResource("7_jxh4g")
 
+[node name="JUMP_UP" type="Node" parent="StateMachine_Locomotion_Enemy"]
+script = ExtResource("8_6dyg7")
+
+[node name="JUMP_FORWARD" type="Node" parent="StateMachine_Locomotion_Enemy"]
+script = ExtResource("9_e7xus")
+
 [node name="Sensors" type="Node2D" parent="."]
 
 [node name="Wall_front" type="RayCast2D" parent="Sensors"]
 target_position = Vector2(10, 0)
+
+[node name="Floor_above" type="RayCast2D" parent="Sensors"]
+position = Vector2(0, -7)
+target_position = Vector2(0, -34)
+
+[node name="Floor_front" type="RayCast2D" parent="Sensors"]
+position = Vector2(10, 0)
+target_position = Vector2(0, 15)

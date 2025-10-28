@@ -11,13 +11,9 @@ class_name StateMachine extends Node
 func _ready() -> void:
 	
 	var body = self.get_parent() as CharacterBody2D
-	var animationController = body.get_node("AnimationPlayer") as AnimationController
-	
-	
 	for state_node: State in self.find_children("*", "State"):
 		state_node.finished.connect(self._transition_to_next_state)
 		state_node.body = self.get_parent() as CharacterBody2D
-		state_node.animationController = animationController
 		
 	
 	#then we wait for our owner to be fully ready
@@ -41,9 +37,6 @@ func _transition_to_next_state(target_state_path: String, transition_data: Dicti
 	self.state.enter(prev_state.name, transition_data)	
 	
 	transition_data["effects"] = prev_state.exitEffects() + next_state.enterEffects() 
-	print("Transition from %s to %s" % [prev_state.name, next_state.name])
-	print(transition_data)
-	
 	self.state_transitioned.emit( prev_state, next_state, transition_data)
 
 	
@@ -53,6 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+
 	self.state.update(delta)
 
 func _physics_process( delta: float) -> void:
