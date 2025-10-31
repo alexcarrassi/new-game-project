@@ -21,11 +21,17 @@ func _ready() -> void:
 	self.timer.timeout.connect( self.onEnd)
 	self.animationPlayer.play("Pon")
 	
+	self.body_entered.connect( self.onBodyEntered )
 	#connect("body_entered", Callable(self, "_on_body_entered"))
 	#connect("area_entered", Callable(self, "_on_area_entered"))
 	
 	pass # Replace with function body.
 
+func onBodyEntered(body: Node2D) -> void:
+	print("Entered:!")
+	pass
+	
+	
 func onEnd() -> void:
 	self.queue_free()
 	

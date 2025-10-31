@@ -42,7 +42,3 @@ func physics_update(delta: float) -> void:
 	
 func exit() -> void:
 	self.body.decision_timer.stop()	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

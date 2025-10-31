@@ -35,8 +35,6 @@ func _ready() -> void:
 	
 func decison_timed() -> void:
 	# Check the players vs own.
-	
-	
 	pass	
 	
 func player_above() -> int:
