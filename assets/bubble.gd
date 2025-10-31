@@ -29,10 +29,16 @@ func _ready() -> void:
 
 func onBodyEntered(body: Node2D) -> void:
 	if( body is Enemy) :
-		print("Entered:!")
+		body.sm_locomotion.state.finished.emit("BUBBLED")
+		self.onEnd()
+		
 	pass
 	
 	
+func pop_silent() -> void:
+	
+	pass
+		
 func onEnd() -> void:
 	self.queue_free()
 	

@@ -21,9 +21,6 @@ func _ready() -> void:
 	pass
 	
 	
-func decison_timed() -> void:
-	# Check the players vs own.
-	pass	
 	
 func player_above() -> int:
 	var player = get_tree().get_first_node_in_group("player") as Player
