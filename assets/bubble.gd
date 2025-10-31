@@ -28,7 +28,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func onBodyEntered(body: Node2D) -> void:
-	print("Entered:!")
+	if( body is Enemy) :
+		print("Entered:!")
 	pass
 	
 	

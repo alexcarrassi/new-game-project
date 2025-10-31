@@ -24,6 +24,18 @@ window/size/window_height_override=786
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/_Godot-IDE_/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/_Godot-IDE_/plugins": "blue",
+"res://addons/_Godot-IDE_/plugins/": "blue",
+"res://addons/_Godot-IDE_/shared_resources/": "teal"
+}
+
 [input]
 
 ui_left={

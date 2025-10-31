@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=4 uid="uid://b4mgxnha0hp1y"]
 
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="1_dvup1"]
-[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="2_iafiv"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_iafiv"]
 [ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="4_iafiv"]
-[ext_resource type="PackedScene" uid="uid://b2kwfbabyr0bm" path="res://enemies/zenchan/zenchan.tscn" id="14_o3xv4"]
+[ext_resource type="PackedScene" uid="uid://b2kwfbabyr0bm" path="res://actors/enemies/zenchan/zenchan.tscn" id="14_o3xv4"]
 
 [node name="Node2D" type="Node2D"]
 
