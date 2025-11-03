@@ -12,6 +12,8 @@ class_name Actor extends CharacterBody2D
 @export var MAX_FALL_VELOCITY: float = 100.0
 @export var MAX_RISE_VELOCITY: float = 350.0
 
+@export var Bubble_Destination: Node2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.up_direction = Vector2.UP

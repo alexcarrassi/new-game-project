@@ -1,15 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcec5dpj4viaa"]
+[gd_scene load_steps=8 format=3 uid="uid://dcec5dpj4viaa"]
 
 [ext_resource type="Script" uid="uid://cd5jgtlg8kex6" path="res://assets/bubble.gd" id="1_b7bh6"]
 [ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_4r124"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcykv"]
-radius = 5.0
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_3mr26"]
 resource_name = "Pon"
-length = 0.60000336
-loop_mode = 1
+length = 0.33333668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,10 +16,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10299193, 0.2028941, 0.3012514, 0.401926, 0.5014014),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.10299193, 0.2028941, 0.3012514),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Rect2(63, 3, 15, 16), Rect2(83, 3, 15, 16), Rect2(83, 22, 15, 16), Rect2(83, 43, 15, 16), Rect2(66, 71, 15, 16), Rect2(84, 70, 15, 16)]
+"values": [Rect2(63, 3, 15, 16), Rect2(83, 3, 15, 16), Rect2(83, 22, 15, 16), Rect2(83, 43, 15, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_36l50"]
@@ -35,18 +34,21 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(83, 71, 15, 16)]
+"values": [Rect2(83, 43, 15, 16)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hb1c7"]
 _data = {
-&"Pon": SubResource("Animation_3mr26"),
+&"EXPAND": SubResource("Animation_3mr26"),
 &"RESET": SubResource("Animation_36l50")
 }
 
-[node name="Bubble" type="Area2D"]
-collision_layer = 8
-collision_mask = 4
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7bh6"]
+radius = 5.0990195
+
+[node name="Bubble" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_b7bh6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -55,7 +57,7 @@ shape = SubResource("CircleShape2D_wcykv")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4r124")
 region_enabled = true
-region_rect = Rect2(83, 71, 15, 16)
+region_rect = Rect2(83, 43, 15, 16)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -64,3 +66,11 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+shape = SubResource("CircleShape2D_b7bh6")

@@ -41,5 +41,10 @@ position = Vector2(94, 16)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="Player" parent="." instance=ExtResource("2_iafiv")]
-position = Vector2(1, -16)
+[node name="Player" parent="." node_paths=PackedStringArray("Bubble_Destination") instance=ExtResource("2_iafiv")]
+position = Vector2(-29, -18)
+Bubble_Destination = NodePath("../Bubble_Destination")
+
+[node name="Bubble_Destination" type="Marker2D" parent="."]
+position = Vector2(10, -37)
+gizmo_extents = 40.0

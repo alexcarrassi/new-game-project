@@ -1,6 +1,6 @@
 class_name State extends Node
 
-var body: CharacterBody2D
+var body: Actor
 var animationController: AnimationController
 var main_animation : String
 

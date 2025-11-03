@@ -75,7 +75,8 @@ toggle_debug={
 2d_physics/layer_1="TILES"
 2d_physics/layer_2="PLAYER"
 2d_physics/layer_3="ENEMY"
-2d_physics/layer_4="PLAYERATTACK"
+2d_physics/layer_4="BUBBLE_HITBOX"
+2d_physics/layer_5="BUBBLE_HURTBOX"
 
 [rendering]
 
