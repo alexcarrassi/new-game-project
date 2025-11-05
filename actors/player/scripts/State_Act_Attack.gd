@@ -49,5 +49,4 @@ func _process(delta: float) -> void:
 	pass
 
 func endAttack() -> void:
-	print("GOING NONE")
 	self.finished.emit("NONE")

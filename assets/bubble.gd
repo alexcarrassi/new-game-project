@@ -7,14 +7,15 @@ class_name Bubble extends RigidBody2D
 @onready var timer: Timer = $Timer
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $Hitbox
+@onready var hurtbox: Area2D = $Hurtbox
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var hurtbox: CollisionShape2D = $CollisionShape2D
+@onready var collisionShape: CollisionShape2D = $CollisionShape2D
 @onready var infoLabel: Label = $DebugLayer/info
 
 var destination: Node2D
 var dir: Vector2 = Vector2.RIGHT
 var is_active: bool = true
-
+var is_popping: bool = false
 var actor: Actor
 
 
@@ -31,21 +32,43 @@ func _ready() -> void:
 	self.animationPlayer.play("EXPAND")
 	
 	self.hitbox.body_entered.connect( self.onBodyEntered )
-	self.hurtbox.disabled = true
+	self.hurtbox.body_entered.connect( self.onHurtboxBodyEntered )
+	self.collisionShape.disabled = true
 	self.gravity_scale = 0
 	
 	
-	print(self.hitbox)
-	#connect("body_entered", Callable(self, "_on_body_entered"))
-	#connect("area_entered", Callable(self, "_on_area_entered"))
 	
 	pass # Replace with function body.
+
+func onHurtboxBodyEntered( body: Node2D) -> void:
+	
+	if( not self.is_active and body is Player):
+		var player = body as Player
+		if( player.sm_locomotion.state.name == "FALLING" ) :
+				
+			print("POP")
+			self.pop()
+	
+	
+func pop() -> void:
+	
+	self.is_popping = true
+	self.linear_velocity = Vector2.ZERO
+	self.timer.one_shot = true
+	self.timer.wait_time = self.animationPlayer.get_animation("PON").length
+	self.timer.timeout.connect( func (): 
+		queue_free() )
+	self.timer.start()
+	self.animationPlayer.play("PON")
+	
 
 func onBodyEntered(body: Node2D) -> void:
 	if( self.is_active and body is Actor) :
 		body.sm_locomotion.state.finished.emit("BUBBLED")
 		#self.queue_free()
 		
+		
+		#todo: do not capture already capture actors
 		self.actor = body
 		self.actor.reparent(self)
 		self.actor.position = Vector2.ZERO
@@ -55,7 +78,9 @@ func onBodyEntered(body: Node2D) -> void:
 	
 func setInactive() -> void:
 	self.is_active = false	
-	self.hurtbox.disabled = false
+	self.collisionShape.disabled = false
+	
+	self.hurtbox.monitoring = true
 	
 func pop_silent() -> void:
 	pass
@@ -81,6 +106,10 @@ func float_y(delta: float) -> void:
 	self.linear_velocity = Vector2(0, Vector2.UP.y * self.float_vert_speed)
 
 func _physics_process(delta: float) -> void:
+	if( is_popping) :
+		self.linear_velocity = Vector2.ZERO
+		return
+		
 	if(self.is_active) :
 		self.linear_velocity.x = dir.x * self.hor_speed
 		#self.global_position.x += dir.x * self.hor_speed * delta 
@@ -95,6 +124,8 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	self.sprite.rotation = -self.rotation
-	$DebugLayer.rotation =- self.rotation
+	$DebugLayer.rotation = -self.rotation
+	$DebugLayer.position = Vector2.ZERO
+	
 	self.infoLabel.text = "(%.2f, %.2f)" % [self.linear_velocity.x, self.linear_velocity.y]
 	
