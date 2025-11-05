@@ -8,10 +8,14 @@ class_name Bubble extends RigidBody2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $Hitbox
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var hurtbox: CollisionShape2D = $CollisionShape2D
+@onready var infoLabel: Label = $DebugLayer/info
 
 var destination: Node2D
 var dir: Vector2 = Vector2.RIGHT
 var is_active: bool = true
+
+var actor: Actor
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +31,7 @@ func _ready() -> void:
 	self.animationPlayer.play("EXPAND")
 	
 	self.hitbox.body_entered.connect( self.onBodyEntered )
-	
+	self.hurtbox.disabled = true
 	self.gravity_scale = 0
 	
 	
@@ -38,32 +42,36 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func onBodyEntered(body: Node2D) -> void:
-	if( self.is_active and body is Enemy) :
+	if( self.is_active and body is Actor) :
 		body.sm_locomotion.state.finished.emit("BUBBLED")
-		self.queue_free()
+		#self.queue_free()
 		
+		self.actor = body
+		self.actor.reparent(self)
+		self.actor.position = Vector2.ZERO
+		self.sprite.visible = false
+		self.setInactive()
 	pass
 	
 func setInactive() -> void:
 	self.is_active = false	
+	self.hurtbox.disabled = false
 	
 func pop_silent() -> void:
 	pass
 		
 func float_x(delta: float) -> void:
 	#self.global_position.y += Vector2.UP.y * self.vert_speed * delta
-	var target = 1 if (self.position.x < self.destination.position.x) else -1
-	self.linear_velocity = Vector2(self.float_hor_speed * target, 0)
 	
-	var distance = (self.destination.position - self.position).normalized()
-	#distance.x =  0 if( distance.x > -1 && distance.x < 1) else distance.x
+	var distance = (self.destination.position - self.position)
+	var velocity = distance * Vector2(self.float_hor_speed, self.float_vert_speed)
+	velocity.x = clamp(velocity.x, -self.float_hor_speed, self.float_hor_speed)
+	velocity.y = clamp(velocity.y, -self.float_vert_speed, self.float_vert_speed)
+	
+	var alpha = 1.0 - pow(0.001, delta / max(0.0001, 0.15))
 
-	var speed_x = self.float_hor_speed * distance.x 
-	speed_x = clamp(speed_x, -self.float_hor_speed, self.float_hor_speed)
-	var speed_y = self.float_vert_speed * distance.y
-	speed_y = clamp(speed_y, -self.float_vert_speed, self.float_vert_speed)
-	self.linear_velocity = Vector2( speed_x, speed_y)
-	
+	self.linear_velocity = velocity
+
 	#the bigger the difference, the bigger the velocity. Capped
 	#velocity = distance * max_speed 
 	#at some point, the distance should be clamped to 0. So if smaller than 0.1, it should be 0
@@ -87,3 +95,6 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	self.sprite.rotation = -self.rotation
+	$DebugLayer.rotation =- self.rotation
+	self.infoLabel.text = "(%.2f, %.2f)" % [self.linear_velocity.x, self.linear_velocity.y]
+	

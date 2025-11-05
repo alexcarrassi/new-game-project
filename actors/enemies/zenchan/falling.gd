@@ -20,6 +20,5 @@ func physics_update(delta: float) -> void:
 	actor.move_and_slide()
 	
 	if( actor.is_on_floor()): 
-		print("Am on floor, from falling")
 		self.finished.emit("RUNNING")
 	pass

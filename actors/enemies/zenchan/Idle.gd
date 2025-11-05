@@ -19,7 +19,6 @@ func physics_update( delta: float) -> void:
 	self.body.move_and_slide()
 	
 	if not( self.body.is_on_floor()) :
-		print("not on floor")
 		self.finished.emit("FALLING")
 
 	

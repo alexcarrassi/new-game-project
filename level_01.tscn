@@ -29,20 +29,15 @@ offset_bottom = 40.0
 [node name="Label" type="Label" parent="InputDebug/Control/MarginContainer"]
 layout_mode = 2
 
-[node name="Zenchan2" parent="." instance=ExtResource("14_o3xv4")]
-position = Vector2(94, -27)
-
-[node name="Zenchan" parent="." instance=ExtResource("14_o3xv4")]
+[node name="Zenchan" parent="." node_paths=PackedStringArray("Bubble_Destination") instance=ExtResource("14_o3xv4")]
 position = Vector2(94, -58)
-
-[node name="Zenchan3" parent="." instance=ExtResource("14_o3xv4")]
-position = Vector2(94, 16)
+Bubble_Destination = NodePath("../Bubble_Destination")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
 [node name="Player" parent="." node_paths=PackedStringArray("Bubble_Destination") instance=ExtResource("2_iafiv")]
-position = Vector2(-29, -18)
+position = Vector2(-42, 108)
 Bubble_Destination = NodePath("../Bubble_Destination")
 
 [node name="Bubble_Destination" type="Marker2D" parent="."]
