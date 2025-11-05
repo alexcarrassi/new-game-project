@@ -12,11 +12,15 @@ class_name Bubble extends RigidBody2D
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
 @onready var infoLabel: Label = $DebugLayer/info
 
+enum BubbleState { Shooting, Floating, Popping }
+var state = BubbleState.Shooting
+
 var destination: Node2D
 var dir: Vector2 = Vector2.RIGHT
 var is_active: bool = true
 var is_popping: bool = false
 var actor: Actor
+var actor_parent: Node
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,7 +32,7 @@ func _ready() -> void:
 	self.timer.wait_time = animationPlayer.get_animation("EXPAND").length
 	self.timer.start()
 	
-	self.timer.timeout.connect( self.setInactive)
+	self.timer.timeout.connect( self.setFloating)
 	self.animationPlayer.play("EXPAND")
 	
 	self.hitbox.body_entered.connect( self.onBodyEntered )
@@ -36,50 +40,57 @@ func _ready() -> void:
 	self.collisionShape.disabled = true
 	self.gravity_scale = 0
 	
-	
-	
 	pass # Replace with function body.
 
 func onHurtboxBodyEntered( body: Node2D) -> void:
 	
-	if( not self.is_active and body is Player):
+	if( self.state == BubbleState.Floating and body is Player):
 		var player = body as Player
 		if( player.sm_locomotion.state.name == "FALLING" ) :
-				
 			print("POP")
 			self.pop()
 	
 	
 func pop() -> void:
 	
-	self.is_popping = true
+	self.state = BubbleState.Popping
+
+	self.sprite.visible = true
+	if(self.actor != null) :
+		self.actor.reparent( self.actor_parent )
+		self.actor.sm_locomotion.state.finished.emit("FALLING")
+		self.actor.rotation = 0
+
 	self.linear_velocity = Vector2.ZERO
-	self.timer.one_shot = true
 	self.timer.wait_time = self.animationPlayer.get_animation("PON").length
 	self.timer.timeout.connect( func (): 
+		#return)
 		queue_free() )
 	self.timer.start()
 	self.animationPlayer.play("PON")
 	
+	
 
 func onBodyEntered(body: Node2D) -> void:
-	if( self.is_active and body is Actor) :
+	if( self.is_active and self.actor == null and body is Actor) :
+		
 		body.sm_locomotion.state.finished.emit("BUBBLED")
 		#self.queue_free()
-		
-		
 		#todo: do not capture already capture actors
 		self.actor = body
+		self.actor_parent = self.actor.get_parent()
+
 		self.actor.reparent(self)
 		self.actor.position = Vector2.ZERO
 		self.sprite.visible = false
-		self.setInactive()
+		self.setFloating()
+		
 	pass
 	
-func setInactive() -> void:
-	self.is_active = false	
+func setFloating() -> void:
+	self.state = BubbleState.Floating
+	self.hitbox.monitoring = false
 	self.collisionShape.disabled = false
-	
 	self.hurtbox.monitoring = true
 	
 func pop_silent() -> void:
@@ -93,7 +104,7 @@ func float_x(delta: float) -> void:
 	velocity.x = clamp(velocity.x, -self.float_hor_speed, self.float_hor_speed)
 	velocity.y = clamp(velocity.y, -self.float_vert_speed, self.float_vert_speed)
 	
-	var alpha = 1.0 - pow(0.001, delta / max(0.0001, 0.15))
+	#var alpha = 1.0 - pow(0.001, delta / max(0.0001, 0.15))
 
 	self.linear_velocity = velocity
 
@@ -106,19 +117,20 @@ func float_y(delta: float) -> void:
 	self.linear_velocity = Vector2(0, Vector2.UP.y * self.float_vert_speed)
 
 func _physics_process(delta: float) -> void:
-	if( is_popping) :
-		self.linear_velocity = Vector2.ZERO
-		return
-		
-	if(self.is_active) :
-		self.linear_velocity.x = dir.x * self.hor_speed
-		#self.global_position.x += dir.x * self.hor_speed * delta 
-	elif(self.destination != null) :	
-		
-		if(self.position.y > self.destination.position.y):
-			self.float_y(delta)	
-		else:
-			self.float_x(delta) 	
+	
+	match self.state: 
+		BubbleState.Popping:
+			self.linear_velocity = Vector2.ZERO
+			return
+		BubbleState.Shooting:
+			if(self.is_active) :
+				self.linear_velocity.x = dir.x * self.hor_speed
+		BubbleState.Floating:
+			if(self.destination != null) :		
+				if(self.position.y > self.destination.position.y):
+					self.float_y(delta)	
+				else:
+					self.float_x(delta) 	
 	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -126,6 +138,7 @@ func _process(delta: float) -> void:
 	self.sprite.rotation = -self.rotation
 	$DebugLayer.rotation = -self.rotation
 	$DebugLayer.position = Vector2.ZERO
+	
 	
 	self.infoLabel.text = "(%.2f, %.2f)" % [self.linear_velocity.x, self.linear_velocity.y]
 	

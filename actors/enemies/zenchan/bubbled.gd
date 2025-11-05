@@ -9,8 +9,18 @@ var phase : BubblePhase = BubblePhase.FLOAT_Y
 
 func enter(prev_state_path: String, data: Dictionary = {} ) -> void :
 	
+	var actor = self.body
 	self.main_animation = "NORMAL/BUBBLED"
+	
+	actor.set_collision_layer_value(7, true)
+	actor.set_collision_layer_value(3, false)
 	pass
+	
+func exit() -> void:
+	var actor = self.body
+	actor.set_collision_layer_value(7, false)
+	actor.set_collision_layer_value(3, true)	
+	
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,19 +28,3 @@ func _ready() -> void:
 
 func physics_update(delta: float) -> void:
 	var actor = self.body
-
-	#match self.phase:
-		#BubblePhase.FLOAT_Y:
-			#actor.velocity = Vector2(0, -1 * actor.FLOAT_SPEED)
-			#if(actor.position.y <= actor.Bubble_Destination.position.y):
-				#self.phase = BubblePhase.FLOAT_X
-				#
-		#BubblePhase.FLOAT_X:
-			#var distance = (actor.Bubble_Destination.position - actor.position)
-			#var velocity = distance * Vector2(actor.FLOAT_SPEED, actor.FLOAT_SPEED)
-			#velocity.x = clamp(velocity.x, -actor.FLOAT_SPEED, actor.FLOAT_SPEED)
-			#velocity.y = clamp(velocity.y, -actor.FLOAT_SPEED, actor.FLOAT_SPEED)
-			#
-			#actor.velocity = velocity
-#
-	#actor.move_and_slide()	

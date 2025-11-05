@@ -106,8 +106,6 @@ collision_mask = 4
 visible = false
 shape = SubResource("CircleShape2D_b7bh6")
 
-[node name="Debuglayer" type="CanvasLayer" parent="."]
-
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 2
@@ -117,3 +115,5 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_b7bh6")
+
+[node name="Debuglayer" type="CanvasLayer" parent="."]
