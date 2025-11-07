@@ -63,6 +63,7 @@ func pop() -> void:
 
 	self.linear_velocity = Vector2.ZERO
 	self.timer.wait_time = self.animationPlayer.get_animation("PON").length
+	#self.animationPlayer.animation_finished.connect ?
 	self.timer.timeout.connect( func (): 
 		#return)
 		queue_free() )

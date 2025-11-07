@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/NES - Bubble Bobble - Enemies & Bosses - Enemies.png" id="1_s72y3"]
-[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/player/scripts/animation_player.gd" id="2_6hnld"]
+[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_6hnld"]
 [ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://actors/enemies/zenchan/Idle.gd" id="4_dne8i"]
-[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/player/scripts/StateMachine_Locomotion.gd" id="4_hlciv"]
+[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="4_hlciv"]
 [ext_resource type="Script" uid="uid://bju7fthcpdhx8" path="res://actors/enemies/zenchan/Running.gd" id="5_fbiw4"]
 [ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://actors/enemies/zenchan/falling.gd" id="7_jxh4g"]
 [ext_resource type="Script" uid="uid://bfx36clb6wkhh" path="res://actors/enemies/zenchan/Jump_up.gd" id="8_6dyg7"]
@@ -258,3 +258,5 @@ target_position = Vector2(0, -34)
 [node name="Floor_front" type="RayCast2D" parent="Sensors"]
 position = Vector2(10, 0)
 target_position = Vector2(0, 15)
+
+[node name="StateMachine_Status" type="Node" parent="."]
