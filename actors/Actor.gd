@@ -3,6 +3,7 @@ class_name Actor extends CharacterBody2D
 @onready var sprite2D: Sprite2D = $Sprite2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sm_locomotion: StateMachine_Locomotion = $StateMachine_Locomotion
+@onready var sm_status: StateMachine_Status = $StateMachine_Status
 
 @export var GRAVITY_MULTIPLIER = 1.0
 @export var GRAVITY_MULTIPLIER_RISING: float = 1.0
@@ -15,6 +16,9 @@ class_name Actor extends CharacterBody2D
 @export var Bubble_Destination: Node2D
 @export var FLOAT_SPEED: float = 30.0
 
+var act_locked = false
+var loco_locked = false 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.up_direction = Vector2.UP
@@ -22,7 +26,7 @@ func _ready() -> void:
 	self.floor_snap_length = 6.0
 
 	self.sm_locomotion.state_transitioned.connect( self.animationPlayer.onStateTransition)	
-
+	self.sm_status.state_transitioned.connect(  self.animationPlayer.onStateTransition)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

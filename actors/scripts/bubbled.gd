@@ -1,25 +1,26 @@
-class_name enemy_bubbled extends State
+class_name Bubbled extends State
 
-enum BubblePhase  {
-	FLOAT_Y,
-	FLOAT_X
-}
-
-var phase : BubblePhase = BubblePhase.FLOAT_Y 
 
 func enter(prev_state_path: String, data: Dictionary = {} ) -> void :
 	
+	print("BUBBLED")
 	var actor = self.body
 	self.main_animation = "NORMAL/BUBBLED"
 	
+	actor.loco_locked = true
+	actor.act_locked = true 
 	actor.set_collision_layer_value(7, true)
 	actor.set_collision_layer_value(3, false)
+	
 	pass
 	
 func exit() -> void:
 	var actor = self.body
 	actor.set_collision_layer_value(7, false)
 	actor.set_collision_layer_value(3, true)	
+	
+	actor.loco_locked = false
+	actor.act_locked = false 
 	
 	
 # Called when the node enters the scene tree for the first time.

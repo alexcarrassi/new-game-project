@@ -59,6 +59,7 @@ func pop() -> void:
 	if(self.actor != null) :
 		self.actor.reparent( self.actor_parent )
 		self.actor.sm_locomotion.state.finished.emit("FALLING")
+		self.actor.sm_status.state.finished.emit("ALIVE")
 		self.actor.rotation = 0
 
 	self.linear_velocity = Vector2.ZERO
@@ -66,7 +67,12 @@ func pop() -> void:
 	#self.animationPlayer.animation_finished.connect ?
 	self.timer.timeout.connect( func (): 
 		#return)
-		queue_free() )
+		queue_free() 
+	
+)
+		
+		
+		
 	self.timer.start()
 	self.animationPlayer.play("PON")
 	
@@ -75,7 +81,8 @@ func pop() -> void:
 func onBodyEntered(body: Node2D) -> void:
 	if( self.is_active and self.actor == null and body is Actor) :
 		
-		body.sm_locomotion.state.finished.emit("BUBBLED")
+		print("BODY ENTERED")
+		body.sm_status.state.finished.emit("BUBBLED")
 		#self.queue_free()
 		#todo: do not capture already capture actors
 		self.actor = body
@@ -83,6 +90,8 @@ func onBodyEntered(body: Node2D) -> void:
 
 		self.actor.reparent(self)
 		self.actor.position = Vector2.ZERO
+		self.actor.loco_locked = true
+		self.actor.act_locked = true
 		self.sprite.visible = false
 		self.setFloating()
 		

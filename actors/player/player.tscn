@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=28 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://actors/player/player.gd" id="1_ivps1"]
 [ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_urp6f"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_5tmop"]
 [ext_resource type="Script" uid="uid://cw0ep6ifeu7n4" path="res://actors/player/scripts/State_Act_Attack.gd" id="11_7ahtn"]
 [ext_resource type="PackedScene" uid="uid://dcec5dpj4viaa" path="res://assets/bubble.tscn" id="12_7lmhl"]
+[ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="13_7aotg"]
+[ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="14_k67x5"]
+[ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="15_12xki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iafiv"]
 size = Vector2(14, 13.999999)
@@ -349,3 +352,13 @@ script = ExtResource("10_5tmop")
 [node name="ATTACK" type="Node" parent="StateMachine_Act"]
 script = ExtResource("11_7ahtn")
 bubble = ExtResource("12_7lmhl")
+
+[node name="StateMachine_Status" type="Node" parent="."]
+script = ExtResource("13_7aotg")
+metadata/_custom_type_script = "uid://rlf241v6q1mt"
+
+[node name="ALIVE" type="Node" parent="StateMachine_Status"]
+script = ExtResource("15_12xki")
+
+[node name="BUBBLED" type="Node" parent="StateMachine_Status"]
+script = ExtResource("14_k67x5")
