@@ -79,6 +79,7 @@ toggle_debug={
 2d_physics/layer_5="BUBBLE_HURTBOX"
 2d_physics/layer_6="BUBBLE_HITBOX"
 2d_physics/layer_7="ACTOR_BUBBLED"
+2d_physics/layer_8="TILES_INNER"
 
 [rendering]
 

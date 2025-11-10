@@ -59,7 +59,7 @@ func pop() -> void:
 	if(self.actor != null) :
 		self.actor.reparent( self.actor_parent )
 		self.actor.sm_locomotion.state.finished.emit("FALLING")
-		self.actor.sm_status.state.finished.emit("ALIVE")
+		self.actor.sm_status.state.finished.emit("DEAD")
 		self.actor.rotation = 0
 
 	self.linear_velocity = Vector2.ZERO
@@ -67,9 +67,7 @@ func pop() -> void:
 	#self.animationPlayer.animation_finished.connect ?
 	self.timer.timeout.connect( func (): 
 		#return)
-		queue_free() 
-	
-)
+		queue_free() )
 		
 		
 		

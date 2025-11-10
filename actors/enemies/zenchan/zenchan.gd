@@ -6,7 +6,6 @@ class_name Zenchan extends Enemy
 @onready var decision_timer: Timer = $Decision_Timer
 
 var rng = RandomNumberGenerator.new()
-var direction: Vector2 = Vector2.LEFT
 
 
 func _ready() -> void:

@@ -16,6 +16,8 @@ class_name Actor extends CharacterBody2D
 @export var Bubble_Destination: Node2D
 @export var FLOAT_SPEED: float = 30.0
 
+var direction: Vector2 = Vector2.LEFT
+
 var act_locked = false
 var loco_locked = false 
 

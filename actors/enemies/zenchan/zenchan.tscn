@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=29 format=3 uid="uid://b2kwfbabyr0bm"]
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/NES - Bubble Bobble - Enemies & Bosses - Enemies.png" id="1_s72y3"]
@@ -12,9 +12,26 @@
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="10_dflga"]
 [ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="10_kdg0o"]
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="12_s6xig"]
+[ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="13_l6spp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s72y3"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_s6xig"]
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(257, 5, 16, 16), Rect2(278, 5, 16, 16), Rect2(298, 5, 16, 16), Rect2(319, 5, 16, 16)]
+}
 
 [sub_resource type="Animation" id="Animation_i7sgb"]
 length = 0.001
@@ -33,6 +50,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dne8i"]
 _data = {
+&"DEAD": SubResource("Animation_s6xig"),
 &"RESET": SubResource("Animation_i7sgb")
 }
 
@@ -224,6 +242,19 @@ texture = ExtResource("1_s72y3")
 region_enabled = true
 region_rect = Rect2(5, 5, 16, 16)
 
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="Wall_front" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(10, 0)
+
+[node name="Floor_above" type="RayCast2D" parent="Sensors"]
+position = Vector2(0, -7)
+target_position = Vector2(0, -34)
+
+[node name="Floor_front" type="RayCast2D" parent="Sensors"]
+position = Vector2(10, 0)
+target_position = Vector2(0, 15)
+
 [node name="Decision_Timer" type="Timer" parent="."]
 
 [node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -245,19 +276,6 @@ script = ExtResource("8_6dyg7")
 [node name="JUMP_FORWARD" type="Node" parent="StateMachine_Locomotion"]
 script = ExtResource("9_e7xus")
 
-[node name="Sensors" type="Node2D" parent="."]
-
-[node name="Wall_front" type="RayCast2D" parent="Sensors"]
-target_position = Vector2(10, 0)
-
-[node name="Floor_above" type="RayCast2D" parent="Sensors"]
-position = Vector2(0, -7)
-target_position = Vector2(0, -34)
-
-[node name="Floor_front" type="RayCast2D" parent="Sensors"]
-position = Vector2(10, 0)
-target_position = Vector2(0, 15)
-
 [node name="StateMachine_Status" type="Node" parent="."]
 script = ExtResource("10_dflga")
 
@@ -266,3 +284,6 @@ script = ExtResource("12_s6xig")
 
 [node name="BUBBLED" type="Node" parent="StateMachine_Status"]
 script = ExtResource("10_kdg0o")
+
+[node name="DEAD" type="Node" parent="StateMachine_Status"]
+script = ExtResource("13_l6spp")
