@@ -5,6 +5,7 @@ class_name Zenchan extends Enemy
 @onready var sensors: Node2D = $Sensors
 @onready var decision_timer: Timer = $Decision_Timer
 
+
 var rng = RandomNumberGenerator.new()
 
 

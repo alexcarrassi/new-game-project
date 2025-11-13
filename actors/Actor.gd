@@ -16,6 +16,14 @@ class_name Actor extends CharacterBody2D
 @export var Bubble_Destination: Node2D
 @export var FLOAT_SPEED: float = 30.0
 
+
+@export var LootTable : Array[PickupData] = []
+@export var pickup : PackedScene
+	
+
+
+
+
 var direction: Vector2 = Vector2.LEFT
 
 var act_locked = false
@@ -29,6 +37,24 @@ func _ready() -> void:
 
 	self.sm_locomotion.state_transitioned.connect( self.animationPlayer.onStateTransition)	
 	self.sm_status.state_transitioned.connect(  self.animationPlayer.onStateTransition)
+
+func instantiateLoot() -> Pickup:
+	
+	# We'd normally do a weighted lookup, but right now, just get the first available one
+	if(self.LootTable.size() > 0):
+
+		var newPickup : Pickup = pickup.instantiate()
+		var pickupData = self.LootTable[0]
+
+		get_tree().root.add_child( newPickup )
+		newPickup.setData( pickupData )
+		newPickup.applyPickupData()
+		newPickup.position = self.position
+		
+		return newPickup
+		
+	return null	
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

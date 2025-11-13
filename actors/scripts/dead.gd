@@ -60,6 +60,8 @@ func physics_update(delta: float) -> void:
 		actor.flip()
 		
 	if(actor.is_on_floor()):
+	
+		actor.instantiateLoot()
 		actor.queue_free()
 	pass
 
