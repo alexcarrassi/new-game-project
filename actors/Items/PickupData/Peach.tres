@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="PickupData" load_steps=5 format=3 uid="uid://cjkah2jvpyh80"]
+[gd_resource type="Resource" script_class="PickupData" load_steps=6 format=3 uid="uid://cjkah2jvpyh80"]
 
 [ext_resource type="Texture2D" uid="uid://bmni57li4kahw" path="res://actors/Items/Atlas/Peach.tres" id="1_fk88g"]
 [ext_resource type="Script" uid="uid://bu0vyss5apof4" path="res://actors/Items/PickupEffects/pickup_effect.gd" id="2_kwtr1"]
 [ext_resource type="Script" uid="uid://c01g1s5yjk1a3" path="res://actors/Items/PickupData/PickupData.gd" id="3_3t63l"]
+[ext_resource type="Script" uid="uid://cf1dtdtb1xop6" path="res://actors/Items/PickupEffects/debug_effect.gd" id="3_ufmdg"]
 
-[sub_resource type="Resource" id="Resource_fk88g"]
-script = ExtResource("2_kwtr1")
-metadata/_custom_type_script = "uid://bu0vyss5apof4"
+[sub_resource type="Resource" id="Resource_6gxml"]
+script = ExtResource("3_ufmdg")
+metadata/_custom_type_script = "uid://cf1dtdtb1xop6"
 
 [resource]
 script = ExtResource("3_3t63l")
 icon = ExtResource("1_fk88g")
-pickupEffects = Array[ExtResource("2_kwtr1")]([SubResource("Resource_fk88g")])
+pickupEffects = Array[ExtResource("2_kwtr1")]([SubResource("Resource_6gxml")])
 metadata/_custom_type_script = "uid://c01g1s5yjk1a3"

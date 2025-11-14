@@ -7,11 +7,24 @@ var pickupData : PickupData
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	self.monitorable = true
+	self.monitoring = true
+	self.body_entered.connect(self.getPickedUp)
 	pass # Replace with function body.
 
 
 func setData( pickupData: PickupData) -> void:
 	self.pickupData = pickupData
+
+func getPickedUp( body: Node2D) -> void:
+	if(body is Player): 
+		print("Player!")
+		for effect: PickupEffect in self.pickupData.pickupEffects:
+			effect.apply( body )
+		
+		
+		self.queue_free()	
 
 
 func applyPickupData() -> void:
