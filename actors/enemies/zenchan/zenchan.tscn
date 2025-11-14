@@ -255,12 +255,15 @@ target_position = Vector2(10, 0)
 [node name="Floor_above" type="RayCast2D" parent="Sensors"]
 position = Vector2(0, -7)
 target_position = Vector2(0, -34)
+collision_mask = 129
 
 [node name="Floor_front" type="RayCast2D" parent="Sensors"]
 position = Vector2(10, 0)
 target_position = Vector2(0, 15)
+collision_mask = 129
 
 [node name="Decision_Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_hlciv")
