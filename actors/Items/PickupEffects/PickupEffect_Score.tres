@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PickupEffect_Score" load_steps=3 format=3 uid="uid://dceuu77bmye80"]
+
+[ext_resource type="PackedScene" uid="uid://tbw8dg0c0xtu" path="res://actors/Items/PickupPopup.tscn" id="1_23c6v"]
+[ext_resource type="Script" uid="uid://chfll181o63dp" path="res://actors/Items/PickupEffects/PickupEffect_Score.gd" id="1_dv6r7"]
+
+[resource]
+script = ExtResource("1_dv6r7")
+popup = ExtResource("1_23c6v")
+metadata/_custom_type_script = "uid://chfll181o63dp"
