@@ -13,18 +13,20 @@ func enter(prev_state_path: String, data: Dictionary = {}) -> void:
 	print("ENTER DEAD")
 	
 	print(data)
-	var jump_dir = data.get("dir", 1.0);
-	self.jump_velocity.x = abs(self.jump_velocity.x) if(jump_dir > 0) else -abs(self.jump_velocity.x)
 	
+	var jump_dir = data.get("dir", 1.0);
 	self.main_animation = "DEAD"
 
 	var actor = self.body 
 	actor.loco_locked = true
 	actor.act_locked = true 
 	
-	#starting velocity: following a jump arc
+	#starting velocity: following a jump arcxb
 	actor.velocity = self.jump_velocity
+	if(sign( jump_dir ) !=  sign( actor.direction.x ) ):
+		actor.flip()
 	actor.velocity.x *= actor.direction.x
+
 
 	#disable collision with inner tiles.
 	actor.set_collision_mask_value(8, false)

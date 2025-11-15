@@ -48,7 +48,7 @@ func onHurtboxBodyEntered( body: Node2D) -> void:
 	if( self.state == BubbleState.Floating and body is Player):
 		var player = body as Player
 		#popping direction is determine by position of player compared to bubble
-		self.dir.x = 1 if(body.position.x > self.position.x) else -1
+		self.dir.x = 1 if(body.position.x <self.position.x) else -1
 		self.pop()
 
 		
