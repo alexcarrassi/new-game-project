@@ -11,6 +11,11 @@ var collision_disable_ms: float = 1.5
 
 func enter(prev_state_path: String, data: Dictionary = {}) -> void:
 	print("ENTER DEAD")
+	
+	print(data)
+	var jump_dir = data.get("dir", 1.0);
+	self.jump_velocity.x = abs(self.jump_velocity.x) if(jump_dir > 0) else -abs(self.jump_velocity.x)
+	
 	self.main_animation = "DEAD"
 
 	var actor = self.body 

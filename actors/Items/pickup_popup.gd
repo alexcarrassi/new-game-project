@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 	
 	self.position.y -= self.ySpeed * delta
 
-	print(self.time)
 	self.time += delta
 	if(self.time >= showTime) :
 		queue_free()

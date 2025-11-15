@@ -37,7 +37,8 @@ func _ready() -> void:
 	
 	self.hitbox.body_entered.connect( self.onBodyEntered )
 	self.hurtbox.body_entered.connect( self.onHurtboxBodyEntered )
-	self.collisionShape.disabled = true
+	self.collisionShape.disabled = false
+	self.set_collision_mask_value(4, false) #Don't collide with other bubble
 	self.gravity_scale = 0
 	
 	pass # Replace with function body.
@@ -46,9 +47,11 @@ func onHurtboxBodyEntered( body: Node2D) -> void:
 	
 	if( self.state == BubbleState.Floating and body is Player):
 		var player = body as Player
-		if( player.sm_locomotion.state.name == "FALLING" ) :
-			print("POP")
-			self.pop()
+		#popping direction is determine by position of player compared to bubble
+		self.dir.x = 1 if(body.position.x > self.position.x) else -1
+		self.pop()
+
+		
 	
 	
 func pop() -> void:
@@ -59,7 +62,7 @@ func pop() -> void:
 	if(self.actor != null) :
 		self.actor.reparent( self.actor_parent )
 		self.actor.sm_locomotion.state.finished.emit("FALLING")
-		self.actor.sm_status.state.finished.emit("DEAD")
+		self.actor.sm_status.state.finished.emit("DEAD", {"dir": self.dir.x})
 		self.actor.rotation = 0
 
 	self.linear_velocity = Vector2.ZERO
@@ -105,8 +108,8 @@ func pop_silent() -> void:
 	pass
 		
 func float_x(delta: float) -> void:
-	#self.global_position.y += Vector2.UP.y * self.vert_speed * delta
-	
+	self.set_collision_mask_value(4, true) # Collide with other bubbles now
+
 	var distance = (self.destination.position - self.position)
 	var velocity = distance * Vector2(self.float_hor_speed, self.float_vert_speed)
 	velocity.x = clamp(velocity.x, -self.float_hor_speed, self.float_hor_speed)
@@ -144,6 +147,7 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	self.sprite.rotation = -self.rotation
+
 	$DebugLayer.rotation = -self.rotation
 	$DebugLayer.position = Vector2.ZERO
 	
