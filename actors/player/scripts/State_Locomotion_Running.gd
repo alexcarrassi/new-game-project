@@ -23,7 +23,8 @@ func physics_update(delta: float) -> void:
 	
 			#move and slide
 	self.body.move_and_slide()
-	
+	self.body.post_move_and_slide()
+
 		#read facts and state transition
 		
 		

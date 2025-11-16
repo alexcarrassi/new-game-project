@@ -26,12 +26,9 @@ func physics_update(delta: float) -> void:
 		
 		
 	if(self.body.decision_timer.time_left <= 0):
-		print("DECISION TIME")
 		self.body.decision_timer.wait_time = self.body.DECISION_PERIOD
 		self.body.decision_timer.start()
 
-		print(position_compared_to_player)
-		print(self.body.floor_above())
 		if( position_compared_to_player == 1 and self.body.floor_above()) :
 			self.finished.emit("JUMP_UP")
 			

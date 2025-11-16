@@ -1,6 +1,7 @@
 class_name Actor extends CharacterBody2D
 
 @onready var sprite2D: Sprite2D = $Sprite2D
+@onready var hurtbox: Area2D = $Hurtbox
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sm_locomotion: StateMachine_Locomotion = $StateMachine_Locomotion
 @onready var sm_status: StateMachine_Status = $StateMachine_Status
@@ -55,6 +56,12 @@ func instantiateLoot() -> Pickup:
 		
 	return null	
 	
+func post_move_and_slide() -> void:
+	pass	
+	
+func onPlayerCollide( player: Player) -> void:
+	print("ACTOR")
+	pass	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

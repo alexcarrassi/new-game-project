@@ -59,6 +59,10 @@ func flip() -> void:
 	sensor_floor_front.position.x *= -1
 	self.sprite2D.flip_h = self.direction.x > 0.0
 
+func onPlayerCollide( player: Player) -> void:
+	print("UH")
+	player.sm_status.state.finished.emit("HURT")
+
 	#self.sprite2D.flip_h
 		
 func _physics_process(delta: float) -> void:

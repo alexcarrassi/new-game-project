@@ -23,6 +23,17 @@ var inputState: InputState
 func _ready() -> void:
 	super._ready()
 	self.actState.state_transitioned.connect( self.animationPlayer.onStateTransition)
+	self.hurtbox.monitoring = true
+	self.hurtbox.body_entered.connect( self.onHurtboxEntered)
+	
+	
+func onHurtboxEntered( body: Node2D ) :
+	if( body is Enemy):
+		if(body.sm_status.state.name == "ALIVE"):
+			
+			body.onPlayerCollide( self )
+		
+	pass	
 	
 func exposeInputSnapshot() -> String:
 	var inputSnapshot = self.inputState.toString()
@@ -59,8 +70,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		self.buffer_times["attack"] = max(0, self.buffer_times["attack"] - delta)
 	
-	#State logic (State your intentions)
-	
+func post_move_and_slide() -> void:
+	pass
+		
 	
 
 

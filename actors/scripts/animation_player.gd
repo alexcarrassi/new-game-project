@@ -15,6 +15,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+#Can loop n amount of times.
 func request_oneShot(animation_name: String, lock: AnimationLock = null) -> void:
 	if(self.animationLock != null) :
 		if(lock == null):
@@ -32,7 +33,9 @@ func onStateTransition(prev_state: State, new_state: State, transition_data: Dic
 			if (effect.has("oneshot")):
 	
 				var animation = self.get_animation( effect["oneshot"]["animation"] )
-				var animationLock = AnimationLock.new( effect["oneshot"]["prio"],animation.length)
+				var loops = effect.get("loops", 1)
+				var animationLock = AnimationLock.new( effect["oneshot"]["prio"], animation.length, loops)
+				
 				self.request_oneShot( effect["oneshot"]["animation"] , animationLock)
 			
 	if(new_state.main_animation != "") :
@@ -45,9 +48,23 @@ func _physics_process(delta: float) -> void:
 	
 	if( self.animationLock != null) :
 
-		if(self.current_animation_position >= self.animationLock.lockTotal):
-			self.animationLock = null
 		
+		self.animationLock.current -= delta
+		if( self.animationLock.current <= 0) :
+			self.animationLock.current = self.animationLock.lockTotal
+			self.animationLock.loops -= 1
+			if(self.animationLock.loops < 1) :
+					self.animationLock.lockReleased.emit()
+					self.animationLock = null
+					
+					
+		#if(self.current_animation_position >= self.animationLock.lockTotal):
+			#self.animationLock.loops -= 1
+			#
+			#if(self.animationLock.loops < 1) :
+				#
+				#self.animationLock = null
+		#
 
 	if( self.animationLock != null ):
 		return

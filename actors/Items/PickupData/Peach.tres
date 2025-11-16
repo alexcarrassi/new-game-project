@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="PickupData" load_steps=10 format=3 uid="uid://cjkah2jvpyh80"]
+[gd_resource type="Resource" script_class="PickupData" load_steps=9 format=3 uid="uid://cjkah2jvpyh80"]
 
 [ext_resource type="Texture2D" uid="uid://bmni57li4kahw" path="res://actors/Items/Atlas/Pickups/Peach.tres" id="1_fk88g"]
-[ext_resource type="Script" uid="uid://bu0vyss5apof4" path="res://actors/Items/PickupEffects/pickup_effect.gd" id="2_kwtr1"]
+[ext_resource type="Script" uid="uid://bu0vyss5apof4" path="res://actors/Items/PickupEffects/PickupEffect.gd" id="2_dpiic"]
 [ext_resource type="Script" uid="uid://c01g1s5yjk1a3" path="res://actors/Items/PickupData/PickupData.gd" id="3_3t63l"]
 [ext_resource type="Script" uid="uid://cf1dtdtb1xop6" path="res://actors/Items/PickupEffects/debug_effect.gd" id="3_ufmdg"]
-[ext_resource type="PackedScene" uid="uid://tbw8dg0c0xtu" path="res://actors/Items/PickupPopup.tscn" id="4_lfk3m"]
 [ext_resource type="Script" uid="uid://chfll181o63dp" path="res://actors/Items/PickupEffects/PickupEffect_Score.gd" id="5_s3hj7"]
 [ext_resource type="Texture2D" uid="uid://bhvei2xqk8nyi" path="res://actors/Items/Atlas/Popups/300.tres" id="6_lfk3m"]
 
@@ -21,5 +20,5 @@ metadata/_custom_type_script = "uid://chfll181o63dp"
 [resource]
 script = ExtResource("3_3t63l")
 icon = ExtResource("1_fk88g")
-pickupEffects = Array[ExtResource("2_kwtr1")]([SubResource("Resource_pu7mb"), SubResource("Resource_thmgs")])
+pickupEffects = Array[ExtResource("2_dpiic")]([SubResource("Resource_pu7mb"), SubResource("Resource_thmgs")])
 metadata/_custom_type_script = "uid://c01g1s5yjk1a3"

@@ -13,7 +13,7 @@ func _ready() -> void:
 	var body = self.get_parent() as CharacterBody2D
 	for state_node: State in self.find_children("*", "State"):
 		state_node.finished.connect(self._transition_to_next_state)
-		state_node.body = self.get_parent() as CharacterBody2D
+		state_node.body = self.get_parent() as Actor
 		
 	
 	#then we wait for our owner to be fully ready

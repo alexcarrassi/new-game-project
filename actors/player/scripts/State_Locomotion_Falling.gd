@@ -33,7 +33,7 @@ func physics_update(delta: float) -> void:
 	self.body.velocity.y = clamp(self.body.velocity.y, -self.body.MAX_RISE_VELOCITY, self.body.MAX_FALL_VELOCITY)
 	
 	self.body.move_and_slide()
-	
+	self.body.post_move_and_slide()
 	
 	self.body.coyote_time -= delta 
 	self.body.coyote_time = max( 0, self.body.coyote_time - delta)

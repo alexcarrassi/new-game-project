@@ -19,7 +19,8 @@ func physics_update(delta: float) -> void:
 
 		#move and slide
 	self.body.move_and_slide()
-	
+	self.body.post_move_and_slide()
+
 	
 	if( self.body.velocity.x != 0):
 		self.body.sprite2D.flip_h = body.velocity.x < 0.0
