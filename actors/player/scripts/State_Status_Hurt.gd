@@ -8,22 +8,23 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	actor.hurtbox.set_collision_mask_value(3, false)
 	
 	var hurtLength = actor.animationPlayer.get_animation("state/hurt").length
-	print(hurtLength)
 	var animationLock = AnimationLock.new( 20, hurtLength, 3 )
 	
 	actor.animationPlayer.request_oneShot("state/hurt", animationLock)
 	
 	animationLock.lockReleased.connect( 
 		func() -> void: 
-			self.finished.emit("ALIVE")
-			print("finished")
-	)
 			
-	
+			actor.health -= 1
+			if(actor.health < 0):
+				self.finished.emit("DEAD")
+			else :	
+				self.finished.emit("ALIVE")
+			print("finished")
+	)	
 	
 	#play the hurt animation
 	#disable Hurtbox for the duration of the animation
-	
 	
 func exit() -> void:
 	var actor = self.body 

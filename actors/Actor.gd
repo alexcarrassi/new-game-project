@@ -21,7 +21,7 @@ class_name Actor extends CharacterBody2D
 @export var LootTable : Array[PickupData] = []
 @export var pickup : PackedScene
 	
-
+@export var health: int = 3
 
 
 

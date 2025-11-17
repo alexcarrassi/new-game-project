@@ -18,6 +18,7 @@ func physics_update(delta: float) -> void:
 	actor.velocity.x = actor.MAX_RUN_VELOCITY * actor.direction.x
 	actor.move_and_slide()
 	
+	
 	var position_compared_to_player = self.body.player_above()
 	
 	if( self.body.wall_ahead() ):

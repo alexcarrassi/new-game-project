@@ -37,9 +37,6 @@ func enter(prev_state_path: String, data: Dictionary ):
 
 	self.timer.start()
 	
-	print(self.timer)
-	
-	
 func exit() -> void:
 	self.timer.stop()
 	self.timer.queue_free()
