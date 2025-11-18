@@ -20,7 +20,6 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 				self.finished.emit("DEAD")
 			else :	
 				self.finished.emit("ALIVE")
-			print("finished")
 	)	
 	
 	#play the hurt animation
@@ -28,9 +27,10 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	
 func exit() -> void:
 	var actor = self.body 
-	actor.loco_locked = false 	
-	actor.act_locked = false
-	actor.hurtbox.set_collision_mask_value(3, true)
+	
+	#actor.loco_locked = false 	
+	#actor.act_locked = false
+	#actor.hurtbox.set_collision_mask_value(3, true)
 
 
 func _ready() -> void:

@@ -323,6 +323,7 @@ buffers = {
 }
 JUMP_VELOCITY = 350.0
 MAX_RUN_VELOCITY = 100.0
+health = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.5, -8.5)

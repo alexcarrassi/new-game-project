@@ -221,7 +221,7 @@ _data = {
 &"RUN": SubResource("Animation_kn3fv")
 }
 
-[node name="Zenchan" type="CharacterBody2D"]
+[node name="Zenchan" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 script = ExtResource("1_aigf2")
 DECISION_PERIOD = 0.66

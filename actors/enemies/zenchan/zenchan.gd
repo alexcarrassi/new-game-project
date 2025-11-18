@@ -23,8 +23,10 @@ func _ready() -> void:
 	
 	
 func player_above() -> int:
-	var player = get_tree().get_first_node_in_group("player") as Player
-	var player_y = player.position.y
+	if(self.players.is_empty()) :
+		return 0
+	
+	var player = self.players[0] as Player
 	var margin = 12.0
 	
 	if( player.position.y < self.position.y - margin) :
@@ -60,7 +62,6 @@ func flip() -> void:
 	self.sprite2D.flip_h = self.direction.x > 0.0
 
 func onPlayerCollide( player: Player) -> void:
-	print("UH")
 	player.sm_status.state.finished.emit("HURT")
 
 	#self.sprite2D.flip_h

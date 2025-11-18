@@ -36,6 +36,10 @@ folder_colors={
 "res://addons/_Godot-IDE_/shared_resources/": "teal"
 }
 
+[global_group]
+
+Enemies=""
+
 [input]
 
 ui_left={
