@@ -37,7 +37,7 @@ func spawnPlayer() -> Player:
 	return playerNode
 
 func onActorDeath(actor: Actor) -> void:
-	if(actor is Player) :
+	if(actor is Player):
 		onPlayerDeath(actor)
 		
 	actor.queue_free()	

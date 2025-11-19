@@ -69,7 +69,8 @@ func physics_update(delta: float) -> void:
 	if(actor.is_on_floor()):
 	
 		actor.instantiateLoot()
-		actor.death.emit(actor)
+		actor.actorDeath.emit(actor)
+		actor.queue_free()
 	pass
 
 # Called when the node enters the scene tree for the first time.
