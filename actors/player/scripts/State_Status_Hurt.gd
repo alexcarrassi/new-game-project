@@ -25,12 +25,15 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	#play the hurt animation
 	#disable Hurtbox for the duration of the animation
 	
+	
 func exit() -> void:
 	var actor = self.body 
 	
 	actor.loco_locked = false 	
 	actor.act_locked = false
 	actor.hurtbox.set_collision_mask_value(3, true)
+	
+	actor.modController.addMod(Invulnerability.new() )
 
 
 func _ready() -> void:

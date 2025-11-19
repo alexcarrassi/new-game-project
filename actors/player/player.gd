@@ -69,6 +69,8 @@ func _physics_process(delta: float) -> void:
 		self.buffer_times["attack"] = buffers["attack"]
 	else:
 		self.buffer_times["attack"] = max(0, self.buffer_times["attack"] - delta)
+		
+	super._physics_process(delta)
 	
 func post_move_and_slide() -> void:
 	pass

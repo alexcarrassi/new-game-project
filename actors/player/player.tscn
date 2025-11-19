@@ -317,20 +317,12 @@ ground_decel = 4000.0
 air_accel = 1000.0
 air_decel = 1400.0
 coyote_max = 0.5
-jump_held_max = null
 buffers = {
 &"attack": 1.0,
 &"jump": 1.0
 }
-GRAVITY_MULTIPLIER = null
-GRAVITY_MULTIPLIER_RISING = null
-GRAVITY_MULTIPLIER_FALLING = null
 JUMP_VELOCITY = 350.0
 MAX_RUN_VELOCITY = 100.0
-MAX_FALL_VELOCITY = null
-MAX_RISE_VELOCITY = null
-FLOAT_SPEED = null
-LootTable = null
 health = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
