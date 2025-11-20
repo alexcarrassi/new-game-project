@@ -21,7 +21,7 @@ func enter(prev_state_path: String, data: Dictionary = {}) -> void:
 	actor.loco_locked = true
 	actor.act_locked = true 
 	
-	#starting velocity: following a jump arcxb
+	#starting velocity: following a jump arc
 	actor.velocity = self.jump_velocity
 	if(sign( jump_dir ) !=  sign( actor.direction.x ) ):
 		actor.flip()

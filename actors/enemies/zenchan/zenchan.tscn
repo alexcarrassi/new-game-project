@@ -223,6 +223,7 @@ _data = {
 
 [node name="Zenchan" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
+collision_mask = 129
 script = ExtResource("1_aigf2")
 DECISION_PERIOD = 0.66
 JUMP_VELOCITY = 300.0

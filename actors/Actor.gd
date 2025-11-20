@@ -30,6 +30,7 @@ var act_locked = false
 var loco_locked = false 
 
 signal actorDeath(actor: Actor) 
+signal actorHurt(actor: Actor)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

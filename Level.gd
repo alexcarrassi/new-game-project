@@ -1,15 +1,20 @@
 class_name Level extends Node2D
 
 @export var player: PackedScene
+@export var skelMunsta: PackedScene
 @onready var p1_Start: Node2D = $p1_Start
 @onready var bubbleDestination: Node2D = $Bubble_Destination
+@onready var levelTimer: Timer = $Level_Timer
+@onready var spawn_SkelMunsta: Node2D = $spawn_SkelMunsta
 
-# Called when the node enters the scene tree for the first time.
+
+# Span the player
+# Connect the timer's timeout to the Hurry Up event
 func _ready() -> void:
 	
 	await ready
 	var playerNode = self.spawnPlayer()
-	
+	self.levelTimer.timeout.connect( self.onHurryUp)
 	
 	pass # Replace with function body.
 
@@ -20,6 +25,20 @@ func onPlayerDeath(player: Player) -> void:
 		
 		
 
+
+# Flash the Hurry message, pause during it. Spawn Skel-Monsta after a few seconds.
+
+func onHurryUp() -> void:
+	print("Hurry")
+	var skelMunsta = self.skelMunsta.instantiate() as Enemy
+	skelMunsta.position = self.spawn_SkelMunsta.position
+
+	for playerNode in get_tree().get_nodes_in_group("player"):
+		skelMunsta.players.append( playerNode  )
+		
+	self.add_child( skelMunsta) 
+
+	
 func spawnPlayer() -> Player:
 	var playerNode = self.player.instantiate()
 	
@@ -29,6 +48,7 @@ func spawnPlayer() -> Player:
 	playerNode.Bubble_Destination = self.bubbleDestination
 
 	playerNode.actorDeath.connect( self.onActorDeath)
+	playerNode.actorHurt.connect( self.onActorHurt )
 
 	for enemyNode in get_tree().get_nodes_in_group("Enemies"):
 		var enemy = enemyNode as Enemy
@@ -36,10 +56,14 @@ func spawnPlayer() -> Player:
 		
 	return playerNode
 
+func onActorHurt(actor: Actor) -> void:
+	if(actor is Player) :
+		self.levelTimer.start()
+		
+		
 func onActorDeath(actor: Actor) -> void:
 	if(actor is Player):
 		onPlayerDeath(actor)
-		
 	actor.queue_free()	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

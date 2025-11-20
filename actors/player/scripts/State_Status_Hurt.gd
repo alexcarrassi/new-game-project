@@ -6,6 +6,7 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	actor.loco_locked = true
 	actor.act_locked = true 
 	actor.hurtbox.set_collision_mask_value(3, false)
+	actor.actorHurt.emit( actor )
 	
 	var hurtLength = actor.animationPlayer.get_animation("state/hurt").length
 	var animationLock = AnimationLock.new( 20, hurtLength, 3 )
