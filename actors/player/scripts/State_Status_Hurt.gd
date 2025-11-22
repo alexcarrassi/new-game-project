@@ -6,7 +6,6 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	actor.loco_locked = true
 	actor.act_locked = true 
 	actor.hurtbox.set_collision_mask_value(3, false)
-	actor.actorHurt.emit( actor )
 	
 	var hurtLength = actor.animationPlayer.get_animation("state/hurt").length
 	var animationLock = AnimationLock.new( 20, hurtLength, 3 )
@@ -29,13 +28,14 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	
 func exit() -> void:
 	var actor = self.body 
-	
+	actor.actorHurt.emit( actor )
+
 	actor.loco_locked = false 	
 	actor.act_locked = false
 	actor.hurtbox.set_collision_mask_value(3, true)
 	
 	actor.modController.addMod(Invulnerability.new() )
-
+ 
 
 func _ready() -> void:
 	

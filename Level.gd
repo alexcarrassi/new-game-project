@@ -6,8 +6,8 @@ class_name Level extends Node2D
 @onready var bubbleDestination: Node2D = $Bubble_Destination
 @onready var levelTimer: Timer = $Level_Timer
 @onready var spawn_SkelMunsta: Node2D = $spawn_SkelMunsta
-@export var graphic_Hurry: Texture2D
 
+signal hurry()
 
 # Span the player
 # Connect the timer's timeout to the Hurry Up event
@@ -31,16 +31,22 @@ func onPlayerDeath(player: Player) -> void:
 
 func onHurryUp() -> void:
 	print("Hurry")
+	self.hurry.emit()
+
+
+func spawnHurryEneemy() -> void:
+	
+	await get_tree().create_timer(1.0).timeout
+
 	var skelMunsta = self.skelMunsta.instantiate() as Enemy
 	skelMunsta.position = self.spawn_SkelMunsta.position
 
-	self.add_child(self.graphic_Hurry)
+	#self.add_child(self.graphic_Hurry)
 
 	for playerNode in get_tree().get_nodes_in_group("player"):
 		skelMunsta.players.append( playerNode  )
 		
 	self.add_child( skelMunsta) 
-
 	
 func spawnPlayer() -> Player:
 	var playerNode = self.player.instantiate()
@@ -52,6 +58,7 @@ func spawnPlayer() -> Player:
 
 	playerNode.actorDeath.connect( self.onActorDeath)
 	playerNode.actorHurt.connect( self.onActorHurt )
+	
 
 	for enemyNode in get_tree().get_nodes_in_group("Enemies"):
 		var enemy = enemyNode as Enemy
@@ -71,4 +78,5 @@ func onActorDeath(actor: Actor) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print( self.levelTimer.time_left)
 	pass
