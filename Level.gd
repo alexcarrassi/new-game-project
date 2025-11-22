@@ -6,6 +6,7 @@ class_name Level extends Node2D
 @onready var bubbleDestination: Node2D = $Bubble_Destination
 @onready var levelTimer: Timer = $Level_Timer
 @onready var spawn_SkelMunsta: Node2D = $spawn_SkelMunsta
+@export var graphic_Hurry: Texture2D
 
 
 # Span the player
@@ -32,6 +33,8 @@ func onHurryUp() -> void:
 	print("Hurry")
 	var skelMunsta = self.skelMunsta.instantiate() as Enemy
 	skelMunsta.position = self.spawn_SkelMunsta.position
+
+	self.add_child(self.graphic_Hurry)
 
 	for playerNode in get_tree().get_nodes_in_group("player"):
 		skelMunsta.players.append( playerNode  )

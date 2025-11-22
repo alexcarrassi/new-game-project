@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtj7kwmq1s7nw"
-path="res://.godot/imported/NES - Bubble Bobble - Enemies & Bosses - Enemies.png-6f07e27b0dfe9ef311dd2a6c4783b343.ctex"
+path="res://.godot/imported/Enemies.png-e8843248fbc29e9aabdfe75d05c4beab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/NES - Bubble Bobble - Enemies & Bosses - Enemies.png"
-dest_files=["res://.godot/imported/NES - Bubble Bobble - Enemies & Bosses - Enemies.png-6f07e27b0dfe9ef311dd2a6c4783b343.ctex"]
+source_file="res://assets/sprites/Enemies.png"
+dest_files=["res://.godot/imported/Enemies.png-e8843248fbc29e9aabdfe75d05c4beab.ctex"]
 
 [params]
 
