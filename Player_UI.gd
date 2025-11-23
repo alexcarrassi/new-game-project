@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 
-func showHurry() -> void:
+func showHurry() -> Tween:
 	
 	#Creating a tween animation
 	#Target
@@ -42,13 +42,10 @@ func showHurry() -> void:
 	tween.tween_interval(1.0)
 	
 	tween.finished.connect( func() -> void: 
-		
 		self.Hurry.visible =  false
-		self.hurryShown.emit()
 	)
 	
-	
-	pass
+	return tween
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
