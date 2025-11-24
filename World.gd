@@ -1,23 +1,27 @@
 class_name WorldRoot extends Node
 
 @export var playerScene: PackedScene
+@export var levelScene : PackedScene
 var playerNode: Player
-@onready var level: Level = $Level_01
+var level: Level
 @onready var UI: PlayerUI = $UI
 
 func _ready() -> void:
 	
-	self.startLevel( self.level)
+	self.startLevel( self.levelScene)
+	self.spawnPlayer( self.playerScene )
 
 
-func startLevel(level: Level) -> void:
+func startLevel(levelScene: PackedScene) -> void:
 	#spawn the plauyer
 	#connect the levelTimer to the hurryUp sequence
-	self.spawnPlayer( self.playerScene )
+	self.level = levelScene.instantiate() 
+	self.add_child(level)
 	level.hurry.connect( self.onLevelHurry)
 	pass
 
 func spawnPlayer(player: PackedScene) -> void:
+	
 	self.playerNode = player.instantiate()
 	self.level.add_child(playerNode)
 	
