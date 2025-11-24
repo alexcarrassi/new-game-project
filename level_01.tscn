@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://b87als3d3rs7n"]
+[gd_scene load_steps=6 format=4 uid="uid://b87als3d3rs7n"]
 
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Level.gd" id="1_8tn3h"]
-[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_iafiv"]
 [ext_resource type="PackedScene" uid="uid://b2kwfbabyr0bm" path="res://actors/enemies/zenchan/zenchan.tscn" id="2_ksbth"]
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="3_f8o56"]
 [ext_resource type="TileSet" uid="uid://whkmyke4amu4" path="res://assets/tiles/level_inner.tres" id="4_qvuvj"]
@@ -10,7 +9,6 @@
 [node name="Level_01" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_8tn3h")
-player = ExtResource("2_iafiv")
 skelMunsta = ExtResource("2_ksbth")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c77k1tce7y5xe"]
+[gd_scene load_steps=7 format=3 uid="uid://c77k1tce7y5xe"]
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://World.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
 [ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://level_01.tscn" id="3_8iauc"]
-[ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://Player_UI.gd" id="3_jih74"]
+[ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="3_jih74"]
 [ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://Items/Atlas/Popups/Hurry.tres" id="4_2dy0i"]
+[ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="6_a0c47"]
 
 [node name="GameWorld" type="Node"]
 script = ExtResource("1_c1plj")
 playerScene = ExtResource("2_28gir")
 levelScene = ExtResource("3_8iauc")
+playerHUDScene = ExtResource("6_a0c47")
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -22,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Hurry!" type="TextureRect" parent="UI/Root"]
 visible = false
@@ -29,52 +32,3 @@ layout_mode = 1
 offset_right = 38.0
 offset_bottom = 9.0
 texture = ExtResource("4_2dy0i")
-
-[node name="PlayerHUD" type="Control" parent="UI/Root"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Margin" type="MarginContainer" parent="UI/Root/PlayerHUD"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 17.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
-
-[node name="Score" type="Label" parent="UI/Root/PlayerHUD/Margin"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "1200"
-
-[node name="Time" type="Label" parent="UI/Root/PlayerHUD/Margin"]
-layout_mode = 2
-theme_override_constants/line_spacing = 3
-theme_override_font_sizes/font_size = 10
-text = "0"
-horizontal_alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Root/PlayerHUD"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -31.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_left = 9
-theme_override_constants/margin_bottom = 14
-
-[node name="Lives" type="Label" parent="UI/Root/PlayerHUD/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "2"
-vertical_alignment = 2
-
-[node name="Level_01" parent="." instance=ExtResource("3_8iauc")]

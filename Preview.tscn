@@ -1,10 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnjn64mqpoxyt"]
+[gd_scene load_steps=6 format=3 uid="uid://dnjn64mqpoxyt"]
 
-[ext_resource type="PackedScene" uid="uid://c77k1tce7y5xe" path="res://GameWorld.tscn" id="1_eo71j"]
+[ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="1_wvu6n"]
 [ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://level_01.tscn" id="2_8btpj"]
+[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://Items/Atlas/Popups/Hurry.tres" id="2_yerw3"]
+[ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="3_b7yyn"]
+[ext_resource type="Script" uid="uid://b3olf4n8g8urp" path="res://UI/player_hud.gd" id="4_p7cvi"]
 
 [node name="Preview" type="Node2D"]
 
-[node name="GameWorld" parent="." instance=ExtResource("1_eo71j")]
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("1_wvu6n")
+
+[node name="Root" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hurry!" type="TextureRect" parent="UI/Root"]
+visible = false
+layout_mode = 1
+offset_right = 38.0
+offset_bottom = 9.0
+texture = ExtResource("2_yerw3")
+
+[node name="PlayerHUD" parent="UI/Root" instance=ExtResource("3_b7yyn")]
+layout_mode = 1
+script = ExtResource("4_p7cvi")
+metadata/_edit_use_anchors_ = true
 
 [node name="Level_01" parent="." instance=ExtResource("2_8btpj")]

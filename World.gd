@@ -2,14 +2,16 @@ class_name WorldRoot extends Node
 
 @export var playerScene: PackedScene
 @export var levelScene : PackedScene
+@export var playerHUDScene: PackedScene
 var playerNode: Player
 var level: Level
-@onready var UI: PlayerUI = $UI
+@onready var UI: WorldUI = $UI
 
 func _ready() -> void:
 	
 	self.startLevel( self.levelScene)
-	self.spawnPlayer( self.playerScene )
+	var player = self.spawnPlayer( self.playerScene )
+	self.spawnPlayerHUD( playerHUDScene, player )
 
 
 func startLevel(levelScene: PackedScene) -> void:
@@ -20,7 +22,7 @@ func startLevel(levelScene: PackedScene) -> void:
 	level.hurry.connect( self.onLevelHurry)
 	pass
 
-func spawnPlayer(player: PackedScene) -> void:
+func spawnPlayer(player: PackedScene) -> Player :
 	
 	self.playerNode = player.instantiate()
 	self.level.add_child(playerNode)
@@ -36,7 +38,13 @@ func spawnPlayer(player: PackedScene) -> void:
 		enemy.players.append( playerNode )	
 		
 	#playerNode.scoreUpdated.connect( )	
-	pass
+	return self.playerNode as Player
+
+func spawnPlayerHUD( hudScene: PackedScene, player: Player) -> void:
+	var playerHUD = hudScene.instantiate()
+	playerHUD.player = player
+	self.UI.add_child(playerHUD) 
+	
 
 func spawnEnemy(enemyScene: PackedScene, position: Vector2) -> void:
 	var enemy = enemyScene.instantiate() as Enemy

@@ -1,4 +1,4 @@
-class_name PlayerUI extends CanvasLayer
+class_name WorldUI extends CanvasLayer
 
 @onready var Hurry: TextureRect = $"Root/Hurry!"
 @onready var root: Control = $Root
