@@ -18,6 +18,8 @@ var buffer_times : Dictionary = {"jump" = 0.0, "attack" = 0.0}
 
 var inputState: InputState
 
+var score = 0
+signal scoreUpdated()
 
 
 func _ready() -> void:

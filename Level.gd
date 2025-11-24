@@ -1,6 +1,5 @@
 class_name Level extends Node2D
 
-@export var player: PackedScene
 @export var skelMunsta: PackedScene
 @onready var p1_Start: Node2D = $p1_Start
 @onready var bubbleDestination: Node2D = $Bubble_Destination

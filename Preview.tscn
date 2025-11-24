@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnjn64mqpoxyt"]
+
+[ext_resource type="PackedScene" uid="uid://c77k1tce7y5xe" path="res://GameWorld.tscn" id="1_eo71j"]
+[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://level_01.tscn" id="2_8btpj"]
+
+[node name="Preview" type="Node2D"]
+
+[node name="GameWorld" parent="." instance=ExtResource("1_eo71j")]
+
+[node name="Level_01" parent="." instance=ExtResource("2_8btpj")]

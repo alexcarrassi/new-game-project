@@ -21,8 +21,9 @@ var modController: ModController
 
 @export var LootTable : Array[PickupData] = []
 @export var pickup : PackedScene
-	
+		
 @export var health: int = 3
+
 
 var direction: Vector2 = Vector2.LEFT
 

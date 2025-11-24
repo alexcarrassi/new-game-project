@@ -34,6 +34,8 @@ func spawnPlayer(player: PackedScene) -> void:
 	for enemyNode in get_tree().get_nodes_in_group("Enemies"):
 		var enemy = enemyNode as Enemy
 		enemy.players.append( playerNode )	
+		
+	#playerNode.scoreUpdated.connect( )	
 	pass
 
 func spawnEnemy(enemyScene: PackedScene, position: Vector2) -> void:

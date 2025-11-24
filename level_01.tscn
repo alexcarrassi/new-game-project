@@ -1,71 +1,71 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4mgxnha0hp1y"]
+[gd_scene load_steps=7 format=4 uid="uid://b87als3d3rs7n"]
 
-[ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://World.gd" id="1_5itje"]
-[ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://Player_UI.gd" id="1_qlag8"]
+[ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Level.gd" id="1_8tn3h"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_iafiv"]
-[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://Items/Atlas/Popups/Hurry.tres" id="4_8q3i6"]
-[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://level_01n.tscn" id="5_kdijb"]
+[ext_resource type="PackedScene" uid="uid://b2kwfbabyr0bm" path="res://actors/enemies/zenchan/zenchan.tscn" id="2_ksbth"]
+[ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="3_f8o56"]
+[ext_resource type="TileSet" uid="uid://whkmyke4amu4" path="res://assets/tiles/level_inner.tres" id="4_qvuvj"]
+[ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="5_lo3v6"]
 
-[node name="WorldRoot" type="Node"]
-script = ExtResource("1_5itje")
-playerScene = ExtResource("2_iafiv")
+[node name="Level_01" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_8tn3h")
+player = ExtResource("2_iafiv")
+skelMunsta = ExtResource("2_ksbth")
 
-[node name="UI" type="CanvasLayer" parent="."]
-process_mode = 3
-script = ExtResource("1_qlag8")
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
-[node name="Root" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Tiles_Outer" type="TileMapLayer" parent="."]
+position = Vector2(128, 111)
+tile_map_data = PackedByteArray("AADw//T/AQAAAAAAAQDw//X/AQAAAAAAAQDw//b/AQAAAAAAAQDw//f/AQAAAAAAAQDw//j/AQAAAAAAAQDw//n/AQAAAAAAAQDw//r/AQAAAAAAAQDw//v/AQAAAAAAAQDw//z/AQAAAAAAAQDw//3/AQAAAAAAAQDw//7/AQAAAAAAAQDw////AQAAAAAAAQDw/wAAAQAAAAAAAQDw/wEAAQAAAAAAAQDw/wIAAQAAAAAAAQDw/wMAAQAAAAAAAQDw/wQAAQAAAAAAAQDw/wUAAQAAAAAAAQDw/wYAAQAAAAAAAQDw/wcAAQAAAAAAAQDw/wgAAQAAAAAAAQDw/wkAAQAAAAAAAQDw/woAAQAAAAAAAQDw/wsAAQAAAAAAAQDw/wwAAQAAAAAAAQDx//T/AQAAAAAAAQDx//X/AQAAAAAAAQDx//b/AQAAAAAAAQDx//f/AQAAAAAAAQDx//j/AQAAAAAAAQDx//n/AQAAAAAAAQDx//r/AQAAAAAAAQDx//v/AQAAAAAAAQDx//z/AQAAAAAAAQDx//3/AQAAAAAAAQDx//7/AQAAAAAAAQDx////AQAAAAAAAQDx/wAAAQAAAAAAAQDx/wEAAQAAAAAAAQDx/wIAAQAAAAAAAQDx/wMAAQAAAAAAAQDx/wQAAQAAAAAAAQDx/wUAAQAAAAAAAQDx/wYAAQAAAAAAAQDx/wcAAQAAAAAAAQDx/wgAAQAAAAAAAQDx/wkAAQAAAAAAAQDx/woAAQAAAAAAAQDx/wsAAQAAAAAAAQDx/wwAAQAAAAAAAQDy//T/AQAAAAAAAADy/wwAAQAAAAAAAADz//T/AQAAAAAAAADz/wwAAQAAAAAAAAD0//T/AQAAAAAAAAD0/wwAAQAAAAAAAAD1//T/AQAAAAAAAAD1/wwAAQAAAAAAAAD2//T/AQAAAAAAAAD2/wwAAQAAAAAAAAD3//T/AQAAAAAAAAD3/wwAAQAAAAAAAAD4//T/AQAAAAAAAAD4/wwAAQAAAAAAAAD5//T/AQAAAAAAAAD5/wwAAQAAAAAAAAD6//T/AQAAAAAAAAD6/wwAAQAAAAAAAAD7//T/AQAAAAAAAAD7/wwAAQAAAAAAAAD8//T/AQAAAAAAAAD8/wwAAQAAAAAAAAD9//T/AQAAAAAAAAD9/wwAAQAAAAAAAAD+/wwAAQAAAAAAAAD//wwAAQAAAAAAAAAAAAwAAQAAAAAAAAABAPT/AQAAAAAAAAABAAwAAQAAAAAAAAACAPT/AQAAAAAAAAACAAwAAQAAAAAAAAADAPT/AQAAAAAAAAADAAwAAQAAAAAAAAAEAPT/AQAAAAAAAAAEAAwAAQAAAAAAAAAFAPT/AQAAAAAAAAAFAAwAAQAAAAAAAAAGAPT/AQAAAAAAAAAGAAwAAQAAAAAAAAAHAPT/AQAAAAAAAAAHAAwAAQAAAAAAAAAIAPT/AQAAAAAAAAAIAAwAAQAAAAAAAAAJAPT/AQAAAAAAAAAJAAwAAQAAAAAAAAAKAPT/AQAAAAAAAAAKAAwAAQAAAAAAAAALAPT/AQAAAAAAAAALAAwAAQAAAAAAAAAMAPT/AQAAAAAAAAAMAAwAAQAAAAAAAAANAPT/AQAAAAAAAAANAAwAAQAAAAAAAAAOAPT/AQAAAAAAAQAOAPX/AQAAAAAAAQAOAPb/AQAAAAAAAQAOAPf/AQAAAAAAAQAOAPj/AQAAAAAAAQAOAPn/AQAAAAAAAQAOAPr/AQAAAAAAAQAOAPv/AQAAAAAAAQAOAPz/AQAAAAAAAQAOAP3/AQAAAAAAAQAOAP7/AQAAAAAAAQAOAP//AQAAAAAAAQAOAAAAAQAAAAAAAQAOAAEAAQAAAAAAAQAOAAIAAQAAAAAAAQAOAAMAAQAAAAAAAQAOAAQAAQAAAAAAAQAOAAUAAQAAAAAAAQAOAAYAAQAAAAAAAQAOAAcAAQAAAAAAAQAOAAgAAQAAAAAAAQAOAAkAAQAAAAAAAQAOAAoAAQAAAAAAAQAOAAsAAQAAAAAAAQAOAAwAAQAAAAAAAQAPAPT/AQAAAAAAAQAPAPX/AQAAAAAAAQAPAPb/AQAAAAAAAQAPAPf/AQAAAAAAAQAPAPj/AQAAAAAAAQAPAPn/AQAAAAAAAQAPAPr/AQAAAAAAAQAPAPv/AQAAAAAAAQAPAPz/AQAAAAAAAQAPAP3/AQAAAAAAAQAPAP7/AQAAAAAAAQAPAP//AQAAAAAAAQAPAAAAAQAAAAAAAQAPAAEAAQAAAAAAAQAPAAIAAQAAAAAAAQAPAAMAAQAAAAAAAQAPAAQAAQAAAAAAAQAPAAUAAQAAAAAAAQAPAAYAAQAAAAAAAQAPAAcAAQAAAAAAAQAPAAgAAQAAAAAAAQAPAAkAAQAAAAAAAQAPAAoAAQAAAAAAAQAPAAsAAQAAAAAAAQAPAAwAAQAAAAAAAQD///T/AQABAAAAAAAAAPT/AQACAAAAAAD+//T/AQAAAAAAAAA=")
+tile_set = ExtResource("3_f8o56")
 
-[node name="Hurry!" type="TextureRect" parent="UI/Root"]
+[node name="Tiles_Inner" type="TileMapLayer" parent="."]
+position = Vector2(128, 111)
+tile_map_data = PackedByteArray("AADy//z/AQAAAAAAAQDy/wEAAQAAAAAAAQDy/wYAAQAAAAAAAQDz//z/AQAAAAAAAQDz/wEAAQAAAAAAAQDz/wYAAQAAAAAAAQD4//z/AQAAAAAAAQD4/wEAAQAAAAAAAQD4/wYAAQAAAAAAAQD5//z/AQAAAAAAAQD5/wEAAQAAAAAAAQD5/wYAAQAAAAAAAQD6//z/AQAAAAAAAQD6/wEAAQAAAAAAAQD6/wYAAQAAAAAAAQD7//z/AQAAAAAAAQD7/wEAAQAAAAAAAQD7/wYAAQAAAAAAAQD8//z/AQAAAAAAAQD8/wEAAQAAAAAAAQD8/wYAAQAAAAAAAQD9//z/AQAAAAAAAQD9/wEAAQAAAAAAAQD9/wYAAQAAAAAAAQD+//z/AQAAAAAAAQD+/wEAAQAAAAAAAQD+/wYAAQAAAAAAAQD///z/AQAAAAAAAQD//wEAAQAAAAAAAQD//wYAAQAAAAAAAQAAAPz/AQAAAAAAAQAAAAEAAQAAAAAAAQAAAAYAAQAAAAAAAQABAPz/AQAAAAAAAQABAAEAAQAAAAAAAQABAAYAAQAAAAAAAQACAPz/AQAAAAAAAQACAAEAAQAAAAAAAQACAAYAAQAAAAAAAQADAPz/AQAAAAAAAQADAAEAAQAAAAAAAQADAAYAAQAAAAAAAQAEAPz/AQAAAAAAAQAEAAEAAQAAAAAAAQAEAAYAAQAAAAAAAQAFAPz/AQAAAAAAAQAFAAEAAQAAAAAAAQAFAAYAAQAAAAAAAQAGAPz/AQAAAAAAAQAGAAEAAQAAAAAAAQAGAAYAAQAAAAAAAQAHAPz/AQAAAAAAAQAHAAEAAQAAAAAAAQAHAAYAAQAAAAAAAQAMAPz/AQAAAAAAAQAMAAEAAQAAAAAAAQAMAAYAAQAAAAAAAQANAPz/AQAAAAAAAQANAAEAAQAAAAAAAQANAAYAAQAAAAAAAQA=")
+tile_set = ExtResource("4_qvuvj")
+
+[node name="InputDebug" type="CanvasLayer" parent="."]
 visible = false
-layout_mode = 1
-offset_right = 38.0
-offset_bottom = 9.0
-texture = ExtResource("4_8q3i6")
+script = ExtResource("5_lo3v6")
 
-[node name="Margin" type="MarginContainer" parent="UI/Root"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 17.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
+[node name="Control" type="Control" parent="InputDebug"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Score" type="Label" parent="UI/Root/Margin"]
+[node name="MarginContainer" type="MarginContainer" parent="InputDebug/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="InputDebug/Control/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "1200"
 
-[node name="Time" type="Label" parent="UI/Root/Margin"]
-layout_mode = 2
-theme_override_constants/line_spacing = 3
-theme_override_font_sizes/font_size = 10
-text = "0"
-horizontal_alignment = 2
+[node name="Bubble_Destination" type="Marker2D" parent="."]
+position = Vector2(128, 56)
+gizmo_extents = 40.0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Root"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -14.0
-offset_right = 6.0
-grow_vertical = 0
-theme_override_constants/margin_left = 9
-theme_override_constants/margin_bottom = 14
+[node name="Zenchan3" parent="." node_paths=PackedStringArray("Bubble_Destination") instance=ExtResource("2_ksbth")]
+position = Vector2(208, 163)
+Bubble_Destination = NodePath("../Bubble_Destination")
 
-[node name="Lives" type="Label" parent="UI/Root/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "2"
-vertical_alignment = 2
+[node name="Zenchan" parent="." node_paths=PackedStringArray("Bubble_Destination") instance=ExtResource("2_ksbth")]
+position = Vector2(209, 50)
+Bubble_Destination = NodePath("../Bubble_Destination")
 
-[node name="Level_01" parent="." instance=ExtResource("5_kdijb")]
+[node name="Zenchan2" parent="." node_paths=PackedStringArray("Bubble_Destination") instance=ExtResource("2_ksbth")]
+position = Vector2(208, 101)
+Bubble_Destination = NodePath("../Bubble_Destination")
+
+[node name="p1_Start" type="Node2D" parent="."]
+position = Vector2(48, 191)
+
+[node name="Level_Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="spawn_SkelMunsta" type="Node2D" parent="."]
+position = Vector2(48, 56)
