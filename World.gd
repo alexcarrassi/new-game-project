@@ -25,11 +25,12 @@ func startLevel(levelScene: PackedScene) -> void:
 func spawnPlayer(player: PackedScene) -> Player :
 	
 	self.playerNode = player.instantiate()
-	self.level.add_child(playerNode)
 	
 	playerNode.position = self.level.p1_Start.position
 	playerNode.Bubble_Destination = self.level.bubbleDestination
 			
+	self.level.add_child(playerNode)
+
 	playerNode.actorDeath.connect( self.onActorDeath)
 	playerNode.actorHurt.connect( self.onActorHurt )	
 		
