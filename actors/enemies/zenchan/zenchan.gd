@@ -11,6 +11,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	super._ready()
+
 	
 	#self.animationPlayer.sm_locomotion = self.sm_locomotion
 	$Sensors.scale.x = self.direction.x
