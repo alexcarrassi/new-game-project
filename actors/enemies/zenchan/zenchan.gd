@@ -24,10 +24,10 @@ func _ready() -> void:
 	
 	
 func player_above() -> int:
-	if(self.players.is_empty()) :
+	if(Game.players.is_empty()) :
 		return 0
 	
-	var player = self.players[0] as Player
+	var player = Game.players[0] as Player
 	var margin = 12.0
 	
 	if( player.position.y < self.position.y - margin) :

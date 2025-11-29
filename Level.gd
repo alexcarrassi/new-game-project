@@ -1,10 +1,9 @@
 class_name Level extends Node2D
 
-@export var skelMunsta: PackedScene
 @onready var p1_Start: Node2D = $p1_Start
 @onready var bubbleDestination: Node2D = $Bubble_Destination
 @onready var levelTimer: Timer = $Level_Timer
-@onready var spawn_SkelMunsta: Node2D = $spawn_SkelMunsta
+@onready var hurrySpawn: ActorSpawn = $Hurry_Enemy_spawn
 
 signal hurry()
 
@@ -19,10 +18,13 @@ func _ready() -> void:
 func onHurryUp() -> void:
 	self.hurry.emit()
 
+func spawnHurryEnemy() -> void:
+	if(self.hurrySpawn != null) :
+		self.hurrySpawn.deferSpawn()
 
-func getHurryEnemy() -> Array:
-	return [self.skelMunsta, self.spawn_SkelMunsta.position]
-
+func getHurrySpawn() -> ActorSpawn:
+	return self.hurrySpawn
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

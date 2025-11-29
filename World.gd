@@ -1,4 +1,4 @@
-class_name WorldRoot extends Node
+class_name GameWorld extends Node
 
 @export var playerScene: PackedScene
 @export var levelScene : PackedScene
@@ -9,8 +9,12 @@ var level: Level
 
 func _ready() -> void:
 	
+	Game.register_gameWorld( self )
+	
 	self.startLevel( self.levelScene)
+	
 	var player = self.spawnPlayer( self.playerScene )
+	
 	self.spawnPlayerHUD( playerHUDScene, player )
 
 
@@ -20,6 +24,8 @@ func startLevel(levelScene: PackedScene) -> void:
 	self.level = levelScene.instantiate() 
 	self.add_child(level)
 	level.hurry.connect( self.onLevelHurry)
+	
+	Game.register_currentLevel(level)
 	pass
 
 func spawnPlayer(player: PackedScene) -> Player :
@@ -34,10 +40,11 @@ func spawnPlayer(player: PackedScene) -> Player :
 	playerNode.actorDeath.connect( self.onActorDeath)
 	playerNode.actorHurt.connect( self.onActorHurt )	
 		
-	for enemyNode in get_tree().get_nodes_in_group("Enemies"):
-		var enemy = enemyNode as Enemy
-		enemy.players.append( playerNode )	
-		
+	Game.register_player(0, playerNode)	
+	#for enemyNode in get_tree().get_nodes_in_group("Enemies"):
+		#var enemy = enemyNode as Enemy
+		#enemy.players.append( playerNode )	
+		#
 	#playerNode.scoreUpdated.connect( )	
 	return self.playerNode as Player
 
@@ -51,17 +58,12 @@ func spawnEnemy(enemyScene: PackedScene, position: Vector2) -> void:
 	var enemy = enemyScene.instantiate() as Enemy
 	enemy.position = position
 	
-	for playerNode in get_tree().get_nodes_in_group("player"):
-		var player = playerNode as Player 
-		enemy.players.append(player)
-		
+
 	self.level.add_child(enemy)	
 
 
 func onPlayerDeath(player: Player) -> void:
-	for enemyNode in get_tree().get_nodes_in_group("Enemies"):
-		var enemy = enemyNode as Enemy
-		enemy.players.erase( player )
+	Game.deregister_player(0)	
 
 func onActorDeath( actor: Actor) -> void:
 	if(actor is Player):
@@ -81,10 +83,4 @@ func onLevelHurry() -> void:
 	
 func endLevelHurry() -> void:
 	get_tree().paused = false	
-	await get_tree().create_timer(1.0).timeout
-	var spawnInfo = self.level.getHurryEnemy() 
-	self.spawnEnemy( spawnInfo[0], spawnInfo[1] )
-
-	
-	
-	
+	self.level.spawnHurryEnemy()
