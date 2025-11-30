@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5mn46uie1m02"]
+
+[ext_resource type="Script" uid="uid://b2l6nkoc3mcvb" path="res://things/ActorSpawn/ActorSpawn.gd" id="1_niff1"]
+[ext_resource type="PackedScene" uid="uid://b2kwfbabyr0bm" path="res://actors/enemies/zenchan/zenchan.tscn" id="2_o1lvq"]
+[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="3_giqvm"]
+
+[node name="ActorSpawn" type="Marker2D"]
+script = ExtResource("1_niff1")
+ActorScene = ExtResource("2_o1lvq")
+
+[node name="Destination" type="Marker2D" parent="."]
+position = Vector2(0, 31)
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+texture = ExtResource("3_giqvm")
+region_enabled = true
+region_rect = Rect2(5, 5, 16, 16)
+
+[node name="Defer_Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

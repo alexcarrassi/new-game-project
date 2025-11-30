@@ -5,6 +5,8 @@ class_name Actor extends CharacterBody2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var sm_locomotion: StateMachine_Locomotion = $StateMachine_Locomotion
 @onready var sm_status: StateMachine_Status = $StateMachine_Status
+@onready var collisionShape: CollisionShape2D = $CollisionShape2D
+
 
 var modController: ModController 
 

@@ -24,6 +24,9 @@ func startLevel(levelScene: PackedScene) -> void:
 	self.level = levelScene.instantiate() 
 	self.add_child(level)
 	level.hurry.connect( self.onLevelHurry)
+	for actorSpawn in level.enemies.get_children():
+		var spawner = actorSpawn as ActorSpawn
+		spawner.deferSpawn()
 	
 	Game.register_currentLevel(level)
 	pass
@@ -54,12 +57,13 @@ func spawnPlayerHUD( hudScene: PackedScene, player: Player) -> void:
 	self.UI.add_child(playerHUD) 
 	
 
-func spawnEnemy(enemyScene: PackedScene, position: Vector2) -> void:
+func spawnEnemy(enemyScene: PackedScene, position: Vector2) -> Enemy:
 	var enemy = enemyScene.instantiate() as Enemy
 	enemy.position = position
 	
 
 	self.level.add_child(enemy)	
+	return enemy
 
 
 func onPlayerDeath(player: Player) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=33 format=3 uid="uid://b2kwfbabyr0bm"]
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="1_s72y3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="10_kdg0o"]
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="12_s6xig"]
 [ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="13_l6spp"]
+[ext_resource type="Script" uid="uid://dpmx0ixy2cn61" path="res://actors/scripts/spawning.gd" id="14_t4a2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s72y3"]
 size = Vector2(16, 16)
@@ -285,8 +286,12 @@ script = ExtResource("8_6dyg7")
 [node name="JUMP_FORWARD" type="Node" parent="StateMachine_Locomotion"]
 script = ExtResource("9_e7xus")
 
-[node name="StateMachine_Status" type="Node" parent="."]
+[node name="StateMachine_Status" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_dflga")
+initial_state = NodePath("SPAWNING")
+
+[node name="SPAWNING" type="Node" parent="StateMachine_Status"]
+script = ExtResource("14_t4a2j")
 
 [node name="ALIVE" type="Node" parent="StateMachine_Status"]
 script = ExtResource("12_s6xig")

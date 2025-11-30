@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://b87als3d3rs7n"]
+[gd_scene load_steps=7 format=4 uid="uid://b87als3d3rs7n"]
 
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Level.gd" id="1_8tn3h"]
-[ext_resource type="PackedScene" uid="uid://b2kwfbabyr0bm" path="res://actors/enemies/zenchan/zenchan.tscn" id="2_ksbth"]
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="3_f8o56"]
 [ext_resource type="TileSet" uid="uid://whkmyke4amu4" path="res://assets/tiles/level_inner.tres" id="4_qvuvj"]
 [ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="5_lo3v6"]
-[ext_resource type="Script" uid="uid://b2l6nkoc3mcvb" path="res://ActorSpawn.gd" id="6_qlag8"]
-[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="7_5itje"]
-[ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/teleporter..tscn" id="8_5itje"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="6_8q3i6"]
+[ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/Teleporter/teleporter.tscn" id="8_5itje"]
 
 [node name="Level_01" type="Node2D"]
 process_mode = 1
@@ -48,10 +46,6 @@ layout_mode = 2
 position = Vector2(128, 56)
 gizmo_extents = 40.0
 
-[node name="Zenchan3" parent="." node_paths=PackedStringArray("Bubble_Destination") instance=ExtResource("2_ksbth")]
-position = Vector2(208, 163)
-Bubble_Destination = NodePath("../Bubble_Destination")
-
 [node name="p1_Start" type="Node2D" parent="."]
 position = Vector2(48, 104)
 
@@ -60,19 +54,12 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="Hurry_Enemy_spawn" type="Marker2D" parent="."]
+[node name="Hurry_Enemy_spawn" parent="." instance=ExtResource("6_8q3i6")]
 position = Vector2(48, 56)
-script = ExtResource("6_qlag8")
-ActorScene = ExtResource("2_ksbth")
+spawn_defer_time = 2.0
 
-[node name="Icon" type="Sprite2D" parent="Hurry_Enemy_spawn"]
-modulate = Color(1, 1, 1, 0.4)
-texture = ExtResource("7_5itje")
-region_enabled = true
-region_rect = Rect2(5, 5, 16, 16)
-
-[node name="Defer_Timer" type="Timer" parent="Hurry_Enemy_spawn"]
-one_shot = true
+[node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
+position = Vector2(0, 0)
 
 [node name="TeleporterTop" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("8_5itje")]
 position = Vector2(128, -8)
@@ -81,3 +68,29 @@ Destination = NodePath("../TeleporterBottom")
 [node name="TeleporterBottom" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("8_5itje")]
 position = Vector2(128, 240)
 Destination = NodePath("../TeleporterTop")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="ActorSpawn" parent="Enemies" instance=ExtResource("6_8q3i6")]
+position = Vector2(128, 0)
+spawn_defer_time = 0.5
+
+[node name="Destination" parent="Enemies/ActorSpawn" index="0"]
+position = Vector2(0, 64)
+
+[node name="Defer_Timer" parent="Enemies/ActorSpawn" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn2" parent="Enemies" instance=ExtResource("6_8q3i6")]
+position = Vector2(128, -29)
+spawn_defer_time = 0.5
+
+[node name="Destination" parent="Enemies/ActorSpawn2" index="0"]
+position = Vector2(0, 69)
+
+[node name="Defer_Timer" parent="Enemies/ActorSpawn2" index="2"]
+wait_time = 0.5
+
+[editable path="Hurry_Enemy_spawn"]
+[editable path="Enemies/ActorSpawn"]
+[editable path="Enemies/ActorSpawn2"]
