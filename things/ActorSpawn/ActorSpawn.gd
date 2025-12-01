@@ -76,14 +76,6 @@ func spawnActor() -> void:
 		actor.sm_status.state.finished.emit("ALIVE")	
 	)
 	
-#omoves the actor to their starting location
-#called in physics_process
-func transportActor() -> void:
-	pass
-
-
-
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

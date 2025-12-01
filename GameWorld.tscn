@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
-[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://level_01.tscn" id="3_8iauc"]
+[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="3_8iauc"]
 [ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="3_jih74"]
-[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://Items/Atlas/Popups/Hurry.tres" id="4_2dy0i"]
+[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://things/Items/Atlas/Popups/Hurry.tres" id="4_2dy0i"]
 [ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="6_a0c47"]
 
 [node name="GameWorld" type="Node"]
@@ -32,3 +32,6 @@ layout_mode = 1
 offset_right = 38.0
 offset_bottom = 9.0
 texture = ExtResource("4_2dy0i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
