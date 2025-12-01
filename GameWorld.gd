@@ -1,34 +1,99 @@
 class_name GameWorld extends Node
 
 @export var playerScene: PackedScene
-@export var levelScene : PackedScene
 @export var playerHUDScene: PackedScene
 var playerNode: Player
 var level: Level
 @onready var UI: WorldUI = $UI
+@onready var NextLevelMarker: Marker2D = $NextLevelMarker
 
 func _ready() -> void:
 	
 	Game.register_gameWorld( self )
 	
-	self.startLevel( self.levelScene)
+	var levelScene = Game.getLevelById( 0 )
+	var nextLevel = createNexLevel( 0 )
+	nextLevel.position = Vector2.ZERO
+	self.startLevel( nextLevel)
 	
 	var player = self.spawnPlayer( self.playerScene )
-	
 	self.spawnPlayerHUD( playerHUDScene, player )
 
+func levelTransition() -> void:
+	
+	
+	# Hide the UI 
+	self.UI.visible = false 
+	# First, we find the next level id
+	var nextLevel_id = Game.getNextLevel_id()
 
-func startLevel(levelScene: PackedScene) -> void:
+	if(nextLevel_id == -1) :
+		print("No Next level found.")
+		return
+	
+	print( nextLevel_id)
+	
+	# We create it and place it in the world
+	var nextLevel = createNexLevel(nextLevel_id)
+	# Then we set our players to the Respawning state 
+	
+	self.respawnPlayers()
+	
+	#move the Levels
+	var moveTween = self.moveLevels(	self.level, nextLevel)
+	await moveTween.finished
+	self.swapLevels(nextLevel)
+	self.UI.visible = true
+	
+	
+	
+	
+	
+	
+func moveLevels( currentLevel: Level, nextLevel: Level ) -> Tween:
+	var tween_next: Tween = create_tween( )
+	tween_next.tween_property(nextLevel, "position", Vector2.ZERO, 3)
+	tween_next.parallel().tween_property(currentLevel, "position", Vector2(0, -256), 3)
+	
+	return tween_next
+	
+func swapLevels(nextLevel: Level) -> void:
+	self.level.queue_free()
+	self.level = nextLevel
+	
+
+func respawnPlayers() -> void:
+	for key: int in Game.players.keys():
+		var player = Game.players[key]
+		player.sm_status.state.finished.emit("SPAWNING")
+		player.position = player.global_position
+		player.reparent(self)
+		
+	
+func SpawnPlayers() -> void:
+	for key: int in Game.players.keys():
+			var player = Game.players[key]
+			player.sm_status.state.finished.emit("ALIVE")
+			player.reparent(self.level)
+		
+func createNexLevel(level_id: int) -> Level:
+	var nextLevelScene = Game.getLevelById( level_id)
+	var nextLevel = nextLevelScene.instantiate() as Level
+	nextLevel.position = self.NextLevelMarker.position
+	self.add_child(nextLevel)
+	
+	return nextLevel
+
+
+func startLevel(level: Level) -> void:
 	#spawn the plauyer
 	#connect the levelTimer to the hurryUp sequence
-	self.level = levelScene.instantiate() 
-	self.add_child(level)
+	self.level = level
 	level.hurry.connect( self.onLevelHurry)
 	for actorSpawn in level.enemies.get_children():
 		var spawner = actorSpawn as ActorSpawn
 		spawner.deferSpawn()
 	
-	Game.register_currentLevel(level)
 	pass
 
 func spawnPlayer(player: PackedScene) -> Player :
@@ -62,9 +127,23 @@ func spawnEnemy(enemyScene: PackedScene, position: Vector2) -> Enemy:
 	enemy.position = position
 	
 
+	enemy.tree_exited.connect( self.onEnemyDeath)
 	self.level.add_child(enemy)	
 	return enemy
 
+
+func onEnemyDeath() -> void:
+	
+	if(get_tree() != null):
+		
+		var enemies = get_tree().get_nodes_in_group("Enemies")
+
+		print(enemies.size())
+		if(enemies.is_empty() ):
+			#transitionLevel
+			print("LEVEL OVER")
+
+			self.levelTransition()		
 
 func onPlayerDeath(player: Player) -> void:
 	Game.deregister_player(0)	
@@ -72,7 +151,15 @@ func onPlayerDeath(player: Player) -> void:
 func onActorDeath( actor: Actor) -> void:
 	if(actor is Player):
 		self.onPlayerDeath(actor)
+	elif( actor is Enemy) :	
+		var enemies = get_tree().get_nodes_in_group("Enemies")
 		
+		print(enemies.size())
+		if(enemies.is_empty() ):
+			#transitionLevel
+			print("LEVEL OVER")
+			pass
+			
 	actor.queue_free()	
 
 func onActorHurt( actor: Actor) -> void:

@@ -1,4 +1,4 @@
-class_name  Spawning  extends State
+class_name Player_Spawning extends State
 
 func enter(prev_state_path: String, data: Dictionary = {}) -> void:
 	var actor = self.body

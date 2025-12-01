@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=35 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://actors/player/player.gd" id="1_ivps1"]
 [ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_urp6f"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="15_12xki"]
 [ext_resource type="Script" uid="uid://cmxucnl184gmv" path="res://actors/player/scripts/State_Status_Hurt.gd" id="16_rt46e"]
 [ext_resource type="Script" uid="uid://bpxxqoj7dm657" path="res://actors/player/player_dead.gd" id="17_0wchr"]
+[ext_resource type="Script" uid="uid://d3kv05dr573js" path="res://actors/player/spawning.gd" id="18_dqf5y"]
 [ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="18_qrxv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iafiv"]
@@ -386,6 +387,9 @@ script = ExtResource("16_rt46e")
 
 [node name="DEAD" type="Node" parent="StateMachine_Status"]
 script = ExtResource("17_0wchr")
+
+[node name="SPAWNING" type="Node" parent="StateMachine_Status"]
+script = ExtResource("18_dqf5y")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 4

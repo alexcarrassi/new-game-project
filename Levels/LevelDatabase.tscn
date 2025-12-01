@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://3yl1bxl5o8i5"]
+
+[ext_resource type="Script" uid="uid://dedry2pqikg2d" path="res://Levels/LevelDatabase.gd" id="1_da1vx"]
+[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="2_wcpaw"]
+[ext_resource type="PackedScene" uid="uid://j3qcxet3n8x2" path="res://Levels/level_02.tscn" id="3_a8gcn"]
+
+[node name="LevelDatabase" type="Node"]
+script = ExtResource("1_da1vx")
+levels = Dictionary[int, PackedScene]({
+0: ExtResource("2_wcpaw"),
+1: ExtResource("3_a8gcn")
+})

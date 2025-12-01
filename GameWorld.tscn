@@ -2,15 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
-[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="3_8iauc"]
 [ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="3_jih74"]
 [ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://things/Items/Atlas/Popups/Hurry.tres" id="4_2dy0i"]
 [ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="6_a0c47"]
+[ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/Teleporter/teleporter.tscn" id="6_hej4t"]
 
 [node name="GameWorld" type="Node"]
 script = ExtResource("1_c1plj")
 playerScene = ExtResource("2_28gir")
-levelScene = ExtResource("3_8iauc")
 playerHUDScene = ExtResource("6_a0c47")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -35,3 +34,14 @@ texture = ExtResource("4_2dy0i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="TeleporterTop" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
+position = Vector2(128, -8)
+Destination = NodePath("../TeleporterBottom")
+
+[node name="TeleporterBottom" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
+position = Vector2(128, 240)
+Destination = NodePath("../TeleporterTop")
+
+[node name="NextLevelMarker" type="Marker2D" parent="."]
+position = Vector2(0, 280)
