@@ -14,14 +14,21 @@ func _ready() -> void:
 	var levelScene = Game.getLevelById( 0 )
 	var nextLevel = createNexLevel( 0 )
 	nextLevel.position = Vector2.ZERO
+	
+	self.swapLevels(nextLevel)
 	self.startLevel( nextLevel)
 	
 	var player = self.spawnPlayer( self.playerScene )
 	self.spawnPlayerHUD( playerHUDScene, player )
 
 func levelTransition() -> void:
+	self.level.levelTimer.paused = true
+
 	await get_tree().create_timer(2.0).timeout
-	
+
+	for pickup in get_tree().get_nodes_in_group("Pickups"):
+		pickup.queue_free()
+		
 	# Hide the UI 
 	self.UI.visible = false 
 	# First, we find the next level id
@@ -47,6 +54,7 @@ func levelTransition() -> void:
 	self.spawnPlayers()
 	self.UI.visible = true
 	
+	self.startLevel(nextLevel)
 	
 	
 	
@@ -59,7 +67,8 @@ func moveLevels( currentLevel: Level, nextLevel: Level ) -> Tween:
 	return tween_next
 	
 func swapLevels(nextLevel: Level) -> void:
-	self.level.queue_free()
+	if( self.level) :
+		self.level.queue_free()
 	self.level = nextLevel
 	
 
@@ -89,7 +98,6 @@ func createNexLevel(level_id: int) -> Level:
 func startLevel(level: Level) -> void:
 	#spawn the plauyer
 	#connect the levelTimer to the hurryUp sequence
-	self.level = level
 	level.hurry.connect( self.onLevelHurry)
 	for actorSpawn in level.enemies.get_children():
 		var spawner = actorSpawn as ActorSpawn
