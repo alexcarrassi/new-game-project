@@ -20,7 +20,7 @@ func _ready() -> void:
 	self.spawnPlayerHUD( playerHUDScene, player )
 
 func levelTransition() -> void:
-	
+	await get_tree().create_timer(2.0).timeout
 	
 	# Hide the UI 
 	self.UI.visible = false 
@@ -42,7 +42,9 @@ func levelTransition() -> void:
 	#move the Levels
 	var moveTween = self.moveLevels(	self.level, nextLevel)
 	await moveTween.finished
+	
 	self.swapLevels(nextLevel)
+	self.spawnPlayers()
 	self.UI.visible = true
 	
 	
@@ -54,7 +56,6 @@ func moveLevels( currentLevel: Level, nextLevel: Level ) -> Tween:
 	var tween_next: Tween = create_tween( )
 	tween_next.tween_property(nextLevel, "position", Vector2.ZERO, 3)
 	tween_next.parallel().tween_property(currentLevel, "position", Vector2(0, -256), 3)
-	
 	return tween_next
 	
 func swapLevels(nextLevel: Level) -> void:
@@ -70,7 +71,7 @@ func respawnPlayers() -> void:
 		player.reparent(self)
 		
 	
-func SpawnPlayers() -> void:
+func spawnPlayers() -> void:
 	for key: int in Game.players.keys():
 			var player = Game.players[key]
 			player.sm_status.state.finished.emit("ALIVE")
