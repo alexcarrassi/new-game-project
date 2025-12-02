@@ -9,6 +9,7 @@ class_name ActorSpawn extends Marker2D
 
 
 @export var spawn_defer_time: float = 0.1
+@export var spawn_node: Node
 
 @onready var Icon: Sprite2D = $Icon
 @onready var defer_timer: Timer = $Defer_Timer
@@ -59,7 +60,7 @@ func deferSpawn() -> void:
 	
 #spawns the actor at their designated spawn point
 func spawnActor() -> void:
-	var actor = Game.world.spawnEnemy(self.ActorScene, self.position )
+	var actor = Game.world.spawnEnemy(self.ActorScene, self.position, self.spawn_node )
 	if(self.destination.position == Vector2.ZERO):
 		actor.sm_status.state.finished.emit("ALIVE")	
 		return

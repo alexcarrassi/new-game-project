@@ -31,7 +31,8 @@ func getNextLevel_id() -> int:
 	if(LevelDatabase.levels.has( next_id ) ):
 		return next_id
 	else :
-		return -1	
+		return self.currentLevel
+		#return -1	
 		
 	
 func register_gameWorld(node:GameWorld) -> GameWorld:

@@ -7,6 +7,8 @@ var level: Level
 @onready var UI: WorldUI = $UI
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
 
+var is_transitioning_Levels : bool = false
+
 func _ready() -> void:
 	
 	Game.register_gameWorld( self )
@@ -22,6 +24,8 @@ func _ready() -> void:
 	self.spawnPlayerHUD( playerHUDScene, player )
 
 func levelTransition() -> void:
+	self.is_transitioning_Levels = true
+	
 	self.level.levelTimer.paused = true
 
 	await get_tree().create_timer(2.0).timeout
@@ -55,7 +59,10 @@ func levelTransition() -> void:
 	self.UI.visible = true
 	
 	self.startLevel(nextLevel)
+	Game.currentLevel = nextLevel_id
 	
+	self.is_transitioning_Levels = false
+
 	
 	
 	
@@ -99,7 +106,7 @@ func startLevel(level: Level) -> void:
 	#spawn the plauyer
 	#connect the levelTimer to the hurryUp sequence
 	level.hurry.connect( self.onLevelHurry)
-	for actorSpawn in level.enemies.get_children():
+	for actorSpawn in level.enemy_spawns.get_children():
 		var spawner = actorSpawn as ActorSpawn
 		spawner.deferSpawn()
 	
@@ -131,28 +138,24 @@ func spawnPlayerHUD( hudScene: PackedScene, player: Player) -> void:
 	self.UI.add_child(playerHUD) 
 	
 
-func spawnEnemy(enemyScene: PackedScene, position: Vector2) -> Enemy:
+func spawnEnemy(enemyScene: PackedScene, position: Vector2, spawnNode: Node = null) -> Enemy:
 	var enemy = enemyScene.instantiate() as Enemy
 	enemy.position = position
 	
 
-	enemy.tree_exited.connect( self.onEnemyDeath)
-	self.level.add_child(enemy)	
+	enemy.actorDeath.connect( self.onEnemyDeath)
+	if(spawnNode != null) :
+		spawnNode.add_child(enemy)
+	else :
+		self.level.enemies.add_child(enemy)	
 	return enemy
 
 
-func onEnemyDeath() -> void:
-	
-	if(get_tree() != null):
-		
-		var enemies = get_tree().get_nodes_in_group("Enemies")
-
-		print(enemies.size())
-		if(enemies.is_empty() ):
-			#transitionLevel
-			print("LEVEL OVER")
-
-			self.levelTransition()		
+func onEnemyDeath(enemy: Enemy) -> void:
+	print("Enemy Death in World")
+	if(level.is_cleared() and !self.is_transitioning_Levels):
+		print("LEVEL OVER")
+		self.levelTransition()		
 
 func onPlayerDeath(player: Player) -> void:
 	Game.deregister_player(0)	
@@ -160,14 +163,14 @@ func onPlayerDeath(player: Player) -> void:
 func onActorDeath( actor: Actor) -> void:
 	if(actor is Player):
 		self.onPlayerDeath(actor)
-	elif( actor is Enemy) :	
-		var enemies = get_tree().get_nodes_in_group("Enemies")
-		
-		print(enemies.size())
-		if(enemies.is_empty() ):
-			#transitionLevel
-			print("LEVEL OVER")
-			pass
+	#elif( actor is Enemy) :	
+		#var enemies = get_tree().get_nodes_in_group("Enemies")
+		#
+		#print(enemies.size())
+		#if(enemies.is_empty() ):
+			##transitionLevel
+			#print("LEVEL OVER")
+			#pass
 			
 	actor.queue_free()	
 

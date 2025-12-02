@@ -41,28 +41,32 @@ position = Vector2(0, 0)
 [node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
 wait_time = 2.0
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemy_Spawns" type="Node" parent="."]
 
-[node name="ActorSpawn" parent="Enemies" instance=ExtResource("4_ffslo")]
+[node name="ActorSpawn" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("4_ffslo")]
 position = Vector2(216, -32)
 spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
 
-[node name="Destination" parent="Enemies/ActorSpawn" index="0"]
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 88)
 
-[node name="Defer_Timer" parent="Enemies/ActorSpawn" index="2"]
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
 wait_time = 0.5
 
-[node name="ActorSpawn2" parent="Enemies" instance=ExtResource("4_ffslo")]
+[node name="ActorSpawn2" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("4_ffslo")]
 position = Vector2(40, -29)
 spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
 
-[node name="Destination" parent="Enemies/ActorSpawn2" index="0"]
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
 position = Vector2(0, 85)
 
-[node name="Defer_Timer" parent="Enemies/ActorSpawn2" index="2"]
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
 wait_time = 0.5
 
+[node name="Enemies" type="Node" parent="."]
+
 [editable path="Hurry_Enemy_spawn"]
-[editable path="Enemies/ActorSpawn"]
-[editable path="Enemies/ActorSpawn2"]
+[editable path="Enemy_Spawns/ActorSpawn"]
+[editable path="Enemy_Spawns/ActorSpawn2"]

@@ -2,7 +2,7 @@ class_name State extends Node
 
 var body: Actor
 var animationController: AnimationController
-var main_animation : String
+@export var main_animation : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
