@@ -1,6 +1,7 @@
 class_name Level extends Node2D
 
 @onready var p1_Start: Node2D = $p1_Start
+@onready var playerSpawns: Node = $Player_Spawns
 @onready var bubbleDestination: Node2D = $Bubble_Destination
 @onready var levelTimer: Timer = $Level_Timer
 @onready var hurrySpawn: ActorSpawn = $Hurry_Enemy_spawn
@@ -26,6 +27,17 @@ func spawnHurryEnemy() -> void:
 
 func getHurrySpawn() -> ActorSpawn:
 	return self.hurrySpawn
+	
+func getPlayerSpawn(player_index: int) -> Node2D:
+	
+
+	var spawnName = "p%d_Start" % [player_index +1]
+	var playerSpawn = self.playerSpawns.find_child(spawnName)
+	
+	if playerSpawn == null:
+		playerSpawn = self.playerSpawns.get_child(0)
+	
+	return playerSpawn	
 	
 func is_cleared() -> bool:
 	for enemy: Enemy in get_tree().get_nodes_in_group("Enemies"):

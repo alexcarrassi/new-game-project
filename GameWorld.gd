@@ -47,10 +47,13 @@ func levelTransition() -> void:
 	# Then we set our players to the Respawning state 
 	self.suspendPlayers()
 	#move the Levels
-	var moveTween = self.moveLevels(	self.level, nextLevel)
-	await moveTween.finished
-	
+	var moveLevelTween = self.moveLevels(	self.level, nextLevel)
+	await moveLevelTween.finished
 	self.swapLevels(nextLevel)
+	
+	var movePlayersTween = self.movePlayersToSpawn()
+	await movePlayersTween.finished
+	
 	self.spawnPlayers()
 	self.UI.visible = true
 	
@@ -59,7 +62,20 @@ func levelTransition() -> void:
 	self.is_transitioning_Levels = false
 
 	
+
+func movePlayersToSpawn() -> Tween: 
+	var moveTween: Tween = create_tween() 
 	
+	for player_index: int in Game.players.keys():
+		var player: Player = Game.players[player_index]
+		var spawnPoint = self.level.getPlayerSpawn( player.player_index)
+		
+		moveTween.parallel().tween_property(player, "position", spawnPoint.position, 2)
+	return moveTween
+
+	
+	
+		
 func moveLevels( currentLevel: Level, nextLevel: Level ) -> Tween:
 	var tween_next: Tween = create_tween( )
 	tween_next.tween_property(nextLevel, "position", Vector2.ZERO, 3)
@@ -75,7 +91,7 @@ func swapLevels(nextLevel: Level) -> void:
 func suspendPlayers() -> void:
 	for key: int in Game.players.keys():
 		var player = Game.players[key]
-		player.sm_status.state.finished.emit("SPAWNING")
+		player.sm_status.state.finished.emit("SUSPENDED")
 		player.position = player.global_position
 		
 		player.reparent(self)
@@ -85,6 +101,7 @@ func suspendPlayers() -> void:
 		transitionTween.tween_property(player, "global_position", transitionSlot.global_position, 2)
 		
 		
+	
 	
 func spawnPlayers() -> void:
 	for key: int in Game.players.keys():
@@ -120,7 +137,9 @@ func spawnPlayer(index: int, player: PackedScene) -> Player :
 	
 	self.playerNode = player.instantiate()
 	
-	playerNode.position = self.level.p1_Start.position
+	var playerSpawn = self.level.getPlayerSpawn(index)
+	
+	playerNode.position = playerSpawn.position
 	playerNode.Bubble_Destination = self.level.bubbleDestination
 			
 	self.level.add_child(playerNode)
