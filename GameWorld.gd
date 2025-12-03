@@ -6,6 +6,7 @@ var playerNode: Player
 var level: Level
 @onready var UI: WorldUI = $UI
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
+@onready var TransitionSlots: Node = $TransitionSlots
 
 var is_transitioning_Levels : bool = false
 
@@ -20,15 +21,15 @@ func _ready() -> void:
 	self.swapLevels(nextLevel)
 	self.startLevel( nextLevel)
 	
-	var player = self.spawnPlayer( self.playerScene )
+	var player = self.spawnPlayer( 0, self.playerScene )
 	self.spawnPlayerHUD( playerHUDScene, player )
 
 func levelTransition() -> void:
 	self.is_transitioning_Levels = true
 	self.level.levelTimer.paused = true
 	
-	self.cleanHurryEnemies()
 	await get_tree().create_timer(2.0).timeout
+	self.cleanHurryEnemies()
 
 	for pickup in get_tree().get_nodes_in_group("Pickups"):
 		pickup.queue_free()
@@ -44,7 +45,7 @@ func levelTransition() -> void:
 	# We create it and place it in the world
 	var nextLevel = createNexLevel(nextLevel_id)
 	# Then we set our players to the Respawning state 
-	self.respawnPlayers()
+	self.suspendPlayers()
 	#move the Levels
 	var moveTween = self.moveLevels(	self.level, nextLevel)
 	await moveTween.finished
@@ -71,12 +72,18 @@ func swapLevels(nextLevel: Level) -> void:
 	self.level = nextLevel
 	
 
-func respawnPlayers() -> void:
+func suspendPlayers() -> void:
 	for key: int in Game.players.keys():
 		var player = Game.players[key]
 		player.sm_status.state.finished.emit("SPAWNING")
 		player.position = player.global_position
+		
 		player.reparent(self)
+		
+		var transitionSlot = getTransitionSlot(player.player_index)
+		var transitionTween = create_tween()
+		transitionTween.tween_property(player, "global_position", transitionSlot.global_position, 2)
+		
 		
 	
 func spawnPlayers() -> void:
@@ -109,7 +116,7 @@ func cleanHurryEnemies() -> void:
 	for hurryEnemy in get_tree().get_nodes_in_group("Invulnerable")	:
 		hurryEnemy.queue_free()
 
-func spawnPlayer(player: PackedScene) -> Player :
+func spawnPlayer(index: int, player: PackedScene) -> Player :
 	
 	self.playerNode = player.instantiate()
 	
@@ -121,7 +128,7 @@ func spawnPlayer(player: PackedScene) -> Player :
 	playerNode.actorDeath.connect( self.onActorDeath)
 	playerNode.actorHurt.connect( self.onActorHurt )	
 		
-	Game.register_player(0, playerNode)	
+	Game.register_player(index, playerNode)	
 	#for enemyNode in get_tree().get_nodes_in_group("Enemies"):
 		#var enemy = enemyNode as Enemy
 		#enemy.players.append( playerNode )	
@@ -161,6 +168,16 @@ func onActorDeath( actor: Actor) -> void:
 	if(actor is Player):
 		self.onPlayerDeath(actor)
 	actor.queue_free()	
+
+func getTransitionSlot( player_index: int) -> Marker2D:
+
+	var slotname = "P%d" % [player_index] 
+	
+	var slot = self.TransitionSlots.find_child(slotname) as Marker2D
+	if( slot.is_inside_tree( )):
+		return slot
+		
+	return null
 
 func onActorHurt( actor: Actor) -> void:
 	if (actor is Player) :

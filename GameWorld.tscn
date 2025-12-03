@@ -45,3 +45,17 @@ Destination = NodePath("../TeleporterTop")
 
 [node name="NextLevelMarker" type="Marker2D" parent="."]
 position = Vector2(0, 280)
+
+[node name="TransitionSlots" type="Node" parent="."]
+
+[node name="P1" type="Marker2D" parent="TransitionSlots"]
+position = Vector2(48, 40)
+
+[node name="P2" type="Marker2D" parent="TransitionSlots"]
+position = Vector2(208, 40)
+
+[node name="P3" type="Marker2D" parent="TransitionSlots"]
+position = Vector2(48, 176)
+
+[node name="P4" type="Marker2D" parent="TransitionSlots"]
+position = Vector2(208, 176)

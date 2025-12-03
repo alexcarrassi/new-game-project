@@ -1,6 +1,7 @@
 class_name Player extends Actor
 #ITSIMSCET  
 
+var player_index : int = 1
 @export var ground_accel: float = 2800.0
 @export var ground_decel: float = 3000.0
 @export var air_accel: float = 2000.0
