@@ -29,7 +29,8 @@ func getHurrySpawn() -> ActorSpawn:
 	
 func is_cleared() -> bool:
 	for enemy: Enemy in get_tree().get_nodes_in_group("Enemies"):
-		if enemy.sm_status.state.name != "DEAD":
+		
+		if !enemy.is_in_group("Invulnerable") and enemy.sm_status.state.name != "DEAD":
 			return false
 		
 	print("LEVEL CLEARED")	

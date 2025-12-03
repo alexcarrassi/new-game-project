@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=36 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://actors/player/player.gd" id="1_ivps1"]
 [ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_urp6f"]
@@ -11,13 +11,13 @@
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="9_pbfsw"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_5tmop"]
 [ext_resource type="Script" uid="uid://cw0ep6ifeu7n4" path="res://actors/player/scripts/State_Act_Attack.gd" id="11_7ahtn"]
-[ext_resource type="PackedScene" uid="uid://dcec5dpj4viaa" path="res://assets/bubble.tscn" id="12_7lmhl"]
+[ext_resource type="PackedScene" uid="uid://dcec5dpj4viaa" path="res://things/bubble.tscn" id="12_7lmhl"]
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="13_7aotg"]
 [ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="14_k67x5"]
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="15_12xki"]
 [ext_resource type="Script" uid="uid://cmxucnl184gmv" path="res://actors/player/scripts/State_Status_Hurt.gd" id="16_rt46e"]
 [ext_resource type="Script" uid="uid://bpxxqoj7dm657" path="res://actors/player/player_dead.gd" id="17_0wchr"]
-[ext_resource type="Script" uid="uid://d3kv05dr573js" path="res://actors/player/spawning.gd" id="18_dqf5y"]
+[ext_resource type="Script" uid="uid://d3kv05dr573js" path="res://actors/player/scripts/spawning.gd" id="18_dqf5y"]
 [ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="18_qrxv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iafiv"]
@@ -48,6 +48,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Rect2(2, 33.5, 17, 17.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kdijb"]
@@ -286,6 +298,35 @@ _data = {
 &"run": SubResource("Animation_qrmce")
 }
 
+[sub_resource type="Animation" id="Animation_dqf5y"]
+resource_name = "Spawning"
+length = 0.80000335
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32), Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_rt46e"]
 length = 0.50000334
 loop_mode = 1
@@ -304,6 +345,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0wchr"]
 _data = {
+&"Spawning": SubResource("Animation_dqf5y"),
 &"hurt": SubResource("Animation_rt46e")
 }
 

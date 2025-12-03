@@ -26,6 +26,8 @@ func _ready() -> void:
 func levelTransition() -> void:
 	self.is_transitioning_Levels = true
 	self.level.levelTimer.paused = true
+	
+	self.cleanHurryEnemies()
 	await get_tree().create_timer(2.0).timeout
 
 	for pickup in get_tree().get_nodes_in_group("Pickups"):
@@ -91,19 +93,21 @@ func createNexLevel(level_id: int) -> Level:
 	
 	return nextLevel
 
-
 func startLevel(level: Level) -> void:
 	#spawn the plauyer
 	#connect the levelTimer to the hurryUp sequence
 	level.hurry.connect( self.onLevelHurry)
 	
-	
-	return
 	for actorSpawn in level.enemy_spawns.get_children():
 		var spawner = actorSpawn as ActorSpawn
 		spawner.deferSpawn()
 	
 	pass
+	
+	
+func cleanHurryEnemies() -> void:
+	for hurryEnemy in get_tree().get_nodes_in_group("Invulnerable")	:
+		hurryEnemy.queue_free()
 
 func spawnPlayer(player: PackedScene) -> Player :
 	
@@ -156,20 +160,18 @@ func onPlayerDeath(player: Player) -> void:
 func onActorDeath( actor: Actor) -> void:
 	if(actor is Player):
 		self.onPlayerDeath(actor)
-	#elif( actor is Enemy) :	
-		#var enemies = get_tree().get_nodes_in_group("Enemies")
-		#
-		#print(enemies.size())
-		#if(enemies.is_empty() ):
-			##transitionLevel
-			#print("LEVEL OVER")
-			#pass
-			
 	actor.queue_free()	
 
 func onActorHurt( actor: Actor) -> void:
 	if (actor is Player) :
+		
+		
+		self.cleanHurryEnemies()
+		
+		
+			
 		self.level.levelTimer.start()
+
 			
 
 func onLevelHurry() -> void:
