@@ -34,7 +34,6 @@ texture = ExtResource("4_2dy0i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-zoom = Vector2(1, 0.5)
 
 [node name="TeleporterTop" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
 position = Vector2(128, -8)

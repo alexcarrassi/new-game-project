@@ -25,14 +25,11 @@ func _ready() -> void:
 
 func levelTransition() -> void:
 	self.is_transitioning_Levels = true
-	
 	self.level.levelTimer.paused = true
-
 	await get_tree().create_timer(2.0).timeout
 
 	for pickup in get_tree().get_nodes_in_group("Pickups"):
 		pickup.queue_free()
-		
 	# Hide the UI 
 	self.UI.visible = false 
 	# First, we find the next level id
@@ -42,14 +39,10 @@ func levelTransition() -> void:
 		print("No Next level found.")
 		return
 	
-	print( nextLevel_id)
-	
 	# We create it and place it in the world
 	var nextLevel = createNexLevel(nextLevel_id)
 	# Then we set our players to the Respawning state 
-	
 	self.respawnPlayers()
-	
 	#move the Levels
 	var moveTween = self.moveLevels(	self.level, nextLevel)
 	await moveTween.finished
@@ -60,11 +53,8 @@ func levelTransition() -> void:
 	
 	self.startLevel(nextLevel)
 	Game.currentLevel = nextLevel_id
-	
 	self.is_transitioning_Levels = false
 
-	
-	
 	
 	
 func moveLevels( currentLevel: Level, nextLevel: Level ) -> Tween:
@@ -106,6 +96,9 @@ func startLevel(level: Level) -> void:
 	#spawn the plauyer
 	#connect the levelTimer to the hurryUp sequence
 	level.hurry.connect( self.onLevelHurry)
+	
+	
+	return
 	for actorSpawn in level.enemy_spawns.get_children():
 		var spawner = actorSpawn as ActorSpawn
 		spawner.deferSpawn()

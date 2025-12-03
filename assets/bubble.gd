@@ -82,6 +82,12 @@ func pop() -> void:
 func onBodyEntered(body: Node2D) -> void:
 	if( self.is_active and self.actor == null and body is Actor) :
 		
+		if(body.get_groups().any(func(group) -> bool:
+			return group == "Invulnerable"
+		)) :
+			return
+			
+			
 		print("BODY ENTERED")
 		body.sm_status.state.finished.emit("BUBBLED")
 		#self.queue_free()

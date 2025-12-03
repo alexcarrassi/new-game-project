@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://b87als3d3rs7n"]
+[gd_scene load_steps=6 format=4 uid="uid://b87als3d3rs7n"]
 
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_8tn3h"]
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="3_f8o56"]
 [ext_resource type="TileSet" uid="uid://whkmyke4amu4" path="res://assets/tiles/level_inner.tres" id="4_qvuvj"]
+[ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="5_ocwms"]
 [ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="6_8q3i6"]
 
 [node name="Level_01" type="Node2D"]
@@ -27,16 +28,19 @@ gizmo_extents = 40.0
 position = Vector2(48, 104)
 
 [node name="Level_Timer" type="Timer" parent="."]
-wait_time = 30.0
 one_shot = true
 autostart = true
 
 [node name="Hurry_Enemy_spawn" parent="." instance=ExtResource("6_8q3i6")]
 position = Vector2(48, 56)
 spawn_defer_time = 2.0
+ActorScene = ExtResource("5_ocwms")
 
 [node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
 position = Vector2(0, 0)
+
+[node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
+region_rect = Rect2(5, 257, 16, 16)
 
 [node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
 wait_time = 2.0

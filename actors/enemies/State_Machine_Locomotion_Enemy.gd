@@ -1,1 +1,0 @@
-class_name StateMachine_Locomotion_Enemy extends StateMachine

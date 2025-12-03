@@ -1,0 +1,131 @@
+[gd_scene load_steps=15 format=3 uid="uid://dwoyt67p86stw"]
+
+[ext_resource type="Script" uid="uid://f0er152wijpj" path="res://actors/enemies/skelMunsta/skel_munsta.gd" id="1_77ank"]
+[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_io5g2"]
+[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="3_65e71"]
+[ext_resource type="Script" uid="uid://dol77tnphlle0" path="res://actors/enemies/skelMunsta/Idle.gd" id="4_65e71"]
+[ext_resource type="Script" uid="uid://diema0raspjjd" path="res://actors/enemies/skelMunsta/Skelmunsta_hunt.gd" id="4_et3mk"]
+[ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="5_65e71"]
+[ext_resource type="Script" uid="uid://jw8kajeeir7i" path="res://actors/enemies/skelMunsta/alive.gd" id="7_65e71"]
+[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="7_et3mk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rs4ll"]
+size = Vector2(16, 15)
+
+[sub_resource type="Animation" id="Animation_et3mk"]
+resource_name = "Spawn"
+length = 0.16667001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(68, 257, 16, 16), Rect2(47, 257, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_65e71"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 257, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_phnyb"]
+resource_name = "idle"
+length = 0.46667004
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(5, 257, 16, 16), Rect2(26, 257, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_ygupy"]
+resource_name = "move"
+length = 0.26667002
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(5, 257, 16, 16), Rect2(26, 257, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65e71"]
+_data = {
+&"RESET": SubResource("Animation_65e71"),
+&"Spawn": SubResource("Animation_et3mk"),
+&"idle": SubResource("Animation_phnyb"),
+&"move": SubResource("Animation_ygupy")
+}
+
+[node name="SkelMunsta" type="CharacterBody2D" groups=["Enemies", "Invulnerable"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_77ank")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_rs4ll")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_65e71")
+}
+script = ExtResource("2_io5g2")
+metadata/_custom_type_script = "uid://cxwldrhfsres7"
+
+[node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_65e71")
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("4_65e71")
+metadata/_custom_type_script = "uid://1bfgi14utrpi"
+
+[node name="HUNT" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("4_et3mk")
+metadata/_custom_type_script = "uid://1bfgi14utrpi"
+
+[node name="StateMachine_Status" type="Node" parent="."]
+script = ExtResource("5_65e71")
+metadata/_custom_type_script = "uid://rlf241v6q1mt"
+
+[node name="ALIVE" type="Node" parent="StateMachine_Status"]
+script = ExtResource("7_65e71")
+metadata/_custom_type_script = "uid://d07c3lrod8lda"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("7_et3mk")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(5, 257, 16, 16)
+
+[node name="Sensors" type="Node2D" parent="."]

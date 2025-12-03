@@ -12,23 +12,22 @@ func _ready() -> void:
 	
 	var body = self.get_parent() as CharacterBody2D
 	for state_node: State in self.find_children("*", "State"):
-		state_node.finished.connect(self._transition_to_next_state)
+		state_node.finished.connect(self.transition_to_next_state)
 		state_node.body = self.get_parent() as Actor
 		
 	
 	#then we wait for our owner to be fully ready
 	await self.owner.ready	
 	
-	self.state_transitioned.emit(null, self.state, {})
-	self.state.enter("", {})
-
-
-	
-func _transition_to_next_state(target_state_path: String, transition_data: Dictionary = {}) -> void: 
+	if(self.initial_state != null):
+		self.transition_to_next_state(self.initial_state.name)
+			
+func transition_to_next_state(target_state_path: String, transition_data: Dictionary = {}) -> void: 
 	if ( not self.has_node( target_state_path) ):
 		printerr(self.owner.name + "Undefined state at " + target_state_path)
 		return
 		
+
 	var prev_state = self.state
 	var next_state = self.get_node(target_state_path)
 	
