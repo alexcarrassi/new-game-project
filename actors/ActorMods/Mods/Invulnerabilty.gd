@@ -20,8 +20,6 @@ func tick_physics(delta: float, actor: Actor) -> void:
 	
 	
 func tick_process(delta: float, actor: Actor) -> void:
-	print("invuln " + actor.name)
-
 	actor.sprite2D.visible = !actor.sprite2D.visible
 	pass
 	

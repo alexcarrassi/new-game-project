@@ -15,10 +15,10 @@ func enter(prev_state_path: String, data: Dictionary = {} ) -> void :
 	pass
 	
 func exit() -> void:
+	print("UNBUBBLED")
 	var actor = self.body
 	actor.set_collision_layer_value(7, false)
 	actor.set_collision_layer_value(3, true)	
-	
 	actor.loco_locked = false
 	actor.act_locked = false 
 	

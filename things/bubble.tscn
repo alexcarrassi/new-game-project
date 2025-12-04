@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcec5dpj4viaa"]
+[gd_scene load_steps=12 format=3 uid="uid://dcec5dpj4viaa"]
 
 [ext_resource type="Script" uid="uid://cd5jgtlg8kex6" path="res://things/bubble.gd" id="1_b7bh6"]
-[ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_4r124"]
+[ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_3qslm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcykv"]
 radius = 7.0
@@ -16,14 +16,14 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10299193, 0.2028941, 0.3012514),
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Rect2(63, 3, 15, 16), Rect2(83, 3, 15, 16), Rect2(83, 22, 15, 16), Rect2(83, 43, 15, 16)]
+"values": [Rect2(4, 4, 16, 16), Rect2(25, 3, 16, 16), Rect2(46, 4, 16, 16), Rect2(67, 4, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_b7bh6"]
-length = 0.20000334
+length = 0.14
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,7 +34,24 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.06666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(66, 71, 15, 16), Rect2(84, 70, 15, 16)]
+"values": [Rect2(109, 4, 16, 16), Rect2(130, 4, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_3qslm"]
+resource_name = "RED"
+length = 0.06667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(88, 4, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_36l50"]
@@ -52,10 +69,29 @@ tracks/0/keys = {
 "values": [Rect2(83, 43, 15, 16)]
 }
 
+[sub_resource type="Animation" id="Animation_xtjm5"]
+resource_name = "RED_FLICKER"
+length = 0.13333668
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(67, 4, 16, 16), Rect2(88, 4, 16, 16)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hb1c7"]
 _data = {
 &"EXPAND": SubResource("Animation_3mr26"),
 &"PON": SubResource("Animation_b7bh6"),
+&"RED": SubResource("Animation_3qslm"),
+&"RED_FLICKER": SubResource("Animation_xtjm5"),
 &"RESET": SubResource("Animation_36l50")
 }
 
@@ -88,7 +124,7 @@ horizontal_alignment = 1
 shape = SubResource("CircleShape2D_wcykv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_4r124")
+texture = ExtResource("2_3qslm")
 region_enabled = true
 region_rect = Rect2(83, 43, 15, 16)
 
@@ -97,8 +133,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_hb1c7")
 }
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="PopTimer" type="Timer" parent="."]
+wait_time = 7.5
+one_shot = true
+
+[node name="PrepopTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="RedTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 visible = false

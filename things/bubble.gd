@@ -3,8 +3,13 @@ class_name Bubble extends RigidBody2D
 @export var hor_speed: float = 300.0
 @export var float_vert_speed: float = 30.0
 @export var float_hor_speed: float = 30.0
+@export var actorTimerOffset = 3.0
 
-@onready var timer: Timer = $Timer
+@onready var popTimer: Timer = $PopTimer
+@onready var prePopTimer: Timer = $PrepopTimer
+@onready var redTimer: Timer = $RedTimer
+
+
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $Hitbox
 @onready var hurtbox: Area2D = $Hurtbox
@@ -19,6 +24,7 @@ var destination: Node2D
 var dir: Vector2 = Vector2.RIGHT
 var is_active: bool = true
 var is_popping: bool = false
+var is_red: bool = false
 var actor: Actor
 var actor_parent: Node
 
@@ -28,19 +34,19 @@ func _ready() -> void:
 	
 	self.hitbox.monitoring = true 
 	self.hitbox.monitorable = true 
-	self.timer.one_shot = true 
-	self.timer.wait_time = animationPlayer.get_animation("EXPAND").length
-	self.timer.start()
-	
-	self.timer.timeout.connect( self.setFloating)
+	self.get_tree().create_timer( animationPlayer.get_animation("EXPAND").length  ).timeout.connect( self.setFloating)
 	self.animationPlayer.play("EXPAND")
 	
 	self.hitbox.body_entered.connect( self.onBodyEntered )
 	self.hurtbox.body_entered.connect( self.onHurtboxBodyEntered )
 	self.collisionShape.disabled = false
-	self.set_collision_mask_value(4, false) #Don't collide with other bubble
+	self.set_collision_mask_value(4, false) #Don't collide with other bubble yet
 	self.gravity_scale = 0
 	
+	
+	self.popTimer.timeout.connect( self.autoPop)
+	self.prePopTimer.timeout.connect( self.prePop )
+	self.redTimer.timeout.connect( self.setRed )
 	pass # Replace with function body.
 
 func onHurtboxBodyEntered( body: Node2D) -> void:
@@ -49,35 +55,54 @@ func onHurtboxBodyEntered( body: Node2D) -> void:
 		var player = body as Player
 		#popping direction is determine by position of player compared to bubble
 		self.dir.x = 1 if(body.position.x <self.position.x) else -1
-		self.pop()
+		self.playerPop()
 
 		
+func prePop() -> void:
+	self.animationPlayer.play("RED_FLICKER")
 	
+func setRed() -> void:
+	self.is_red = true
+	self.animationPlayer.play("RED")
 	
+# Timer-triggered pop	
+func autoPop() -> void:
+	self.pop()
+	self.releaseActor()
+	pass
+	
+		
 func pop() -> void:
-	
 	self.state = BubbleState.Popping
 
 	self.sprite.visible = true
+	self.linear_velocity = Vector2.ZERO
+	var popAnimation =  self.animationPlayer.get_animation("PON")
+	self.get_tree().create_timer( popAnimation.length).timeout.connect( func (): 
+		queue_free() 
+	)
+	self.animationPlayer.play("PON")
+
+# Player-triggered pop	
+func playerPop() -> void:
+	self.pop()
+	self.killActor()
+	
+func releaseActor() -> void:
+		if(self.actor != null):
+			self.actor.reparent( self.actor_parent)
+			self.actor.sm_locomotion.state.finished.emit("IDLE")
+			self.actor.sm_status.state.finished.emit("RED")
+			self.actor.rotation = 0
+
+	
+func killActor() -> void:
 	if(self.actor != null) :
 		self.actor.reparent( self.actor_parent )
 		self.actor.sm_locomotion.state.finished.emit("FALLING")
 		self.actor.sm_status.state.finished.emit("DEAD", {"dir": self.dir.x})
 		self.actor.rotation = 0
 
-	self.linear_velocity = Vector2.ZERO
-	self.timer.wait_time = self.animationPlayer.get_animation("PON").length
-	#self.animationPlayer.animation_finished.connect ?
-	self.timer.timeout.connect( func (): 
-		#return)
-		queue_free() )
-		
-		
-		
-	self.timer.start()
-	self.animationPlayer.play("PON")
-	
-	
 
 func onBodyEntered(body: Node2D) -> void:
 	if( self.is_active and self.actor == null and body is Actor) :
@@ -110,6 +135,15 @@ func setFloating() -> void:
 	self.collisionShape.disabled = false
 	self.hurtbox.monitoring = true
 	
+	self.redTimer.start()
+	self.prePopTimer.start()
+	self.popTimer.start()
+	
+	
+	#Add time to the timers if an actor has been captured in the bubble
+	for the_timer: Timer in [self.redTimer, self.prePopTimer, self.popTimer]:
+		the_timer.wait_time += self.actorTimerOffset
+		
 func pop_silent() -> void:
 	pass
 		
