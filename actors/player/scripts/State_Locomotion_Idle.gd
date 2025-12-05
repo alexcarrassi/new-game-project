@@ -2,7 +2,7 @@ class_name State_Locomotion_Idle extends State
 
 
 func _ready() -> void:
-	self.main_animation = "movement/idle"
+	self.main_animation = "idle"
 
 func enter(previous_state_path: String, data: Dictionary) -> void:
 	body.coyote_time = body.coyote_max

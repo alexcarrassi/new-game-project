@@ -1,6 +1,5 @@
 class_name Zenchan extends Enemy
 
-@export var DECISION_PERIOD = 0.33
 
 @onready var sensors: Node2D = $Sensors
 @onready var decision_timer: Timer = $Decision_Timer

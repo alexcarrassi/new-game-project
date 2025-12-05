@@ -64,6 +64,9 @@ func prePop() -> void:
 func setRed() -> void:
 	self.is_red = true
 	self.animationPlayer.play("RED")
+	if(self.actor != null ) :
+		self.actor.sm_status.state.finished.emit("RED")
+
 	
 # Timer-triggered pop	
 func autoPop() -> void:
@@ -92,7 +95,6 @@ func releaseActor() -> void:
 		if(self.actor != null):
 			self.actor.reparent( self.actor_parent)
 			self.actor.sm_locomotion.state.finished.emit("IDLE")
-			self.actor.sm_status.state.finished.emit("RED")
 			self.actor.rotation = 0
 
 	
@@ -114,10 +116,13 @@ func onBodyEntered(body: Node2D) -> void:
 			
 			
 		print("BODY ENTERED")
-		body.sm_status.state.finished.emit("BUBBLED")
+
 		#self.queue_free()
 		#todo: do not capture already capture actors
 		self.actor = body
+		self.actor.sm_locomotion.state.finished.emit("BUBBLED")
+		self.actor.sm_status.state.finished.emit("ALIVE")
+		
 		self.actor_parent = self.actor.get_parent()
 
 		self.actor.reparent(self)

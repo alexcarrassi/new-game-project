@@ -1,7 +1,7 @@
 class_name AnimationController extends AnimationPlayer
 
 var current_state_animation: String
-var current_library = "NORMAL"
+var current_library = ""
 enum StatePriority{ STATUS = 20, ACT = 10, LOCOMOTION = 0 }
 var animationLock : AnimationLock = null
 
@@ -9,16 +9,21 @@ var animationLock : AnimationLock = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await self.owner.ready
-	
+	self.set_current_library("")
 	#var parentPlayer = self.get_parent() as CharacterBody2D
 #	self.process_callback = AnimationPlayer.ANIMATION_PROCESS_PHYSICS
 	#self.sm_act = parentPlayer.actState
 	pass # Replace with function body.
 
+
+func get_current_library() -> String:
+	return self.current_library + ""
+
 func set_current_library(name: String) -> void:
 	if (self.has_animation_library(name)) :
-		self.set_current_library( name )
+		self.current_library = name
 	else:
+		self.current_library = ""
 		printerr("Tried setting animation library %s, but actor does not have it" %[name])	
 	pass
 
@@ -30,7 +35,7 @@ func request_oneShot(animation_name: String, lock: AnimationLock = null) -> void
 		elif	 (self.animationLock.prio > lock.prio):
 			return
 			
-	self.play(animation_name)
+	self.play(self.get_current_library() + animation_name)
 	self.animationLock = lock		
 
 func onStateTransition(prev_state: State, new_state: State, transition_data: Dictionary) -> void:
@@ -39,7 +44,7 @@ func onStateTransition(prev_state: State, new_state: State, transition_data: Dic
 		for  effect:Dictionary  in transition_data["effects"]:
 			if (effect.has("oneshot")):
 	
-				var animation = self.get_animation( effect["oneshot"]["animation"] )
+				var animation = self.get_animation( self.get_current_library() + effect["oneshot"]["animation"] )
 				var loops = effect.get("loops", 1)
 				var animationLock = AnimationLock.new( effect["oneshot"]["prio"], animation.length, loops)
 				
@@ -77,10 +82,14 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	# Locomotion automation
-	if( not self.is_playing() or self.current_animation != self.current_state_animation ) :
+	if( not self.is_playing() or self.current_animation != self.getCurrentStateAnimation() ) :
 		#if( self.current_state_animation != "") :
 			
-			self.play(self.current_state_animation)
+			self.play(self.getCurrentStateAnimation())
 
 
+func getCurrentStateAnimation() -> String:
+	var library_prefix = self.current_library + "/" if self.current_library != "" else ""
+	return library_prefix + self.current_state_animation
+		
 #func onAnimationFinished() -> void

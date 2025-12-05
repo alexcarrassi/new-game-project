@@ -3,7 +3,7 @@ class_name zenchan_Idle extends State
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.main_animation = "NORMAL/IDLE"
+	self.main_animation = "IDLE"
 	pass # Replace with function body.
 
 

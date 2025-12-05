@@ -54,21 +54,6 @@ tracks/0/keys = {
 "values": [Rect2(88, 4, 16, 16)]
 }
 
-[sub_resource type="Animation" id="Animation_36l50"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(83, 43, 15, 16)]
-}
-
 [sub_resource type="Animation" id="Animation_xtjm5"]
 resource_name = "RED_FLICKER"
 length = 0.13333668
@@ -84,6 +69,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Rect2(67, 4, 16, 16), Rect2(88, 4, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_36l50"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(83, 43, 15, 16)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hb1c7"]
@@ -107,6 +107,7 @@ collision_layer = 8
 collision_mask = 9
 lock_rotation = true
 script = ExtResource("1_b7bh6")
+actorTimerOffset = 1.0
 
 [node name="DebugLayer" type="MarginContainer" parent="."]
 offset_left = -29.0

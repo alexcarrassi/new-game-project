@@ -2,7 +2,7 @@ class_name Player_Suspended extends State
 
 func enter(prev_state_path: String, data: Dictionary) -> void:
 	var actor = self.body as Player
-	self.main_animation = "state/Suspended"
+	self.main_animation = "Suspended"
 
 	actor.collisionShape.disabled = true
 	actor.loco_locked = true 

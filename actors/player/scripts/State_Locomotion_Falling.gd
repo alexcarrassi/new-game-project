@@ -2,13 +2,13 @@ class_name State_Locomotion_Falling extends State
 
 
 func _ready() -> void:
-	self.main_animation = "movement/jump_fall"
+	self.main_animation = "jump_fall"
 	
 func enterEffects() -> Array:
 	return [
 		{
 			"oneshot" : {
-				"animation" : "movement/jump_fall_start",
+				"animation" : "jump_fall_start",
 				"prio" : AnimationController.StatePriority.ACT
 			}
 		}	

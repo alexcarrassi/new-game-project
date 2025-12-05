@@ -1,13 +1,13 @@
 class_name State_Locootion_Jumping extends State
 
 func _ready() -> void:
-		self.main_animation = "movement/jump_rise"
+		self.main_animation = "jump_rise"
 
 func enterEffects() -> Array:
 		return [
 		{
 			"oneshot": { 
-				"animation" : "movement/jump_rise_start",
+				"animation" : "jump_rise_start",
 				"prio"		: AnimationController.StatePriority.ACT
 			}
 		}

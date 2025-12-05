@@ -6,7 +6,7 @@ func enter(prev_state_path: String, data: Dictionary = {} ) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.main_animation = "NOMRAL/JUMP_UP"
+	self.main_animation = "JUMP_UP"
 	pass # Replace with function body.
 
 

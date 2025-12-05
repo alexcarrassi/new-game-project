@@ -97,7 +97,7 @@ shape = SubResource("RectangleShape2D_rs4ll")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"NORMAL": SubResource("AnimationLibrary_65e71")
+&"": SubResource("AnimationLibrary_65e71")
 }
 script = ExtResource("2_io5g2")
 metadata/_custom_type_script = "uid://cxwldrhfsres7"

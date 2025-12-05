@@ -7,10 +7,10 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	actor.act_locked = true 
 	actor.hurtbox.set_collision_mask_value(3, false)
 	
-	var hurtLength = actor.animationPlayer.get_animation("state/hurt").length
+	var hurtLength = actor.animationPlayer.get_animation("hurt").length
 	var animationLock = AnimationLock.new( 20, hurtLength, 3 )
 	
-	actor.animationPlayer.request_oneShot("state/hurt", animationLock)
+	actor.animationPlayer.request_oneShot("hurt", animationLock)
 	
 	animationLock.lockReleased.connect( 
 		func() -> void: 

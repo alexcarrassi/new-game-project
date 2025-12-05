@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=33 format=3 uid="uid://b2kwfbabyr0bm"]
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="1_s72y3"]
@@ -22,43 +22,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s72y3"]
 size = Vector2(16, 16)
 
-[sub_resource type="Animation" id="Animation_s6xig"]
-length = 0.5333367
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(257, 5, 16, 16), Rect2(278, 5, 16, 16), Rect2(298, 5, 16, 16), Rect2(319, 5, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_i7sgb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(5, 5, 16, 16)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dne8i"]
-_data = {
-&"DEAD": SubResource("Animation_s6xig"),
-&"RESET": SubResource("Animation_i7sgb")
-}
-
 [sub_resource type="Animation" id="Animation_hlciv"]
 resource_name = "Bubbled"
 loop_mode = 1
@@ -74,6 +37,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Rect2(131, 5, 16, 16), Rect2(152, 5, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_gbd71"]
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(257, 5, 16, 16), Rect2(278, 5, 16, 16), Rect2(298, 5, 16, 16), Rect2(319, 5, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_fbiw4"]
@@ -161,6 +140,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i7sgb"]
 _data = {
 &"BUBBLED": SubResource("Animation_hlciv"),
+&"DEAD": SubResource("Animation_gbd71"),
 &"FALL": SubResource("Animation_fbiw4"),
 &"IDLE": SubResource("Animation_aigf2"),
 &"JUMP_UP": SubResource("Animation_6dyg7"),
@@ -216,8 +196,26 @@ tracks/0/keys = {
 "values": [Rect2(47, 5, 16, 16), Rect2(68, 5, 16, 16)]
 }
 
+[sub_resource type="Animation" id="Animation_lbobw"]
+resource_name = "BUBBLED"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(215, 5, 16, 16), Rect2(236, 5, 16, 16)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ytvao"]
 _data = {
+&"BUBBLED": SubResource("Animation_lbobw"),
 &"FALL": SubResource("Animation_00q3p"),
 &"IDLE": SubResource("Animation_tqq7e"),
 &"RUN": SubResource("Animation_kn3fv")
@@ -227,7 +225,6 @@ _data = {
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_aigf2")
-DECISION_PERIOD = 0.66
 JUMP_VELOCITY = 300.0
 MAX_RUN_VELOCITY = 100.0
 MAX_RISE_VELOCITY = 400.0
@@ -239,9 +236,8 @@ shape = SubResource("RectangleShape2D_s72y3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_dne8i"),
-&"NORMAL": SubResource("AnimationLibrary_i7sgb"),
-&"RAGE": SubResource("AnimationLibrary_ytvao")
+&"": SubResource("AnimationLibrary_i7sgb"),
+&"RED": SubResource("AnimationLibrary_ytvao")
 }
 script = ExtResource("2_6hnld")
 
@@ -272,6 +268,9 @@ one_shot = true
 script = ExtResource("4_hlciv")
 initial_state = NodePath("IDLE")
 
+[node name="BUBBLED" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("10_kdg0o")
+
 [node name="RUNNING" type="Node" parent="StateMachine_Locomotion"]
 script = ExtResource("5_fbiw4")
 
@@ -296,9 +295,6 @@ script = ExtResource("14_t4a2j")
 
 [node name="ALIVE" type="Node" parent="StateMachine_Status"]
 script = ExtResource("12_s6xig")
-
-[node name="BUBBLED" type="Node" parent="StateMachine_Status"]
-script = ExtResource("10_kdg0o")
 
 [node name="DEAD" type="Node" parent="StateMachine_Status"]
 script = ExtResource("13_l6spp")

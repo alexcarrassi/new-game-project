@@ -25,8 +25,7 @@ func _ready() -> void:
 
 
 func physics_update(delta: float) -> void:
-	print("RED")
-
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

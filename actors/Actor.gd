@@ -7,6 +7,7 @@ class_name Actor extends CharacterBody2D
 @onready var sm_status: StateMachine_Status = $StateMachine_Status
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
 
+@export var DECISION_PERIOD = 0.33
 
 var modController: ModController 
 

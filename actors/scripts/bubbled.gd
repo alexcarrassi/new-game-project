@@ -5,20 +5,23 @@ func enter(prev_state_path: String, data: Dictionary = {} ) -> void :
 	
 	print("BUBBLED")
 	var actor = self.body
-	self.main_animation = "NORMAL/BUBBLED"
+	self.main_animation = "BUBBLED"
 	
 	actor.loco_locked = true
 	actor.act_locked = true 
-	actor.set_collision_layer_value(7, true)
-	actor.set_collision_layer_value(3, false)
+	
+	actor.collisionShape.disabled = true
+	#actor.set_collision_layer_value(7, true)
+	#actor.set_collision_layer_value(3, false)
 	
 	pass
 	
 func exit() -> void:
 	print("UNBUBBLED")
 	var actor = self.body
-	actor.set_collision_layer_value(7, false)
-	actor.set_collision_layer_value(3, true)	
+	actor.collisionShape.disabled = false
+	#actor.set_collision_layer_value(7, false)
+	#actor.set_collision_layer_value(3, true)	
 	actor.loco_locked = false
 	actor.act_locked = false 
 	

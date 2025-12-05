@@ -2,7 +2,7 @@ class_name Actor_Spawning extends State
 
 
 func ready() -> void:
-	self.main_animation = "state/hurt"
+	self.main_animation = "hurt"
 	
 func enter(prev_state_path: String, data: Dictionary = {}) -> void:
 	var actor = self.body

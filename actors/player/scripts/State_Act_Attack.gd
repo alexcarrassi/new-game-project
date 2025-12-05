@@ -11,7 +11,7 @@ func enterEffects() -> Array:
 	return [
 		{
 			"oneshot": { 
-				"animation" : "act/attack",
+				"animation" : "attack",
 				"prio"		: AnimationController.StatePriority.ACT,
 			}
 		}
