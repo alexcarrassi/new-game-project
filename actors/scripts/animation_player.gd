@@ -1,6 +1,7 @@
 class_name AnimationController extends AnimationPlayer
 
 var current_state_animation: String
+var current_library = "NORMAL"
 enum StatePriority{ STATUS = 20, ACT = 10, LOCOMOTION = 0 }
 var animationLock : AnimationLock = null
 
@@ -14,6 +15,12 @@ func _ready() -> void:
 	#self.sm_act = parentPlayer.actState
 	pass # Replace with function body.
 
+func set_current_library(name: String) -> void:
+	if (self.has_animation_library(name)) :
+		self.set_current_library( name )
+	else:
+		printerr("Tried setting animation library %s, but actor does not have it" %[name])	
+	pass
 
 #Can loop n amount of times.
 func request_oneShot(animation_name: String, lock: AnimationLock = null) -> void:

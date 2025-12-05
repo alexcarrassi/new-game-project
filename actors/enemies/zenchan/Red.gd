@@ -7,6 +7,8 @@ func enter(prev_state_path: String, data: Dictionary) :
 	var actor = self.body 
 	self.mod_RedSpeed = RedSpeed.new()
 	actor.modController.addMod( self.mod_RedSpeed )
+	actor.animationPlayer.set_current_library( "RED" )
+	
 	
 	pass
 	
@@ -14,6 +16,7 @@ func enter(prev_state_path: String, data: Dictionary) :
 func exit() -> void:
 	var actor = self.body
 	actor.modController.removeMod(self.mod_RedSpeed, true)
+	actor.animationPlayer.set_current_library("")
 	pass
 	
 # Called when the node enters the scene tree for the first time.

@@ -6,7 +6,7 @@ func enterEffects() -> Array:
 	return [
 		{
 			"oneshot" : {
-				"animation" : "Spawn",
+				"animation" : "SPAWN",
 				"prio" : AnimationController.StatePriority.ACT
 				
 			}

@@ -2,7 +2,7 @@ class_name Actor extends CharacterBody2D
 
 @onready var sprite2D: Sprite2D = $Sprite2D
 @onready var hurtbox: Area2D = $Hurtbox
-@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var animationPlayer: AnimationController = $AnimationPlayer
 @onready var sm_locomotion: StateMachine_Locomotion = $StateMachine_Locomotion
 @onready var sm_status: StateMachine_Status = $StateMachine_Status
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
