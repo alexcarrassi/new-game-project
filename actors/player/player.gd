@@ -32,7 +32,7 @@ func _ready() -> void:
 	
 func onHurtboxEntered( body: Node2D ) :
 	if( body is Enemy):
-		if(body.sm_status.state.name == "ALIVE"):
+		if(body.sm_status.state.name == "ALIVE" || body.sm_status.state.name == "RED"):
 			
 			body.onPlayerCollide( self )
 		

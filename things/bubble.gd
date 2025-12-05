@@ -37,10 +37,8 @@ func _ready() -> void:
 	self.get_tree().create_timer( animationPlayer.get_animation("EXPAND").length  ).timeout.connect( self.setFloating)
 	self.animationPlayer.play("EXPAND")
 	
-	self.hitbox.body_entered.connect( self.onBodyEntered )
+	self.hitbox.area_entered.connect( self.hitBoxAreaEntered )
 	self.hurtbox.body_entered.connect( self.onHurtboxBodyEntered )
-	self.collisionShape.disabled = false
-	self.set_collision_mask_value(4, false) #Don't collide with other bubble yet
 	self.gravity_scale = 0
 	
 	
@@ -106,45 +104,45 @@ func killActor() -> void:
 		self.actor.rotation = 0
 
 
-func onBodyEntered(body: Node2D) -> void:
-	if( self.is_active and self.actor == null and body is Actor) :
+func hitBoxAreaEntered(area: Area2D) -> void:
+	
+	var areaOwner = area.get_parent()
+	
+	if( self.is_active and self.actor == null and areaOwner is Enemy) :
 		
-		if(body.get_groups().any(func(group) -> bool:
+		if(areaOwner.get_groups().any(func(group) -> bool:
 			return group == "Invulnerable"
 		)) :
 			return
-			
-			
-		print("BODY ENTERED")
 
-		#self.queue_free()
-		#todo: do not capture already capture actors
-		self.actor = body
-		self.actor.sm_locomotion.state.finished.emit("BUBBLED")
+		self.actor = areaOwner
 		self.actor.sm_status.state.finished.emit("ALIVE")
+		self.actor.sm_locomotion.state.finished.emit("BUBBLED")
 		
 		self.actor_parent = self.actor.get_parent()
-
 		self.actor.reparent(self)
 		self.actor.position = Vector2.ZERO
-		self.actor.loco_locked = true
-		self.actor.act_locked = true
 		self.sprite.visible = false
 		self.setFloating()
+		
+		self.hitbox.call_deferred("set_monitoring", false)
+		self.hitbox.monitoring = false
 		
 	pass
 	
 func setFloating() -> void:
 	self.state = BubbleState.Floating
-	self.hitbox.monitoring = false
+	self.hitbox.call_deferred("set_monitoring", false)
+
 	self.collisionShape.disabled = false
-	self.hurtbox.monitoring = true
-	
+	self.hurtbox.call_deferred("set_monitoring", true)
+
 	self.redTimer.start()
 	self.prePopTimer.start()
 	self.popTimer.start()
-	
-	
+	self.set_collision_mask_value(4, true) #Collide with other bubbles
+	self.set_collision_layer_value(4, true) #Collide with other bubbles
+
 	#Add time to the timers if an actor has been captured in the bubble
 	for the_timer: Timer in [self.redTimer, self.prePopTimer, self.popTimer]:
 		the_timer.wait_time += self.actorTimerOffset

@@ -25,7 +25,7 @@ position = Vector2(128, 56)
 gizmo_extents = 40.0
 
 [node name="Level_Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 
@@ -58,7 +58,7 @@ wait_time = 0.5
 
 [node name="ActorSpawn2" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("6_8q3i6")]
 position = Vector2(128, -29)
-spawn_defer_time = 0.5
+spawn_defer_time = 400.0
 spawn_node = NodePath("../../Enemies")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]

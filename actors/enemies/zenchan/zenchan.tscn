@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=34 format=3 uid="uid://b2kwfbabyr0bm"]
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="1_s72y3"]
@@ -221,6 +221,9 @@ _data = {
 &"RUN": SubResource("Animation_kn3fv")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbd71"]
+size = Vector2(13.5, 14)
+
 [node name="Zenchan" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 129
@@ -301,3 +304,13 @@ script = ExtResource("13_l6spp")
 
 [node name="RED" type="Node" parent="StateMachine_Status"]
 script = ExtResource("18_gbd71")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 7)
+collision_layer = 256
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.25, -7)
+shape = SubResource("RectangleShape2D_gbd71")
+debug_color = Color(0.29961187, 0.5557529, 0, 0.41960785)
