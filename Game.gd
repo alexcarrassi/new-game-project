@@ -10,6 +10,9 @@ var levels: Dictionary[int, PackedScene]
 
 var difficulty = 1
 
+func _ready() -> void:
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+
 func register_player(index: int, player: Player) -> Dictionary[int, Player]:
 	self.players[index] = player
 	return self.players	
@@ -34,6 +37,11 @@ func getNextLevel_id() -> int:
 		return self.currentLevel
 		#return -1	
 		
+func _input(event: InputEvent) -> void:
+	if ( event.is_action_pressed("ui_start") ):
+		var tree = get_tree()
+		tree.paused = !tree.paused
+		pass
 	
 func register_gameWorld(node:GameWorld) -> GameWorld:
 	self.world = node 
