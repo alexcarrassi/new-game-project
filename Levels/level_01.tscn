@@ -65,14 +65,14 @@ spawn_node = NodePath("../../Enemies")
 position = Vector2(0, 69)
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
-wait_time = 0.5
+wait_time = 400.0
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Player_Spawns" type="Node" parent="."]
 
 [node name="p1_Start" type="Node2D" parent="Player_Spawns"]
-position = Vector2(48, 104)
+position = Vector2(32, 192)
 
 [editable path="Hurry_Enemy_spawn"]
 [editable path="Enemy_Spawns/ActorSpawn"]

@@ -2,7 +2,6 @@ class_name GameWorld extends Node
 
 @export var playerScene: PackedScene
 @export var playerHUDScene: PackedScene
-var playerNode: Player
 var level: Level
 @onready var UI: WorldUI = $UI
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
@@ -15,20 +14,31 @@ func _ready() -> void:
 	Game.register_gameWorld( self )
 	
 	var levelScene = Game.getLevelById( 0 )
-	var nextLevel = createNexLevel( 0 )
-	nextLevel.position = Vector2.ZERO
+	var startingLevel = createNexLevel( 0 )
+	startingLevel.position = Vector2.ZERO
 	
-	self.swapLevels(nextLevel)
-	self.startLevel( nextLevel)
-	
-	var player = self.spawnPlayer( 0, self.playerScene )
-	self.spawnPlayerHUD( playerHUDScene, player )
+	self.swapLevels(startingLevel)
+	var player = self.createPlayer(0, self.playerScene)
+	self.spawnPlayerHUD( self.playerHUDScene, player )
+
+
+	self.startLevel(startingLevel)
+#
+	#if( startingLevel.playerSpawns.get_children().size() == 0):
+		#await get_tree().create_timer(2).timeout
+		#self.levelTransition()
+#
+	#else :
+			#
+		#self.startLevel( startingLevel)
+	#
+
+
 
 func levelTransition() -> void:
 	self.is_transitioning_Levels = true
 	self.level.levelTimer.paused = true
 	
-	await get_tree().create_timer(2.0).timeout
 	self.cleanHurryEnemies()
 
 	for pickup in get_tree().get_nodes_in_group("Pickups"):
@@ -40,31 +50,34 @@ func levelTransition() -> void:
 
 	if(nextLevel_id == -1) :
 		print("No Next level found.")
-		return
+		nextLevel_id = 0
 	
 	# We create it and place it in the world
 	var nextLevel = createNexLevel(nextLevel_id)
 	# Then we set our players to the Respawning state 
-	self.suspendPlayers()
 	#move the Levels
 	var moveLevelTween = self.moveLevels(	self.level, nextLevel)
 	await moveLevelTween.finished
 	self.swapLevels(nextLevel)
-	
-	var movePlayersTween = self.movePlayersToSpawn()
-	await movePlayersTween.finished
-	
-	self.spawnPlayers()
-	self.UI.visible = true
-	
-	self.startLevel(nextLevel)
 	Game.currentLevel = nextLevel_id
+
+	var movePlayersTween = self.movePlayersToSpawn()
+	if( movePlayersTween) :
+		await movePlayersTween.finished
+	
+		self.spawnPlayers()
+		self.UI.visible = true
+		
 	self.is_transitioning_Levels = false
+	self.startLevel(nextLevel)
 
 	
 
 func movePlayersToSpawn() -> Tween: 
 	var moveTween: Tween = create_tween() 
+	
+	if(self.level.playerSpawns.get_children().size() == 0):
+		return null
 	
 	for player_index: int in Game.players.keys():
 		var player: Player = Game.players[player_index]
@@ -73,8 +86,6 @@ func movePlayersToSpawn() -> Tween:
 		moveTween.parallel().tween_property(player, "position", spawnPoint.position, 2)
 	return moveTween
 
-	
-	
 		
 func moveLevels( currentLevel: Level, nextLevel: Level ) -> Tween:
 	var tween_next: Tween = create_tween( )
@@ -88,26 +99,51 @@ func swapLevels(nextLevel: Level) -> void:
 	self.level = nextLevel
 	
 
+func suspendPlayer(index: int) -> void:
+	var player = Game.players[index] 
+	if(!player):
+		return
+		
+	player.sm_status.state.finished.emit("SUSPENDED")
+	player.position = player.global_position
+		
+	player.reparent(self)
+	
+	var transitionSlot = getTransitionSlot(player.player_index)
+	var transitionTween = create_tween()
+	transitionTween.tween_property(player, "global_position", transitionSlot.global_position, 2)
+		
+
+# Puts all players at thei suspend point 
 func suspendPlayers() -> void:
 	for key: int in Game.players.keys():
-		var player = Game.players[key]
-		player.sm_status.state.finished.emit("SUSPENDED")
-		player.position = player.global_position
-		
-		player.reparent(self)
-		
-		var transitionSlot = getTransitionSlot(player.player_index)
-		var transitionTween = create_tween()
-		transitionTween.tween_property(player, "global_position", transitionSlot.global_position, 2)
-		
-		
+		self.suspendPlayer(key)
 	
-	
+
+
+#Creates the player at their suspend point
+func createPlayer(index: int, player:PackedScene ) -> Player:
+	var playerNode = Game.players.get(0, null)
+	if(playerNode == null):
+		playerNode = player.instantiate()
+		Game.register_player(index, playerNode)
+		self.add_child( playerNode )
+		
+		playerNode.sm_status.state.finished.emit("SUSPENDED")
+		var transitionSlot = getTransitionSlot(playerNode.player_index)
+		playerNode.global_position = transitionSlot.global_position
+		
+	return playerNode
+
+
 func spawnPlayers() -> void:
 	for key: int in Game.players.keys():
 			var player = Game.players[key]
 			player.sm_status.state.finished.emit("ALIVE")
 			player.reparent(self.level)
+			
+			
+			
 		
 func createNexLevel(level_id: int) -> Level:
 	var nextLevelScene = Game.getLevelById( level_id)
@@ -120,40 +156,24 @@ func createNexLevel(level_id: int) -> Level:
 func startLevel(level: Level) -> void:
 	#spawn the plauyer
 	#connect the levelTimer to the hurryUp sequence
-	level.hurry.connect( self.onLevelHurry)
+	if( level.hurry ) :
+		level.hurry.connect( self.onLevelHurry)
 	
-	for actorSpawn in level.enemy_spawns.get_children():
-		var spawner = actorSpawn as ActorSpawn
-		spawner.deferSpawn()
-	
-	pass
+	if( level.enemy_spawns) :
+		for actorSpawn in level.enemy_spawns.get_children():
+			var spawner = actorSpawn as ActorSpawn
+			spawner.deferSpawn()
+		
+		pass
+		
+	if(level.playerSpawns.get_children().size() == 0 ):
+		await get_tree().create_timer(2.0).timeout
+		self.levelTransition()	
 	
 	
 func cleanHurryEnemies() -> void:
 	for hurryEnemy in get_tree().get_nodes_in_group("Invulnerable")	:
 		hurryEnemy.queue_free()
-
-func spawnPlayer(index: int, player: PackedScene) -> Player :
-	
-	self.playerNode = player.instantiate()
-	
-	var playerSpawn = self.level.getPlayerSpawn(index)
-	
-	playerNode.position = playerSpawn.position
-	playerNode.Bubble_Destination = self.level.bubbleDestination
-			
-	self.level.add_child(playerNode)
-
-	playerNode.actorDeath.connect( self.onActorDeath)
-	playerNode.actorHurt.connect( self.onActorHurt )	
-		
-	Game.register_player(index, playerNode)	
-	#for enemyNode in get_tree().get_nodes_in_group("Enemies"):
-		#var enemy = enemyNode as Enemy
-		#enemy.players.append( playerNode )	
-		#
-	#playerNode.scoreUpdated.connect( )	
-	return self.playerNode as Player
 
 func spawnPlayerHUD( hudScene: PackedScene, player: Player) -> void:
 	var playerHUD = hudScene.instantiate()
@@ -178,6 +198,8 @@ func onEnemyDeath(enemy: Enemy) -> void:
 	print("Enemy Death in World")
 	if(level.is_cleared() and !self.is_transitioning_Levels):
 		print("LEVEL OVER")
+		await get_tree().create_timer(2.0).timeout
+		self.suspendPlayers()
 		self.levelTransition()		
 
 func onPlayerDeath(player: Player) -> void:
@@ -203,9 +225,6 @@ func onActorHurt( actor: Actor) -> void:
 		
 		
 		self.cleanHurryEnemies()
-		
-		
-			
 		self.level.levelTimer.start()
 
 			

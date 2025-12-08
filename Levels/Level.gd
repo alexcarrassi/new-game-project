@@ -14,7 +14,8 @@ signal hurry()
 # Span the player
 # Connect the timer's timeout to the Hurry Up event
 func _ready() -> void:
-	self.levelTimer.timeout.connect( self.onHurryUp)
+	if(self.levelTimer) :
+		self.levelTimer.timeout.connect( self.onHurryUp)
 	pass # Replace with function body.
 
 # Flash the Hurry message, pause during it. Spawn Skel-Monsta after a few seconds.
@@ -30,7 +31,7 @@ func getHurrySpawn() -> ActorSpawn:
 	
 func getPlayerSpawn(player_index: int) -> Node2D:
 	
-
+	
 	var spawnName = "p%d_Start" % [player_index +1]
 	var playerSpawn = self.playerSpawns.find_child(spawnName)
 	

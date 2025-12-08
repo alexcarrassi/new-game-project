@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=4 uid="uid://byvof7wuayhd8"]
+
+[ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="1_ca2et"]
+[ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_esed1"]
+
+[node name="Level00" type="Node2D"]
+script = ExtResource("1_esed1")
+
+[node name="PlaceholderTiles" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAHAAMAAQAGAAIAAAAHAAQAAQAGAAIAAAAHAAUAAQAGAAIAAAAGAAMAAQAGAAIAAAAIAAMAAQAGAAIAAAALAAMAAQAGAAIAAAALAAQAAQAGAAIAAAALAAUAAQAGAAIAAAALAAYAAQAGAAIAAAAMAAUAAQAGAAIAAAAMAAMAAQAGAAIAAAALAAcAAQAGAAIAAAANAAcAAQAGAAIAAAAMAAcAAQAGAAIAAAANAAUAAQAGAAIAAAANAAMAAQAGAAIAAAAHAAcAAQAGAAIAAAAHAAYAAQAGAAIAAAAFAAMAAQAGAAIAAAAJAAMAAQAGAAIAAAAQAAMAAQAGAAIAAAARAAMAAQAGAAIAAAASAAMAAQAGAAIAAAAQAAcAAQAGAAIAAAARAAcAAQAGAAIAAAASAAcAAQAGAAIAAAAQAAQAAQAGAAIAAAAQAAUAAQAGAAIAAAASAAYAAQAGAAIAAAARAAUAAQAGAAIAAAASAAUAAQAGAAIAAAA=")
+tile_set = ExtResource("1_ca2et")
+
+[node name="Level_Timer" type="Timer" parent="."]
+
+[node name="Player_Spawns" type="Node" parent="."]
