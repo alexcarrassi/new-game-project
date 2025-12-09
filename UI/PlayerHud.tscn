@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://0m2bg6htt36p"]
+[gd_scene load_steps=3 format=3 uid="uid://0m2bg6htt36p"]
 
 [ext_resource type="Script" uid="uid://b3olf4n8g8urp" path="res://UI/player_hud.gd" id="1_ylgw7"]
+[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/misc/Fonts.png" id="2_d3wnd"]
 
 [node name="PlayerHUD" type="Control"]
 layout_mode = 3
@@ -22,12 +23,14 @@ theme_override_constants/margin_right = 32
 
 [node name="Score" type="Label" parent="Margin"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_d3wnd")
 theme_override_font_sizes/font_size = 12
 text = "1200"
 
 [node name="Time" type="Label" parent="Margin"]
 layout_mode = 2
 theme_override_constants/line_spacing = 3
+theme_override_fonts/font = ExtResource("2_d3wnd")
 theme_override_font_sizes/font_size = 10
 text = "0"
 horizontal_alignment = 2
@@ -46,6 +49,7 @@ theme_override_constants/margin_bottom = 14
 
 [node name="Lives" type="Label" parent="MarginContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_d3wnd")
 theme_override_font_sizes/font_size = 12
 text = "2"
 vertical_alignment = 2

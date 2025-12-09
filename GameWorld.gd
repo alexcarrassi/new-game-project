@@ -72,6 +72,23 @@ func levelTransition() -> void:
 	self.startLevel(nextLevel)
 
 	
+func startLevel(level: Level) -> void:
+	#spawn the plauyer
+	#connect the levelTimer to the hurryUp sequence
+	if( level.hurry ) :
+		level.hurry.connect( self.onLevelHurry)
+	
+	if( level.enemy_spawns) :
+		for actorSpawn in level.enemy_spawns.get_children():
+			var spawner = actorSpawn as ActorSpawn
+			spawner.deferSpawn()
+		
+		pass
+		
+	if(level.playerSpawns.get_children().size() == 0 ):
+		await get_tree().create_timer(2.0).timeout
+		self.levelTransition()	
+	
 
 func movePlayersToSpawn() -> Tween: 
 	var moveTween: Tween = create_tween() 
@@ -153,23 +170,6 @@ func createNexLevel(level_id: int) -> Level:
 	
 	return nextLevel
 
-func startLevel(level: Level) -> void:
-	#spawn the plauyer
-	#connect the levelTimer to the hurryUp sequence
-	if( level.hurry ) :
-		level.hurry.connect( self.onLevelHurry)
-	
-	if( level.enemy_spawns) :
-		for actorSpawn in level.enemy_spawns.get_children():
-			var spawner = actorSpawn as ActorSpawn
-			spawner.deferSpawn()
-		
-		pass
-		
-	if(level.playerSpawns.get_children().size() == 0 ):
-		await get_tree().create_timer(2.0).timeout
-		self.levelTransition()	
-	
 	
 func cleanHurryEnemies() -> void:
 	for hurryEnemy in get_tree().get_nodes_in_group("Invulnerable")	:
