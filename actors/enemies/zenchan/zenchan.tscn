@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="18_gbd71"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s72y3"]
-size = Vector2(16, 16)
+size = Vector2(14, 15)
 
 [sub_resource type="Animation" id="Animation_hlciv"]
 resource_name = "Bubbled"
@@ -148,6 +148,23 @@ _data = {
 &"RUN": SubResource("Animation_j704g")
 }
 
+[sub_resource type="Animation" id="Animation_lbobw"]
+resource_name = "BUBBLED"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(215, 5, 16, 16), Rect2(236, 5, 16, 16)]
+}
+
 [sub_resource type="Animation" id="Animation_00q3p"]
 length = 0.13333668
 loop_mode = 1
@@ -196,23 +213,6 @@ tracks/0/keys = {
 "values": [Rect2(47, 5, 16, 16), Rect2(68, 5, 16, 16)]
 }
 
-[sub_resource type="Animation" id="Animation_lbobw"]
-resource_name = "BUBBLED"
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Rect2(215, 5, 16, 16), Rect2(236, 5, 16, 16)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ytvao"]
 _data = {
 &"BUBBLED": SubResource("Animation_lbobw"),
@@ -235,6 +235,7 @@ LootTable = Array[ExtResource("2_4gf3y")]([ExtResource("3_2yiq7")])
 pickup = ExtResource("4_2yiq7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_s72y3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

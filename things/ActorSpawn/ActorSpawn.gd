@@ -8,6 +8,13 @@
 class_name ActorSpawn extends Marker2D
 
 
+@export var direction: Vector2 = Vector2.LEFT:
+	get:
+		return direction
+	set(value):
+		direction = value
+		if(Engine.is_editor_hint()):
+			call_deferred("_update_icon")	
 @export var spawn_defer_time: float = 0.1
 @export var spawn_node: Node
 
@@ -61,6 +68,9 @@ func deferSpawn() -> void:
 #spawns the actor at their designated spawn point
 func spawnActor() -> void:
 	var actor = Game.world.spawnEnemy(self.ActorScene, self.position, self.spawn_node )
+	if( actor.direction.x != self.direction.x):
+		actor.flip()
+	
 	if(self.destination.position == Vector2.ZERO):
 		actor.sm_status.state.finished.emit("ALIVE")	
 		return
@@ -104,5 +114,6 @@ func _update_icon():
 		if(actorSprite):
 			self.Icon.texture = actorSprite.texture
 			self.Icon.region_rect = actorSprite.region_rect
+			self.Icon.flip_h = self.direction.x > 0
 		Actor.queue_free()	
 				
