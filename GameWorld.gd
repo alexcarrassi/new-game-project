@@ -19,8 +19,7 @@ func _ready() -> void:
 	
 	self.swapLevels(startingLevel)
 	var player = self.createPlayer(0, self.playerScene)
-	self.spawnPlayerHUD( self.playerHUDScene, player )
-
+	self.UI.visible = false
 
 	self.startLevel(startingLevel)
 #
@@ -142,7 +141,7 @@ func suspendPlayers() -> void:
 func createPlayer(index: int, player:PackedScene ) -> Player:
 	var playerNode = Game.players.get(0, null)
 	if(playerNode == null):
-		playerNode = player.instantiate()
+		playerNode = player.instantiate() as Player
 		Game.register_player(index, playerNode)
 		self.add_child( playerNode )
 		
@@ -150,6 +149,10 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 		var transitionSlot = getTransitionSlot(playerNode.player_index)
 		playerNode.global_position = transitionSlot.global_position
 		
+		playerNode.actorHurt.connect( self.onActorHurt )
+		playerNode.actorDeath.connect( self.onActorDeath )
+		self.spawnPlayerHUD( self.playerHUDScene, playerNode )
+
 	return playerNode
 
 
@@ -204,6 +207,7 @@ func onEnemyDeath(enemy: Enemy) -> void:
 
 func onPlayerDeath(player: Player) -> void:
 	Game.deregister_player(0)	
+	
 
 func onActorDeath( actor: Actor) -> void:
 	if(actor is Player):
@@ -222,8 +226,6 @@ func getTransitionSlot( player_index: int) -> Marker2D:
 
 func onActorHurt( actor: Actor) -> void:
 	if (actor is Player) :
-		
-		
 		self.cleanHurryEnemies()
 		self.level.levelTimer.start()
 

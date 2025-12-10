@@ -17,6 +17,7 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 			
 			actor.health -= 1
 			if(actor.health < 0):
+				actor.health = 0
 				self.finished.emit("DEAD")
 			else :	
 				self.finished.emit("ALIVE")
