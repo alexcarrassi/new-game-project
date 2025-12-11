@@ -229,7 +229,7 @@ collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_aigf2")
 JUMP_VELOCITY = 300.0
-MAX_RUN_VELOCITY = 100.0
+MAX_RUN_VELOCITY = 50.0
 MAX_RISE_VELOCITY = 400.0
 LootTable = Array[ExtResource("2_4gf3y")]([ExtResource("3_2yiq7")])
 pickup = ExtResource("4_2yiq7")
@@ -253,7 +253,7 @@ region_rect = Rect2(5, 5, 16, 16)
 [node name="Sensors" type="Node2D" parent="."]
 
 [node name="Wall_front" type="RayCast2D" parent="Sensors"]
-target_position = Vector2(10, 0)
+target_position = Vector2(7, 0)
 
 [node name="Floor_above" type="RayCast2D" parent="Sensors"]
 position = Vector2(0, -7)
@@ -270,7 +270,7 @@ one_shot = true
 
 [node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_hlciv")
-initial_state = NodePath("IDLE")
+initial_state = NodePath("FALLING")
 
 [node name="BUBBLED" type="Node" parent="StateMachine_Locomotion"]
 script = ExtResource("10_kdg0o")

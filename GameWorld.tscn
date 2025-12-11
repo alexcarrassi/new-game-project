@@ -40,7 +40,11 @@ position = Vector2(128, -8)
 Destination = NodePath("../TeleporterBottom")
 
 [node name="TeleporterBottom" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
-position = Vector2(128, 240)
+position = Vector2(128, 224)
+Destination = NodePath("../TeleporterTop")
+
+[node name="TeleporterBottom2" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
+position = Vector2(128, 252)
 Destination = NodePath("../TeleporterTop")
 
 [node name="NextLevelMarker" type="Marker2D" parent="."]

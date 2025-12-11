@@ -13,8 +13,7 @@ func _ready() -> void:
 	
 	Game.register_gameWorld( self )
 	
-	var levelScene = Game.getLevelById( 0 )
-	var startingLevel = createNexLevel( 0 )
+	var startingLevel = createNexLevel(4  )
 	startingLevel.position = Vector2.ZERO
 	
 	self.swapLevels(startingLevel)
@@ -60,12 +59,7 @@ func levelTransition() -> void:
 	self.swapLevels(nextLevel)
 	Game.currentLevel = nextLevel_id
 
-	var movePlayersTween = self.movePlayersToSpawn()
-	if( movePlayersTween) :
-		await movePlayersTween.finished
-	
-		self.spawnPlayers()
-		self.UI.visible = true
+
 		
 	self.is_transitioning_Levels = false
 	self.startLevel(nextLevel)
@@ -76,18 +70,26 @@ func startLevel(level: Level) -> void:
 	#connect the levelTimer to the hurryUp sequence
 	if( level.hurry ) :
 		level.hurry.connect( self.onLevelHurry)
-	
-	if( level.enemy_spawns) :
-		for actorSpawn in level.enemy_spawns.get_children():
-			var spawner = actorSpawn as ActorSpawn
-			spawner.deferSpawn()
-		
-		pass
+
 		
 	if(level.playerSpawns.get_children().size() == 0 ):
 		await get_tree().create_timer(2.0).timeout
 		self.levelTransition()	
-	
+	else:
+		var movePlayersTween = self.movePlayersToSpawn()
+		if( movePlayersTween) :
+			await movePlayersTween.finished
+		
+			self.spawnPlayers()
+			self.UI.visible = true	
+
+		
+		if( level.enemy_spawns) :
+			for actorSpawn in level.enemy_spawns.get_children():
+				var spawner = actorSpawn as ActorSpawn
+				spawner.deferSpawn()
+			
+			pass
 
 func movePlayersToSpawn() -> Tween: 
 	var moveTween: Tween = create_tween() 

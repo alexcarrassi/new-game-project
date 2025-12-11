@@ -23,6 +23,78 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iafiv"]
 size = Vector2(14, 13.999999)
 
+[sub_resource type="Animation" id="Animation_lj3dd"]
+resource_name = "Suspended"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32), Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ctwkf"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2, 71, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_icg72"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(2, 89, 16, 16), Rect2(18, 89, 16, 16), Rect2(36, 89, 16, 16), Rect2(53, 89, 16, 16)]
+}
+
 [sub_resource type="Animation" id="Animation_8q3i6"]
 resource_name = "idle"
 length = 0.50000167
@@ -213,78 +285,6 @@ tracks/0/keys = {
 "values": [Rect2(2, 35, 16, 16), Rect2(20, 35, 16, 16), Rect2(38, 35, 16, 16), Rect2(55, 35, 16, 16)]
 }
 
-[sub_resource type="Animation" id="Animation_lj3dd"]
-resource_name = "Suspended"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32), Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_ctwkf"]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(2, 71, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_icg72"]
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(2, 89, 16, 16), Rect2(18, 89, 16, 16), Rect2(36, 89, 16, 16), Rect2(53, 89, 16, 16)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qlag8"]
 _data = {
 &"Suspended": SubResource("Animation_lj3dd"),
@@ -354,11 +354,13 @@ ground_decel = 4000.0
 air_accel = 1000.0
 air_decel = 1400.0
 coyote_max = 0.5
+jump_held_max = 0.15
 buffers = {
-&"attack": 1.0,
-&"jump": 1.0
+&"attack": 0.2,
+&"jump": 0.2
 }
-JUMP_VELOCITY = 350.0
+GRAVITY_MULTIPLIER_RISING = 0.7
+JUMP_VELOCITY = 220.0
 MAX_RUN_VELOCITY = 100.0
 health = 2
 

@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=4 uid="uid://c3ltgwpa0ju6r"]
+
+[ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_f3lte"]
+[ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="2_i7vav"]
+[ext_resource type="TileSet" uid="uid://whkmyke4amu4" path="res://assets/tiles/level_inner.tres" id="3_5wetp"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="4_p0x8g"]
+[ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="5_armlc"]
+
+[node name="Level_01" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_f3lte")
+
+[node name="Tiles_Outer" type="TileMapLayer" parent="."]
+position = Vector2(128, 111)
+tile_map_data = PackedByteArray("AADw//X/AQAAAAIAAADw//b/AQAAAAIAAADw//f/AQAAAAIAAADw//j/AQAAAAIAAADw//n/AQAAAAIAAADw//r/AQAAAAIAAADw//v/AQAAAAIAAADw//z/AQAAAAIAAADw//3/AQAAAAIAAADw//7/AQAAAAIAAADw////AQAAAAIAAADw/wAAAQAAAAIAAADw/wEAAQAAAAIAAADw/wIAAQAAAAIAAADw/wMAAQAAAAIAAADw/wQAAQAAAAIAAADw/wUAAQAAAAIAAADw/wYAAQAAAAIAAADw/wcAAQAAAAIAAADw/wgAAQAAAAIAAADw/wkAAQAAAAIAAADw/woAAQAAAAIAAADw/wsAAQAAAAIAAADw/wwAAQAAAAIAAADx//X/AQAAAAIAAADx//b/AQAAAAIAAADx//f/AQAAAAIAAADx//j/AQAAAAIAAADx//n/AQAAAAIAAADx//r/AQAAAAIAAADx//v/AQAAAAIAAADx//z/AQAAAAIAAADx//3/AQAAAAIAAADx//7/AQAAAAIAAADx////AQAAAAIAAADx/wAAAQAAAAIAAADx/wEAAQAAAAIAAADx/wIAAQAAAAIAAADx/wMAAQAAAAIAAADx/wQAAQAAAAIAAADx/wUAAQAAAAIAAADx/wYAAQAAAAIAAADx/wcAAQAAAAIAAADx/wgAAQAAAAIAAADx/wkAAQAAAAIAAADx/woAAQAAAAIAAADx/wsAAQAAAAIAAADx/wwAAQAAAAIAAADy/wwAAQAAAAIAAQDz/wwAAQAAAAIAAQAHAAwAAQAAAAIAAQAIAAwAAQAAAAIAAQAJAAwAAQAAAAIAAQAKAAwAAQAAAAIAAQALAAwAAQAAAAIAAQAMAAwAAQAAAAIAAQANAAwAAQAAAAIAAQAOAPX/AQAAAAIAAAAOAPb/AQAAAAIAAAAOAPf/AQAAAAIAAAAOAPj/AQAAAAIAAAAOAPn/AQAAAAIAAAAOAPr/AQAAAAIAAAAOAPv/AQAAAAIAAAAOAPz/AQAAAAIAAAAOAP3/AQAAAAIAAAAOAP7/AQAAAAIAAAAOAP//AQAAAAIAAAAOAAAAAQAAAAIAAAAOAAEAAQAAAAIAAAAOAAIAAQAAAAIAAAAOAAMAAQAAAAIAAAAOAAQAAQAAAAIAAAAOAAUAAQAAAAIAAAAOAAYAAQAAAAIAAAAOAAcAAQAAAAIAAAAOAAgAAQAAAAIAAAAOAAkAAQAAAAIAAAAOAAoAAQAAAAIAAAAOAAsAAQAAAAIAAAAOAAwAAQAAAAIAAAAPAPX/AQAAAAIAAAAPAPb/AQAAAAIAAAAPAPf/AQAAAAIAAAAPAPj/AQAAAAIAAAAPAPn/AQAAAAIAAAAPAPr/AQAAAAIAAAAPAPv/AQAAAAIAAAAPAPz/AQAAAAIAAAAPAP3/AQAAAAIAAAAPAP7/AQAAAAIAAAAPAP//AQAAAAIAAAAPAAAAAQAAAAIAAAAPAAEAAQAAAAIAAAAPAAIAAQAAAAIAAAAPAAMAAQAAAAIAAAAPAAQAAQAAAAIAAAAPAAUAAQAAAAIAAAAPAAYAAQAAAAIAAAAPAAcAAQAAAAIAAAAPAAgAAQAAAAIAAAAPAAkAAQAAAAIAAAAPAAoAAQAAAAIAAAAPAAsAAQAAAAIAAAAPAAwAAQAAAAIAAAD0/wwAAQAAAAIAAQD1/wwAAQAAAAIAAQD2/wwAAQAAAAIAAQACAAwAAQAAAAIAAQABAAwAAQAAAAIAAQAAAAwAAQAAAAIAAQD//wwAAQAAAAIAAQD9/wwAAQAAAAIAAQD+/wwAAQAAAAIAAQD3/wwAAQAAAAIAAQD4/wwAAQAAAAIAAQDw//T/AQAAAAIAAADx//T/AQAAAAIAAAAOAPT/AQAAAAIAAAAPAPT/AQAAAAIAAADy//T/AQAAAAIAAQDz//T/AQAAAAIAAQD0//T/AQAAAAIAAQD1//T/AQAAAAIAAQD2//T/AQAAAAIAAQD3//T/AQAAAAIAAQD4//T/AQAAAAIAAQD9//T/AQAAAAIAAQD+//T/AQAAAAIAAQD///T/AQABAAIAAAAAAPT/AQACAAIAAAABAPT/AQAAAAIAAQACAPT/AQAAAAIAAQAHAPT/AQAAAAIAAQAIAPT/AQAAAAIAAQAJAPT/AQAAAAIAAQAKAPT/AQAAAAIAAQALAPT/AQAAAAIAAQAMAPT/AQAAAAIAAQANAPT/AQAAAAIAAQA=")
+tile_set = ExtResource("2_i7vav")
+
+[node name="Tiles_Inner" type="TileMapLayer" parent="."]
+position = Vector2(128, 111)
+tile_map_data = PackedByteArray("AAD5/wcAAQAAAAIAAQAMAAcAAQAAAAIAAQANAAcAAQAAAAIAAQALAAcAAQAAAAIAAQAKAAcAAQAAAAIAAQAGAAcAAQAAAAIAAQD2/wcAAQAAAAIAAQAJAAcAAQAAAAIAAQD6/wcAAQAAAAIAAQAFAAcAAQAAAAIAAQD+/wIAAQAAAAIAAQD9/wIAAQAAAAIAAQD8/wIAAQAAAAIAAQD7/wIAAQAAAAIAAQD6/wIAAQAAAAIAAQD5/wIAAQAAAAIAAQD4/wIAAQAAAAIAAQD3/wIAAQAAAAIAAQD2/wIAAQAAAAIAAQD1/wIAAQAAAAIAAAD1/wEAAQAAAAIAAAD1/wAAAQAAAAIAAAD1////AQAAAAIAAAD1//7/AQAAAAIAAAD1//3/AQAAAAIAAAD1//z/AQAAAAIAAAD1//v/AQAAAAIAAAD1//r/AQAAAAIAAAD1//n/AQAAAAIAAAD2//n/AQAAAAIAAQD3//n/AQAAAAIAAQD4//n/AQAAAAIAAQD5//n/AQAAAAIAAQD6//n/AQAAAAIAAQD7//n/AQAAAAIAAQD8//n/AQAAAAIAAQABAAIAAQAAAAIAAQACAAIAAQAAAAIAAQADAAIAAQAAAAIAAQAEAAIAAQAAAAIAAQAFAAIAAQAAAAIAAQAGAAIAAQAAAAIAAQAHAAIAAQAAAAIAAQAIAAIAAQAAAAIAAQAJAAIAAQAAAAIAAQD2//7/AQAAAAIAAQD3//7/AQAAAAIAAQD4//7/AQAAAAIAAQD5//7/AQAAAAIAAQD6//7/AQAAAAIAAQD7//7/AQAAAAIAAQD8//7/AQAAAAIAAQAKAP3/AQAAAAIAAAAKAPz/AQAAAAIAAAAKAPv/AQAAAAIAAAAKAPr/AQAAAAIAAAAKAPn/AQAAAAIAAAAKAP7/AQAAAAIAAAAKAP//AQAAAAIAAAAKAAAAAQAAAAIAAAAKAAEAAQAAAAIAAAAKAAIAAQAAAAIAAAAJAP7/AQAAAAIAAQAIAP7/AQAAAAIAAQAHAP7/AQAAAAIAAQAGAP7/AQAAAAIAAQAFAP7/AQAAAAIAAQAEAP7/AQAAAAIAAQADAP7/AQAAAAIAAQD9//7/AQAAAAIAAQACAP7/AQAAAAIAAQADAPn/AQAAAAIAAQAEAPn/AQAAAAIAAQAFAPn/AQAAAAIAAQAGAPn/AQAAAAIAAQAHAPn/AQAAAAIAAQAIAPn/AQAAAAIAAQAJAPn/AQAAAAIAAQD7/wcAAQAAAAIAAQAEAAcAAQAAAAIAAQDy/wcAAQAAAAIAAQDz/wcAAQAAAAIAAQD0/wcAAQAAAAIAAQD1/wcAAQAAAAIAAQA=")
+tile_set = ExtResource("3_5wetp")
+
+[node name="Bubble_Destination" type="Marker2D" parent="."]
+position = Vector2(128, 56)
+gizmo_extents = 40.0
+
+[node name="Level_Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Hurry_Enemy_spawn" parent="." instance=ExtResource("4_p0x8g")]
+position = Vector2(29, 42)
+direction = Vector2(1, 0)
+spawn_defer_time = 2.0
+ActorScene = ExtResource("5_armlc")
+
+[node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
+position = Vector2(0, 0)
+
+[node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
+flip_h = true
+region_rect = Rect2(5, 257, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
+wait_time = 2.0
+
+[node name="Enemy_Spawns" type="Node" parent="."]
+
+[node name="ActorSpawn" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("4_p0x8g")]
+position = Vector2(171, -13)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
+position = Vector2(0, 112)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn3" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("4_p0x8g")]
+position = Vector2(197, -13)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
+position = Vector2(0, 103)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn3" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn4" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("4_p0x8g")]
+position = Vector2(59, -10)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
+position = Vector2(1, 101)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn2" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("4_p0x8g")]
+position = Vector2(85, -11)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
+position = Vector2(0, 62)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
+wait_time = 0.5
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Player_Spawns" type="Node" parent="."]
+
+[node name="p1_Start" type="Node2D" parent="Player_Spawns"]
+position = Vector2(40, 192)
+
+[editable path="Hurry_Enemy_spawn"]
+[editable path="Enemy_Spawns/ActorSpawn"]
+[editable path="Enemy_Spawns/ActorSpawn3"]
+[editable path="Enemy_Spawns/ActorSpawn4"]
+[editable path="Enemy_Spawns/ActorSpawn2"]

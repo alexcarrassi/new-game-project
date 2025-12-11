@@ -1,5 +1,8 @@
 class_name State_Locootion_Jumping extends State
 
+var jump_held: float = 0.0
+var can_hold_jump: bool = true
+
 func _ready() -> void:
 		self.main_animation = "jump_rise"
 
@@ -22,8 +25,9 @@ func enter(previous_state_path: String, data: Dictionary) -> void:
 	
 func physics_update(delta: float) -> void:
 	
-	var body = self.body
+	var body = self.body as Player
 	var inputState = body.inputState
+	
 	
 	var targetSpeed = body.MAX_RUN_VELOCITY * inputState.haxis
 	var moveRate = body.air_accel if (abs(inputState.haxis) > 0.0) else body.air_decel
@@ -32,8 +36,18 @@ func physics_update(delta: float) -> void:
 		moveRate *= 3
 		
 	body.velocity.x = move_toward( body.velocity.x, targetSpeed, moveRate)	
+	
+	
+	var applied_gravity = 0.25
+		
+	if( self.can_hold_jump and inputState.jump_held and self.jump_held < body.jump_held_max):
+			self.jump_held += delta
+	else:
+		applied_gravity = body.GRAVITY_MULTIPLIER_RISING if body.velocity.y < 0 else body.GRAVITY_MULTIPLIER_FALLING
+		
+	
 
-	body.velocity.y += body.get_gravity().y * body.GRAVITY_MULTIPLIER_RISING * delta
+	body.velocity.y += body.get_gravity().y * applied_gravity * delta
 	body.velocity.y = clamp(body.velocity.y, -body.MAX_RISE_VELOCITY, body.MAX_FALL_VELOCITY)
 	
 	body.move_and_slide()
@@ -43,6 +57,14 @@ func physics_update(delta: float) -> void:
 	if( self.body.velocity.x != 0):
 		self.body.sprite2D.flip_h = body.velocity.x < 0.0
 	
+	if(!inputState.jump_held) :
+		self.can_hold_jump = false
+	
 	if(body.velocity.y > 0.0):
 		self.finished.emit("FALLING")
 	pass	
+
+
+func exit( )	-> void:
+	self.can_hold_jump = true
+	self.jump_held = 0.0

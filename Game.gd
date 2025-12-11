@@ -42,6 +42,9 @@ func _input(event: InputEvent) -> void:
 		var tree = get_tree()
 		tree.paused = !tree.paused
 		pass
+	elif(event.is_action_pressed("debug_LevelStart")):
+		self.world.startLevel( self.world.level )
+		pass
 	
 func register_gameWorld(node:GameWorld) -> GameWorld:
 	self.world = node 
