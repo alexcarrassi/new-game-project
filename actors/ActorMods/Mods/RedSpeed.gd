@@ -11,3 +11,6 @@ func deactivate(actor: Actor) -> void:
 	actor.DECISION_PERIOD += 0.2
 
 	pass
+	
+func tick_process(delta: float, actor: Actor) -> void:	
+	print("RED")	

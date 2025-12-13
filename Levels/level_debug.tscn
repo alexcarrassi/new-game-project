@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://whkmyke4amu4" path="res://assets/tiles/level_inner.tres" id="3_yisg0"]
 [ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="4_etdhh"]
 [ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="5_di6no"]
-[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="6_32fqg"]
+[ext_resource type="PackedScene" uid="uid://b8ct23ua2ywrd" path="res://actors/enemies/Maita/Maita.tscn" id="6_yisg0"]
 
 [node name="Level_01" type="Node2D"]
 process_mode = 1
@@ -26,7 +26,7 @@ position = Vector2(128, 56)
 gizmo_extents = 40.0
 
 [node name="Level_Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 
@@ -39,7 +39,9 @@ ActorScene = ExtResource("5_di6no")
 position = Vector2(0, 0)
 
 [node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
+modulate = Color(1, 1, 1, 0.7)
 region_rect = Rect2(5, 257, 16, 16)
+metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
 wait_time = 2.0
@@ -54,18 +56,27 @@ spawn_node = NodePath("../../Enemies")
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 64)
 
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+metadata/_edit_lock_ = true
+
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
 wait_time = 0.5
 
-[node name="ActorSpawn2" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("4_etdhh")]
-position = Vector2(128, -29)
-spawn_defer_time = 400.0
+[node name="ActorSpawn3" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("4_etdhh")]
+position = Vector2(88, 48)
 spawn_node = NodePath("../../Enemies")
+ActorScene = ExtResource("6_yisg0")
 
-[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
-position = Vector2(0, 69)
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
+position = Vector2(0, 56)
 
-[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+region_rect = Rect2(5, 26, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn3" index="2"]
 wait_time = 400.0
 
 [node name="Enemies" type="Node" parent="."]
@@ -75,10 +86,6 @@ wait_time = 400.0
 [node name="p1_Start" type="Node2D" parent="Player_Spawns"]
 position = Vector2(32, 192)
 
-[node name="Player" parent="." instance=ExtResource("6_32fqg")]
-position = Vector2(80, 200)
-JUMP_VELOCITY = 220.0
-
 [editable path="Hurry_Enemy_spawn"]
 [editable path="Enemy_Spawns/ActorSpawn"]
-[editable path="Enemy_Spawns/ActorSpawn2"]
+[editable path="Enemy_Spawns/ActorSpawn3"]

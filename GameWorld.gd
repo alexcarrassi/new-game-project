@@ -7,13 +7,25 @@ var level: Level
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
 @onready var TransitionSlots: Node = $TransitionSlots
 
+
+@export var level_debug: PackedScene
+@export var start_debug: bool
+
 var is_transitioning_Levels : bool = false
 
 func _ready() -> void:
 	
 	Game.register_gameWorld( self )
 	
-	var startingLevel = createNexLevel(4  )
+	var startingLevel
+	
+	if( self.start_debug) :
+		startingLevel = self.level_debug.instantiate() as Level
+		self.add_child(startingLevel)
+
+	else:
+		startingLevel = createNexLevel( 4 )
+		
 	startingLevel.position = Vector2.ZERO
 	
 	self.swapLevels(startingLevel)
@@ -21,19 +33,9 @@ func _ready() -> void:
 	self.UI.visible = false
 
 	self.startLevel(startingLevel)
-#
-	#if( startingLevel.playerSpawns.get_children().size() == 0):
-		#await get_tree().create_timer(2).timeout
-		#self.levelTransition()
-#
-	#else :
-			#
-		#self.startLevel( startingLevel)
-	#
-
-
-
+	
 func levelTransition() -> void:
+	print("TRANSITION")
 	self.is_transitioning_Levels = true
 	self.level.levelTimer.paused = true
 	
@@ -76,12 +78,18 @@ func startLevel(level: Level) -> void:
 		await get_tree().create_timer(2.0).timeout
 		self.levelTransition()	
 	else:
-		var movePlayersTween = self.movePlayersToSpawn()
-		if( movePlayersTween) :
-			await movePlayersTween.finished
 		
-			self.spawnPlayers()
-			self.UI.visible = true	
+		if(self.start_debug) :
+			#quickstart
+			pass
+		else:
+			#cinematic movement
+			var movePlayersTween = self.movePlayersToSpawn()
+			if( movePlayersTween) :
+				await movePlayersTween.finished
+			
+		self.spawnPlayers()
+		self.UI.visible = true	
 
 		
 		if( level.enemy_spawns) :
