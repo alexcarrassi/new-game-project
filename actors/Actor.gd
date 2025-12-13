@@ -4,6 +4,7 @@ class_name Actor extends CharacterBody2D
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var animationPlayer: AnimationController = $AnimationPlayer
 @onready var sm_locomotion: StateMachine_Locomotion = $StateMachine_Locomotion
+@onready var actState: StateMachine_Act = $StateMachine_Act
 @onready var sm_status: StateMachine_Status = $StateMachine_Status
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
 
@@ -44,6 +45,8 @@ func _ready() -> void:
 
 	self.sm_locomotion.state_transitioned.connect( self.animationPlayer.onStateTransition)	
 	self.sm_status.state_transitioned.connect(  self.animationPlayer.onStateTransition)
+	self.actState.state_transitioned.connect( self.animationPlayer.onStateTransition)
+
 	
 	self.modController = ModController.new()
 	self.modController.actor = self

@@ -42,7 +42,7 @@ func tick( delta: float) -> void:
 		mod.tick_physics(delta, self.actor)
 		modEntry.timeLeft -= delta
 		
-		if(modEntry.timeLeft <= 0) :
+		if(modEntry.timeLeft <= 0 && mod.timeActive > 0) :
 			self.removeMod(mod)
 		
 		

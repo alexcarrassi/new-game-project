@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=36 format=3 uid="uid://b2kwfbabyr0bm"]
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="1_s72y3"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="13_l6spp"]
 [ext_resource type="Script" uid="uid://dpmx0ixy2cn61" path="res://actors/scripts/spawning.gd" id="14_t4a2j"]
 [ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="18_gbd71"]
+[ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="19_rfo4i"]
+[ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="20_s4w05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s72y3"]
 size = Vector2(14, 15)
@@ -316,3 +318,11 @@ collision_mask = 32
 position = Vector2(0.25, -7)
 shape = SubResource("RectangleShape2D_gbd71")
 debug_color = Color(0.29961187, 0.5557529, 0, 0.41960785)
+
+[node name="StateMachine_Act" type="Node" parent="."]
+script = ExtResource("19_rfo4i")
+metadata/_custom_type_script = "uid://pbqf3u3hfeho"
+
+[node name="State_act_None" type="Node" parent="StateMachine_Act"]
+script = ExtResource("20_s4w05")
+metadata/_custom_type_script = "uid://bkjgyynhglj64"

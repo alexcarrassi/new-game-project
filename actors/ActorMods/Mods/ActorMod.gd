@@ -1,7 +1,7 @@
 class_name ActorMod extends Resource
 
 var stackable: bool = false
-var timeActive: float = 2
+var timeActive: float = -1 #-1 indicates an indefinite mod
 var isPassive: bool = true
 var mod_id: String
 

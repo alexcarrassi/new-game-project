@@ -15,7 +15,6 @@ var jump_held_time: float = 0.0
 @export var buffers : Dictionary = {"jump" = 0.05, "attack" = 0.1 }
 var buffer_times : Dictionary = {"jump" = 0.0, "attack" = 0.0}
 
-@onready var actState: StateMachine_Act = $StateMachine_Act
 
 var inputState: InputState
 
@@ -25,7 +24,6 @@ signal scoreUpdated()
 
 func _ready() -> void:
 	super._ready()
-	self.actState.state_transitioned.connect( self.animationPlayer.onStateTransition)
 	self.hurtbox.monitoring = true
 	self.hurtbox.body_entered.connect( self.onHurtboxEntered)
 	
@@ -78,6 +76,15 @@ func _physics_process(delta: float) -> void:
 func post_move_and_slide() -> void:
 	pass
 		
+func _input(event: InputEvent) -> void:
+	var inputState = self.inputState
+		
+	if (self.buffer_times['attack'] > 0.0):
+		var transition_data = { 
+			"domain" : "act",
+		}
+		self.actState.state.finished.emit("ATTACK", transition_data)
+	
 	
 
 

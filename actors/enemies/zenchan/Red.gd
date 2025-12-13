@@ -9,9 +9,7 @@ func enter(prev_state_path: String, data: Dictionary) :
 	actor.modController.addMod( self.mod_RedSpeed )
 	actor.animationPlayer.set_current_library( "RED" )
 	
-	
-	pass
-	
+		
 	
 func exit() -> void:
 	var actor = self.body
