@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b8ct23ua2ywrd"]
+[gd_scene load_steps=38 format=3 uid="uid://b8ct23ua2ywrd"]
 
 [ext_resource type="Script" uid="uid://cfvj2o7r4nik3" path="res://actors/enemies/Maita/maita.gd" id="1_vbxqv"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_fehrb"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="15_bxqq8"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="20_3tqio"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="21_phw54"]
+[ext_resource type="Script" uid="uid://cm5etv0bee8qg" path="res://actors/enemies/Maita/throw_fireball.gd" id="22_phw54"]
 
 [sub_resource type="Animation" id="Animation_3tqio"]
 length = 0.66667
@@ -320,3 +321,6 @@ metadata/_custom_type_script = "uid://pbqf3u3hfeho"
 [node name="State_act_None" type="Node" parent="StateMachine_Act"]
 script = ExtResource("21_phw54")
 metadata/_custom_type_script = "uid://bkjgyynhglj64"
+
+[node name="Throw_Fireball" type="Node" parent="StateMachine_Act"]
+script = ExtResource("22_phw54")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://duj08wr35boy5"]
+[gd_scene load_steps=9 format=3 uid="uid://duj08wr35boy5"]
 
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="1_30a62"]
-[ext_resource type="Script" uid="uid://bmojir8x7hjvj" path="res://actors/enemies/Maita/maita_fireball.gd" id="1_svyfb"]
+[ext_resource type="Script" uid="uid://bmojir8x7hjvj" path="res://actors/enemies/Maita/fireball.gd" id="1_svyfb"]
 
 [sub_resource type="Animation" id="Animation_30a62"]
 resource_name = "Moving"
@@ -59,8 +59,12 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_it7rh"]
+radius = 6.0827627
 
-[node name="Fireball" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_svyfb"]
+radius = 8.0
+
+[node name="Fireball" type="RigidBody2D"]
 script = ExtResource("1_svyfb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -72,8 +76,13 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_it7rh")
+debug_color = Color(0.94856864, 0.12409986, 0.48320335, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_30a62")
 region_enabled = true
 region_rect = Rect2(5, 47, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_svyfb")

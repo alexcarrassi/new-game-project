@@ -1,6 +1,7 @@
-class_name Maita_Fireball extends Node2D
+class_name Fireball extends Node2D
 
-
+var dir: Vector2 = Vector2.RIGHT
+var speed = 100.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
