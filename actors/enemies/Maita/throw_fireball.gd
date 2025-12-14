@@ -13,13 +13,14 @@ func enter(prev_state_path: String, transition_data: Dictionary) -> void:
 	actor.act_locked = true
 	
 	
-	await get_tree().create_timer(1).timout
-	var fireball = self.FireballScene.instantiate() as Fireball
+	await get_tree().create_timer(1).timeout
+	var fireball = actor.fireBallScene.instantiate() as Fireball
 	fireball.dir = actor.direction
 	fireball.speed = actor.MAX_RUN_VELOCITY * 1.1
+	fireball.position = actor.position
 	Game.world.level.add_child( fireball )
 	
-	self.emit.finished("NONE")
+	self.finished.emit(&"State_act_None")
 	pass
 	
 func exit() -> void:

@@ -233,6 +233,7 @@ pickup = ExtResource("4_b084e")
 JUMP_VELOCITY = 300.0
 MAX_RUN_VELOCITY = 75.0
 MAX_RISE_VELOCITY = 400.0
+health = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -264,8 +265,9 @@ texture = ExtResource("3_vxg4i")
 region_enabled = true
 region_rect = Rect2(5, 26, 16, 16)
 
-[node name="StateMachine_Locomotion" type="Node" parent="."]
+[node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_h6i8j")
+initial_state = NodePath("IDLE")
 metadata/_custom_type_script = "uid://bjbytyi2fepmq"
 
 [node name="IDLE" type="Node" parent="StateMachine_Locomotion"]

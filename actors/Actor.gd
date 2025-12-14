@@ -30,6 +30,7 @@ var direction: Vector2 = Vector2.LEFT
 
 var act_locked = false
 var loco_locked = false 
+var intent: ActorIntent
 
 
 signal actorDeath(actor: Actor) 
@@ -41,6 +42,9 @@ func _ready() -> void:
 	self.floor_max_angle = deg_to_rad(45)
 	self.floor_snap_length = 6.0
 
+	self.intent = ActorIntent.new()
+
+
 	self.sm_locomotion.state_transitioned.connect( self.animationPlayer.onStateTransition)	
 	self.sm_status.state_transitioned.connect(  self.animationPlayer.onStateTransition)
 	self.actState.state_transitioned.connect( self.animationPlayer.onStateTransition)
@@ -48,6 +52,7 @@ func _ready() -> void:
 	
 	self.modController = ModController.new()
 	self.modController.actor = self
+	
 		
 func _physics_process(delta: float) -> void:
 	self.modController.tick(delta)
@@ -55,8 +60,8 @@ func _physics_process(delta: float) -> void:
 
 # Assesses the current situation, and writes Intents. 
 # An automated (AI, basically) implementation of the Intent part of ITSIMSCET
-func think() -> void:
-	pass
+func think() -> bool:
+	return false
 	
 
 func post_move_and_slide() -> void:

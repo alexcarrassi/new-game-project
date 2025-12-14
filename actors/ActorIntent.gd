@@ -1,4 +1,4 @@
-class_name EnemyIntent extends RefCounted
+class_name ActorIntent extends RefCounted
 
 
 # Enemy intents are used for AI.

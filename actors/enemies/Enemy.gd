@@ -7,21 +7,20 @@ var rng = RandomNumberGenerator.new()
 @export var LootTable : Array[PickupData] = []
 @export var pickup : PackedScene
 	
-var intent: EnemyIntent
 
 func _ready() -> void:
 	super._ready()
-	
-	self.intent = EnemyIntent.new()
+	self.rng.randomize()
+
 		#self.animationPlayer.sm_locomotion = self.sm_locomotion
 	if(self.sensors) :
 		
 		$Sensors.scale.x = self.direction.x
 	
-	self.rng.randomize()
 	if(self.decision_timer) :
 		self.decision_timer.wait_time = self.DECISION_PERIOD
 		self.decision_timer.one_shot = true
+		self.decision_timer.start()
 	pass
 	
 	
@@ -71,19 +70,27 @@ func floor_front() -> bool:
 	var sensor_floor_front = $Sensors/Floor_front as RayCast2D 
 	return sensor_floor_front.is_colliding()
 	
-# Assess current situation, state your intents
-func think()-> void:
-	if(self.decision_timer.time_left <= 0):
-		self.decision_timer.wait_time = self.DECISION_PERIOD
-		self.decision_timer.start()
+# Assess current situation, state your intents\
+func think()-> bool:
+	
+	if(self.decision_timer.time_left > 0):
+		# Not time yet. Short circuit
+		return false
+
+	self.decision_timer.wait_time = self.DECISION_PERIOD
+	self.decision_timer.start()
+		
+	var random_number = rng.randf()
+
 	var position_compared_to_player = self.player_above()
 
-
-	if( position_compared_to_player == 1 and self.floor_above()) :
-		self.intent.locomotion = &"JUMP_UP"
-		#self.finished.emit("JUMP_UP")
+	if(random_number < 0.5):
 		
+		if( position_compared_to_player == 1 and self.floor_above()) :
+			self.intent.locomotion = &"JUMP_UP"
+			
 	
+	return true	
 	
 func flip() -> void:
 	var sensor_wall_front = $Sensors/Wall_front as RayCast2D

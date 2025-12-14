@@ -1,4 +1,4 @@
-class_name zenchan_Running extends State
+class_name Running extends State
 
 
 
