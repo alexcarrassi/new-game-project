@@ -228,12 +228,11 @@ collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_vbxqv")
 fireBallScene = ExtResource("2_qnvar")
-DECISION_PERIOD = 0.83
+LootTable = Array[ExtResource("2_kmxbr")]([ExtResource("3_b084e")])
+pickup = ExtResource("4_b084e")
 JUMP_VELOCITY = 300.0
 MAX_RUN_VELOCITY = 75.0
 MAX_RISE_VELOCITY = 400.0
-LootTable = Array[ExtResource("2_kmxbr")]([ExtResource("3_b084e")])
-pickup = ExtResource("4_b084e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

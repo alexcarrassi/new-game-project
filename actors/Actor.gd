@@ -8,7 +8,6 @@ class_name Actor extends CharacterBody2D
 @onready var sm_status: StateMachine_Status = $StateMachine_Status
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
 
-@export var DECISION_PERIOD = 0.33
 
 var modController: ModController 
 
@@ -23,9 +22,7 @@ var modController: ModController
 @export var Bubble_Destination: Node2D
 @export var FLOAT_SPEED: float = 30.0
 
-@export var LootTable : Array[PickupData] = []
-@export var pickup : PackedScene
-		
+
 @export var health: int = 3
 
 
@@ -33,6 +30,7 @@ var direction: Vector2 = Vector2.LEFT
 
 var act_locked = false
 var loco_locked = false 
+
 
 signal actorDeath(actor: Actor) 
 signal actorHurt(actor: Actor)
@@ -54,23 +52,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	self.modController.tick(delta)
 
-func instantiateLoot() -> Pickup:
-	
-	# We'd normally do a weighted lookup, but right now, just get the first available one
-	if(self.LootTable.size() > 0):
 
-		var newPickup : Pickup = pickup.instantiate()
-		var pickupData = self.LootTable[0]
-
-		get_tree().root.add_child( newPickup )
-		newPickup.setData( pickupData )
-		newPickup.applyPickupData()
-		newPickup.position = self.position
-		
-		return newPickup
-		
-	return null	
+# Assesses the current situation, and writes Intents. 
+# An automated (AI, basically) implementation of the Intent part of ITSIMSCET
+func think() -> void:
+	pass
 	
+
 func post_move_and_slide() -> void:
 	pass	
 	
