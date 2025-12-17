@@ -1,6 +1,8 @@
 class_name Invulnerability extends ActorMod
 
-
+func _init() -> void:
+	self.timeActive = 2
+	self.mod_id = &"Invuln"
 
 func activate(actor: Actor) -> void:
 	print("Start invul")

@@ -3,7 +3,7 @@ class_name ModController extends Resource
 var actor: Actor
 var mods_ : Array[ActorMod] = []
 	
-var mods : Dictionary[String, ModEntry]
+var mods : Dictionary[StringName, ModEntry]
 	
 	
 func addMod( mod: ActorMod) -> void:

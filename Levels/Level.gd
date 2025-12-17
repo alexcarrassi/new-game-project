@@ -7,6 +7,7 @@ class_name Level extends Node2D
 @onready var hurrySpawn: ActorSpawn = $Hurry_Enemy_spawn
 @onready var enemy_spawns: Node = $Enemy_Spawns
 @onready var enemies: Node = $Enemies
+@onready var Tiles_Inner: TileMapLayer = $Tiles_Inner
 
 
 signal hurry()

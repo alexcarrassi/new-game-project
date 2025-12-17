@@ -24,12 +24,6 @@ func physics_update(delta: float) -> void:
 		self.body.flip()
 		return
 		
-		
-	actor.think()	
-	if(actor.intent.locomotion != &"") :
-		self.finished.emit(actor.intent.locomotion)
-		actor.intent.clear_locomotion()
-		return 
 	
 	var position_compared_to_player = self.body.player_above()
 
@@ -38,7 +32,14 @@ func physics_update(delta: float) -> void:
 	elif(!self.body.is_on_floor()) :
 		self.finished.emit("FALLING")	
 		
-
+	match(actor.intent.locomotion):
+		&"JUMP_UP":
+			self.finished.emit("JUMP_UP")
+			actor.intent.clear_locomotion()	
 	
+		&"IDLE":
+			self.finished.emit("IDLE")
+			actor.intent.clear_locomotion()	
+
 func exit() -> void:
 	self.body.decision_timer.stop()	

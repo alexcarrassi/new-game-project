@@ -27,15 +27,17 @@ func _ready() -> void:
 	self.hurtbox.monitoring = true
 	self.hurtbox.body_entered.connect( self.onHurtboxEntered)
 	
-	
 func onHurtboxEntered( body: Node2D ) :
 	if( body is Enemy):
 		if(body.sm_status.state.name == "ALIVE" || body.sm_status.state.name == "RED"):
 			
 			body.onPlayerCollide( self )
-		
-	pass	
 	
+	#if( body is Fireball) :
+		#body.onPlayerCollide(self)
+		#
+	pass	
+
 func exposeInputSnapshot() -> String:
 	var inputSnapshot = self.inputState.toString()
 	

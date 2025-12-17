@@ -1,24 +1,45 @@
 class_name zenchan_JumpUp extends State
 
+var target_y: float = 0.0
+
 func enter(prev_state_path: String, data: Dictionary = {} ) -> void:
-	self.body.velocity.y = -self.body.JUMP_VELOCITY
-	self.body.velocity.x = 0
+	var actor = self.body as Enemy
+	actor.velocity.x = 0
+	actor.velocity.y = 0
+	
+	await get_tree().create_timer(0.2).timeout
+	actor.flip()
+	await get_tree().create_timer(0.2).timeout
+	actor.flip()
+	await get_tree().create_timer(0.2).timeout
+
+	
+	self.target_y = actor.get_floor_above_y()
+	
+	var tween = create_tween()
+	tween.tween_property(actor, "position", Vector2(actor.position.x, self.target_y), 0.7)
+	
+	tween.finished.connect( func() -> void: self.finished.emit("FALLING"))
+	#tween.finished.connect( self.exit)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.main_animation = "JUMP_UP"
+	self.main_animation = "RUN"
 	pass # Replace with function body.
 
 
 func physics_update(delta: float) -> void:
+	var actor = self.body
+	actor.move_and_slide()
+
+	pass
+	#
+	#await get_tree().create_timer(1).timeout
+	#actor.velocity.y = -50
+	#self.finished.emit("FALLING")
+
 	
-	self.body.velocity.y -= self.body.get_gravity().y * delta 
-	self.body.velocity.y = clamp( self.body.velocity.y, -self.body.MAX_RISE_VELOCITY, self.body.MAX_FALL_VELOCITY)
 	
-	self.body.move_and_slide()
-	
-	if(self.body.velocity.y <= 0) :
-		self.finished.emit("FALLING")
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

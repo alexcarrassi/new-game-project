@@ -101,6 +101,7 @@ debug_LevelStart={
 2d_physics/layer_7="ACTOR_BUBBLED"
 2d_physics/layer_8="TILES_INNER"
 2d_physics/layer_9="ACTOR_HURTBOX"
+2d_physics/layer_10="ENEMY_PROJECTILE"
 
 [rendering]
 

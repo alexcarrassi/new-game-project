@@ -20,7 +20,7 @@ func _ready() -> void:
 	if(self.decision_timer) :
 		self.decision_timer.wait_time = self.DECISION_PERIOD
 		self.decision_timer.one_shot = true
-		self.decision_timer.start()
+		self.decision_timer.timeout.connect(self.think)
 	pass
 	
 	
@@ -40,13 +40,18 @@ func instantiateLoot() -> Pickup:
 		return newPickup
 		
 	return null	
-		
+
+func get_targetPlayer() -> Player: 
+	if( Game.players.is_empty()) :
+		return null
+	
+	return Game.players[0]			
 	
 func player_above() -> int:
 	if(Game.players.is_empty()) :
 		return 0
 	
-	var player = Game.players[0] as Player
+	var player = self.get_targetPlayer()
 	var margin = 12.0
 	
 	if( player.position.y < self.position.y - margin) :
@@ -58,6 +63,14 @@ func player_above() -> int:
  
 	pass
 	
+func isFacing(node: Node) -> bool:
+	var distance = self.position.distance_to( node.position )
+
+	var pos = node.position - self.position
+		#if my position is greater then yours: i am on the right. else: left.
+	
+	return sign(self.direction.x) == sign(pos.x)
+
 func wall_ahead() -> bool:
 	var sensor_wall_front = $Sensors/Wall_front as RayCast2D
 	return sensor_wall_front.is_colliding()
@@ -66,32 +79,35 @@ func floor_above() -> bool:
 	var sensor_floor_above = $Sensors/Floor_above as RayCast2D
 	return sensor_floor_above.is_colliding()
 
+#Sensor gets the bottom of the tile above. Actor's local origin is in the middle of their collision shape.
+#So to get the floor's y, we need the collision position, + tile size + half the actor's height.
+func get_floor_above_y() -> float:
+	var sensor_floor_above = $Sensors/Floor_above as RayCast2D
+	var collision_point = sensor_floor_above.get_collision_point().y
+	var shape_offset = self.collisionShape.shape.get_rect().size.y /2 
+
+	var current_tilesize = Game.world.level.Tiles_Inner.tile_set.tile_size
+	
+	return sensor_floor_above.get_collision_point().y - shape_offset - current_tilesize.y
+
 func floor_front() -> bool:
 	var sensor_floor_front = $Sensors/Floor_front as RayCast2D 
 	return sensor_floor_front.is_colliding()
 	
 # Assess current situation, state your intents\
-func think()-> bool:
+func think()-> void:
 	
-	if(self.decision_timer.time_left > 0):
-		# Not time yet. Short circuit
-		return false
-
 	self.decision_timer.wait_time = self.DECISION_PERIOD
-	self.decision_timer.start()
 		
 	var random_number = rng.randf()
-
+	print(random_number)
 	var position_compared_to_player = self.player_above()
-
-	if(random_number < 0.5):
-		
+	if(random_number < 0.7):
 		if( position_compared_to_player == 1 and self.floor_above()) :
 			self.intent.locomotion = &"JUMP_UP"
-			
 	
-	return true	
-	
+	self.decision_timer.start()
+
 func flip() -> void:
 	var sensor_wall_front = $Sensors/Wall_front as RayCast2D
 	var sensor_floor_front = $Sensors/Floor_front as RayCast2D 

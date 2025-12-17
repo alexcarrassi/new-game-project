@@ -32,6 +32,8 @@ var act_locked = false
 var loco_locked = false 
 var intent: ActorIntent
 
+var nodes_owned: Dictionary[StringName, Node]
+
 
 signal actorDeath(actor: Actor) 
 signal actorHurt(actor: Actor)
@@ -53,6 +55,22 @@ func _ready() -> void:
 	self.modController = ModController.new()
 	self.modController.actor = self
 	
+func get_owned(name: StringName) -> Node:
+	return self.nodes_owned.get(name, null)
+	
+func set_owned(name: StringName, node: Node) -> void:
+	self.nodes_owned[name] = node	
+	node.tree_exited.connect( func() -> void:
+		self.remove_owned_node(name)
+	)
+	
+func has_owned(name: StringName) -> bool:
+	return self.nodes_owned.has(name)
+	
+func remove_owned_node(name: StringName) -> void:
+	self.nodes_owned.erase(name)	
+		
+		
 		
 func _physics_process(delta: float) -> void:
 	self.modController.tick(delta)
@@ -60,9 +78,8 @@ func _physics_process(delta: float) -> void:
 
 # Assesses the current situation, and writes Intents. 
 # An automated (AI, basically) implementation of the Intent part of ITSIMSCET
-func think() -> bool:
-	return false
-	
+func think() -> void:
+	pass	
 
 func post_move_and_slide() -> void:
 	pass	

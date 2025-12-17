@@ -228,6 +228,7 @@ collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_vbxqv")
 fireBallScene = ExtResource("2_qnvar")
+DECISION_PERIOD = 1.0
 LootTable = Array[ExtResource("2_kmxbr")]([ExtResource("3_b084e")])
 pickup = ExtResource("4_b084e")
 JUMP_VELOCITY = 300.0
