@@ -86,7 +86,7 @@ func get_floor_above_y() -> float:
 	var collision_point = sensor_floor_above.get_collision_point().y
 	var shape_offset = self.collisionShape.shape.get_rect().size.y /2 
 
-	var current_tilesize = Game.world.level.Tiles_Inner.tile_set.tile_size
+	var current_tilesize = Game.world.level.Tiles.tile_set.tile_size
 	
 	return sensor_floor_above.get_collision_point().y - shape_offset - current_tilesize.y
 

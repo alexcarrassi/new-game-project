@@ -29,7 +29,7 @@ func enter(prev_state_path: String, data: Dictionary = {}) -> void:
 
 
 	#disable collision with inner tiles.
-	actor.set_collision_mask_value(8, false)
+	actor.set_collision_mask_value(1, false)
 	
 	#After some time, re enable the collision again
 	if(self.timer == null) :
@@ -44,7 +44,7 @@ func enter(prev_state_path: String, data: Dictionary = {}) -> void:
 func reEnableCollision() -> void:
 	var actor = self.body
 	print("RECOLLIDE")
-	actor.set_collision_mask_value(8, true)
+	actor.set_collision_mask_value(1, true)
 	
 func physics_update(delta: float) -> void:
 	var actor = self.body
