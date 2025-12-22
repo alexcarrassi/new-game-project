@@ -10,6 +10,7 @@ var level: Level
 
 @export var level_debug: PackedScene
 @export var start_debug: bool
+@export var start_level_index: int = 0
 
 var is_transitioning_Levels : bool = false
 
@@ -24,7 +25,7 @@ func _ready() -> void:
 		self.add_child(startingLevel)
 
 	else:
-		startingLevel = createNexLevel( 4 )
+		startingLevel = createNexLevel( self.start_level_index )
 		
 	startingLevel.position = Vector2.ZERO
 	

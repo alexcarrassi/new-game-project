@@ -19,7 +19,7 @@ script = ExtResource("1_c1plj")
 playerScene = ExtResource("2_28gir")
 playerHUDScene = ExtResource("6_a0c47")
 level_debug = ExtResource("4_hej4t")
-start_debug = true
+start_level_index = 5
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
