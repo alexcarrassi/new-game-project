@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=4 uid="uid://dh7h805hyaucm"]
+
+[ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_7fqms"]
+[ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="2_jacv6"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="3_udjgv"]
+[ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="4_si83s"]
+[ext_resource type="PackedScene" uid="uid://b8ct23ua2ywrd" path="res://actors/enemies/Maita/Maita.tscn" id="5_vgr6i"]
+
+[node name="Level_01" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_7fqms")
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+position = Vector2(128, 111)
+tile_map_data = PackedByteArray("AADw//b/AQAAAAcAAgDw//f/AQAAAAcAAgDw//j/AQAAAAcAAgDw//n/AQAAAAcAAgDw//r/AQAAAAcAAgDw//v/AQAAAAcAAgDw//z/AQAAAAcAAgDw//3/AQAAAAcAAgDw//7/AQAAAAcAAgDw////AQAAAAcAAgDw/wAAAQAAAAcAAgDw/wEAAQAAAAcAAgDw/wIAAQAAAAcAAgDw/wMAAQAAAAcAAgDw/wQAAQAAAAcAAgDw/wUAAQAAAAcAAgDw/wYAAQAAAAcAAgDw/wcAAQAAAAcAAgDw/wgAAQAAAAcAAgDw/wkAAQAAAAcAAgDw/woAAQAAAAcAAgDw/wsAAQAAAAcAAgDw/wwAAQAAAAcAAgDx//b/AQAAAAcAAgDx//f/AQAAAAcAAgDx//j/AQAAAAcAAgDx//n/AQAAAAcAAgDx//r/AQAAAAcAAgDx//v/AQAAAAcAAgDx//z/AQAAAAcAAgDx//3/AQAAAAcAAgDx//7/AQAAAAcAAgDx////AQAAAAcAAgDx/wAAAQAAAAcAAgDx/wEAAQAAAAcAAgDx/wIAAQAAAAcAAgDx/wMAAQAAAAcAAgDx/wQAAQAAAAcAAgDx/wUAAQAAAAcAAgDx/wYAAQAAAAcAAgDx/wcAAQAAAAcAAgDx/wgAAQAAAAcAAgDx/wkAAQAAAAcAAgDx/woAAQAAAAcAAgDx/wsAAQAAAAcAAgDx/wwAAQAAAAcAAgDy/wwAAQAAAAcAAgDz/wwAAQAAAAcAAgAHAAwAAQAAAAcAAgAIAAwAAQAAAAcAAgAJAAwAAQAAAAcAAgAKAAwAAQAAAAcAAgALAAwAAQAAAAcAAgAMAAwAAQAAAAcAAgANAAwAAQAAAAcAAgAOAPb/AQAAAAcAAgAOAPf/AQAAAAcAAgAOAPj/AQAAAAcAAgAOAPn/AQAAAAcAAgAOAPr/AQAAAAcAAgAOAPv/AQAAAAcAAgAOAPz/AQAAAAcAAgAOAP3/AQAAAAcAAgAOAP7/AQAAAAcAAgAOAP//AQAAAAcAAgAOAAAAAQAAAAcAAgAOAAEAAQAAAAcAAgAOAAIAAQAAAAcAAgAOAAMAAQAAAAcAAgAOAAQAAQAAAAcAAgAOAAUAAQAAAAcAAgAOAAYAAQAAAAcAAgAOAAcAAQAAAAcAAgAOAAgAAQAAAAcAAgAOAAkAAQAAAAcA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")
+tile_set = ExtResource("2_jacv6")
+
+[node name="Bubble_Destination" type="Marker2D" parent="."]
+position = Vector2(128, 56)
+gizmo_extents = 40.0
+
+[node name="Level_Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="Hurry_Enemy_spawn" parent="." instance=ExtResource("3_udjgv")]
+position = Vector2(29, 42)
+direction = Vector2(1, 0)
+spawn_defer_time = 2.0
+ActorScene = ExtResource("4_si83s")
+
+[node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
+position = Vector2(0, 0)
+
+[node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+flip_h = true
+region_rect = Rect2(5, 257, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
+wait_time = 2.0
+
+[node name="Enemy_Spawns" type="Node" parent="."]
+
+[node name="ActorSpawn5" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_udjgv")]
+position = Vector2(184, -8)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+ActorScene = ExtResource("5_vgr6i")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn5" index="0"]
+position = Vector2(0, 56)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn5" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+region_rect = Rect2(5, 26, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn5" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn6" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_udjgv")]
+position = Vector2(72, -8)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+ActorScene = ExtResource("5_vgr6i")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn6" index="0"]
+position = Vector2(0, 112)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn6" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+flip_h = true
+region_rect = Rect2(5, 26, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn6" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn4" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_udjgv")]
+position = Vector2(72, -24)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
+position = Vector2(0, 72)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn2" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_udjgv")]
+position = Vector2(184, -24)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
+position = Vector2(0, 128)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
+wait_time = 0.5
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Player_Spawns" type="Node" parent="."]
+
+[node name="p1_Start" type="Node2D" parent="Player_Spawns"]
+position = Vector2(40, 192)
+
+[editable path="Hurry_Enemy_spawn"]
+[editable path="Enemy_Spawns/ActorSpawn5"]
+[editable path="Enemy_Spawns/ActorSpawn6"]
+[editable path="Enemy_Spawns/ActorSpawn4"]
+[editable path="Enemy_Spawns/ActorSpawn2"]

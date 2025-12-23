@@ -29,6 +29,7 @@ class_name ActorSpawn extends Marker2D
 @onready var destination: Marker2D = $Destination
 
 
+
 var is_spawning: bool = false
 @export var ActorScene: PackedScene:
 	get:
@@ -41,6 +42,8 @@ var is_spawning: bool = false
 			
 			
 var actor: Actor			
+
+signal actorSpawned()
 
 
 
@@ -74,26 +77,29 @@ func deferSpawn() -> void:
 	
 #spawns the actor at their designated spawn point
 func spawnActor() -> void:
-	var actor = Game.world.spawnEnemy(self.ActorScene, self.position, self.spawn_node )
-	if( actor.direction.x != self.direction.x):
-		actor.flip()
+	self.actor = Game.world.spawnEnemy(self.ActorScene, self.position, self.spawn_node )
+	if( self.actor.direction.x != self.direction.x):
+		self.actor.flip()
 	
-	if(self.destination.position == Vector2.ZERO):
-		actor.sm_status.state.finished.emit("ALIVE")	
-		return
+	#if(self.destination.position == Vector2.ZERO):
+		#self.actor.sm_status.state.finished.emit("ALIVE")	
+		#return
 	
 	
 	if(actor.sm_status.name != "SPAWNING"):
 		actor.sm_status.state.finished.emit("SPAWNING")
 	
+	var transportSpeed = 70
+	var transportDistance = actor.position.distance_to(self.destination.global_position)
+	var transportTime = transportDistance / transportSpeed
+	
 	var transportTween = create_tween()
-	transportTween.tween_property(actor, "position", self.destination.global_position, 1)
+	transportTween.tween_property(actor, "position", self.destination.global_position, transportTime)
 	transportTween.set_ease(Tween.EaseType.EASE_IN)
 	
 	transportTween.finished.connect( func() -> void:
-		actor.sm_status.state.finished.emit("ALIVE")	
+		self.actorSpawned.emit()
 	)
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

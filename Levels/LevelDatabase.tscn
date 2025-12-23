@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://3yl1bxl5o8i5"]
+[gd_scene load_steps=12 format=3 uid="uid://3yl1bxl5o8i5"]
 
 [ext_resource type="Script" uid="uid://dedry2pqikg2d" path="res://Levels/LevelDatabase.gd" id="1_da1vx"]
 [ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="2_wcpaw"]
@@ -6,7 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://c3ltgwpa0ju6r" path="res://Levels/level_03.tscn" id="5_a0wmx"]
 [ext_resource type="PackedScene" uid="uid://dnoy82enwgv2t" path="res://Levels/level_05.tscn" id="6_5t0jc"]
 [ext_resource type="PackedScene" uid="uid://fbm6dibwaxtx" path="res://Levels/level_04.tscn" id="6_11keg"]
-[ext_resource type="PackedScene" uid="uid://bccr3ilcagta" path="res://Levels/level_06.tscn" id="7_5t0jc"]
+[ext_resource type="PackedScene" uid="uid://bccr3ilcagta" path="res://Levels/level_07.tscn" id="7_5t0jc"]
+[ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level_debug.tscn" id="7_nxx6f"]
+[ext_resource type="PackedScene" uid="uid://dh7h805hyaucm" path="res://Levels/level_08.tscn" id="9_oadg8"]
+[ext_resource type="PackedScene" uid="uid://d3bt46pp6vwia" path="res://Levels/level_09.tscn" id="10_40lhv"]
+[ext_resource type="PackedScene" uid="uid://cqsafbsdns6yf" path="res://Levels/level_10.tscn" id="11_sgjgs"]
 
 [node name="LevelDatabase" type="Node"]
 script = ExtResource("1_da1vx")
@@ -17,5 +21,9 @@ levels = Dictionary[int, PackedScene]({
 3: ExtResource("5_a0wmx"),
 4: ExtResource("6_11keg"),
 5: ExtResource("6_5t0jc"),
-6: ExtResource("7_5t0jc")
+6: ExtResource("7_nxx6f"),
+7: ExtResource("7_5t0jc"),
+8: ExtResource("9_oadg8"),
+9: ExtResource("10_40lhv"),
+10: ExtResource("11_sgjgs")
 })

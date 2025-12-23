@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bghtednl47qn2"]
+[gd_scene load_steps=11 format=3 uid="uid://bghtednl47qn2"]
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_o8k34"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_vjhf7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://things/Items/Atlas/Popups/Hurry.tres" id="5_l0b32"]
 [ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/Teleporter/teleporter.tscn" id="6_axol4"]
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level_debug.tscn" id="7_vjhf7"]
+[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="8_cbrnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5c08"]
 size = Vector2(16, 307)
@@ -84,3 +85,5 @@ shape = SubResource("RectangleShape2D_n5c08")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right"]
 position = Vector2(246, 99.25)
 shape = SubResource("RectangleShape2D_a0c47")
+
+[node name="Level_01" parent="." instance=ExtResource("8_cbrnd")]

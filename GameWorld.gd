@@ -92,13 +92,25 @@ func startLevel(level: Level) -> void:
 		self.spawnPlayers()
 		self.UI.visible = true	
 
-		
+	
+		var actorSpawns: Array[ActorSpawn] = []	
 		if( level.enemy_spawns) :
-			for actorSpawn in level.enemy_spawns.get_children():
-				var spawner = actorSpawn as ActorSpawn
-				spawner.deferSpawn()
+			var children = level.enemy_spawns.get_children() as Array[Node]
+			for actorSpawn: ActorSpawn in children:
+				if(!actorSpawn.disabled):
+					actorSpawns.append(actorSpawn)
+					actorSpawn.deferSpawn()
 			
 			pass
+			
+			
+			
+			
+		for actorSpawn in actorSpawns:
+			await actorSpawn.actorSpawned
+			
+		for actorSpawn in actorSpawns:
+			actorSpawn.actor.sm_status.state.finished.emit("ALIVE")
 
 func movePlayersToSpawn() -> Tween: 
 	var moveTween: Tween = create_tween() 

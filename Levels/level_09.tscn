@@ -1,0 +1,148 @@
+[gd_scene load_steps=6 format=4 uid="uid://d3bt46pp6vwia"]
+
+[ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_qpfvw"]
+[ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="2_280to"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="3_nv54v"]
+[ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="4_tko0e"]
+[ext_resource type="PackedScene" uid="uid://b8ct23ua2ywrd" path="res://actors/enemies/Maita/Maita.tscn" id="5_xs8eu"]
+
+[node name="Level_01" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_qpfvw")
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+position = Vector2(128, 111)
+tile_map_data = PackedByteArray("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AADw/wwAAQAAAAgAAADx/wwAAQAAAAgAAADx/wsAAQAAAAgAAADx/woAAQAAAAgAAAD4//P/AQAAAAgAAQD0//v/AQAAAAgAAgD1//f/AQAAAAgAAgD1//v/AQAAAAgAAgD1////AQAAAAgAAgD2//f/AQAAAAgAAgD2//v/AQAAAAgAAgD2////AQAAAAgAAgD2/wMAAQAAAAgAAgD3//f/AQAAAAgAAgD3//v/AQAAAAgAAgD3////AQAAAAgAAgD3/wMAAQAAAAgAAgD4//f/AQAAAAgAAgD4////AQAAAAgAAgD4/wMAAQAAAAgAAgD4/wgAAQAAAAgAAgD5/wMAAQAAAAgAAgD5/wgAAQAAAAgAAgD6/wgAAQAAAAgAAgD7/wgAAQAAAAgAAgD8/wMAAQAAAAgAAgD8/wgAAQAAAAgAAgD9////AQAAAAgAAgD9/wMAAQAAAAgAAgD9/wgAAQAAAAgAAgD+//v/AQAAAAgAAgD+////AQAAAAgAAgD+/wMAAQAAAAgAAgD///f/AQAAAAgAAgD///v/AQAAAAgAAgD/////AQAAAAgAAgAAAPf/AQAAAAgAAgAAAPv/AQAAAAgAAgAAAP//AQAAAAgAAgABAPv/AQAAAAgAAgABAP//AQAAAAgAAgACAP//AQAAAAgAAgABAAMAAQAAAAgAAgACAAMAAQAAAAgAAgACAAgAAQAAAAgAAgADAAMAAQAAAAgAAgADAAgAAQAAAAgAAgAEAAgAAQAAAAgAAgAFAAgAAQAAAAgAAgAGAAMAAQAAAAgAAgAGAAgAAQAAAAgAAgAHAPf/AQAAAAgAAgAHAP//AQAAAAgAAgAHAAMAAQAAAAgAAgAHAAgAAQAAAAgAAgAIAPf/AQAAAAgAAgAIAPv/AQAAAAgAAgAIAP//AQAAAAgAAgAIAAMAAQAAAAgAAgAJAPf/AQAAAAgAAgAJAPv/AQAAAAgAAgAJAP//AQAAAAgAAgAJAAMAAQAAAAgAAgAKAPf/AQAAAAgAAgAKAPv/AQAAAAgAAgAKAP//AQAAAAgAAgALAPv/AQAAAAgAAgDy//P/AQAAAAgAAQDz//P/AQAAAAgAAQD0//P/AQAAAAgAAQD1//P/AQAAAAgAAQD2//P/AQAAAAgAAQD3//P/AQAAAAgAAQA=")
+tile_set = ExtResource("2_280to")
+
+[node name="Bubble_Destination" type="Marker2D" parent="."]
+position = Vector2(128, 56)
+gizmo_extents = 40.0
+
+[node name="Level_Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="Hurry_Enemy_spawn" parent="." instance=ExtResource("3_nv54v")]
+position = Vector2(29, 42)
+direction = Vector2(1, 0)
+spawn_defer_time = 2.0
+ActorScene = ExtResource("4_tko0e")
+
+[node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
+position = Vector2(0, 0)
+
+[node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+flip_h = true
+region_rect = Rect2(5, 257, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
+wait_time = 2.0
+
+[node name="Enemy_Spawns" type="Node" parent="."]
+
+[node name="ActorSpawn5" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_nv54v")]
+position = Vector2(192, -8)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+ActorScene = ExtResource("5_xs8eu")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn5" index="0"]
+position = Vector2(0, 40)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn5" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+region_rect = Rect2(5, 26, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn5" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn6" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_nv54v")]
+position = Vector2(40, -8)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+ActorScene = ExtResource("5_xs8eu")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn6" index="0"]
+position = Vector2(0, 72)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn6" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+flip_h = true
+region_rect = Rect2(5, 26, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn6" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn4" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_nv54v")]
+position = Vector2(64, -8)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+ActorScene = ExtResource("5_xs8eu")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
+position = Vector2(0, 40)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+flip_h = true
+region_rect = Rect2(5, 26, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn2" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_nv54v")]
+position = Vector2(208, -8)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+ActorScene = ExtResource("5_xs8eu")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
+position = Vector2(0, 72)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+region_rect = Rect2(5, 26, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn3" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_nv54v")]
+position = Vector2(128, -8)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+ActorScene = ExtResource("5_xs8eu")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
+position = Vector2(0, 104)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+region_rect = Rect2(5, 26, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn3" index="2"]
+wait_time = 0.5
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Player_Spawns" type="Node" parent="."]
+
+[node name="p1_Start" type="Node2D" parent="Player_Spawns"]
+position = Vector2(40, 192)
+
+[editable path="Hurry_Enemy_spawn"]
+[editable path="Enemy_Spawns/ActorSpawn5"]
+[editable path="Enemy_Spawns/ActorSpawn6"]
+[editable path="Enemy_Spawns/ActorSpawn4"]
+[editable path="Enemy_Spawns/ActorSpawn2"]
+[editable path="Enemy_Spawns/ActorSpawn3"]
