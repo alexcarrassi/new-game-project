@@ -123,7 +123,7 @@ spawn_node = NodePath("../../Enemies")
 ActorScene = ExtResource("5_xs8eu")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
-position = Vector2(0, 104)
+position = Vector2(0, 96)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
 modulate = Color(1, 1, 1, 0.7)

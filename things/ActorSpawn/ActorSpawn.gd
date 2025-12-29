@@ -76,7 +76,7 @@ func deferSpawn() -> void:
 	pass
 	
 #spawns the actor at their designated spawn point
-func spawnActor() -> void:
+func spawnActor() -> Tween:
 	self.actor = Game.world.spawnEnemy(self.ActorScene, self.position, self.spawn_node )
 	if( self.actor.direction.x != self.direction.x):
 		self.actor.flip()
@@ -100,6 +100,8 @@ func spawnActor() -> void:
 	transportTween.finished.connect( func() -> void:
 		self.actorSpawned.emit()
 	)
+	
+	return transportTween
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

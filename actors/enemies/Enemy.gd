@@ -64,6 +64,9 @@ func player_above() -> int:
 	pass
 	
 func isFacing(node: Node) -> bool:
+	if( node == null) :
+		return false 
+		
 	var distance = self.position.distance_to( node.position )
 
 	var pos = node.position - self.position

@@ -64,9 +64,14 @@ func levelTransition() -> void:
 
 
 		
-	self.is_transitioning_Levels = false
 	self.startLevel(nextLevel)
 
+
+# The level contains an array of ActorSpawns.  
+# We call the spawning functions on each of them, which return Tweens for their transport.
+# The Tweens function as Promises, which we all wire up with their corresponding "finished" signal.
+# Upong finishing, we check if the remaining Tweens have been sucessfully finished.
+# If so, we can offically start the level by setting all the actors of the spawn to their ALIVE state
 	
 func startLevel(level: Level) -> void:
 	#spawn the plauyer
@@ -74,7 +79,6 @@ func startLevel(level: Level) -> void:
 	if( level.hurry ) :
 		level.hurry.connect( self.onLevelHurry)
 
-		
 	if(level.playerSpawns.get_children().size() == 0 ):
 		await get_tree().create_timer(2.0).timeout
 		self.levelTransition()	
@@ -93,24 +97,31 @@ func startLevel(level: Level) -> void:
 		self.UI.visible = true	
 
 	
-		var actorSpawns: Array[ActorSpawn] = []	
-		if( level.enemy_spawns) :
-			var children = level.enemy_spawns.get_children() as Array[Node]
-			for actorSpawn: ActorSpawn in children:
-				if(!actorSpawn.disabled):
-					actorSpawns.append(actorSpawn)
-					actorSpawn.deferSpawn()
+		var transportTweens: Array[Tween] = []	
+		
+		if( !level.enemy_spawns) :
+			return
 			
-			pass
+		var children = level.enemy_spawns.get_children() as Array[Node]
+		for actorSpawn: ActorSpawn in children:
 			
-			
-			
-			
-		for actorSpawn in actorSpawns:
-			await actorSpawn.actorSpawned
-			
-		for actorSpawn in actorSpawns:
-			actorSpawn.actor.sm_status.state.finished.emit("ALIVE")
+			if( actorSpawn.disabled) :
+				continue
+				
+			var transportTween = actorSpawn.spawnActor()
+			transportTweens.append( transportTween )
+			transportTween.finished.connect( func () -> void:
+				for transportTween_: Tween in transportTweens:
+					
+					if( transportTween_.is_running()) :
+						return
+					
+				#all tweens are done. Activate the actors.	
+				
+				for actorSpawn_: ActorSpawn in children :
+					actorSpawn_.actor.sm_status.state.finished.emit("ALIVE")
+				self.is_transitioning_Levels = false
+			)
 
 func movePlayersToSpawn() -> Tween: 
 	var moveTween: Tween = create_tween() 
@@ -252,6 +263,9 @@ func onActorHurt( actor: Actor) -> void:
 		self.cleanHurryEnemies()
 		self.level.levelTimer.start()
 
+func onActorSpawned() -> void:
+	
+	pass
 			
 
 func onLevelHurry() -> void:
