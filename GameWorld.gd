@@ -119,7 +119,9 @@ func startLevel(level: Level) -> void:
 				#all tweens are done. Activate the actors.	
 				
 				for actorSpawn_: ActorSpawn in children :
-					actorSpawn_.actor.sm_status.state.finished.emit("ALIVE")
+					if(actorSpawn_.actor):
+						
+						actorSpawn_.actor.sm_status.state.finished.emit("ALIVE")
 				self.is_transitioning_Levels = false
 			)
 

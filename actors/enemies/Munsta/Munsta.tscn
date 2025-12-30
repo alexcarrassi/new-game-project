@@ -1,0 +1,226 @@
+[gd_scene load_steps=29 format=3 uid="uid://c50spamxftvqt"]
+
+[ext_resource type="Script" uid="uid://cfehrxn1rsvv3" path="res://actors/enemies/Munsta/munsta.gd" id="1_0jpja"]
+[ext_resource type="Script" uid="uid://c01g1s5yjk1a3" path="res://things/Items/PickupData/PickupData.gd" id="2_njdb1"]
+[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_x8vk4"]
+[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="3_arnfi"]
+[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="3_pwwog"]
+[ext_resource type="Resource" uid="uid://cjkah2jvpyh80" path="res://things/Items/PickupData/Peach.tres" id="3_ua6ar"]
+[ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="4_pwwog"]
+[ext_resource type="PackedScene" uid="uid://bmx8koykxgpu" path="res://things/Items/Pickup.tscn" id="4_smetb"]
+[ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="5_s6skn"]
+[ext_resource type="Script" uid="uid://cefqxu1l7qvn7" path="res://actors/enemies/Munsta/fly.gd" id="6_co2n3"]
+[ext_resource type="Script" uid="uid://dpmx0ixy2cn61" path="res://actors/scripts/spawning.gd" id="7_co2n3"]
+[ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="8_p35vh"]
+[ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="9_nh8vh"]
+[ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="9_njdb1"]
+[ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="10_njdb1"]
+[ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://actors/enemies/zenchan/falling.gd" id="10_smetb"]
+[ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="16_ua6ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enfmc"]
+size = Vector2(16, 15)
+
+[sub_resource type="Animation" id="Animation_co2n3"]
+length = 0.06667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(5, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_p35vh"]
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(5, 68, 16, 16), Rect2(26, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_nh8vh"]
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(131, 68, 16, 16), Rect2(152, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_njdb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 68, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ua6ar"]
+_data = {
+&"BUBBLED": SubResource("Animation_nh8vh"),
+&"FLY": SubResource("Animation_p35vh"),
+&"IDLE": SubResource("Animation_co2n3"),
+&"RESET": SubResource("Animation_njdb1")
+}
+
+[sub_resource type="Animation" id="Animation_smetb"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(47, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_hsrri"]
+length = 0.40000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(47, 68, 16, 16), Rect2(68, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_b27ti"]
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(215, 68, 16, 16), Rect2(236, 68, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3hic"]
+_data = {
+&"BUBBLED": SubResource("Animation_b27ti"),
+&"FLY": SubResource("Animation_hsrri"),
+&"IDLE": SubResource("Animation_smetb")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5o61"]
+size = Vector2(16, 15)
+
+[node name="Munsta" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4225
+script = ExtResource("1_0jpja")
+LootTable = Array[ExtResource("2_njdb1")]([ExtResource("3_ua6ar")])
+pickup = ExtResource("4_smetb")
+MAX_RUN_VELOCITY = 75.0
+direction = Vector2(-1, -1)
+metadata/_custom_type_script = "uid://cx828ycxarj3w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_enfmc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ua6ar"),
+&"RED": SubResource("AnimationLibrary_k3hic")
+}
+script = ExtResource("2_x8vk4")
+metadata/_custom_type_script = "uid://cxwldrhfsres7"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_pwwog")
+region_enabled = true
+region_rect = Rect2(5, 68, 16, 16)
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_arnfi")
+initial_state = NodePath("FLY")
+metadata/_custom_type_script = "uid://bjbytyi2fepmq"
+
+[node name="FLY" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("6_co2n3")
+
+[node name="BUBBLED" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("9_njdb1")
+
+[node name="FALLING" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("10_smetb")
+
+[node name="StateMachine_Status" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_pwwog")
+initial_state = NodePath("SPAWNING")
+metadata/_custom_type_script = "uid://rlf241v6q1mt"
+
+[node name="SPAWNING" type="Node" parent="StateMachine_Status"]
+script = ExtResource("7_co2n3")
+
+[node name="ALIVE" type="Node" parent="StateMachine_Status"]
+script = ExtResource("8_p35vh")
+
+[node name="DEAD" type="Node" parent="StateMachine_Status"]
+script = ExtResource("9_nh8vh")
+
+[node name="RED" type="Node" parent="StateMachine_Status"]
+script = ExtResource("10_njdb1")
+
+[node name="StateMachine_Act" type="Node" parent="."]
+script = ExtResource("5_s6skn")
+metadata/_custom_type_script = "uid://pbqf3u3hfeho"
+
+[node name="State_act_None" type="Node" parent="StateMachine_Act"]
+script = ExtResource("16_ua6ar")
+metadata/_custom_type_script = "uid://bkjgyynhglj64"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_w5o61")

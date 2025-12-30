@@ -26,7 +26,7 @@ var modController: ModController
 @export var health: int = 3
 
 
-var direction: Vector2 = Vector2.LEFT
+@export var direction: Vector2 = Vector2.LEFT
 
 var act_locked = false
 var loco_locked = false 

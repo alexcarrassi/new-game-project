@@ -309,6 +309,14 @@ script = ExtResource("13_l6spp")
 [node name="RED" type="Node" parent="StateMachine_Status"]
 script = ExtResource("18_gbd71")
 
+[node name="StateMachine_Act" type="Node" parent="."]
+script = ExtResource("19_rfo4i")
+metadata/_custom_type_script = "uid://pbqf3u3hfeho"
+
+[node name="State_act_None" type="Node" parent="StateMachine_Act"]
+script = ExtResource("20_s4w05")
+metadata/_custom_type_script = "uid://bkjgyynhglj64"
+
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, 7)
 collision_layer = 256
@@ -318,11 +326,3 @@ collision_mask = 32
 position = Vector2(0.25, -7)
 shape = SubResource("RectangleShape2D_gbd71")
 debug_color = Color(0.29961187, 0.5557529, 0, 0.41960785)
-
-[node name="StateMachine_Act" type="Node" parent="."]
-script = ExtResource("19_rfo4i")
-metadata/_custom_type_script = "uid://pbqf3u3hfeho"
-
-[node name="State_act_None" type="Node" parent="StateMachine_Act"]
-script = ExtResource("20_s4w05")
-metadata/_custom_type_script = "uid://bkjgyynhglj64"

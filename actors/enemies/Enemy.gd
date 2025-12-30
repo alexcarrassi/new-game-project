@@ -76,10 +76,16 @@ func isFacing(node: Node) -> bool:
 
 func wall_ahead() -> bool:
 	var sensor_wall_front = $Sensors/Wall_front as RayCast2D
+	if(!sensor_wall_front):
+			return false
+			
 	return sensor_wall_front.is_colliding()
 	 
 func floor_above() -> bool: 
 	var sensor_floor_above = $Sensors/Floor_above as RayCast2D
+	if(!sensor_floor_above):
+		return false
+		
 	return sensor_floor_above.is_colliding()
 
 #Sensor gets the bottom of the tile above. Actor's local origin is in the middle of their collision shape.
@@ -116,10 +122,13 @@ func flip() -> void:
 	var sensor_floor_front = $Sensors/Floor_front as RayCast2D 
 	
 	self.direction.x *= -1
-	sensor_wall_front.position.x *= -1
-	sensor_wall_front.target_position.x *= -1
-	sensor_floor_front.position.x *= -1
-	sensor_floor_front.target_position.x *= -1
+	if( sensor_wall_front ):
+		sensor_wall_front.position.x *= -1
+		sensor_wall_front.target_position.x *= -1
+		
+	if( sensor_floor_front ):
+		sensor_floor_front.position.x *= -1
+		sensor_floor_front.target_position.x *= -1
 
 	self.sprite2D.flip_h = self.direction.x > 0.0
 
