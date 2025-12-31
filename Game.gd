@@ -22,20 +22,18 @@ func deregister_player(index: int) -> Dictionary[int, Player]:
 	self.players.erase(index)  
 	return self.players
 
-func getLevelById( index: int) -> PackedScene:
-	return LevelDatabase.levels[index]
+func getLevelById( id: String) -> LevelDefinition:
+	return LevelDatabase.getLevelDefinition(id)
 
 func register_currentLevel( level_index: int) -> int:
 	self.currentLevel = level_index
 	return self.currentLevel
 	
-func getNextLevel_id() -> int:
-	var next_id = self.currentLevel + 1
-	if(LevelDatabase.levels.has( next_id ) ):
-		return next_id
-	else :
-		#return self.currentLevel
-		return 0	
+func getNextLevel_id() -> String:
+	if(!self.world.level):
+		return ""
+		
+	return self.world.level.definition.default_next
 		
 func _input(event: InputEvent) -> void:
 	if ( event.is_action_pressed("ui_start") ):

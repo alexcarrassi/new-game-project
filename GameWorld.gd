@@ -10,23 +10,14 @@ var level: Level
 
 @export var level_debug: PackedScene
 @export var start_debug: bool
-@export var start_level_index: int = 0
+@export var start_level_id: String = "0"
 
 var is_transitioning_Levels : bool = false
 
 func _ready() -> void:
 	
 	Game.register_gameWorld( self )
-	
-	var startingLevel
-	
-	if( self.start_debug) :
-		startingLevel = self.level_debug.instantiate() as Level
-		self.add_child(startingLevel)
-
-	else:
-		startingLevel = createNexLevel( self.start_level_index )
-		
+	var startingLevel = createNextLevel( self.start_level_id )	
 	startingLevel.position = Vector2.ZERO
 	
 	self.swapLevels(startingLevel)
@@ -49,18 +40,17 @@ func levelTransition() -> void:
 	# First, we find the next level id
 	var nextLevel_id = Game.getNextLevel_id()
 
-	if(nextLevel_id == -1) :
+	if(nextLevel_id == "") :
 		print("No Next level found.")
-		nextLevel_id = 0
+		nextLevel_id = ""
 	
 	# We create it and place it in the world
-	var nextLevel = createNexLevel(nextLevel_id)
+	var nextLevel = createNextLevel(nextLevel_id)
 	# Then we set our players to the Respawning state 
 	#move the Levels
 	var moveLevelTween = self.moveLevels(	self.level, nextLevel)
 	await moveLevelTween.finished
 	self.swapLevels(nextLevel)
-	Game.currentLevel = nextLevel_id
 
 
 		
@@ -149,6 +139,7 @@ func swapLevels(nextLevel: Level) -> void:
 	if( self.level) :
 		self.level.queue_free()
 	self.level = nextLevel
+
 	
 
 func suspendPlayer(index: int) -> void:
@@ -201,13 +192,18 @@ func spawnPlayers() -> void:
 			
 			
 		
-func createNexLevel(level_id: int) -> Level:
-	var nextLevelScene = Game.getLevelById( level_id)
-	var nextLevel = nextLevelScene.instantiate() as Level
-	nextLevel.position = self.NextLevelMarker.position
-	self.add_child(nextLevel)
+func createNextLevel(level_id: String) -> Level:
+	var nextLevelDefinition = Game.getLevelById( level_id)
+	if(nextLevelDefinition):
+		
+		var nextLevel = nextLevelDefinition.scene.instantiate() as Level
+		nextLevel.definition = nextLevelDefinition
+		nextLevel.position = self.NextLevelMarker.position
+		self.add_child(nextLevel)
 	
-	return nextLevel
+		return nextLevel	
+	
+	return null	
 
 	
 func cleanHurryEnemies() -> void:
@@ -236,7 +232,7 @@ func spawnEnemy(enemyScene: PackedScene, position: Vector2, spawnNode: Node = nu
 func onEnemyDeath(enemy: Enemy) -> void:
 	print("Enemy Death in World")
 	if(level.is_cleared() and !self.is_transitioning_Levels):
-		print("LEVEL OVER")
+		self.is_transitioning_Levels = true
 		await get_tree().create_timer(2.0).timeout
 		self.suspendPlayers()
 		self.levelTransition()		

@@ -10,6 +10,8 @@ class_name Level extends Node2D
 @onready var Tiles: TileMapLayer = $Tiles
 
 
+var definition: LevelDefinition
+
 signal hurry()
 
 # Span the player

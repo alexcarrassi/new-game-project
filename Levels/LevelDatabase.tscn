@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://3yl1bxl5o8i5"]
+[gd_scene load_steps=25 format=3 uid="uid://3yl1bxl5o8i5"]
 
 [ext_resource type="Script" uid="uid://dedry2pqikg2d" path="res://Levels/LevelDatabase.gd" id="1_da1vx"]
 [ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="2_wcpaw"]
+[ext_resource type="PackedScene" uid="uid://byvof7wuayhd8" path="res://Levels/level_00.tscn" id="2_y5nj7"]
 [ext_resource type="PackedScene" uid="uid://j3qcxet3n8x2" path="res://Levels/level_02.tscn" id="3_a8gcn"]
 [ext_resource type="PackedScene" uid="uid://c3ltgwpa0ju6r" path="res://Levels/level_03.tscn" id="5_a0wmx"]
 [ext_resource type="PackedScene" uid="uid://dnoy82enwgv2t" path="res://Levels/level_05.tscn" id="6_5t0jc"]
@@ -11,11 +12,83 @@
 [ext_resource type="PackedScene" uid="uid://dh7h805hyaucm" path="res://Levels/level_08.tscn" id="9_oadg8"]
 [ext_resource type="PackedScene" uid="uid://d3bt46pp6vwia" path="res://Levels/level_09.tscn" id="10_40lhv"]
 [ext_resource type="PackedScene" uid="uid://cqsafbsdns6yf" path="res://Levels/level_10.tscn" id="11_sgjgs"]
+[ext_resource type="Script" uid="uid://cvnjelfj5bn7f" path="res://Levels/LevelDefinition.gd" id="13_vjd8q"]
+[ext_resource type="PackedScene" uid="uid://bnu2bw2k4fmsd" path="res://Levels/level_06_.tscn" id="14_y7t6v"]
+
+[sub_resource type="Resource" id="Resource_y7t6v"]
+script = ExtResource("13_vjd8q")
+id = "1"
+scene = ExtResource("2_wcpaw")
+default_next = "2"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_lgu4n"]
+script = ExtResource("13_vjd8q")
+id = "10"
+scene = ExtResource("11_sgjgs")
+default_next = "0"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_e2sgk"]
+script = ExtResource("13_vjd8q")
+id = "2"
+scene = ExtResource("3_a8gcn")
+default_next = "3"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_n6t2k"]
+script = ExtResource("13_vjd8q")
+id = "3"
+scene = ExtResource("5_a0wmx")
+default_next = "4"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_bbwll"]
+script = ExtResource("13_vjd8q")
+id = "4"
+scene = ExtResource("6_11keg")
+default_next = "5"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_l020j"]
+script = ExtResource("13_vjd8q")
+id = "5"
+scene = ExtResource("6_5t0jc")
+default_next = "6"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_j5rys"]
+script = ExtResource("13_vjd8q")
+id = "6"
+scene = ExtResource("14_y7t6v")
+default_next = "7"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_pguow"]
+script = ExtResource("13_vjd8q")
+id = "7"
+scene = ExtResource("7_5t0jc")
+default_next = "8"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_pe6lb"]
+script = ExtResource("13_vjd8q")
+id = "8"
+scene = ExtResource("9_oadg8")
+default_next = "9"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_yg2qx"]
+script = ExtResource("13_vjd8q")
+id = "9"
+scene = ExtResource("10_40lhv")
+default_next = "10"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [node name="LevelDatabase" type="Node"]
 script = ExtResource("1_da1vx")
 levels = Dictionary[int, PackedScene]({
-0: null,
+0: ExtResource("2_y5nj7"),
 1: ExtResource("2_wcpaw"),
 2: ExtResource("3_a8gcn"),
 3: ExtResource("5_a0wmx"),
@@ -26,4 +99,17 @@ levels = Dictionary[int, PackedScene]({
 8: ExtResource("9_oadg8"),
 9: ExtResource("10_40lhv"),
 10: ExtResource("11_sgjgs")
+})
+levelDefinitions = Dictionary[String, ExtResource("13_vjd8q")]({
+"0": SubResource("Resource_y7t6v"),
+"1": SubResource("Resource_y7t6v"),
+"10": SubResource("Resource_lgu4n"),
+"2": SubResource("Resource_e2sgk"),
+"3": SubResource("Resource_n6t2k"),
+"4": SubResource("Resource_bbwll"),
+"5": SubResource("Resource_l020j"),
+"6": SubResource("Resource_j5rys"),
+"7": SubResource("Resource_pguow"),
+"8": SubResource("Resource_pe6lb"),
+"9": SubResource("Resource_yg2qx")
 })

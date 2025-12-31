@@ -18,4 +18,4 @@ func deactivate(actor: Actor) -> void:
 	pass
 	
 func tick_process(delta: float, actor: Actor) -> void:	
-	print("RED")	
+	pass
