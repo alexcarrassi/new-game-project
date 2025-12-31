@@ -117,6 +117,9 @@ func think()-> void:
 	
 	self.decision_timer.start()
 
+func flip_y() -> void:
+	self.direction.y *= -1	
+
 func flip() -> void:
 	var sensor_wall_front = $Sensors/Wall_front as RayCast2D
 	var sensor_floor_front = $Sensors/Floor_front as RayCast2D 

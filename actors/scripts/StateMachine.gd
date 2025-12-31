@@ -25,7 +25,12 @@ func _ready() -> void:
 func transition_to_next_state(target_state_path: String, transition_data: Dictionary = {}) -> void: 
 	if ( not self.has_node( target_state_path) ):
 		printerr(self.owner.name + "Undefined state at " + target_state_path)
-		return
+		
+		if(!self.initial_state):
+			printerr("No initial state set. ")
+			return
+		
+		target_state_path = self.initial_state.name
 		
 
 	var prev_state = self.state

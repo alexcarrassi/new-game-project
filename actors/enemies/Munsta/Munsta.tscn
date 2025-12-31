@@ -21,8 +21,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enfmc"]
 size = Vector2(16, 15)
 
-[sub_resource type="Animation" id="Animation_co2n3"]
-length = 0.06667
+[sub_resource type="Animation" id="Animation_nh8vh"]
+length = 0.66667
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,10 +31,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(5, 68, 16, 16)]
+"values": [Rect2(131, 68, 16, 16), Rect2(152, 68, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_p35vh"]
@@ -53,8 +53,8 @@ tracks/0/keys = {
 "values": [Rect2(5, 68, 16, 16), Rect2(26, 68, 16, 16)]
 }
 
-[sub_resource type="Animation" id="Animation_nh8vh"]
-length = 0.66667
+[sub_resource type="Animation" id="Animation_co2n3"]
+length = 0.06667
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -63,10 +63,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Rect2(131, 68, 16, 16), Rect2(152, 68, 16, 16)]
+"values": [Rect2(5, 68, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_njdb1"]
@@ -92,7 +92,8 @@ _data = {
 &"RESET": SubResource("Animation_njdb1")
 }
 
-[sub_resource type="Animation" id="Animation_smetb"]
+[sub_resource type="Animation" id="Animation_b27ti"]
+length = 0.66667
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -101,10 +102,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(47, 68, 16, 16)]
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(215, 68, 16, 16), Rect2(236, 68, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_hsrri"]
@@ -123,8 +124,7 @@ tracks/0/keys = {
 "values": [Rect2(47, 68, 16, 16), Rect2(68, 68, 16, 16)]
 }
 
-[sub_resource type="Animation" id="Animation_b27ti"]
-length = 0.66667
+[sub_resource type="Animation" id="Animation_smetb"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -133,10 +133,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Rect2(215, 68, 16, 16), Rect2(236, 68, 16, 16)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(47, 68, 16, 16)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k3hic"]
@@ -151,7 +151,7 @@ size = Vector2(16, 15)
 
 [node name="Munsta" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 4225
+collision_mask = 4097
 script = ExtResource("1_0jpja")
 LootTable = Array[ExtResource("2_njdb1")]([ExtResource("3_ua6ar")])
 pickup = ExtResource("4_smetb")
