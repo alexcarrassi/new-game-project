@@ -41,6 +41,8 @@ func _input(event: InputEvent) -> void:
 		tree.paused = !tree.paused
 		pass
 	elif(event.is_action_pressed("debug_LevelStart")):
+		self.world.level.cleanup()
+		self.world.level.levelTimer.start( self.world.level.levelTimer.wait_time)
 		self.world.startLevel( self.world.level )
 		pass
 	

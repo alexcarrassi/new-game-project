@@ -42,6 +42,30 @@ func getPlayerSpawn(player_index: int) -> Node2D:
 		playerSpawn = self.playerSpawns.get_child(0)
 	
 	return playerSpawn	
+
+func cleanup() -> void:
+	var bubbles = self.find_children("*", "Bubble", true, false)
+	for bubble: Bubble in bubbles:
+		bubble.pop()
+	
+	self.cleanHurryEnemies()
+	self.cleanEnemies()
+	self.cleanPickups()
+
+	pass
+	
+func cleanPickups() -> void:
+	for pickup in get_tree().get_nodes_in_group("Pickups"):
+		pickup.queue_free()
+	
+func cleanHurryEnemies() -> void:
+	for hurryEnemy in get_tree().get_nodes_in_group("Invulnerable")	:
+		hurryEnemy.queue_free()
+	
+func cleanEnemies() -> void:
+	var enemies = self.find_children("*", "Enemy", true, false)	
+	for enemy: Enemy in enemies:
+		enemy.queue_free()
 	
 func is_cleared() -> bool:
 	for enemy: Enemy in get_tree().get_nodes_in_group("Enemies"):
