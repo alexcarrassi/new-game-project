@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://3yl1bxl5o8i5"]
+[gd_scene load_steps=27 format=3 uid="uid://3yl1bxl5o8i5"]
 
 [ext_resource type="Script" uid="uid://dedry2pqikg2d" path="res://Levels/LevelDatabase.gd" id="1_da1vx"]
 [ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="2_wcpaw"]
@@ -92,6 +92,13 @@ scene = ExtResource("10_40lhv")
 default_next = "10"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
+[sub_resource type="Resource" id="Resource_27iff"]
+script = ExtResource("13_vjd8q")
+id = "101"
+scene = ExtResource("7_nxx6f")
+default_next = "0"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
 [node name="LevelDatabase" type="Node"]
 script = ExtResource("1_da1vx")
 levels = Dictionary[int, PackedScene]({
@@ -111,6 +118,7 @@ levelDefinitions = Dictionary[String, ExtResource("13_vjd8q")]({
 "0": SubResource("Resource_y7t6v"),
 "1": SubResource("Resource_1spmx"),
 "10": SubResource("Resource_lgu4n"),
+"101": SubResource("Resource_27iff"),
 "2": SubResource("Resource_e2sgk"),
 "3": SubResource("Resource_n6t2k"),
 "4": SubResource("Resource_bbwll"),

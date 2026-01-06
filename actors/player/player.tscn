@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=35 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://actors/player/player.gd" id="1_ivps1"]
 [ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_urp6f"]
@@ -345,9 +345,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12xki"]
 size = Vector2(13.5, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqf5y"]
+size = Vector2(12, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 129
+platform_on_leave = 1
 script = ExtResource("1_ivps1")
 ground_accel = 3800.0
 ground_decel = 4000.0
@@ -368,7 +372,7 @@ health = 2
 position = Vector2(0.5, -8.5)
 texture = ExtResource("2_urp6f")
 region_enabled = true
-region_rect = Rect2(2, 1, 28, 32)
+region_rect = Rect2(2, 35, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -7.5)
@@ -452,3 +456,10 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="InputDebug/Control/MarginContainer"]
 layout_mode = 2
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="BubbleSensor" type="ShapeCast2D" parent="Sensors"]
+shape = SubResource("RectangleShape2D_dqf5y")
+target_position = Vector2(0, 0)
+collision_mask = 8

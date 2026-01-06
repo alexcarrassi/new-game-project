@@ -14,7 +14,7 @@ var jump_held_time: float = 0.0
 
 @export var buffers : Dictionary = {"jump" = 0.05, "attack" = 0.1 }
 var buffer_times : Dictionary = {"jump" = 0.0, "attack" = 0.0}
-
+@onready var BubbleSensor = $Sensors/BubbleSensor
 
 var inputState: InputState
 
@@ -75,6 +75,12 @@ func _physics_process(delta: float) -> void:
 		
 	super._physics_process(delta)
 	
+	if(self.BubbleSensor):
+		if( self.BubbleSensor.is_colliding() ) :
+			print("can jump")
+	
+
+				
 func post_move_and_slide() -> void:
 	pass
 		

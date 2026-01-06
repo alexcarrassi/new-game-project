@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cd5jgtlg8kex6" path="res://things/bubble.gd" id="1_b7bh6"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_3qslm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wcykv"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qslm"]
+size = Vector2(12, 13)
 
 [sub_resource type="Animation" id="Animation_3mr26"]
 resource_name = "Pon"
@@ -99,8 +99,8 @@ _data = {
 radius = 5.0990195
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b7bh6"]
-radius = 6.0
-height = 16.0
+radius = 5.0
+height = 11.0
 
 [node name="Bubble" type="RigidBody2D"]
 collision_layer = 0
@@ -122,7 +122,8 @@ text = "test"
 horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wcykv")
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_3qslm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_3qslm")
@@ -162,7 +163,7 @@ collision_mask = 2
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_b7bh6")
 debug_color = Color(0, 0.64153314, 0.3377669, 0.41960785)
 

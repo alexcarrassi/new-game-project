@@ -48,5 +48,12 @@ func physics_update(delta: float) -> void:
 		else:
 			self.finished.emit("IDLE")
 	else:
+		
+		#are we on a bubble?
+		if( self.body.buffer_times['jump'] > 0.0 and  self.body.BubbleSensor.is_colliding() ):
+			self.finished.emit("JUMPING")		
+
 		if( self.body.coyote_time > 0.0 and self.body.buffer_times['jump'] > 0.0) :
 			self.finished.emit("JUMPING")		
+			
+			

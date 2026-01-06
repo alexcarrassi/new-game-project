@@ -27,7 +27,8 @@ var is_popping: bool = false
 var is_red: bool = false
 var actor: Actor
 var actor_parent: Node
-
+var hurtboxOffset = Vector2.ZERO
+var target_velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -74,8 +75,9 @@ func autoPop() -> void:
 	
 		
 func pop() -> void:
+	print("POP")
 	self.state = BubbleState.Popping
-
+	self.toggle_collision(false)
 	self.sprite.visible = true
 	self.linear_velocity = Vector2.ZERO
 	var popAnimation =  self.animationPlayer.get_animation("PON")
@@ -140,17 +142,22 @@ func setFloating() -> void:
 	self.redTimer.start()
 	self.prePopTimer.start()
 	self.popTimer.start()
-	self.set_collision_mask_value(4, true) #Collide with other bubbles
-	self.set_collision_layer_value(4, true) #Collide with other bubbles
+	self.toggle_collision(true)
 
 	#Add time to the timers if an actor has been captured in the bubble
 	for the_timer: Timer in [self.redTimer, self.prePopTimer, self.popTimer]:
 		the_timer.wait_time += self.actorTimerOffset
 		
+func toggle_collision(toggle: bool) -> void:
+	self.set_collision_mask_value(4, toggle) #Collide with other bubbles
+	self.set_collision_mask_value(2, toggle) #Collide with Players
+	self.set_collision_layer_value(4, toggle) #Collide with other bubbles
+	
 func pop_silent() -> void:
 	pass
 		
-func float_x(delta: float) -> void:
+		
+func float_x(delta: float) -> Vector2:
 	self.set_collision_mask_value(4, true) # Collide with other bubbles now
 
 	var distance = (self.destination.position - self.position)
@@ -160,32 +167,66 @@ func float_x(delta: float) -> void:
 	
 	#var alpha = 1.0 - pow(0.001, delta / max(0.0001, 0.15))
 
-	self.linear_velocity = velocity
+	return velocity
 
 	#the bigger the difference, the bigger the velocity. Capped
 	#velocity = distance * max_speed 
 	#at some point, the distance should be clamped to 0. So if smaller than 0.1, it should be 0
 
 
-func float_y(delta: float) -> void:
-	self.linear_velocity = Vector2(0, Vector2.UP.y * self.float_vert_speed)
+func float_y(delta: float) -> Vector2:
+	self.set_collision_mask_value(2, true)
+	
+	return Vector2(0, -self.float_vert_speed)
 
 func _physics_process(delta: float) -> void:
 	
 	match self.state: 
 		BubbleState.Popping:
-			self.linear_velocity = Vector2.ZERO
+			self.target_velocity = Vector2.ZERO
 			return
 		BubbleState.Shooting:
 			if(self.is_active) :
-				self.linear_velocity.x = dir.x * self.hor_speed
+				self.target_velocity.x = dir.x * self.hor_speed
 		BubbleState.Floating:
 			if(self.destination != null) :		
 				if(self.position.y > self.destination.position.y):
-					self.float_y(delta)	
+					self.target_velocity = self.float_y(delta)	
 				else:
-					self.float_x(delta) 	
-	pass
+					self.target_velocity = self.float_x(delta) 	
+	
+	
+	# Give the Hurtbox a slight Lag, behind our overall position
+	var local_v = self.linear_velocity.rotated( -self.global_rotation )
+	var target = (-local_v * 0.2).limit_length(3)   #computes the desired offset. Max 4 pixels in total.
+	
+	# Smoothly approach target
+	var follow_speed = 80.0
+	var a := 1.0 - exp(-follow_speed * delta)
+	hurtboxOffset = hurtboxOffset.lerp(target, a)
+	self.hurtbox.position = hurtboxOffset
+	
+	
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	var target_v = self.target_velocity
+	var current_v = state.linear_velocity
+	var v_damp = 12 
+	var force_max = 1200
+	
+	var v_delta = target_v - current_v 
+	
+	var force = v_delta  * v_damp * mass
+	
+	if(force.length() > force_max):
+		force.normalized() * force_max
+		
+		
+	state.apply_central_force(force)
+	
+	
+
+	
+	pass	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
