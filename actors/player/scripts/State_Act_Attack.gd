@@ -22,7 +22,7 @@ func enter(prev_state_path: String, data: Dictionary ):
 	
 	print("Entering Attack")
 	self.body.buffer_times['attack'] = 0
-	var bubble: Bubble = bubble.instantiate()
+	var bubble: PlayerBubble = bubble.instantiate()
 	bubble.destination =  Game.world.level.bubbleDestination  
 	var body_dir = -1 if( self.body.sprite2D.flip_h) else 1
 	bubble.dir = Vector2(body_dir  , 0)

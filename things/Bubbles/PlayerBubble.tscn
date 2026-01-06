@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dcec5dpj4viaa"]
 
-[ext_resource type="Script" uid="uid://cd5jgtlg8kex6" path="res://things/bubble.gd" id="1_b7bh6"]
-[ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_3qslm"]
+[ext_resource type="Script" uid="uid://cd5jgtlg8kex6" path="res://things/Bubbles/PlayerBubble.gd" id="1_vcrsu"]
+[ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_rmro5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qslm"]
 size = Vector2(12, 13)
@@ -105,7 +105,7 @@ height = 11.0
 [node name="Bubble" type="RigidBody2D"]
 collision_layer = 0
 lock_rotation = true
-script = ExtResource("1_b7bh6")
+script = ExtResource("1_vcrsu")
 actorTimerOffset = 1.0
 
 [node name="DebugLayer" type="MarginContainer" parent="."]
@@ -126,7 +126,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3qslm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3qslm")
+texture = ExtResource("2_rmro5")
 region_enabled = true
 region_rect = Rect2(83, 43, 15, 16)
 

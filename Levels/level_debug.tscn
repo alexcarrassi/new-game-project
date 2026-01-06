@@ -46,13 +46,12 @@ wait_time = 2.0
 position = Vector2(128, 0)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 64)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
-modulate = Color(1, 1, 1, 0.3)
+modulate = Color(1, 1, 1, 0.7)
 metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
