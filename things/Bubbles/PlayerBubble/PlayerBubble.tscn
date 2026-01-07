@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvp3jvwjx6bpl"]
+
+[ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://things/Bubbles/Bubble.tscn" id="1_5hdk0"]
+
+[node name="Bubble" instance=ExtResource("1_5hdk0")]
+
+[node name="PopTimer" type="Timer" parent="." index="7"]
+wait_time = 7.5
+one_shot = true
+
+[node name="PrepopTimer" type="Timer" parent="." index="8"]
+wait_time = 5.0
+one_shot = true
+
+[node name="RedTimer" type="Timer" parent="." index="9"]
+wait_time = 2.5
+one_shot = true
