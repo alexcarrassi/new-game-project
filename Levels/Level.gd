@@ -45,7 +45,7 @@ func getPlayerSpawn(player_index: int) -> Node2D:
 
 func cleanup() -> void:
 	var bubbles = self.find_children("*", "Bubble", true, false)
-	for bubble: PlayerBubble in bubbles:
+	for bubble: Bubble in bubbles:
 		bubble.pop()
 	
 	self.cleanHurryEnemies()

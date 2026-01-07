@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://g08fjx0x6f4v"]
+
+[ext_resource type="Script" uid="uid://c1nic8tm45nse" path="res://things/Bubbles/BubbleSpawner/bubble_spawner.gd" id="1_kojg0"]
+
+[node name="BubbleSpawner" type="Marker2D"]
+script = ExtResource("1_kojg0")
+
+[node name="IntervalTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+region_enabled = true

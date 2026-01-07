@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://dogcjld36l5xs"]
+[gd_scene load_steps=9 format=4 uid="uid://dogcjld36l5xs"]
 
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_4ss1f"]
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="2_32fqg"]
 [ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="4_etdhh"]
 [ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="5_di6no"]
 [ext_resource type="PackedScene" uid="uid://c50spamxftvqt" path="res://actors/enemies/Munsta/Munsta.tscn" id="6_32fqg"]
+[ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="6_etdhh"]
+[ext_resource type="PackedScene" uid="uid://dgbacp2xdq52f" path="res://things/Bubbles/ZapBubble/ZapBubble.tscn" id="6_yisg0"]
+[ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="8_etdhh"]
 
 [node name="Level_01" type="Node2D"]
 process_mode = 1
@@ -46,12 +49,13 @@ wait_time = 2.0
 position = Vector2(128, 0)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
+disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 64)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
-modulate = Color(1, 1, 1, 0.7)
+modulate = Color(1, 1, 1, 0.3)
 metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
@@ -78,6 +82,26 @@ metadata/_edit_lock_ = true
 [node name="p1_Start" type="Node2D" parent="Player_Spawns"]
 position = Vector2(32, 192)
 
+[node name="ZapBubble" parent="." instance=ExtResource("6_yisg0")]
+position = Vector2(80, 232)
+collision_mask = 1
+zapSpeed = 10
+
+[node name="BubbleSpawner" parent="." instance=ExtResource("6_etdhh")]
+position = Vector2(192, 191)
+bubbleScene = ExtResource("6_yisg0")
+
+[node name="IntervalTimer" parent="BubbleSpawner" index="0"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Icon" parent="BubbleSpawner" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+texture = ExtResource("8_etdhh")
+region_rect = Rect2(46, 46, 16, 16)
+metadata/_edit_lock = true
+
 [editable path="Hurry_Enemy_spawn"]
 [editable path="Enemy_Spawns/ActorSpawn"]
 [editable path="Enemy_Spawns/ActorSpawn3"]
+[editable path="BubbleSpawner"]

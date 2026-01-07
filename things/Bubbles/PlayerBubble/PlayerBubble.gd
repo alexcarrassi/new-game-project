@@ -19,7 +19,6 @@ func _ready() -> void:
 	self.get_tree().create_timer( animationPlayer.get_animation("EXPAND").length  ).timeout.connect( self.setFloating)
 	self.animationPlayer.play("EXPAND")
 	
-	self.hitbox.area_entered.connect( self.hitBoxAreaEntered )
 	
 	
 	self.popTimer.timeout.connect( self.autoPop)
@@ -51,7 +50,7 @@ func autoPop() -> void:
 
 
 # Player-triggered pop	
-func playerPop() -> void:
+func playerPop(player: Player) -> void:
 	self.pop()
 	self.killActor()
 	
@@ -108,21 +107,6 @@ func setFloating() -> void:
 		the_timer.wait_time += self.actorTimerOffset
 		
 		
-func float_x(delta: float) -> Vector2:
-	self.set_collision_mask_value(4, true) # Collide with other bubbles now
-
-	var distance = (self.destination.position - self.position)
-	var velocity = distance * Vector2(self.float_hor_speed, self.float_vert_speed)
-	velocity.x = clamp(velocity.x, -self.float_hor_speed, self.float_hor_speed)
-	velocity.y = clamp(velocity.y, -self.float_vert_speed, self.float_vert_speed)
-	
-	#var alpha = 1.0 - pow(0.001, delta / max(0.0001, 0.15))
-
-	return velocity
-
-	#the bigger the difference, the bigger the velocity. Capped
-	#velocity = distance * max_speed 
-	#at some point, the distance should be clamped to 0. So if smaller than 0.1, it should be 0
 
 
 func float_y(delta: float) -> Vector2:
@@ -145,16 +129,8 @@ func _physics_process(delta: float) -> void:
 					self.target_velocity = self.float_x(delta) 	
 	
 	
-	# Give the Hurtbox a slight Lag, behind our overall position
-	var local_v = self.linear_velocity.rotated( -self.global_rotation )
-	var target = (-local_v * 0.2).limit_length(3)   #computes the desired offset. Max 4 pixels in total.
-	
-	# Smoothly approach target
-	var follow_speed = 80.0
-	var a := 1.0 - exp(-follow_speed * delta)
-	hurtboxOffset = hurtboxOffset.lerp(target, a)
-	self.hurtbox.position = hurtboxOffset
-	
+	self.hurtbox_update(delta)
+
 	
 
 	

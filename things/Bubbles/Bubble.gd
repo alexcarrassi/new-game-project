@@ -11,6 +11,8 @@ class_name Bubble extends RigidBody2D
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
 @onready var infoLabel: Label = $DebugLayer/info
 
+var lock_force_damp : bool = false
+
 enum BubbleState { Shooting, Floating, Popping }
 var state = BubbleState.Shooting
 
@@ -30,17 +32,16 @@ func _ready() -> void:
 	self.hitbox.monitorable = true 
 	
 	self.hurtbox.body_entered.connect( self.onHurtboxBodyEntered )
+	self.hitbox.area_entered.connect( self.hitBoxAreaEntered )
 
-	
 	self.gravity_scale = 0
 	
 func onHurtboxBodyEntered( body: Node2D) -> void:
-	
 	if( self.state == BubbleState.Floating and body is Player):
 		var player = body as Player
 		#popping direction is determine by position of player compared to bubble
 		self.dir.x = 1 if(body.position.x <self.position.x) else -1
-		self.playerPop()
+		self.playerPop( player )
 
 
 func setFloating() -> void:
@@ -54,7 +55,6 @@ func toggle_collision(toggle: bool) -> void:
 	self.set_collision_mask_value(4, toggle) #Collide with other bubbles
 	self.set_collision_mask_value(2, toggle) #Collide with Players
 	self.set_collision_layer_value(4, toggle) #Collide with other bubbles
-
 
 func float_xy(delta: float) -> Vector2:
 	self.set_collision_mask_value(4, true) # Collide with other bubbles now
@@ -73,21 +73,43 @@ func float_xy(delta: float) -> Vector2:
 	#at some point, the distance should be clamped to 0. So if smaller than 0.1, it should be 0
 
 
-func float_x(delta:float) -> Vector2:
-		return Vector2(self.float_hor_speed, 0)
+func float_x(delta: float) -> Vector2:
+	self.set_collision_mask_value(4, true) # Collide with other bubbles now
 
+	var distance = (self.destination.position - self.position)
+	var velocity = distance * Vector2(self.float_hor_speed, self.float_vert_speed)
+	velocity.x = clamp(velocity.x, -self.float_hor_speed, self.float_hor_speed)
+	velocity.y = clamp(velocity.y, -self.float_vert_speed, self.float_vert_speed)
+	
+	#var alpha = 1.0 - pow(0.001, delta / max(0.0001, 0.15))
+
+	return velocity
+
+	#the bigger the difference, the bigger the velocity. Capped
+	#velocity = distance * max_speed 
+	#at some point, the distance should be clamped to 0. So if smaller than 0.1, it should be 0
 
 func float_y(delta: float) -> Vector2:
 	
 	return Vector2(0, -self.float_vert_speed)
 
+
+
+func hitBoxAreaEntered(area: Area2D) -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
-	
+	if(!self.destination) :
+		self.destination = Game.world.level.bubbleDestination
 	match self.state: 
 		_:
 			self.target_velocity = self.float_xy(delta)
 
-	# Give the Hurtbox a slight Lag, behind our overall position
+
+	self.hurtbox_update(delta)
+	
+# Give the Hurtbox a slight Lag, behind our overall position
+func hurtbox_update(delta: float) -> void:
 	var local_v = self.linear_velocity.rotated( -self.global_rotation )
 	var target = (-local_v * 0.2).limit_length(3)   #computes the desired offset. Max 4 pixels in total.
 	
@@ -99,6 +121,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	
+	if(self.lock_force_damp):
+		return
 	var target_v = self.target_velocity
 	var current_v = state.linear_velocity
 	var v_damp = 12 
@@ -113,14 +138,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		
 		
 	state.apply_central_force(force)
-	
-	
-
-	
 	pass	
 
 # Player-triggered pop	
-func playerPop() -> void:
+func playerPop(player: Player) -> void:
 	self.pop()
 
 func pop() -> void:
