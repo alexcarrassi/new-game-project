@@ -49,13 +49,12 @@ wait_time = 2.0
 position = Vector2(128, 0)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 64)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
-modulate = Color(1, 1, 1, 0.3)
+modulate = Color(1, 1, 1, 0.7)
 metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
@@ -87,15 +86,17 @@ position = Vector2(80, 232)
 collision_mask = 1
 zapSpeed = 10
 
-[node name="BubbleSpawner" parent="." instance=ExtResource("6_etdhh")]
+[node name="Bubble_Spawns" type="Node" parent="."]
+
+[node name="BubbleSpawner" parent="Bubble_Spawns" instance=ExtResource("6_etdhh")]
 position = Vector2(192, 191)
 bubbleScene = ExtResource("6_yisg0")
 
-[node name="IntervalTimer" parent="BubbleSpawner" index="0"]
+[node name="IntervalTimer" parent="Bubble_Spawns/BubbleSpawner" index="0"]
 wait_time = 2.0
 one_shot = true
 
-[node name="Icon" parent="BubbleSpawner" index="1"]
+[node name="Icon" parent="Bubble_Spawns/BubbleSpawner" index="1"]
 modulate = Color(1, 1, 1, 0.7)
 texture = ExtResource("8_etdhh")
 region_rect = Rect2(46, 46, 16, 16)
@@ -104,4 +105,4 @@ metadata/_edit_lock = true
 [editable path="Hurry_Enemy_spawn"]
 [editable path="Enemy_Spawns/ActorSpawn"]
 [editable path="Enemy_Spawns/ActorSpawn3"]
-[editable path="BubbleSpawner"]
+[editable path="Bubble_Spawns/BubbleSpawner"]

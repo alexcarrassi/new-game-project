@@ -115,6 +115,9 @@ _data = {
 script = ExtResource("2_4tdxl")
 zapSpeed = 300
 
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
 [node name="Sprite2D" parent="." index="2"]
 region_rect = Rect2(46, 46, 16, 16)
 
@@ -125,3 +128,9 @@ libraries = {
 
 [node name="Hitbox" parent="." index="4"]
 visible = true
+
+[node name="HitboxShape" parent="Hitbox" index="0"]
+visible = true
+
+[node name="Hurtbox" parent="." index="5"]
+visible = false

@@ -64,6 +64,8 @@ func spawnBubble() -> void:
 	newBubble.position = self.position
 	newBubble.destination = Game.world.level.bubbleDestination
 	Game.world.level.add_child(newBubble)
+	
+	#self.intervalTimer.start( self.intervalTimer.wait_time )
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

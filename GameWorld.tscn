@@ -75,12 +75,16 @@ position = Vector2(48, 160)
 position = Vector2(208, 160)
 
 [node name="Wall_Left" type="StaticBody2D" parent="."]
+collision_layer = 1025
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left"]
 position = Vector2(8, 99.5)
 shape = SubResource("RectangleShape2D_n5c08")
 
 [node name="Wall_Right" type="StaticBody2D" parent="."]
+collision_layer = 1025
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right"]
 position = Vector2(248, 99.25)
