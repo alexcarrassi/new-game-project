@@ -123,7 +123,6 @@ func startLevel(level: Level) -> void:
 				
 				for actorSpawn_: ActorSpawn in children :
 					if(actorSpawn_.actor):
-						
 						actorSpawn_.actor.sm_status.state.finished.emit("ALIVE")
 				self.is_transitioning_Levels = false
 			)

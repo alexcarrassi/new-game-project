@@ -33,7 +33,7 @@ var loco_locked = false
 var intent: ActorIntent
 
 var nodes_owned: Dictionary[StringName, Node]
-
+var stayPut: bool = false
 
 signal actorDeath(actor: Actor) 
 signal actorHurt(actor: Actor)

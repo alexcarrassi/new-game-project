@@ -20,5 +20,9 @@ func physics_update(delta: float) -> void:
 	actor.move_and_slide()
 	
 	if( actor.is_on_floor()): 
-		self.finished.emit("RUNNING")
+		if(actor.stayPut) :
+			self.finished.emit("IDLE")
+		else:
+			
+			self.finished.emit("RUNNING")
 	pass

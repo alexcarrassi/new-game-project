@@ -25,9 +25,14 @@ LevelDatabase="*res://Levels/LevelDatabase.tscn"
 window/size/viewport_width=256
 window/size/viewport_height=224
 window/size/always_on_top=true
-window/size/window_width_override=768
-window/size/window_height_override=672
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[editor]
+
+movie_writer/movie_file="/Users/alex/Desktop/Work/movies/bubble_test.ogv"
 
 [editor_plugins]
 

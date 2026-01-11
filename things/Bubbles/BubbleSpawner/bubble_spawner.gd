@@ -35,7 +35,8 @@ func _ready() -> void:
 		self.Icon.visible = false
 		self.Icon.queue_free()
 		
-		self.intervalTimer.timeout.connect( self.spawnBubble)
+		if(!self.disabled) :
+			self.intervalTimer.timeout.connect( self.spawnBubble)
 
 
 
@@ -65,7 +66,6 @@ func spawnBubble() -> void:
 	newBubble.destination = Game.world.level.bubbleDestination
 	Game.world.level.add_child(newBubble)
 	
-	#self.intervalTimer.start( self.intervalTimer.wait_time )
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

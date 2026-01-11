@@ -8,10 +8,15 @@ var rng = RandomNumberGenerator.new()
 @export var pickup : PackedScene
 	
 
+
+
 func _ready() -> void:
 	super._ready()
 	self.rng.randomize()
 
+	if(self.stayPut) :
+		self.loco_locked = true 
+		self.act_locked = true
 		#self.animationPlayer.sm_locomotion = self.sm_locomotion
 	if(self.sensors) :
 		

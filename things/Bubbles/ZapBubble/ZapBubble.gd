@@ -1,6 +1,6 @@
 class_name ZapBubble extends Bubble
 
-@export var zapSpeed = 10
+@export var zapSpeed: float = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=3 uid="uid://0qbs3c111ic0"]
+
+[ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://things/Bubbles/Bubble.tscn" id="1_p0uk1"]
+[ext_resource type="Script" uid="uid://bjnd4fpfta08t" path="res://things/Bubbles/WaterBubble/WaterBubble.gd" id="2_gnaoe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gnaoe"]
+radius = 6.0207973
+
+[sub_resource type="Animation" id="Animation_3mr26"]
+resource_name = "Pon"
+length = 0.33333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(4, 4, 16, 16), Rect2(25, 3, 16, 16), Rect2(46, 4, 16, 16), Rect2(67, 4, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_b7bh6"]
+length = 0.14
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(109, 4, 16, 16), Rect2(130, 4, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_3qslm"]
+resource_name = "RED"
+length = 0.06667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(88, 4, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_xtjm5"]
+resource_name = "RED_FLICKER"
+length = 0.13333668
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(67, 4, 16, 16), Rect2(88, 4, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_36l50"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(4, 46, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_gnaoe"]
+length = 0.06667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(25, 46, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnaoe"]
+_data = {
+&"EXPAND": SubResource("Animation_3mr26"),
+&"PON": SubResource("Animation_b7bh6"),
+&"RED": SubResource("Animation_3qslm"),
+&"RED_FLICKER": SubResource("Animation_xtjm5"),
+&"RESET": SubResource("Animation_36l50"),
+&"TIDE": SubResource("Animation_gnaoe")
+}
+
+[node name="WaterBubble" instance=ExtResource("1_p0uk1")]
+collision_layer = 8
+script = ExtResource("2_gnaoe")
+tideSpeed = 150.0
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_gnaoe")
+
+[node name="Sprite2D" parent="." index="2"]
+region_rect = Rect2(4, 46, 16, 16)
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_gnaoe")
+}
+
+[node name="Hurtbox" parent="." index="5"]
+visible = false

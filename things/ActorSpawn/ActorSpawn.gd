@@ -17,6 +17,7 @@ class_name ActorSpawn extends Marker2D
 			call_deferred("_update_icon")	
 @export var spawn_defer_time: float = 0.1
 @export var spawn_node: Node
+@export var actorStayPut: bool = false
 @export var disabled: bool:
 	get: 
 		return disabled 
@@ -78,6 +79,13 @@ func deferSpawn() -> void:
 #spawns the actor at their designated spawn point
 func spawnActor() -> Tween:
 	self.actor = Game.world.spawnEnemy(self.ActorScene, self.position, self.spawn_node )
+	
+	if(self.actorStayPut):
+		self.actor.MAX_RUN_VELOCITY = 0
+		if(self.actor is Enemy):
+			self.actor.decision_timer.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	
 	if( self.actor.direction.x != self.direction.x):
 		self.actor.flip()
 	
