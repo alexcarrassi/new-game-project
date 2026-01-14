@@ -134,7 +134,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var force = v_delta  * v_damp * mass
 	
 	if(force.length() > force_max):
-		force.normalized() * force_max
+		force = force.normalized() * force_max
 		
 		
 	state.apply_central_force(force)

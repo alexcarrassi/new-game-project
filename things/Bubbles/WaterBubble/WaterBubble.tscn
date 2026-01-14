@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://0qbs3c111ic0"]
+[gd_scene load_steps=14 format=3 uid="uid://0qbs3c111ic0"]
 
 [ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://things/Bubbles/Bubble.tscn" id="1_p0uk1"]
 [ext_resource type="Script" uid="uid://bjnd4fpfta08t" path="res://things/Bubbles/WaterBubble/WaterBubble.gd" id="2_gnaoe"]
+[ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="3_yisb2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnaoe"]
 radius = 6.0207973
@@ -112,8 +113,14 @@ _data = {
 &"TIDE": SubResource("Animation_gnaoe")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yisb2"]
+radius = 4.0
+
+[sub_resource type="Curve2D" id="Curve2D_yisb2"]
+
 [node name="WaterBubble" instance=ExtResource("1_p0uk1")]
 collision_layer = 8
+max_contacts_reported = 3
 script = ExtResource("2_gnaoe")
 tideSpeed = 150.0
 
@@ -130,3 +137,25 @@ libraries = {
 
 [node name="Hurtbox" parent="." index="5"]
 visible = false
+
+[node name="Sensors" type="Node2D" parent="." index="7"]
+
+[node name="GroundCast" type="ShapeCast2D" parent="Sensors" index="0"]
+shape = SubResource("CircleShape2D_yisb2")
+target_position = Vector2(0, 2)
+
+[node name="FrontCast" type="RayCast2D" parent="Sensors" index="1"]
+target_position = Vector2(7, 0)
+
+[node name="Path2D" type="Path2D" parent="." index="8"]
+top_level = true
+curve = SubResource("Curve2D_yisb2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+rotates = false
+loop = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" index="0"]
+texture = ExtResource("3_yisb2")
+region_enabled = true
+region_rect = Rect2(25, 46, 16, 16)
