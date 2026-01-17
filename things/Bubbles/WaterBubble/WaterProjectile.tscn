@@ -21,7 +21,6 @@ radius = 6.0
 [node name="WaterProjectile" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_5qpjs")
-tideSpeed = null
 
 [node name="Sensors" type="Node2D" parent="."]
 

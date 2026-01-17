@@ -11,8 +11,9 @@ class_name WaterProjectile extends CharacterBody2D
 var dir: Vector2 = Vector2.RIGHT
 var projectileSpeed: float = 220.0
 
-var sprite_flicker_hz = 30.0
+var sprite_flicker_hz = 60.0
 var isGrounded: bool = false
+var actors: Array[Actor] = []
 
 
 var _flicker_accum: float = 0.0
@@ -29,6 +30,14 @@ func hitBoxAreaEntered(area: Area2D) -> void:
 		areaOwner.sm_locomotion.state.finished.emit("FALLING")
 		areaOwner.sm_status.state.finished.emit("DEAD", {"dir": self.dir.x})
 		areaOwner.rotation = 0
+	
+	if areaOwner is Player:
+		if(areaOwner.sm_locomotion.state.name != "RIDING"):
+			areaOwner.sm_locomotion.state.finished.emit("RIDING", {"owner": self})
+
+			#Put the Player in tailor made "Riding" state
+			self.actors.append (areaOwner)
+		
 
 
 	
@@ -69,6 +78,13 @@ func _physics_process(delta: float) -> void:
 	
 	self.isGrounded = self.is_on_floor()
 
+func releaseActors() -> void:
+	for actor: Actor in self.actors:
+
+		#actor.reparent(Game.world.level)
+		#actor.position = self.position
+		actor.sm_locomotion.state.finished.emit("IDLE")
+
 func _process(delta: float) -> void:
 
 	self._flicker_accum += delta
@@ -83,11 +99,19 @@ func _process(delta: float) -> void:
 		self.tidePathFollow.progress = 0
 	
 	else:
-
 		#var progress_ofsset = clamp(curve_length - 32, 0, curve_length  -32)
 		self.tidePathFollow.progress +=  self.tideSpeed*delta
 		
+	for actor: Actor in self.actors:
+		actor.direction.x = self.dir.x	
+	
+		
+		
 	if( curve_length > 0 && self.tidePathFollow.progress == curve_length ) :
 		self.queue_free()
+		self.hitBox.monitoring = false
+		self.hitBox.monitorable = false
+		self.releaseActors()
+
 
 		

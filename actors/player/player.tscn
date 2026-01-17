@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=36 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://actors/player/player.gd" id="1_ivps1"]
 [ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_urp6f"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://uoyc84dvmybc" path="res://actors/player/scripts/State_Locomotion_Running.gd" id="6_op7ga"]
 [ext_resource type="Script" uid="uid://ddmvao6elrk3t" path="res://actors/player/scripts/State_Locomotion_Falling.gd" id="7_q13i1"]
 [ext_resource type="Script" uid="uid://dvrp2qg2igcl2" path="res://actors/player/scripts/State_Locomotion_Jumping.gd" id="8_pylmc"]
+[ext_resource type="Script" uid="uid://boe33mx0birrj" path="res://actors/scripts/Riding.gd" id="9_otn2r"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="9_pbfsw"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_5tmop"]
 [ext_resource type="Script" uid="uid://cw0ep6ifeu7n4" path="res://actors/player/scripts/State_Act_Attack.gd" id="11_7ahtn"]
@@ -400,6 +401,10 @@ script = ExtResource("7_q13i1")
 
 [node name="JUMPING" type="Node" parent="StateMachine_Locomotion"]
 script = ExtResource("8_pylmc")
+
+[node name="RIDING" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("9_otn2r")
+metadata/_custom_type_script = "uid://boe33mx0birrj"
 
 [node name="StateMachine_Act" type="Node" parent="."]
 script = ExtResource("9_pbfsw")

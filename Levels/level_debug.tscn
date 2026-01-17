@@ -50,9 +50,13 @@ position = Vector2(72, -40)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
 actorStayPut = true
+disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 200)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
+modulate = Color(1, 1, 1, 0.3)
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
 wait_time = 0.5
@@ -62,9 +66,13 @@ position = Vector2(72, -40)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
 actorStayPut = true
+disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
 position = Vector2(0, 160)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
+modulate = Color(1, 1, 1, 0.3)
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
 wait_time = 0.5
