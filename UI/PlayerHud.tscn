@@ -1,7 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://0m2bg6htt36p"]
+[gd_scene load_steps=10 format=3 uid="uid://0m2bg6htt36p"]
 
 [ext_resource type="Script" uid="uid://b3olf4n8g8urp" path="res://UI/player_hud.gd" id="1_ylgw7"]
 [ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/misc/Fonts.png" id="2_d3wnd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d3wnd"]
+load_path = "res://.godot/imported/Bubble_types.png-a046bf583e00a8b503c328dbdbb68a45.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssc20"]
+atlas = SubResource("CompressedTexture2D_d3wnd")
+region = Rect2(4, 67, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk6a1"]
+atlas = SubResource("CompressedTexture2D_d3wnd")
+region = Rect2(25, 67, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v5a7"]
+atlas = SubResource("CompressedTexture2D_d3wnd")
+region = Rect2(46, 67, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo3e5"]
+atlas = SubResource("CompressedTexture2D_d3wnd")
+region = Rect2(67, 67, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snitt"]
+atlas = SubResource("CompressedTexture2D_d3wnd")
+region = Rect2(88, 67, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx7cs"]
+atlas = SubResource("CompressedTexture2D_d3wnd")
+region = Rect2(109, 67, 16, 16)
 
 [node name="PlayerHUD" type="Control"]
 layout_mode = 3
@@ -53,3 +80,46 @@ theme_override_fonts/font = ExtResource("2_d3wnd")
 theme_override_font_sizes/font_size = 12
 text = "2"
 vertical_alignment = 2
+
+[node name="Inventory" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ssc20")
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wk6a1")
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3v5a7")
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_uo3e5")
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_snitt")
+stretch_mode = 4
+
+[node name="TextureRect6" type="TextureRect" parent="Inventory/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yx7cs")
+stretch_mode = 4

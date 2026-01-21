@@ -19,8 +19,6 @@ func _process(delta: float) -> void:
 	pass
 	
 func onHitboxBodyEntered(body: Node2D) -> void:
-	print("body")
-	print(body.name)
 	self.queue_free()
 	
 	

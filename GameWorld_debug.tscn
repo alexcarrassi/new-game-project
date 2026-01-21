@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_vjhf7"]
 [ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="3_cbrnd"]
 [ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="4_uu52o"]
-[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://things/Items/Atlas/Popups/Hurry.tres" id="5_l0b32"]
+[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://things/Inventory/Pickups/Atlas/Popups/Hurry.tres" id="5_l0b32"]
 [ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/Teleporter/teleporter.tscn" id="6_axol4"]
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level_debug.tscn" id="7_vjhf7"]
 [ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="8_cbrnd"]

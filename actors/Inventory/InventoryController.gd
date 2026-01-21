@@ -1,0 +1,42 @@
+class_name InventoryController extends Resource 
+
+var actor: Actor
+var inventory: Dictionary [StringName, ItemEntry] = {}
+
+signal inventoryUpdated() 
+
+func _init(actor: Actor) -> void:
+	self.actor = actor
+	
+func addItem(item_id: StringName) -> void:
+	
+	var itemToAdd : Item = ItemDB.items[item_id]
+	
+	if( itemToAdd ):
+		var entry = self.inventory.get_or_add(item_id, null)
+		if(entry):
+			#check if we can increase the stack
+			entry.stack += 1 if entry.item.stackable else 0
+			pass 
+		else: 
+			#create new entry
+			entry = ItemEntry.new(itemToAdd, 1) 		
+			self.inventory[item_id] = entry
+			
+	#emit a signal	
+	self.inventoryUpdated.emit()	
+	pass
+	
+func removeItem(item_id: StringName) -> void: 
+	
+	var entryToRemove: ItemEntry = self.inventory.get(item_id, null)
+	if(entryToRemove):
+		entryToRemove.stack -= 1
+		
+		if(entryToRemove.stack < 1 ):
+			self.inventory.erase(item_id)	
+			
+	#emit a signal
+	self.inventoryUpdated.emit()	
+
+			

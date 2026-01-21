@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccadihs34tunk"]
+
+[ext_resource type="Script" uid="uid://bu5vhl6ydfyqb" path="res://things/Inventory/Items/ItemDB.gd" id="1_ga85r"]
+[ext_resource type="Resource" uid="uid://6h6yhc4xgudo" path="res://things/Inventory/Items/ExtendBubbles/E.tres" id="2_rtp6i"]
+
+[node name="ItemDb" type="Node"]
+script = ExtResource("1_ga85r")
+items_ = Array[Object]([ExtResource("2_rtp6i")])

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="1_wvu6n"]
 [ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="2_8btpj"]
-[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://things/Items/Atlas/Popups/Hurry.tres" id="2_yerw3"]
+[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://things/Inventory/Pickups/Atlas/Popups/Hurry.tres" id="2_yerw3"]
 [ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="3_b7yyn"]
 
 [node name="Preview" type="Node2D"]

@@ -18,6 +18,8 @@ var buffer_times : Dictionary = {"jump" = 0.0, "attack" = 0.0}
 
 var inputState: InputState
 
+var Inventory: InventoryController
+
 var score = 0
 signal scoreUpdated()
 
@@ -26,6 +28,13 @@ func _ready() -> void:
 	super._ready()
 	self.hurtbox.monitoring = true
 	self.hurtbox.body_entered.connect( self.onHurtboxEntered)
+	
+	self.Inventory = InventoryController.new(self)
+	
+	self.Inventory.inventoryUpdated.connect( 
+		func() -> void:
+			print(self.Inventory.inventory)
+	)
 	
 func onHurtboxEntered( body: Node2D ) :
 	if( body is Enemy):

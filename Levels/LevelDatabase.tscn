@@ -36,6 +36,13 @@ scene = ExtResource("11_sgjgs")
 default_next = "0"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
+[sub_resource type="Resource" id="Resource_27iff"]
+script = ExtResource("13_vjd8q")
+id = "101"
+scene = ExtResource("7_nxx6f")
+default_next = "0"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
 [sub_resource type="Resource" id="Resource_e2sgk"]
 script = ExtResource("13_vjd8q")
 id = "2"
@@ -90,13 +97,6 @@ script = ExtResource("13_vjd8q")
 id = "9"
 scene = ExtResource("10_40lhv")
 default_next = "10"
-metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
-
-[sub_resource type="Resource" id="Resource_27iff"]
-script = ExtResource("13_vjd8q")
-id = "101"
-scene = ExtResource("7_nxx6f")
-default_next = "0"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [node name="LevelDatabase" type="Node"]

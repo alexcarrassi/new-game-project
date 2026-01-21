@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PickupEffect_Score" load_steps=3 format=3 uid="uid://dceuu77bmye80"]
+
+[ext_resource type="Script" uid="uid://chfll181o63dp" path="res://things/Inventory/Pickups/PickupEffects/PickupEffect_Score.gd" id="1_dv6r7"]
+[ext_resource type="Texture2D" uid="uid://csw88bpsob3hl" path="res://things/Inventory/Pickups/Atlas/Popups/100.tres" id="2_cyppp"]
+
+[resource]
+script = ExtResource("1_dv6r7")
+texture = ExtResource("2_cyppp")
+metadata/_custom_type_script = "uid://chfll181o63dp"

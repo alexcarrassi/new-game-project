@@ -1,5 +1,5 @@
 @tool
-class_name BubbleSpawer extends Node2D
+class_name BubbleSpawner extends Node2D
 
 @export var bubbleScene: PackedScene:
 	get:
@@ -7,7 +7,6 @@ class_name BubbleSpawer extends Node2D
 	set(value):
 		bubbleScene = value
 		if(Engine.is_editor_hint()):
-			print("uh")
 			call_deferred("update_icon")	
 @export var disabled: bool:
 	get:
@@ -45,14 +44,17 @@ func update_icon() -> void:
 	if(self.bubbleScene == null) :
 		#reset
 		self.Icon.texture = null
+		print("returning early")
 		return
 	
 	var bubble = self.bubbleScene.instantiate()
 	var bubbleSprite : Sprite2D = bubble.get_node_or_null("Sprite2D")
 	if(bubbleSprite):
+		print("got bubblesprite")
 		self.Icon.texture = bubbleSprite.texture
 		self.Icon.region_rect = bubbleSprite.region_rect
 		print(bubbleSprite.region_rect)
+		print(bubble.name)
 		var c = self.Icon.modulate
 		c.a = 0.7 if (!self.disabled) else 0.3
 		self.Icon.modulate = c
@@ -61,9 +63,10 @@ func update_icon() -> void:
 
 
 func spawnBubble() -> void:
-	var newBubble = self.bubbleScene.instantiate()
+	var newBubble = self.bubbleScene.instantiate() as ExtendBubble
 	newBubble.position = self.position
 	newBubble.destination = Game.world.level.bubbleDestination
+	newBubble.item = ItemDB.items.get("extend_E1")
 	Game.world.level.add_child(newBubble)
 	
 	pass
