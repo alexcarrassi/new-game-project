@@ -94,32 +94,32 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_E1" type="TextureRect" parent="Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_ssc20")
 stretch_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_X" type="TextureRect" parent="Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_wk6a1")
 stretch_mode = 4
 
-[node name="TextureRect3" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_T" type="TextureRect" parent="Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_3v5a7")
 stretch_mode = 4
 
-[node name="TextureRect4" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_E2" type="TextureRect" parent="Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_uo3e5")
 stretch_mode = 4
 
-[node name="TextureRect5" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_N" type="TextureRect" parent="Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_snitt")
 stretch_mode = 4
 
-[node name="TextureRect6" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_D" type="TextureRect" parent="Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_yx7cs")
 stretch_mode = 4

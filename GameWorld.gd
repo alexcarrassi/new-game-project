@@ -7,6 +7,9 @@ var level: Level
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
 @onready var TransitionSlots: Node = $TransitionSlots
 
+@onready var extendBubbleSpawner_left: ExtendBubbleSpawner  = $ExtendBubble_left
+@onready var extendBubbleSpawner_right: ExtendBubbleSpawner = $ExtendBubble_right
+
 
 @export var level_debug: PackedScene
 @export var start_debug: bool
@@ -35,16 +38,7 @@ func levelTransition(options: Dictionary = {}) -> void:
 	
 
 	
-	# Create and Ready the next level
-	# Get the next Level's id. Either from the options or the logical next level		
-	var nextLevel_id = options.get("nextLevel_id", Game.getNextLevel_id())
 
-	if(nextLevel_id == "") :
-		print("No Next level found.")
-		nextLevel_id = ""
-	
-	var nextLevel = createNextLevel(nextLevel_id)
-	
 	# Reparent the players
 	for key: int in Game.players.keys():
 		if(Game.players[key]):
@@ -56,7 +50,17 @@ func levelTransition(options: Dictionary = {}) -> void:
 	# Cleanup, after timeout
 	self.level.cleanup()
 
+	# Create and Ready the next level
+	# Get the next Level's id. Either from the options or the logical next level		
+	var nextLevel_id = options.get("nextLevel_id", Game.getNextLevel_id())
 
+	if(nextLevel_id == "") :
+		print("No Next level found.")
+		nextLevel_id = ""
+	
+	var nextLevel = createNextLevel(nextLevel_id)
+	
+	
 	if(options.has("cinematic")):
 		if(options["cinematic"]) :
 			#Put the players in Suspended Animation
@@ -95,6 +99,7 @@ func startLevel(level: Level) -> void:
 		level.hurry.connect( self.onLevelHurry)
 
 	if(level.playerSpawns.get_children().size() == 0 ):
+		#No level-start marker for the players, so move on to the next level
 		self.levelTransition({"cinematic": true, "timeout" : 2.0})	
 	else:
 		self.spawnPlayers()
@@ -126,6 +131,26 @@ func startLevel(level: Level) -> void:
 						actorSpawn_.actor.sm_status.state.finished.emit("ALIVE")
 				self.is_transitioning_Levels = false
 			)
+
+# When starting a new level, a player may have earned one or more extend bubbles
+# This function checks each Player, and queues the bubbles they earned
+func queue_extend_bubbles() -> void:
+	for playerKey: int in Game.players.keys():
+		var player = Game.players[playerKey]
+		
+		var bubble_count = player.current_comboRecord - 1
+		var spawner = self.extendBubbleSpawner_left if playerKey  % 2 == 0 else extendBubbleSpawner_right
+		var bubbleQueue = player.getEligibleExtendBubbles(bubble_count)		
+		spawner.bubbleQueue = bubbleQueue
+
+				
+		
+		print("Queueing  %d bubbles" %[player.current_comboRecord - 1])
+		
+		
+		spawner.disabled = false 
+		spawner.intervalTimer.start()
+		player.current_comboRecord = 0	
 
 func tweenPlayersToSpawn() -> Tween: 
 	var moveTween: Tween = create_tween() 
@@ -189,11 +214,22 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 		
 		playerNode.actorHurt.connect( self.onActorHurt )
 		playerNode.actorDeath.connect( self.onActorDeath )
+		playerNode.Inventory.inventoryUpdated.connect( self.tryExtend.bind(playerNode))
 		self.spawnPlayerHUD( self.playerHUDScene, playerNode )
 
 	return playerNode
 
-
+func tryExtend( player: Player) -> void:
+	#Check if we need to extend
+	if(player.checkForExtend()):
+		player.health += 1
+		player.cleanExtendBubbles()
+		player.actorLifeUp.emit(player)
+		self.levelTransition({"cinematic": true, "timeout" : 0.1})	
+	
+			
+		
+	
 # Puts players in the current level, Positions them at the spawn point, set state to ALIVE
 func spawnPlayers() -> void:
 	for key: int in Game.players.keys():
@@ -203,7 +239,8 @@ func spawnPlayers() -> void:
 			player.position = spawnPoint.position
 			player.sm_status.state.finished.emit("ALIVE")
 			
-			
+	
+	self.queue_extend_bubbles()		
 			
 		
 func createNextLevel(level_id: String) -> Level:
@@ -241,6 +278,7 @@ func spawnEnemy(enemyScene: PackedScene, position: Vector2, spawnNode: Node = nu
 func onEnemyDeath(enemy: Enemy) -> void:
 	print("Enemy Death in World")
 	if(level.is_cleared() and !self.is_transitioning_Levels):
+		
 		self.is_transitioning_Levels = true
 		self.levelTransition({"cinematic": true, "timeout" : 2.0})		
 

@@ -16,8 +16,9 @@ func _ready() -> void:
 
 func register_player(index: int, player: Player) -> Dictionary[int, Player]:
 	self.players[index] = player
-	return self.players	
 	
+	return self.players	
+
 
 func deregister_player(index: int) -> Dictionary[int, Player]:
 	self.players.erase(index)  
@@ -33,8 +34,12 @@ func register_currentLevel( level_index: int) -> int:
 func getNextLevel_id() -> String:
 	if(!self.world.level):
 		return ""
+	
+	var nextLevel_id = self.world.level.definition.default_next
 		
-	return self.world.level.definition.default_next
+	
+			
+	return nextLevel_id
 		
 func _input(event: InputEvent) -> void:
 	if ( event.is_action_pressed("ui_start") ):

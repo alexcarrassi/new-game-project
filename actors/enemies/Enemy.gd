@@ -114,7 +114,6 @@ func think()-> void:
 	self.decision_timer.wait_time = self.DECISION_PERIOD
 		
 	var random_number = rng.randf()
-	print(random_number)
 	var position_compared_to_player = self.player_above()
 	if(random_number < 0.7):
 		if( position_compared_to_player == 1 and self.floor_above()) :

@@ -27,6 +27,9 @@ func addItem(item_id: StringName) -> void:
 	self.inventoryUpdated.emit()	
 	pass
 	
+func getItem(item_id: StringName) -> ItemEntry:
+	return self.inventory.get(item_id, null)
+	
 func removeItem(item_id: StringName) -> void: 
 	
 	var entryToRemove: ItemEntry = self.inventory.get(item_id, null)

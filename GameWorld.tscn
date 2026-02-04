@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c77k1tce7y5xe"]
+[gd_scene load_steps=14 format=3 uid="uid://c77k1tce7y5xe"]
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level_debug.tscn" id="4_hej4t"]
 [ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="6_a0c47"]
 [ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/Teleporter/teleporter.tscn" id="6_hej4t"]
+[ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="8_28gir"]
+[ext_resource type="Script" uid="uid://dwwu8nncg7gvt" path="res://things/Bubbles/BubbleSpawner/ExtendBubbleSpawner.gd" id="9_2dy0i"]
+[ext_resource type="PackedScene" uid="uid://cia1bm5ivt02" path="res://things/Bubbles/ExtendBubble/ExtendBubble.tscn" id="9_jih74"]
+[ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="10_2dy0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5c08"]
 size = Vector2(16, 307)
@@ -89,3 +93,34 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right"]
 position = Vector2(248, 99.25)
 shape = SubResource("RectangleShape2D_a0c47")
+
+[node name="ExtendBubble_left" parent="." instance=ExtResource("8_28gir")]
+position = Vector2(56, 268)
+script = ExtResource("9_2dy0i")
+bubbleScene = ExtResource("9_jih74")
+disabled = true
+
+[node name="IntervalTimer" parent="ExtendBubble_left" index="0"]
+wait_time = 2.0
+
+[node name="Icon" parent="ExtendBubble_left" index="1"]
+modulate = Color(1, 1, 1, 0.3)
+texture = ExtResource("10_2dy0i")
+region_rect = Rect2(5, 67, 14, 16)
+
+[node name="ExtendBubble_right" parent="." instance=ExtResource("8_28gir")]
+position = Vector2(190, 268)
+script = ExtResource("9_2dy0i")
+bubbleScene = ExtResource("9_jih74")
+disabled = true
+
+[node name="IntervalTimer" parent="ExtendBubble_right" index="0"]
+wait_time = 2.0
+
+[node name="Icon" parent="ExtendBubble_right" index="1"]
+modulate = Color(1, 1, 1, 0.3)
+texture = ExtResource("10_2dy0i")
+region_rect = Rect2(5, 67, 14, 16)
+
+[editable path="ExtendBubble_left"]
+[editable path="ExtendBubble_right"]

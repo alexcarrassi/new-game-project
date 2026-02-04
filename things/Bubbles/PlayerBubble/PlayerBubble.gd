@@ -52,21 +52,27 @@ func autoPop() -> void:
 # Player-triggered pop	
 func playerPop(player: Player) -> void:
 	self.pop()
-	self.killActor()
+	var actor = self.killActor()
+	if(actor):
+		player.addToCombo(actor)
+		
 	
-func releaseActor() -> void:
+	
+func releaseActor() -> Actor:
 		if(self.actor != null):
 			self.actor.reparent( self.actor_parent)
 			self.actor.sm_locomotion.state.finished.emit("IDLE")
 			self.actor.rotation = 0
+		return self.actor	
 
 	
-func killActor() -> void:
+func killActor() -> Actor:
 	if(self.actor != null) :
 		self.actor.reparent( self.actor_parent )
 		self.actor.sm_locomotion.state.finished.emit("FALLING")
 		self.actor.sm_status.state.finished.emit("DEAD", {"dir": self.dir.x})
 		self.actor.rotation = 0
+	return self.actor	
 
 
 func hitBoxAreaEntered(area: Area2D) -> void:

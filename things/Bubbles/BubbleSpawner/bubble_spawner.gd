@@ -18,6 +18,8 @@ class_name BubbleSpawner extends Node2D
 
 @onready var intervalTimer: Timer = $IntervalTimer
 @onready var Icon: Sprite2D= $Icon
+##Whether this Spawner works indefinitiely or not
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,11 +35,9 @@ func _ready() -> void:
 	else:	
 		self.Icon.visible = false
 		self.Icon.queue_free()
-		
-		if(!self.disabled) :
-			self.intervalTimer.timeout.connect( self.spawnBubble)
-
-
+		self.intervalTimer.timeout.connect( self.spawnBubble)
+		if(self.disabled) :
+			self.intervalTimer.stop()
 
 
 func update_icon() -> void:
@@ -62,14 +62,14 @@ func update_icon() -> void:
 	bubble.queue_free()	
 
 
-func spawnBubble() -> void:
-	var newBubble = self.bubbleScene.instantiate() as ExtendBubble
+func spawnBubble() -> Bubble:
+		
+	var newBubble = self.bubbleScene.instantiate() 
 	newBubble.position = self.position
 	newBubble.destination = Game.world.level.bubbleDestination
-	newBubble.item = ItemDB.items.get("extend_E1")
 	Game.world.level.add_child(newBubble)
+	return newBubble
 	
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

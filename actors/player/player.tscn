@@ -468,3 +468,8 @@ layout_mode = 2
 shape = SubResource("RectangleShape2D_dqf5y")
 target_position = Vector2(0, 0)
 collision_mask = 8
+
+[node name="ComboTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true

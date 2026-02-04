@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 script = ExtResource("13_vjd8q")
 id = "101"
 scene = ExtResource("7_nxx6f")
-default_next = "0"
+default_next = "1"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [sub_resource type="Resource" id="Resource_e2sgk"]

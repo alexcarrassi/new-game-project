@@ -16,6 +16,10 @@ var jump_held_time: float = 0.0
 var buffer_times : Dictionary = {"jump" = 0.0, "attack" = 0.0}
 @onready var BubbleSensor = $Sensors/BubbleSensor
 
+@onready var comboTimer: Timer = $ComboTimer
+var current_comboCount: int = 0
+var current_comboRecord: int = 0
+
 var inputState: InputState
 
 var Inventory: InventoryController
@@ -31,10 +35,9 @@ func _ready() -> void:
 	
 	self.Inventory = InventoryController.new(self)
 	
-	self.Inventory.inventoryUpdated.connect( 
-		func() -> void:
-			print(self.Inventory.inventory)
-	)
+	self.Inventory.inventoryUpdated.connect( self.checkForExtend )
+	
+	self.comboTimer.timeout.connect( self.endCombo )
 	
 func onHurtboxEntered( body: Node2D ) :
 	if( body is Enemy):
@@ -88,6 +91,20 @@ func _physics_process(delta: float) -> void:
 		if( self.BubbleSensor.is_colliding() ) :
 			print("can jump")
 	
+func checkForExtend() -> bool:
+	var allBubbles : Array[Item] = ItemDB.extendBubbles
+
+	for bubbleItem: Item in allBubbles:
+		if(!self.Inventory.getItem(bubbleItem.id) ):
+			return false
+	return true
+	
+func cleanExtendBubbles() -> void:
+	var allBubbles : Array[Item] = ItemDB.extendBubbles
+
+	for bubbleItem: Item in allBubbles:
+		self.Inventory.removeItem(bubbleItem.id)
+
 
 				
 func post_move_and_slide() -> void:
@@ -103,9 +120,39 @@ func _input(event: InputEvent) -> void:
 		self.actState.state.finished.emit("ATTACK", transition_data)
 	
 	
+func addToCombo(actor: Actor) -> void:
+	if(self.comboTimer.is_stopped()):
+		#No running combo yet. Start with 1
+		self.comboTimer.start()
+		self.current_comboCount += 1
+		
+	else:
+		#Combo is running. Increment the count
+		self.current_comboCount += 1	
+func endCombo() -> void:
+	
+	print("ending combo. Count: %s" %[self.current_comboCount ] )
+	
+	if(self.current_comboCount > self.current_comboRecord) :
+		self.current_comboRecord = current_comboCount
 
+	self.current_comboCount = 0
+	
+func getEligibleExtendBubbles(count: int) -> Array[StringName]:
+	var bubbles : Array[StringName]= []
+	var allBubbles : Array[Item] = ItemDB.extendBubbles
+	
+	for bubbleItem: Item in allBubbles:
+		if(count < 1):
+			break
+		
+		if(!self.Inventory.getItem(bubbleItem.id) ):
+			bubbles.append(bubbleItem.id)
+			count -=1
 
-
+	return bubbles
+	
+	
 class InputState:
 	var haxis: float = 0.0
 	var vaxis: float = 0.0
