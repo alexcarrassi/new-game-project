@@ -20,7 +20,6 @@ func enterEffects() -> Array:
 	
 func enter(prev_state_path: String, data: Dictionary ):
 	
-	print("Entering Attack")
 	self.body.buffer_times['attack'] = 0
 	var bubble: PlayerBubble = bubble.instantiate()
 	bubble.destination =  Game.world.level.bubbleDestination  

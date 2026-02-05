@@ -82,7 +82,7 @@ func spawnActor() -> Tween:
 	
 	if(self.actorStayPut):
 		self.actor.MAX_RUN_VELOCITY = 0
-		if(self.actor is Enemy):
+		if(self.actor is Enemy && self.actor.decision_timer):
 			self.actor.decision_timer.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	

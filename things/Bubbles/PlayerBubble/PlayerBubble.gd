@@ -51,6 +51,7 @@ func autoPop() -> void:
 
 # Player-triggered pop	
 func playerPop(player: Player) -> void:
+	super.playerPop(player)
 	self.pop()
 	var actor = self.killActor()
 	if(actor):
@@ -99,7 +100,7 @@ func hitBoxAreaEntered(area: Area2D) -> void:
 		self.hitbox.call_deferred("set_monitoring", false)
 		self.hitbox.monitoring = false
 		
-	pass
+	super.hitBoxAreaEntered(area)
 	
 func setFloating() -> void:
 	super.setFloating()

@@ -11,6 +11,8 @@ class_name Bubble extends RigidBody2D
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
 @onready var infoLabel: Label = $DebugLayer/info
 
+var poppedBy: Player
+
 var lock_force_damp : bool = false
 
 enum BubbleState { Shooting, Floating, Popping }
@@ -33,6 +35,10 @@ func _ready() -> void:
 	
 	self.hurtbox.body_entered.connect( self.onHurtboxBodyEntered )
 	self.hitbox.area_entered.connect( self.hitBoxAreaEntered )
+	self.hitbox.body_entered.connect(self.hitBoxBodyEntered )
+
+	self.hurtbox.monitorable = false
+	self.hurtbox.monitoring = false
 
 	self.gravity_scale = 0
 	
@@ -42,14 +48,10 @@ func onHurtboxBodyEntered( body: Node2D) -> void:
 		#popping direction is determine by position of player compared to bubble
 		self.dir.x = 1 if(body.position.x <self.position.x) else -1
 		self.playerPop( player )
+		self.poppedBy = player
+		
+		
 
-
-func setFloating() -> void:
-	self.state = BubbleState.Floating
-	self.hitbox.call_deferred("set_monitoring", false)
-	self.collisionShape.disabled = false
-	self.hurtbox.call_deferred("set_monitoring", true)
-	self.toggle_collision(true)
 
 func toggle_collision(toggle: bool) -> void:
 	self.set_collision_mask_value(4, toggle) #Collide with other bubbles
@@ -94,9 +96,19 @@ func float_y(delta: float) -> Vector2:
 	return Vector2(0, -self.float_vert_speed)
 
 
-
+func hitBoxBodyEntered(areaOwner: Node2D) -> void:
+	print(areaOwner)
+	#var areaOwner = body.get_parent()
+	if(self.state == BubbleState.Popping and  areaOwner is Bubble):
+		if(areaOwner.state != BubbleState.Popping and self.poppedBy ):
+			areaOwner.playerPop( self.poppedBy)
+	pass
+	
+	
 func hitBoxAreaEntered(area: Area2D) -> void:
 	pass
+	
+	
 
 func _physics_process(delta: float) -> void:
 	if(!self.destination) :
@@ -114,7 +126,7 @@ func hurtbox_update(delta: float) -> void:
 	var target = (-local_v * 0.2).limit_length(3)   #computes the desired offset. Max 4 pixels in total.
 	
 	# Smoothly approach target
-	var follow_speed = 80.0
+	var follow_speed = 30.0
 	var a := 1.0 - exp(-follow_speed * delta)
 	hurtboxOffset = hurtboxOffset.lerp(target, a)
 	self.hurtbox.position = hurtboxOffset
@@ -143,6 +155,24 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 # Player-triggered pop	
 func playerPop(player: Player) -> void:
 	self.pop()
+	self.collisionShape.disabled = true
+	if(self.hitbox) :
+		pass
+		self.hitbox.monitoring = true 
+		self.hitbox.set_collision_mask_value(4, true)
+
+
+func setFloating() -> void:
+	self.state = BubbleState.Floating
+	self.hitbox.call_deferred("set_monitoring", false)
+	self.collisionShape.disabled = false
+	self.hurtbox.call_deferred("set_monitoring", true)
+	self.hurtbox.call_deferred("set_monitorable", true)
+
+	self.toggle_collision(true)
+
+
+
 
 func pop() -> void:
 	self.state = BubbleState.Popping
@@ -153,6 +183,8 @@ func pop() -> void:
 	self.get_tree().create_timer( popAnimation.length).timeout.connect( func (): 
 		queue_free() 
 	)
+	
+	
 	self.animationPlayer.play("PON")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

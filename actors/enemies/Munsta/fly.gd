@@ -32,6 +32,6 @@ func physics_update(delta: float) -> void:
 	
 	actor.sprite2D.flip_h = actor.direction.x > 0.0
 
-	actor.velocity = Vector2(actor.MAX_RUN_VELOCITY, actor.MAX_RUN_VELOCITY) * actor.direction
-
+	actor.velocity = Vector2(actor.MAX_RUN_VELOCITY, actor.MAX_RISE_VELOCITY) * actor.direction
+	pass
 	

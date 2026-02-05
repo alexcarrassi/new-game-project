@@ -89,7 +89,8 @@ func _physics_process(delta: float) -> void:
 	
 	if(self.BubbleSensor):
 		if( self.BubbleSensor.is_colliding() ) :
-			print("can jump")
+			#print("can jump")
+			pass
 	
 func checkForExtend() -> bool:
 	var allBubbles : Array[Item] = ItemDB.extendBubbles

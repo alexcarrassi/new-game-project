@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c50spamxftvqt"]
+[gd_scene load_steps=30 format=3 uid="uid://c50spamxftvqt"]
 
 [ext_resource type="Script" uid="uid://cfehrxn1rsvv3" path="res://actors/enemies/Munsta/munsta.gd" id="1_0jpja"]
 [ext_resource type="Script" uid="uid://c01g1s5yjk1a3" path="res://things/Inventory/Pickups/PickupData/PickupData.gd" id="2_njdb1"]
@@ -84,9 +84,26 @@ tracks/0/keys = {
 "values": [Rect2(5, 68, 16, 16)]
 }
 
+[sub_resource type="Animation" id="Animation_k3hic"]
+resource_name = "DEAD"
+length = 0.5333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.40000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(257, 68, 16, 16), Rect2(277, 68, 16, 16), Rect2(299, 68, 16, 16), Rect2(320, 68, 16, 16)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ua6ar"]
 _data = {
 &"BUBBLED": SubResource("Animation_nh8vh"),
+&"DEAD": SubResource("Animation_k3hic"),
 &"FLY": SubResource("Animation_p35vh"),
 &"IDLE": SubResource("Animation_co2n3"),
 &"RESET": SubResource("Animation_njdb1")
@@ -155,7 +172,8 @@ collision_mask = 4097
 script = ExtResource("1_0jpja")
 LootTable = Array[ExtResource("2_njdb1")]([ExtResource("3_ua6ar")])
 pickup = ExtResource("4_smetb")
-MAX_RUN_VELOCITY = 75.0
+MAX_RUN_VELOCITY = 30.0
+MAX_RISE_VELOCITY = 30.0
 direction = Vector2(-1, -1)
 metadata/_custom_type_script = "uid://cx828ycxarj3w"
 

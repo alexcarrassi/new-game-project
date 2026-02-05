@@ -1,0 +1,236 @@
+[gd_scene load_steps=30 format=3 uid="uid://cjlxt5wg105ji"]
+
+[ext_resource type="Script" uid="uid://dbqmmrqxr77g0" path="res://actors/enemies/PulPul/PulPul.gd" id="1_0iyba"]
+[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_6ny1d"]
+[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="2_362ob"]
+[ext_resource type="Script" uid="uid://c01g1s5yjk1a3" path="res://things/Inventory/Pickups/PickupData/PickupData.gd" id="2_vyocm"]
+[ext_resource type="Script" uid="uid://cefqxu1l7qvn7" path="res://actors/enemies/Munsta/fly.gd" id="3_77wbo"]
+[ext_resource type="Resource" uid="uid://cjkah2jvpyh80" path="res://things/Inventory/Pickups/PickupData/Peach.tres" id="3_s3pb8"]
+[ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="4_362ob"]
+[ext_resource type="PackedScene" uid="uid://bmx8koykxgpu" path="res://things/Inventory/Pickups/Pickup.tscn" id="4_hwv78"]
+[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="4_wofr7"]
+[ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://actors/enemies/zenchan/falling.gd" id="5_gitci"]
+[ext_resource type="Script" uid="uid://dpmx0ixy2cn61" path="res://actors/scripts/spawning.gd" id="6_l65b0"]
+[ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="7_wofr7"]
+[ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="8_fqcsb"]
+[ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="8_hn4fc"]
+[ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="9_hn4fc"]
+[ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_vyocm"]
+[ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="13_vyocm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_362ob"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_362ob"]
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(131, 89, 16, 16), Rect2(152, 89, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_gitci"]
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.40000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(257, 89, 16, 16), Rect2(277, 89, 16, 16), Rect2(299, 89, 16, 16), Rect2(320, 89, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_l65b0"]
+length = 0.5333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(5, 89, 16, 16), Rect2(26, 89, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_wofr7"]
+length = 0.06667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 89, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_fqcsb"]
+length = 0.03333667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 89, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hn4fc"]
+_data = {
+&"BUBBLED": SubResource("Animation_362ob"),
+&"DEAD": SubResource("Animation_gitci"),
+&"FLY": SubResource("Animation_l65b0"),
+&"IDLE": SubResource("Animation_wofr7"),
+&"RESET": SubResource("Animation_fqcsb")
+}
+
+[sub_resource type="Animation" id="Animation_vyocm"]
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(215, 89, 16, 16), Rect2(236, 89, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_s3pb8"]
+length = 0.40000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(47, 89, 16, 16), Rect2(68, 89, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_hwv78"]
+length = 0.03333667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(47, 89, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_udoy5"]
+_data = {
+&"BUBBLED": SubResource("Animation_vyocm"),
+&"FLY": SubResource("Animation_s3pb8"),
+&"IDLE": SubResource("Animation_hwv78")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gitci"]
+size = Vector2(16, 16)
+
+[node name="PulPul" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 4097
+script = ExtResource("1_0iyba")
+LootTable = Array[ExtResource("2_vyocm")]([ExtResource("3_s3pb8")])
+pickup = ExtResource("4_hwv78")
+MAX_RUN_VELOCITY = 45.0
+MAX_RISE_VELOCITY = 30.0
+direction = Vector2(-1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_362ob")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_362ob")
+region_enabled = true
+region_rect = Rect2(5, 89, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hn4fc"),
+&"RED": SubResource("AnimationLibrary_udoy5")
+}
+script = ExtResource("2_6ny1d")
+metadata/_custom_type_script = "uid://cxwldrhfsres7"
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="StateMachine_Locomotion" type="Node" parent="."]
+script = ExtResource("4_wofr7")
+
+[node name="FLY" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("3_77wbo")
+
+[node name="BUBBLED" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("4_362ob")
+
+[node name="FALLING" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("5_gitci")
+
+[node name="StateMachine_Status" type="Node" parent="."]
+script = ExtResource("8_hn4fc")
+
+[node name="SPAWNING" type="Node" parent="StateMachine_Status"]
+script = ExtResource("6_l65b0")
+
+[node name="ALIVE" type="Node" parent="StateMachine_Status"]
+script = ExtResource("7_wofr7")
+
+[node name="DEAD" type="Node" parent="StateMachine_Status"]
+script = ExtResource("8_fqcsb")
+
+[node name="RED" type="Node" parent="StateMachine_Status"]
+script = ExtResource("9_hn4fc")
+
+[node name="StateMachine_Act" type="Node" parent="."]
+script = ExtResource("13_vyocm")
+
+[node name="State_act_None" type="Node" parent="StateMachine_Act"]
+script = ExtResource("10_vyocm")
+metadata/_custom_type_script = "uid://bkjgyynhglj64"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_gitci")
+debug_color = Color(0.14742398, 0.6457913, 0, 0.41960785)
