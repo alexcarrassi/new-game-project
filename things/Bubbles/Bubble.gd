@@ -101,7 +101,9 @@ func hitBoxBodyEntered(areaOwner: Node2D) -> void:
 	#var areaOwner = body.get_parent()
 	if(self.state == BubbleState.Popping and  areaOwner is Bubble):
 		if(areaOwner.state != BubbleState.Popping and self.poppedBy ):
+			areaOwner.poppedBy = self.poppedBy
 			areaOwner.playerPop( self.poppedBy)
+			
 	pass
 	
 	
