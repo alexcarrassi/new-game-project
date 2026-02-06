@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://tbw8dg0c0xtu"]
-
-[ext_resource type="Script" uid="uid://03aygsgbp6ag" path="res://things/Inventory/Pickups/pickup_popup.gd" id="1_hnjw8"]
-
-[node name="PickupPopup" type="Sprite2D"]
-script = ExtResource("1_hnjw8")

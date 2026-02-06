@@ -5,8 +5,6 @@ class_name Enemy extends Actor
 var rng = RandomNumberGenerator.new()
 @export var DECISION_PERIOD = 0.33
 @export var LootTable : Array[Item] = []
-	
-
 
 
 func _ready() -> void:

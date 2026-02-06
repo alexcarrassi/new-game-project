@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
 [ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="3_jih74"]
-[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://things/Inventory/Pickups/Atlas/Popups/Hurry.tres" id="4_2dy0i"]
+[ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://UI/Hurry.tres" id="4_2dy0i"]
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level_debug.tscn" id="4_hej4t"]
 [ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="6_a0c47"]
 [ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/Teleporter/teleporter.tscn" id="6_hej4t"]

@@ -10,12 +10,7 @@ func apply( ctx: ItemUseContext) -> void:
 	var actor  = ctx.actor
 	#var newPopup = popup.instantiate() as Sprite2D 
 	if( actor is Player) :
-		
-		var newPopup = PickupPopup.new()
-		newPopup.texture = self.texture 
-		newPopup.position = actor.position
-		newPopup.position.y -= 8 
-		actor.get_tree().root.add_child(newPopup)
+
 		actor.score += self.score
 		actor.scoreUpdated.emit(  )
 		
