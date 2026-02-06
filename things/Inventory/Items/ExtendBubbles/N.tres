@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://dkrbrhr2c5663"]
 
-[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/Items/ItemEffect.gd" id="1_cpxb6"]
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/Items/ItemEffects/ItemEffect.gd" id="1_cpxb6"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_2hg55"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="3_4l5xa"]
 

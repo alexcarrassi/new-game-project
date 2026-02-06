@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Item" load_steps=10 format=3 uid="uid://8mpuv7p54h3g"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/Items/ItemEffects/ItemEffect.gd" id="1_vt6au"]
+[ext_resource type="Script" uid="uid://cj0iphwn3qq6" path="res://things/Inventory/Items/ItemEffects/debug_effect.gd" id="2_co1e3"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/Items/ItemEffects/PickupEffect_Score.gd" id="3_sqtqj"]
+[ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="4_co1e3"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="4_uueug"]
+[ext_resource type="PackedScene" uid="uid://ce15va3ksnlne" path="res://things/Inventory/Items/Points/Peach.tscn" id="5_sqtqj"]
+
+[sub_resource type="Resource" id="Resource_3km8h"]
+script = ExtResource("2_co1e3")
+metadata/_custom_type_script = "uid://cj0iphwn3qq6"
+
+[sub_resource type="Resource" id="Resource_ufk0f"]
+script = ExtResource("3_sqtqj")
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqtqj"]
+atlas = ExtResource("4_co1e3")
+region = Rect2(8, 9, 16, 16)
+
+[resource]
+script = ExtResource("4_uueug")
+id = &"peach"
+display_name = "Peach"
+ingameIcon = SubResource("AtlasTexture_sqtqj")
+inventoryIcon = SubResource("AtlasTexture_sqtqj")
+ItemEffects = Array[ExtResource("1_vt6au")]([SubResource("Resource_3km8h"), SubResource("Resource_ufk0f")])
+consume = true
+itemPickup = ExtResource("5_sqtqj")
+metadata/_custom_type_script = "uid://c01g1s5yjk1a3"

@@ -4,8 +4,7 @@ class_name Enemy extends Actor
 @onready var decision_timer: Timer = $Decision_Timer
 var rng = RandomNumberGenerator.new()
 @export var DECISION_PERIOD = 0.33
-@export var LootTable : Array[PickupData] = []
-@export var pickup : PackedScene
+@export var LootTable : Array[Item] = []
 	
 
 
@@ -29,20 +28,20 @@ func _ready() -> void:
 	pass
 	
 	
-func instantiateLoot() -> Pickup:
+func instantiateLoot() -> ItemPickup:
 	
 	# We'd normally do a weighted lookup, but right now, just get the first available one
 	if(self.LootTable.size() > 0):
 
-		var newPickup : Pickup = pickup.instantiate()
-		var pickupData = self.LootTable[0]
-
-		get_tree().root.add_child( newPickup )
-		newPickup.setData( pickupData )
-		newPickup.applyPickupData()
-		newPickup.position = self.position
+		var item: Item = self.LootTable[0]
+		var itemPickup = item.itemPickup.instantiate() as ItemPickup
+		itemPickup.setData( item )
 		
-		return newPickup
+
+		get_tree().root.add_child( itemPickup )
+		itemPickup.position = self.position
+		
+		return itemPickup
 		
 	return null	
 

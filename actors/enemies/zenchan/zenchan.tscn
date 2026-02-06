@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="1_s72y3"]
-[ext_resource type="Script" uid="uid://c01g1s5yjk1a3" path="res://things/Inventory/Pickups/PickupData/PickupData.gd" id="2_4gf3y"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_6hnld"]
-[ext_resource type="Resource" uid="uid://cjkah2jvpyh80" path="res://things/Inventory/Pickups/PickupData/Peach.tres" id="3_2yiq7"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_rfo4i"]
+[ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://things/Inventory/Items/Points/Peach.tres" id="3_s4w05"]
 [ext_resource type="PackedScene" uid="uid://bmx8koykxgpu" path="res://things/Inventory/Pickups/Pickup.tscn" id="4_2yiq7"]
 [ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://actors/enemies/zenchan/Idle.gd" id="4_dne8i"]
 [ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="4_hlciv"]
@@ -231,7 +231,7 @@ size = Vector2(13.5, 14)
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_aigf2")
-LootTable = Array[ExtResource("2_4gf3y")]([ExtResource("3_2yiq7")])
+LootTable = Array[ExtResource("2_rfo4i")]([ExtResource("3_s4w05")])
 pickup = ExtResource("4_2yiq7")
 JUMP_VELOCITY = 300.0
 MAX_RUN_VELOCITY = 75.0

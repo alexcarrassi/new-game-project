@@ -8,3 +8,4 @@ class_name Item extends Resource
 @export var consume: bool 
 @export var stackable: bool = false
 @export var maxStack: int = 1
+@export var itemPickup: PackedScene

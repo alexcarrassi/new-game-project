@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://diel15ntejuov"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://diel15ntejuov"]
 
-[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/Items/ItemEffect.gd" id="1_xitbg"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_rpqr7"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="3_m3qct"]
 
@@ -18,3 +17,7 @@ id = &"extend_X"
 display_name = "Extend Bubble X"
 ingameIcon = SubResource("AtlasTexture_xitbg")
 inventoryIcon = SubResource("AtlasTexture_rpqr7")
+ItemEffects = null
+consume = null
+stackable = null
+maxStack = null

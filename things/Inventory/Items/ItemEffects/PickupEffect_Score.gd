@@ -1,11 +1,13 @@
-class_name PickupEffect_Score2 extends PickupEffect
+class_name PickupEffect_Score extends ItemEffect
 
 @export var score: int = 100
 @export var texture: Texture2D
 
 
 
-func apply( actor: Actor) -> void:
+func apply( ctx: ItemUseContext) -> void:
+	
+	var actor  = ctx.actor
 	#var newPopup = popup.instantiate() as Sprite2D 
 	if( actor is Player) :
 		
