@@ -28,10 +28,6 @@ func playerPop(player: Player) -> void:
 func _physics_process(delta: float) -> void:
 	match self.state:
 		BubbleState.Floating:
-			if(self.position.y > self.destination.position.y):
-				self.target_velocity = self.float_y(delta)	
-			else:
-				self.target_velocity = self.float_x(delta) 	
-			
+			self.target_velocity = self.float(delta)			
 			
 			self.hurtbox_update(delta)

@@ -65,13 +65,7 @@ func _physics_process(delta: float) -> void:
 		self.destination = Game.world.level.bubbleDestination
 	match self.state: 
 		_:
-			if(self.destination != null) :		
-				if(self.position.y > self.destination.position.y):
-					self.target_velocity = self.float_y(delta)	
-				else:
-					self.target_velocity = self.float_x(delta) 	
-	
-
+			self.target_velocity = self.float(delta)	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,3 +1,4 @@
+@tool
 class_name Level extends Node2D
 
 @onready var p1_Start: Node2D = $p1_Start
@@ -8,7 +9,7 @@ class_name Level extends Node2D
 @onready var enemy_spawns: Node = $Enemy_Spawns
 @onready var enemies: Node = $Enemies
 @onready var Tiles: TileMapLayer = $Tiles
-
+@onready var AirCurrent: TileMapLayer = $AirCurrent
 
 var definition: LevelDefinition
 
@@ -20,6 +21,10 @@ func _ready() -> void:
 	if(self.levelTimer) :
 		self.levelTimer.timeout.connect( self.onHurryUp)
 	pass # Replace with function body.
+	
+	if(self.AirCurrent):
+		
+		self.AirCurrent.visible = false	
 
 # Flash the Hurry message, pause during it. Spawn Skel-Monsta after a few seconds.
 func onHurryUp() -> void:

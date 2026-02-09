@@ -113,12 +113,6 @@ func setFloating() -> void:
 	for the_timer: Timer in [self.redTimer, self.prePopTimer, self.popTimer]:
 		the_timer.wait_time += self.actorTimerOffset
 		
-		
-
-
-func float_y(delta: float) -> Vector2:
-	return Vector2(0, -self.float_vert_speed)
-
 func _physics_process(delta: float) -> void:
 	
 	match self.state: 
@@ -129,12 +123,7 @@ func _physics_process(delta: float) -> void:
 			if(self.is_active) :
 				self.target_velocity.x = dir.x * self.hor_speed
 		BubbleState.Floating:
-			if(self.destination != null) :		
-				if(self.position.y > self.destination.position.y):
-					self.target_velocity = self.float_y(delta)	
-				else:
-					self.target_velocity = self.float_x(delta) 	
-	
+			self.target_velocity = self.float(delta)
 	
 	self.hurtbox_update(delta)
 

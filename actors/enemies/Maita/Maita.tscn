@@ -1,10 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://b8ct23ua2ywrd"]
+[gd_scene load_steps=37 format=3 uid="uid://b8ct23ua2ywrd"]
 
 [ext_resource type="Script" uid="uid://cfvj2o7r4nik3" path="res://actors/enemies/Maita/maita.gd" id="1_vbxqv"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_fehrb"]
 [ext_resource type="PackedScene" uid="uid://duj08wr35boy5" path="res://actors/enemies/Maita/Fireball.tscn" id="2_qnvar"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="3_3tqio"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="3_vxg4i"]
 [ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="4_h6i8j"]
+[ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://things/Inventory/Items/Points/Peach.tres" id="4_phw54"]
 [ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://actors/enemies/zenchan/Idle.gd" id="5_j8r4g"]
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="5_yc7gd"]
 [ext_resource type="Script" uid="uid://bju7fthcpdhx8" path="res://actors/enemies/zenchan/Running.gd" id="6_ots7w"]
@@ -226,6 +228,7 @@ collision_mask = 129
 script = ExtResource("1_vbxqv")
 fireBallScene = ExtResource("2_qnvar")
 DECISION_PERIOD = 1.0
+LootTable = Array[ExtResource("3_3tqio")]([ExtResource("4_phw54")])
 JUMP_VELOCITY = 300.0
 MAX_RUN_VELOCITY = 75.0
 MAX_RISE_VELOCITY = 400.0

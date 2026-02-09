@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cmjp0yrptke8g"]
+
+[node name="ItemSpawn" type="Node2D"]

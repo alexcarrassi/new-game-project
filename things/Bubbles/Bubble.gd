@@ -58,6 +58,21 @@ func toggle_collision(toggle: bool) -> void:
 	self.set_collision_mask_value(2, toggle) #Collide with Players
 	self.set_collision_layer_value(4, toggle) #Collide with other bubbles
 
+func float(delta: float) -> Vector2:
+	var airCurrent: TileMapLayer = Game.world.level.AirCurrent
+	if(airCurrent):
+		var localMapPos = airCurrent.to_local( self.global_position)
+		var pos = airCurrent.local_to_map(localMapPos )
+		var cellData = airCurrent.get_cell_tile_data(pos)
+	
+		var dir =  cellData.get_custom_data("Direction")
+		
+		return dir * Vector2(self.float_hor_speed, self.float_vert_speed)
+		pass
+		
+	
+	return Vector2.ZERO
+
 func float_xy(delta: float) -> Vector2:
 	self.set_collision_mask_value(4, true) # Collide with other bubbles now
 
@@ -76,7 +91,6 @@ func float_xy(delta: float) -> Vector2:
 
 
 func float_x(delta: float) -> Vector2:
-	self.set_collision_mask_value(4, true) # Collide with other bubbles now
 
 	var distance = (self.destination.position - self.position)
 	var velocity = distance * Vector2(self.float_hor_speed, self.float_vert_speed)
@@ -117,7 +131,7 @@ func _physics_process(delta: float) -> void:
 		self.destination = Game.world.level.bubbleDestination
 	match self.state: 
 		_:
-			self.target_velocity = self.float_xy(delta)
+			self.target_velocity = self.float(delta)
 
 
 	self.hurtbox_update(delta)
@@ -172,6 +186,8 @@ func setFloating() -> void:
 	self.hurtbox.call_deferred("set_monitorable", true)
 
 	self.toggle_collision(true)
+	self.set_collision_mask_value(4, true) # Collide with other bubbles now
+
 
 
 
