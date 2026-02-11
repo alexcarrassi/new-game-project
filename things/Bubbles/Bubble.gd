@@ -64,8 +64,9 @@ func float(delta: float) -> Vector2:
 		var localMapPos = airCurrent.to_local( self.global_position)
 		var pos = airCurrent.local_to_map(localMapPos )
 		var cellData = airCurrent.get_cell_tile_data(pos)
-	
-		var dir =  cellData.get_custom_data("Direction")
+		var dir = Vector2.UP
+		if(cellData):
+			dir =  cellData.get_custom_data("Direction")
 		
 		return dir * Vector2(self.float_hor_speed, self.float_vert_speed)
 		pass

@@ -133,3 +133,7 @@ func levelWarp( levelId: String) -> void:
 func register_gameWorld(node:GameWorld) -> GameWorld:
 	self.world = node 
 	return self.world	
+
+
+func getPlayerEntry(index: int) -> PlayerEntry: 
+	return self.playerEntries.get(index, null)

@@ -28,6 +28,8 @@ func _ready() -> void:
 	self.label_Lives.text = str(player.health)
 	player.Inventory.inventoryUpdated.connect(self.updateExtendInventory)
 	
+	self.playerEntry.stats.statsUpdated.connect( self.updateStats)
+	
 	for child: TextureRect in self.ExtendContainer.get_children():
 		child.modulate = Color(1, 1, 1, 0)
 

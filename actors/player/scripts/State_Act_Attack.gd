@@ -36,6 +36,12 @@ func enter(prev_state_path: String, data: Dictionary ):
 	self.add_child(self.timer)
 
 	self.timer.start()
+
+	#Register stat
+	var playerEntry: PlayerEntry = Game.getPlayerEntry(self.body.player_index) 
+	var statValue = playerEntry.stats.getStat(PlayerStats.STATKEY_BUBBLES_BLOWN)
+	playerEntry.stats.setStat(PlayerStats.STATKEY_BUBBLES_BLOWN, statValue + 1)
+
 	
 func exit() -> void:
 	self.timer.stop()

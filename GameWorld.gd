@@ -228,6 +228,7 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 		playerNode.sm_status.state.finished.emit("SUSPENDED")
 		var transitionSlot = getTransitionSlot(playerNode.player_index)
 		playerNode.global_position = transitionSlot.global_position
+		playerNode.player_index = index
 		
 		playerNode.actorHurt.connect( self.onActorHurt )
 		playerNode.actorDeath.connect( self.onActorDeath )
