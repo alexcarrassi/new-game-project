@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c77k1tce7y5xe"]
+[gd_scene load_steps=15 format=3 uid="uid://c77k1tce7y5xe"]
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
 [ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="3_jih74"]
 [ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://UI/Hurry.tres" id="4_2dy0i"]
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level_debug.tscn" id="4_hej4t"]
+[ext_resource type="Resource" uid="uid://d1tso7212uc8k" path="res://actors/player/PlayerStats_Schema.tres" id="4_waypw"]
 [ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="6_a0c47"]
 [ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/Teleporter/teleporter.tscn" id="6_hej4t"]
 [ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="8_28gir"]
@@ -22,6 +23,7 @@ size = Vector2(16, 308.5)
 script = ExtResource("1_c1plj")
 playerScene = ExtResource("2_28gir")
 playerHUDScene = ExtResource("6_a0c47")
+playerStats_Schema = ExtResource("4_waypw")
 level_debug = ExtResource("4_hej4t")
 start_debug = true
 start_level_id = "101"

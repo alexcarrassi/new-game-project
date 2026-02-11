@@ -4,26 +4,22 @@ class_name auGame extends Node
 
 var world: GameWorld 
 var playerEntries : Dictionary[int, PlayerEntry]
-
-
 var currentLevel: int = 0
-
-var levels: Dictionary[int, PackedScene]
-
 var difficulty = 1
 var is_frameStepping = false
 
+
 func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
-func register_player(index: int, player: Player) -> Dictionary[int, PlayerEntry]:
+func register_player(index: int, player: Player) -> PlayerEntry:
 	var playerEntry = PlayerEntry.new()
-	var playerStats = PlayerStats.new()
+	var playerStats = world.playerStats_Schema.duplicate(true)
 	playerEntry.player = player
 	playerEntry.stats = playerStats 
 	playerEntry.id = index
 	self.playerEntries[index] = playerEntry
 	
-	return self.playerEntries
+	return playerEntry
 
 func deregister_player(index: int) -> Dictionary[int, PlayerEntry]:
 	self.players.erase(index)  

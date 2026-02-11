@@ -1,4 +1,4 @@
-class_name PlayerEntry extends Node
+class_name PlayerEntry extends Resource
 
 var player: Player 
 var stats: PlayerStats

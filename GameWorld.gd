@@ -2,6 +2,7 @@ class_name GameWorld extends Node
 
 @export var playerScene: PackedScene
 @export var playerHUDScene: PackedScene
+@export var playerStats_Schema: Resource
 var level: Level
 @onready var UI: WorldUI = $UI
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
@@ -14,6 +15,8 @@ var level: Level
 @export var level_debug: PackedScene
 @export var start_debug: bool
 @export var start_level_id: String = "0"
+
+
 
 var is_transitioning_Levels : bool = false
 
@@ -219,7 +222,7 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 	var playerNode = null 
 	if(playerEntry == null):
 		playerNode = player.instantiate() as Player
-		Game.register_player(index, playerNode)
+		playerEntry = Game.register_player(index, playerNode)
 		self.add_child( playerNode )
 		
 		playerNode.sm_status.state.finished.emit("SUSPENDED")
@@ -229,7 +232,7 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 		playerNode.actorHurt.connect( self.onActorHurt )
 		playerNode.actorDeath.connect( self.onActorDeath )
 		playerNode.Inventory.inventoryUpdated.connect( self.tryExtend.bind(playerNode))
-		self.spawnPlayerHUD( self.playerHUDScene, playerNode )
+		self.spawnPlayerHUD( self.playerHUDScene, playerEntry )
 
 			
 	return playerNode
@@ -270,9 +273,9 @@ func createNextLevel(level_id: String) -> Level:
 	
 	return null	
 
-func spawnPlayerHUD( hudScene: PackedScene, player: Player) -> void:
+func spawnPlayerHUD( hudScene: PackedScene, playerEntry: PlayerEntry) -> void:
 	var playerHUD = hudScene.instantiate()
-	playerHUD.player = player
+	playerHUD.playerEntry = playerEntry
 	self.UI.add_child(playerHUD) 
 	
 
