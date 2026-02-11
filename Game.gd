@@ -3,7 +3,9 @@ class_name auGame extends Node
 
 
 var world: GameWorld 
-var players : Dictionary[int, Player]
+var playerEntries : Dictionary[int, PlayerEntry]
+
+
 var currentLevel: int = 0
 
 var levels: Dictionary[int, PackedScene]
@@ -13,16 +15,19 @@ var is_frameStepping = false
 
 func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
-
-func register_player(index: int, player: Player) -> Dictionary[int, Player]:
-	self.players[index] = player
+func register_player(index: int, player: Player) -> Dictionary[int, PlayerEntry]:
+	var playerEntry = PlayerEntry.new()
+	var playerStats = PlayerStats.new()
+	playerEntry.player = player
+	playerEntry.stats = playerStats 
+	playerEntry.id = index
+	self.playerEntries[index] = playerEntry
 	
-	return self.players	
+	return self.playerEntries
 
-
-func deregister_player(index: int) -> Dictionary[int, Player]:
+func deregister_player(index: int) -> Dictionary[int, PlayerEntry]:
 	self.players.erase(index)  
-	return self.players
+	return self.playerEntries
 
 func getLevelById( id: String) -> LevelDefinition:
 	return LevelDatabase.getLevelDefinition(id)
@@ -55,8 +60,8 @@ func _input(event: InputEvent) -> void:
 		if(!self.world.is_transitioning_Levels):
 			self.world.levelTransition()
 	elif(event.is_action_pressed("debug_GodMode")):
-		for key: int in self.players:
-			var player : Player = self.players[key]
+		for key: int in self.playerEntries:
+			var player : Player = self.playerEntries[key].player
 					
 			player.hurtbox.monitorable = !player.hurtbox.monitorable 
 			player.hurtbox.monitoring = !player.hurtbox.monitoring

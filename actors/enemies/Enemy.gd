@@ -44,13 +44,13 @@ func instantiateLoot() -> ItemPickup:
 	return null	
 
 func get_targetPlayer() -> Player: 
-	if( Game.players.is_empty()) :
+	if( Game.playerEntries.is_empty()) :
 		return null
 	
-	return Game.players[0]			
+	return Game.playerEntries[0].player	
 	
 func player_above() -> int:
-	if(Game.players.is_empty()) :
+	if(Game.playerEntries.is_empty()) :
 		return 0
 	
 	var player = self.get_targetPlayer()

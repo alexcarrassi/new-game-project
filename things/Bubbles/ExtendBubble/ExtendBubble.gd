@@ -7,7 +7,7 @@ func _ready() -> void:
 	super._ready()
 	
 	self.setFloating()
-	#self.determineExtendType(Game.players.get(0))
+	#self.determineExtendType(Game.playerEntires.get(0).player)
 
 	pass # Replace with function body.
 

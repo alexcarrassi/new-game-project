@@ -40,9 +40,9 @@ func levelTransition(options: Dictionary = {}) -> void:
 	
 
 	# Reparent the players
-	for key: int in Game.players.keys():
-		if(Game.players[key]):
-			Game.players[key].reparent(self)
+	for key: int in Game.playerEntries.keys():
+		if(Game.playerEntries[key]):
+			Game.playerEntries[key].player.reparent(self)
 	
 	if( options.has("timeout")):
 		await get_tree().create_timer(options["timeout"]).timeout
@@ -132,25 +132,38 @@ func startLevel(level: Level) -> void:
 				self.is_transitioning_Levels = false
 			)
 
+
+	# Queue the Items for the Item spawns	
+	if(level.item_spawns):
+		var itemSpawns = level.item_spawns.get_children() as Array[ItemSpawn]
+			
+		for itemSpawn in itemSpawns:
+			pass	
+
+# When starting a new level, a player may have earned one or more Items to spawn,
+# based on actions taken throughout the game
+func queue_items_for_spawn(playerKey: int) -> void:
+	pass	
+
+
+
 # When starting a new level, a player may have earned one or more extend bubbles
 # This function checks each Player, and queues the bubbles they earned
-func queue_extend_bubbles() -> void:
-	for playerKey: int in Game.players.keys():
-		var player = Game.players[playerKey]
-		
-		var bubble_count = player.current_comboRecord - 1
-		var spawner = self.extendBubbleSpawner_left if playerKey  % 2 == 0 else extendBubbleSpawner_right
-		var bubbleQueue = player.getEligibleExtendBubbles(bubble_count)		
-		spawner.bubbleQueue = bubbleQueue
+func queue_extend_bubbles(playerKey: int) -> void:
+	var player = Game.playerEntries[playerKey].player
+	var bubble_count = player.current_comboRecord - 1
+	var spawner = self.extendBubbleSpawner_left if playerKey  % 2 == 0 else extendBubbleSpawner_right
+	var bubbleQueue = player.getEligibleExtendBubbles(bubble_count)		
+	spawner.bubbleQueue = bubbleQueue
 
-				
-		
-		print("Queueing  %d bubbles" %[player.current_comboRecord - 1])
-		
-		
-		spawner.disabled = false 
-		spawner.intervalTimer.start()
-		player.current_comboRecord = 0	
+			
+	
+	print("Queueing  %d bubbles" %[player.current_comboRecord - 1])
+	
+	
+	spawner.disabled = false 
+	spawner.intervalTimer.start()
+	player.current_comboRecord = 0	
 
 func tweenPlayersToSpawn() -> Tween: 
 	var moveTween: Tween = create_tween() 
@@ -158,8 +171,8 @@ func tweenPlayersToSpawn() -> Tween:
 	if(self.level.playerSpawns.get_children().size() == 0):
 		return null
 	
-	for player_index: int in Game.players.keys():
-		var player: Player = Game.players[player_index]
+	for player_index: int in Game.playerEntries.keys():
+		var player: Player = Game.playerEntries[player_index].player
 		var spawnPoint = self.level.getPlayerSpawn( player.player_index)
 		
 		moveTween.parallel().tween_property(player, "position", spawnPoint.position, 1)
@@ -181,7 +194,7 @@ func swapLevels(nextLevel: Level) -> void:
 	
 
 func suspendPlayer(index: int) -> void:
-	var player = Game.players[index] 
+	var player = Game.playerEntries[index].player
 	if(!player):
 		return
 		
@@ -195,15 +208,16 @@ func suspendPlayer(index: int) -> void:
 
 # Puts all players at thei suspend point 
 func suspendPlayers() -> void:
-	for key: int in Game.players.keys():
+	for key: int in Game.playerEntries.keys():
 		self.suspendPlayer(key)
 	
 
 
 #Creates the player at their suspend point
 func createPlayer(index: int, player:PackedScene ) -> Player:
-	var playerNode = Game.players.get(0, null)
-	if(playerNode == null):
+	var playerEntry = Game.playerEntries.get(0, null)
+	var playerNode = null 
+	if(playerEntry == null):
 		playerNode = player.instantiate() as Player
 		Game.register_player(index, playerNode)
 		self.add_child( playerNode )
@@ -217,6 +231,7 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 		playerNode.Inventory.inventoryUpdated.connect( self.tryExtend.bind(playerNode))
 		self.spawnPlayerHUD( self.playerHUDScene, playerNode )
 
+			
 	return playerNode
 
 func tryExtend( player: Player) -> void:
@@ -232,15 +247,14 @@ func tryExtend( player: Player) -> void:
 	
 # Puts players in the current level, Positions them at the spawn point, set state to ALIVE
 func spawnPlayers() -> void:
-	for key: int in Game.players.keys():
-			var player = Game.players[key]
-			player.reparent(self.level)
-			var spawnPoint = self.level.getPlayerSpawn( player.player_index)
-			player.position = spawnPoint.position
-			player.sm_status.state.finished.emit("ALIVE")
-			
-	
-	self.queue_extend_bubbles()		
+	for key: int in Game.playerEntries.keys():
+		var player = Game.playerEntries[key].player
+		player.reparent(self.level)
+		var spawnPoint = self.level.getPlayerSpawn( player.player_index)
+		player.position = spawnPoint.position
+		player.sm_status.state.finished.emit("ALIVE")
+		self.queue_extend_bubbles(key)		
+		self.queue_items_for_spawn(key)
 			
 		
 func createNextLevel(level_id: String) -> Level:

@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="14_k67x5"]
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="15_12xki"]
 [ext_resource type="Script" uid="uid://cmxucnl184gmv" path="res://actors/player/scripts/State_Status_Hurt.gd" id="16_rt46e"]
-[ext_resource type="Script" uid="uid://bpxxqoj7dm657" path="res://actors/player/player_dead.gd" id="17_0wchr"]
+[ext_resource type="Script" uid="uid://bpxxqoj7dm657" path="res://actors/player/scripts/player_dead.gd" id="17_0wchr"]
 [ext_resource type="Script" uid="uid://d3kv05dr573js" path="res://actors/player/scripts/spawning.gd" id="18_dqf5y"]
 [ext_resource type="Script" uid="uid://c7m3ihv4c3sqr" path="res://canvas_layer.gd" id="18_qrxv1"]
 

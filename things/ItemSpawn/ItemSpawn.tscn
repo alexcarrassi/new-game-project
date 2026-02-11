@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cmjp0yrptke8g"]
+[gd_scene load_steps=2 format=3 uid="uid://cmjp0yrptke8g"]
 
-[node name="ItemSpawn" type="Node2D"]
+[ext_resource type="Script" uid="uid://ciugjxa0dsb26" path="res://things/ItemSpawn/ItemSpawn.gd" id="1_oeicf"]
+
+[node name="ItemSpawn" type="Marker2D"]
+script = ExtResource("1_oeicf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true

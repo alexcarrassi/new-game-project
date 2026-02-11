@@ -11,6 +11,8 @@ class_name Level extends Node2D
 @onready var Tiles: TileMapLayer = $Tiles
 @onready var AirCurrent: TileMapLayer = $AirCurrent
 
+@onready var item_spawns: Node = $Item_Spawns
+
 var definition: LevelDefinition
 
 signal hurry()
@@ -23,8 +25,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 	if(self.AirCurrent):
-		
 		self.AirCurrent.visible = false	
+		
+
+		
+			
 
 # Flash the Hurry message, pause during it. Spawn Skel-Monsta after a few seconds.
 func onHurryUp() -> void:

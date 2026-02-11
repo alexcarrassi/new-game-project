@@ -8,18 +8,18 @@ func enter(prev_state_path: String, data: Dictionary) -> void:
 	#find the player's position, and set that as our target.
 	var targetPos: Vector2 = Vector2.ZERO
 	
-	if(Game.players.is_empty()) :
+	if(Game.playerEntries.is_empty()) :
 		pass
 	
 	var targetPlayer = null
 					
-	if(Game.players.has( 0 )):
-		targetPlayer = Game.players[0]
+	if(Game.playerEntries.has( 0 )):
+		targetPlayer = Game.playerEntries[0].player
 		
 	if(targetPlayer == null):
 		self.finished.emit("IDLE")
 		
-	targetPos = Game.players[0].position		
+	targetPos = Game.playerEntries[0].player.position		
 			
 	#Determine duration necessary for travel
 	var dist: float = actor.position.distance_to( targetPos)	
