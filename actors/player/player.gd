@@ -21,9 +21,6 @@ var current_comboCount: int = 0
 var current_comboRecord: int = 0
 
 var inputState: InputState
-
-var Inventory: InventoryController
-
 var score = 0
 signal scoreUpdated()
 
@@ -32,10 +29,6 @@ func _ready() -> void:
 	super._ready()
 	self.hurtbox.monitoring = true
 	self.hurtbox.body_entered.connect( self.onHurtboxEntered)
-	
-	self.Inventory = InventoryController.new(self)
-	
-	self.Inventory.inventoryUpdated.connect( self.checkForExtend )
 	
 	self.comboTimer.timeout.connect( self.endCombo )
 	
@@ -94,17 +87,18 @@ func _physics_process(delta: float) -> void:
 	
 func checkForExtend() -> bool:
 	var allBubbles : Array[Item] = ItemDB.extendBubbles
-
+	var inventory = Game.getPlayerEntry(self.player_index).inventory
 	for bubbleItem: Item in allBubbles:
-		if(!self.Inventory.getItem(bubbleItem.id) ):
+		if(!inventory.getItem(bubbleItem.id) ):
 			return false
 	return true
 	
 func cleanExtendBubbles() -> void:
 	var allBubbles : Array[Item] = ItemDB.extendBubbles
+	var inventory = Game.getPlayerEntry(self.player_index).inventory
 
 	for bubbleItem: Item in allBubbles:
-		self.Inventory.removeItem(bubbleItem.id)
+		inventory.removeItem(bubbleItem.id)
 
 
 				
@@ -142,12 +136,13 @@ func endCombo() -> void:
 func getEligibleExtendBubbles(count: int) -> Array[StringName]:
 	var bubbles : Array[StringName]= []
 	var allBubbles : Array[Item] = ItemDB.extendBubbles
-	
+	var inventory = Game.getPlayerEntry(self.player_index).inventory
+
 	for bubbleItem: Item in allBubbles:
 		if(count < 1):
 			break
 		
-		if(!self.Inventory.getItem(bubbleItem.id) ):
+		if(!inventory.getItem(bubbleItem.id) ):
 			bubbles.append(bubbleItem.id)
 			count -=1
 

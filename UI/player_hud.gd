@@ -26,8 +26,7 @@ func _ready() -> void:
 	player.actorLifeUp.connect( self.updateLives )
 	self.label_Score.text = str(player.score)
 	self.label_Lives.text = str(player.health)
-	player.Inventory.inventoryUpdated.connect(self.updateExtendInventory)
-	
+	self.playerEntry.inventory.inventoryUpdated.connect(self.updateExtendInventory)
 	self.playerEntry.stats.statsUpdated.connect( self.updateStats)
 	
 	for child: TextureRect in self.ExtendContainer.get_children():
@@ -70,7 +69,7 @@ func updateLives(actor: Actor) -> void:
 	
 func updateExtendInventory() -> void:
 	for child: TextureRect in self.ExtendContainer.get_children():
-		var item: ItemEntry = self.playerEntry.player.Inventory.inventory.get(child.name)
+		var item: ItemEntry = self.playerEntry.inventory.items.get(child.name)
 		if(item && item.stack > 0) :
 			child.visible = true 
 			child.modulate = Color(1, 1, 1, 1)

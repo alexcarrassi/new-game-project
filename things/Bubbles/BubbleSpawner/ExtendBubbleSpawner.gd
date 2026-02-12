@@ -1,7 +1,7 @@
 class_name ExtendBubbleSpawner extends BubbleSpawner
 
 # The extend Bubbles queued to spawn
-var bubbleQueue: Array[StringName] = []
+@export var bubbleQueue: Array[StringName] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

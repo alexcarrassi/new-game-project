@@ -99,6 +99,7 @@ shape = SubResource("RectangleShape2D_a0c47")
 [node name="ExtendBubble_left" parent="." instance=ExtResource("8_28gir")]
 position = Vector2(56, 268)
 script = ExtResource("9_2dy0i")
+bubbleQueue = Array[StringName]([])
 bubbleScene = ExtResource("9_jih74")
 disabled = true
 
@@ -113,8 +114,8 @@ region_rect = Rect2(5, 67, 14, 16)
 [node name="ExtendBubble_right" parent="." instance=ExtResource("8_28gir")]
 position = Vector2(190, 268)
 script = ExtResource("9_2dy0i")
+bubbleQueue = Array[StringName]([])
 bubbleScene = ExtResource("9_jih74")
-disabled = true
 
 [node name="IntervalTimer" parent="ExtendBubble_right" index="0"]
 wait_time = 2.0

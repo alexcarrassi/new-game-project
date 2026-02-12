@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dogcjld36l5xs"]
+[gd_scene load_steps=18 format=4 uid="uid://dogcjld36l5xs"]
 
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_4ss1f"]
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="2_32fqg"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b8ct23ua2ywrd" path="res://actors/enemies/Maita/Maita.tscn" id="5_fck6n"]
 [ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="6_etdhh"]
 [ext_resource type="PackedScene" uid="uid://dgbacp2xdq52f" path="res://things/Bubbles/ZapBubble/ZapBubble.tscn" id="6_yisg0"]
+[ext_resource type="PackedScene" uid="uid://cia1bm5ivt02" path="res://things/Bubbles/ExtendBubble/ExtendBubble.tscn" id="7_2agai"]
+[ext_resource type="Script" uid="uid://dwwu8nncg7gvt" path="res://things/Bubbles/BubbleSpawner/ExtendBubbleSpawner.gd" id="7_cl2jo"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="8_etdhh"]
 [ext_resource type="PackedScene" uid="uid://cqvi5rec2cqj8" path="res://things/Bubbles/FireBubble/FireBubble.tscn" id="9_cccc0"]
 [ext_resource type="PackedScene" uid="uid://0qbs3c111ic0" path="res://things/Bubbles/WaterBubble/WaterBubble.tscn" id="9_di6no"]
@@ -112,6 +114,17 @@ position = Vector2(111, 58)
 
 [node name="Bubble_Spawns" type="Node" parent="."]
 
+[node name="ExtendBubble" parent="Bubble_Spawns" instance=ExtResource("6_etdhh")]
+position = Vector2(91, 208)
+script = ExtResource("7_cl2jo")
+bubbleQueue = Array[StringName]([&"extend_E1", &"extend_X"])
+bubbleScene = ExtResource("7_2agai")
+
+[node name="Icon" parent="Bubble_Spawns/ExtendBubble" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+texture = ExtResource("8_etdhh")
+region_rect = Rect2(5, 67, 14, 16)
+
 [node name="ThunderBubble" parent="Bubble_Spawns" instance=ExtResource("6_etdhh")]
 position = Vector2(128, 224)
 bubbleScene = ExtResource("6_yisg0")
@@ -129,12 +142,13 @@ region_rect = Rect2(46, 46, 16, 16)
 [node name="FireBubble" parent="Bubble_Spawns" instance=ExtResource("6_etdhh")]
 position = Vector2(85, 224)
 bubbleScene = ExtResource("9_cccc0")
+disabled = true
 
 [node name="IntervalTimer" parent="Bubble_Spawns/FireBubble" index="0"]
 wait_time = 2.0
 
 [node name="Icon" parent="Bubble_Spawns/FireBubble" index="1"]
-modulate = Color(1, 1, 1, 0.7)
+modulate = Color(1, 1, 1, 0.3)
 position = Vector2(0, 2)
 texture = ExtResource("8_etdhh")
 region_rect = Rect2(109, 46, 16, 16)
@@ -142,12 +156,13 @@ region_rect = Rect2(109, 46, 16, 16)
 [node name="WaterBubble" parent="Bubble_Spawns" instance=ExtResource("6_etdhh")]
 position = Vector2(154, 56)
 bubbleScene = ExtResource("9_di6no")
+disabled = true
 
 [node name="IntervalTimer" parent="Bubble_Spawns/WaterBubble" index="0"]
 wait_time = 3.0
 
 [node name="Icon" parent="Bubble_Spawns/WaterBubble" index="1"]
-modulate = Color(1, 1, 1, 0.7)
+modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("8_etdhh")
 region_rect = Rect2(4, 46, 16, 16)
 
@@ -188,6 +203,7 @@ wait_time = 2.0
 [editable path="Enemy_Spawns/ActorSpawn2"]
 [editable path="Enemy_Spawns/ActorSpawn4"]
 [editable path="Enemy_Spawns/ActorSpawn3"]
+[editable path="Bubble_Spawns/ExtendBubble"]
 [editable path="Bubble_Spawns/ThunderBubble"]
 [editable path="Bubble_Spawns/FireBubble"]
 [editable path="Bubble_Spawns/WaterBubble"]

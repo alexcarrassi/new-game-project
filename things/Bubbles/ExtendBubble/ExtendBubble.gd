@@ -21,7 +21,8 @@ func _enter_tree() -> void:
 
 func playerPop(player: Player) -> void:	
 	super.playerPop(player)
-	player.Inventory.addItem( self.item.id )
+	var inventory = Game.getPlayerEntry(player.player_index).inventory
+	inventory.addItem( self.item.id )
 func setType(type: StringName) -> void:
 	
 	var item = ItemDB.items.get(type)
@@ -34,7 +35,7 @@ func setType(type: StringName) -> void:
 	
 #Exactly which extend bubble should we spawn?
 func determineExtendType(player: Player) -> void:
-	var playerInventory = player.Inventory.inventory 
+	var playerInventory = player.Inventory.items 
 	
 	if(playerInventory.get("extend_E1") == null):
 		self.item = ItemDB.items.get("extend_E1")

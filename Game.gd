@@ -14,11 +14,16 @@ func _ready() -> void:
 func register_player(index: int, player: Player) -> PlayerEntry:
 	var playerEntry = PlayerEntry.new()
 	var playerStats = world.playerStats_Schema.duplicate(true)
+	
+	var inventory = InventoryController.new(player)
+	
 	playerEntry.player = player
 	playerEntry.stats = playerStats 
 	playerEntry.id = index
+	playerEntry.inventory = inventory
 	self.playerEntries[index] = playerEntry
 	
+
 	return playerEntry
 
 func deregister_player(index: int) -> Dictionary[int, PlayerEntry]:

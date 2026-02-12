@@ -232,7 +232,7 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 		
 		playerNode.actorHurt.connect( self.onActorHurt )
 		playerNode.actorDeath.connect( self.onActorDeath )
-		playerNode.Inventory.inventoryUpdated.connect( self.tryExtend.bind(playerNode))
+		playerEntry.inventory.inventoryUpdated.connect( self.tryExtend.bind(playerNode))
 		self.spawnPlayerHUD( self.playerHUDScene, playerEntry )
 
 			
