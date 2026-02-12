@@ -49,7 +49,7 @@ func updateStats() -> void:
 			stat_label = Label.new() 
 			stat_label.name = key 
 			stat_label.add_theme_font_override("font", self.font)
-			stat_label.add_theme_font_size_override("font_size", 8)
+			stat_label.add_theme_font_size_override("font_size", 7)
 
 			self.Stats_List.add_child(stat_label)	
 		var statText = "%s   %d" % [String(key).replace("_", " ").to_upper(), playerStats.stats[key] ]

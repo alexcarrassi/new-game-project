@@ -4,7 +4,9 @@ class_name PlayerStats extends Resource
 
 const STATKEY_BUBBLES_BLOWN: StringName = &"bubbles_blown"
 const STATKEY_BUBBLES_POPPED: StringName = &"bubbles_popped"
+const STATKEY_WATERBUBBLES_POPPED: StringName = &"waterbubbles_popped"
 const STATKEY_FIREBUBBLES_POPPED: StringName = &"firebubbles_popped"
+const STATKEY_THUNDERBUBBLES_POPPED: StringName = &"thunderbubbles_popped"
 const STATKEY_ITEMS_COLLECTED: StringName = &"items_collected"
 
 signal statsUpdated()

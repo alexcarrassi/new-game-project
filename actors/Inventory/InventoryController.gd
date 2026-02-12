@@ -25,6 +25,7 @@ func addItem(item_id: StringName) -> void:
 			
 	#emit a signal	
 	self.inventoryUpdated.emit()	
+	
 	pass
 	
 func getItem(item_id: StringName) -> ItemEntry:

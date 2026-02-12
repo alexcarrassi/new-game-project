@@ -20,6 +20,11 @@ func playerPop(player: Player) -> void:
 	self.get_parent().add_child(projectile)
 	projectile.position = self.position
 	self.queue_free()
+	
+	
+	var stats = Game.getPlayerEntry(player.player_index).stats
+	var firePopped = stats.getStat(PlayerStats.STATKEY_FIREBUBBLES_POPPED)
+	stats.setStat(PlayerStats.STATKEY_FIREBUBBLES_POPPED, firePopped + 1)
 	pass
 	
 

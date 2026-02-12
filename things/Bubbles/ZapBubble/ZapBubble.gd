@@ -13,7 +13,6 @@ func _ready() -> void:
 
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -71,3 +70,7 @@ func playerPop(player: Player) -> void:
 	self.animationPlayer.play("ZAP")
 
 	self.dir.x = 1 if player.sprite2D.flip_h else -1 
+	
+	var stats = Game.getPlayerEntry(player.player_index).stats
+	var popped = stats.getStat(PlayerStats.STATKEY_THUNDERBUBBLES_POPPED)
+	stats.setStat(PlayerStats.STATKEY_THUNDERBUBBLES_POPPED, popped + 1)

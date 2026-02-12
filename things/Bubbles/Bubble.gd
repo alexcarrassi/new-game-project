@@ -174,10 +174,13 @@ func playerPop(player: Player) -> void:
 	self.pop()
 	self.collisionShape.disabled = true
 	if(self.hitbox) :
-		pass
 		self.hitbox.monitoring = true 
 		self.hitbox.set_collision_mask_value(4, true)
 
+	var playerStats = Game.getPlayerEntry(player.player_index).stats
+	var bubbles_popped = playerStats.getStat(PlayerStats.STATKEY_BUBBLES_POPPED)
+	
+	playerStats.setStat( PlayerStats.STATKEY_BUBBLES_POPPED, bubbles_popped + 1 )
 
 func setFloating() -> void:
 	self.state = BubbleState.Floating
