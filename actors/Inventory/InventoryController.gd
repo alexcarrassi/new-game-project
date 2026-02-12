@@ -25,6 +25,11 @@ func addItem(item_id: StringName) -> void:
 			
 	#emit a signal	
 	self.inventoryUpdated.emit()	
+	if(self.actor is Player):
+		var playerEntry = Game.getPlayerEntry(self.actor.player_index)
+		var stat = playerEntry.stats.getStat(PlayerStats.STATKEY_ITEMS_COLLECTED)
+		playerEntry.stats.setStat(PlayerStats.STATKEY_ITEMS_COLLECTED, stat + 1)	
+	
 	
 	pass
 	

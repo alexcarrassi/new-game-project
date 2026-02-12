@@ -39,7 +39,12 @@ func getPickedUp( body: Node2D) -> void:
 		
 		for effect: ItemEffect in self.item.ItemEffects:
 			effect.apply( itemUseContext )
-		
+			
+		var playerEntry = Game.getPlayerEntry(body.player_index)
+		var stat = playerEntry.stats.getStat(PlayerStats.STATKEY_ITEMS_COLLECTED)
+		playerEntry.stats.setStat(PlayerStats.STATKEY_ITEMS_COLLECTED, stat + 1)	
+	
+	
 		await get_tree().create_timer( self.animationPlayer.get_animation("PICKUP").length).timeout
 		self.queue_free()
 
