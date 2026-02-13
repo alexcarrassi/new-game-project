@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Item" load_steps=9 format=3 uid="uid://bb1nip4uhqh70"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_63n3f"]
+[ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="2_dr52y"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_r2aje"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="3_r2aje"]
+[ext_resource type="PackedScene" uid="uid://oarsjem6kye1" path="res://things/Inventory/Items/Points/Onion.tscn" id="4_r2aje"]
+
+[sub_resource type="Resource" id="Resource_7kd34"]
+script = ExtResource("2_r2aje")
+score = 200
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kd34"]
+atlas = ExtResource("2_dr52y")
+region = Rect2(29, 30, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhk4p"]
+atlas = ExtResource("2_dr52y")
+region = Rect2(29, 30, 16, 16)
+
+[resource]
+script = ExtResource("3_r2aje")
+ingameIcon = SubResource("AtlasTexture_7kd34")
+inventoryIcon = SubResource("AtlasTexture_yhk4p")
+ItemEffects = Array[ExtResource("1_63n3f")]([SubResource("Resource_7kd34")])
+consume = true
+itemPickup = ExtResource("4_r2aje")
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

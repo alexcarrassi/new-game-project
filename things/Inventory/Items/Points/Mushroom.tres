@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://dq3jiks27mbyv"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_tyo2w"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_7keme"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_61dcf"]
+[ext_resource type="PackedScene" uid="uid://c2xsive8qpu4w" path="res://things/Inventory/Items/Points/Mushroom.tscn" id="3_a083k"]
+[ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="3_oyqg4"]
+
+[sub_resource type="Resource" id="Resource_oyqg4"]
+script = ExtResource("2_61dcf")
+score = 200
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13b3k"]
+atlas = ExtResource("3_oyqg4")
+region = Rect2(113, 9, 16, 16)
+
+[resource]
+script = ExtResource("2_7keme")
+id = &"mushroom"
+display_name = "Mushroom"
+ingameIcon = SubResource("AtlasTexture_13b3k")
+ItemEffects = Array[ExtResource("1_tyo2w")]([SubResource("Resource_oyqg4")])
+consume = true
+itemPickup = ExtResource("3_a083k")
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

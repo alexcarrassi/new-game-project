@@ -1,6 +1,6 @@
 class_name ItemPickup extends Area2D
 
-@onready var sprite2D: Sprite2D = $Sprite2D
+@onready var sprite2D: Sprite2D = $Sprite_World
 @onready var collisionShape2D: CollisionShape2D = $CollisionShape2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
@@ -19,6 +19,7 @@ func _ready() -> void:
 	self.body_entered.connect(self.getPickedUp)
 	
 	#Play the idle animation
+	self.applyItem()
 	self.animationPlayer.play("IDLE")
 	pass # Replace with function body.
 
@@ -51,7 +52,9 @@ func getPickedUp( body: Node2D) -> void:
 
 func applyItem() -> void:
 	if(self.item != null) :
-		self.sprite2D.texture = self.item.ingameIcon
+
+		
+		pass
 		#also set collision shape later
 		
 

@@ -121,6 +121,9 @@ func _input(event: InputEvent) -> void:
 	elif(event.is_action_pressed("debug_KillAll")):
 		self.world.level.cleanEnemies()
 		
+	elif(event.is_action_pressed("debug_queueRewards")):
+		self.world.queue_items_for_spawn()	
+		
 func levelWarp( levelId: String) -> void:
 	
 	if(self.world.is_transitioning_Levels):

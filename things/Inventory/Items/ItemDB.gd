@@ -6,6 +6,7 @@ class_name ItemDB_ extends Node
 
 var items: Dictionary[StringName, Item]
 var extendBubbles: Dictionary[StringName, Item]
+var powerups: Dictionary[StringName, Item]
 #-ready -> build a dictionary of items, keyed by id
 #get_item by id
 

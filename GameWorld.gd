@@ -138,13 +138,15 @@ func startLevel(level: Level) -> void:
 
 	# Queue the Items for the Item spawns
 	if(level.item_spawn_6sec):
-		var reward: Item = ItemDB.getItem("")
-		level.item_spawn_6sec.item = reward
-
+		self.queue_items_for_spawn()
 
 # When starting a new level, a player may have earned one or more Items to spawn,
 # based on actions taken throughout the game
-func queue_items_for_spawn(playerKey: int) -> void:
+func queue_items_for_spawn() -> void:
+	var pointItemID = ItemDB.items.keys().pick_random()
+	var reward: Item = ItemDB.getItem(pointItemID)
+	level.item_spawn_6sec.items.append( reward )
+	level.item_spawn_6sec.spawnItem()
 	pass	
 
 
@@ -257,7 +259,7 @@ func spawnPlayers() -> void:
 		player.position = spawnPoint.position
 		player.sm_status.state.finished.emit("ALIVE")
 		self.queue_extend_bubbles(key)		
-		self.queue_items_for_spawn(key)
+
 			
 		
 func createNextLevel(level_id: String) -> Level:

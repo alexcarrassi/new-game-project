@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://oarsjem6kye1"]
+
+[ext_resource type="PackedScene" uid="uid://mgmqdv2san8v" path="res://things/Inventory/Items/ItemPickup.tscn" id="1_i5y4y"]
+
+[node name="ItemPickup" instance=ExtResource("1_i5y4y")]
+
+[node name="Sprite_World" parent="." index="0"]
+region_rect = Rect2(29, 30, 16, 16)
+
+[node name="Sprite_Pickup" parent="." index="3"]
+region_rect = Rect2(29, 55, 12, 8)
