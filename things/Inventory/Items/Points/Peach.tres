@@ -28,4 +28,3 @@ inventoryIcon = SubResource("AtlasTexture_sqtqj")
 ItemEffects = Array[ExtResource("1_vt6au")]([SubResource("Resource_3km8h"), SubResource("Resource_ufk0f")])
 consume = true
 itemPickup = ExtResource("5_sqtqj")
-metadata/_custom_type_script = "uid://c01g1s5yjk1a3"

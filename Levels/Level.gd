@@ -11,7 +11,8 @@ class_name Level extends Node2D
 @onready var Tiles: TileMapLayer = $Tiles
 @onready var AirCurrent: TileMapLayer = $AirCurrent
 
-@onready var item_spawns: Node = $Item_Spawns
+#The item spawn for rewards, based on PlayerStats.
+@onready var item_spawn_6sec: ItemSpawn = $Item_Spawns/ItemSpawn_6sec
 
 var definition: LevelDefinition
 

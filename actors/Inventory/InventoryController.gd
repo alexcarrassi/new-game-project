@@ -8,9 +8,9 @@ signal inventoryUpdated()
 func _init(actor: Actor) -> void:
 	self.actor = actor
 	
-func addItem(item_id: StringName) -> void:
+func addItem(item_id: StringName, itemType: StringName = &"") -> void:
 	
-	var itemToAdd : Item = ItemDB.items[item_id]
+	var itemToAdd : Item = ItemDB.getItem(item_id, itemType)
 	
 	if( itemToAdd ):
 		var entry = self.items.get_or_add(item_id, null)

@@ -28,7 +28,6 @@ func setData( item: Item) -> void:
 
 func getPickedUp( body: Node2D) -> void:
 	
-	print('ppickup')
 	#Play the PickedUp animation
 	if(body is Player):
 		self.collisionShape2D.disabled = true 

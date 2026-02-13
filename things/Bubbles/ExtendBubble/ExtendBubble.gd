@@ -23,9 +23,10 @@ func playerPop(player: Player) -> void:
 	super.playerPop(player)
 	var inventory = Game.getPlayerEntry(player.player_index).inventory
 	inventory.addItem( self.item.id )
+	
 func setType(type: StringName) -> void:
 	
-	var item = ItemDB.items.get(type)
+	var item = ItemDB.extendBubbles.get(type)
 	if(item):
 		self.item = item
 		var inventoryIcon = self.item.inventoryIcon as AtlasTexture	
@@ -38,17 +39,17 @@ func determineExtendType(player: Player) -> void:
 	var playerInventory = player.Inventory.items 
 	
 	if(playerInventory.get("extend_E1") == null):
-		self.item = ItemDB.items.get("extend_E1")
+		self.item = ItemDB.extendBubbles.get("extend_E1")
 	elif (playerInventory.get("extend_X") == null):
-		self.item = ItemDB.items.get("extend_X")
+		self.item = ItemDB.extendBubbles.get("extend_X")
 	elif (playerInventory.get("extend_T") == null):
-		self.item = ItemDB.items.get("extend_T")
+		self.item = ItemDB.extendBubbles.get("extend_T")
 	elif (playerInventory.get("extend_E2") == null):
-		self.item = ItemDB.items.get("extend_E2")
+		self.item = ItemDB.extendBubbles.get("extend_E2")
 	elif (playerInventory.get("extend_N") == null):
-		self.item = ItemDB.items.get("extend_N")
+		self.item = ItemDB.extendBubbles.get("extend_N")
 	elif (playerInventory.get("extend_D") == null):
-		self.item = ItemDB.items.get("extend_D")		
+		self.item = ItemDB.extendBubbles.get("extend_D")		
 
 	if(self.item == null) :
 		#Player already has all Extend bubbles. Terminate

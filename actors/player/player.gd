@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 			pass
 	
 func checkForExtend() -> bool:
-	var allBubbles : Array[Item] = ItemDB.extendBubbles
+	var allBubbles : Array[Item] = ItemDB.extendBubbles_
 	var inventory = Game.getPlayerEntry(self.player_index).inventory
 	for bubbleItem: Item in allBubbles:
 		if(!inventory.getItem(bubbleItem.id) ):
@@ -94,7 +94,7 @@ func checkForExtend() -> bool:
 	return true
 	
 func cleanExtendBubbles() -> void:
-	var allBubbles : Array[Item] = ItemDB.extendBubbles
+	var allBubbles : Array[Item] = ItemDB.extendBubbles_
 	var inventory = Game.getPlayerEntry(self.player_index).inventory
 
 	for bubbleItem: Item in allBubbles:
@@ -135,7 +135,7 @@ func endCombo() -> void:
 	
 func getEligibleExtendBubbles(count: int) -> Array[StringName]:
 	var bubbles : Array[StringName]= []
-	var allBubbles : Array[Item] = ItemDB.extendBubbles
+	var allBubbles : Array[Item] = ItemDB.extendBubbles_
 	var inventory = Game.getPlayerEntry(self.player_index).inventory
 
 	for bubbleItem: Item in allBubbles:

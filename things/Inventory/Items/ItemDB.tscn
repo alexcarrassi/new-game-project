@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccadihs34tunk"]
+[gd_scene load_steps=10 format=3 uid="uid://ccadihs34tunk"]
 
 [ext_resource type="Script" uid="uid://bu5vhl6ydfyqb" path="res://things/Inventory/Items/ItemDB.gd" id="1_ga85r"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_dge23"]
@@ -8,7 +8,9 @@
 [ext_resource type="Resource" uid="uid://co5at6qwg3asj" path="res://things/Inventory/Items/ExtendBubbles/E2.tres" id="6_3k0aa"]
 [ext_resource type="Resource" uid="uid://dkrbrhr2c5663" path="res://things/Inventory/Items/ExtendBubbles/N.tres" id="7_kgaya"]
 [ext_resource type="Resource" uid="uid://c3w7hstx7xqk2" path="res://things/Inventory/Items/ExtendBubbles/D.tres" id="8_r5qeg"]
+[ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://things/Inventory/Items/Points/Peach.tres" id="9_07r7e"]
 
 [node name="ItemDb" type="Node"]
 script = ExtResource("1_ga85r")
-extendBubbles = Array[ExtResource("2_dge23")]([ExtResource("2_rtp6i"), ExtResource("4_07r7e"), ExtResource("5_ax2dt"), ExtResource("6_3k0aa"), ExtResource("7_kgaya"), ExtResource("8_r5qeg")])
+extendBubbles_ = Array[ExtResource("2_dge23")]([ExtResource("2_rtp6i"), ExtResource("4_07r7e"), ExtResource("5_ax2dt"), ExtResource("6_3k0aa"), ExtResource("7_kgaya"), ExtResource("8_r5qeg")])
+items_ = Array[ExtResource("2_dge23")]([ExtResource("9_07r7e")])

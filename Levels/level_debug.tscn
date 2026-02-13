@@ -173,7 +173,9 @@ tile_set = ExtResource("2_32fqg")
 
 [node name="Item_Spawns" type="Node" parent="."]
 
-[node name="ItemSpawn" parent="Item_Spawns" instance=ExtResource("12_fck6n")]
+[node name="ItemSpawn_6sec" parent="Item_Spawns" instance=ExtResource("12_fck6n")]
+position = Vector2(204, 168)
+spawnTime = 2.0
 
 [node name="Bubble_Destination" type="Marker2D" parent="."]
 position = Vector2(128, 56)

@@ -136,12 +136,11 @@ func startLevel(level: Level) -> void:
 			)
 
 
-	# Queue the Items for the Item spawns	
-	if(level.item_spawns):
-		var itemSpawns = level.item_spawns.get_children() as Array[ItemSpawn]
-			
-		for itemSpawn in itemSpawns:
-			pass	
+	# Queue the Items for the Item spawns
+	if(level.item_spawn_6sec):
+		var reward: Item = ItemDB.getItem("")
+		level.item_spawn_6sec.item = reward
+
 
 # When starting a new level, a player may have earned one or more Items to spawn,
 # based on actions taken throughout the game
@@ -311,7 +310,7 @@ func onActorDeath( actor: Actor) -> void:
 
 func getTransitionSlot( player_index: int) -> Marker2D:
 
-	var slotname = "P%d" % [player_index] 
+	var slotname = "P%d" % [player_index + 1] 
 	
 	var slot = self.TransitionSlots.find_child(slotname) as Marker2D
 	if( slot.is_inside_tree( )):
