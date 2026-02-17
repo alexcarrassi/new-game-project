@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerStatDef" load_steps=2 format=3 uid="uid://bci2exi06pofb"]
+
+[ext_resource type="Script" uid="uid://cqp4sjd3wojxd" path="res://actors/player/Stats/PlayerStatDef.gd" id="1_cfb74"]
+
+[resource]
+script = ExtResource("1_cfb74")
+key = &"waterbubbles_popped"
+name = "Waterbubbles popped"
+metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

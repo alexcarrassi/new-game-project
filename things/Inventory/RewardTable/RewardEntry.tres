@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="RewardEntry" load_steps=2 format=3 uid="uid://cu63vu4677kts"]
+
+[ext_resource type="Script" uid="uid://df2d6ib26vtgc" path="res://things/Inventory/RewardTable/RewardEntry.gd" id="1_fl5tk"]
+
+[resource]
+script = ExtResource("1_fl5tk")

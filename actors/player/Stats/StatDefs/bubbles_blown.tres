@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerStatDef" load_steps=2 format=3 uid="uid://m1glm1yl7340"]
+
+[ext_resource type="Script" uid="uid://cqp4sjd3wojxd" path="res://actors/player/Stats/PlayerStatDef.gd" id="1_bel8h"]
+
+[resource]
+script = ExtResource("1_bel8h")
+key = &"bubbles_blown"
+name = "Bubbles Blown"
+metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

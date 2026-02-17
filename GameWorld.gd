@@ -2,7 +2,6 @@ class_name GameWorld extends Node
 
 @export var playerScene: PackedScene
 @export var playerHUDScene: PackedScene
-@export var playerStats_Schema: Resource
 var level: Level
 @onready var UI: WorldUI = $UI
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker

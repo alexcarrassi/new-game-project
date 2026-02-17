@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=9 format=3 uid="uid://d1tso7212uc8k"]
+
+[ext_resource type="Script" uid="uid://56po8kqtldwj" path="res://actors/player/Stats/PlayerStats.gd" id="1_kp6m7"]
+
+
+[resource]
+script = ExtResource("1_kp6m7")
+stats = Dictionary[StringName, ExtResource("2_oidwc")]({
+&"bubbles_blown": SubResource("Resource_kp6m7"),
+&"bubbles_popped": SubResource("Resource_oidwc"),
+&"firebubbles_popped": SubResource("Resource_btec0"),
+&"items_collected": SubResource("Resource_8e7ti"),
+&"thunderbubbles_popped": SubResource("Resource_q8mr2"),
+&"waterbubbles_popped": SubResource("Resource_n7mic")
+})
+metadata/_custom_type_script = "uid://56po8kqtldwj"

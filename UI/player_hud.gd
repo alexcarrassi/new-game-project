@@ -1,6 +1,8 @@
 class_name PlayerHUD extends Control
 
 var playerEntry: PlayerEntry
+var playerStats_schema:PlayerStats_Schema = preload("res://actors/player/Stats/PlayerStats_Schema.tres")
+
 @onready var label_Score = $Margin/Score
 @onready var label_Time = $Margin/Time
 @onready var label_Lives = $MarginContainer/Lives
@@ -15,8 +17,6 @@ var playerEntry: PlayerEntry
 @onready var extend_N :TextureRect = $Inventory/VBoxContainer/N
 @onready var extend_D :TextureRect = $Inventory/VBoxContainer/D
 @export var font: Font
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -41,23 +41,24 @@ func _ready() -> void:
 
 func updateStats() -> void:
 	var playerStats = self.playerEntry.stats
-	for key in playerStats.stats:
-		var nodePath := NodePath(String(key))
+	for statDef: PlayerStatDef in self.playerStats_schema.stats:
+		
+		var nodePath := NodePath(String(statDef.key))
 		var stat_label: Label = self.Stats_List.get_node_or_null( nodePath) 
 		if(!stat_label):
 			stat_label = Label.new() 
-			stat_label.name = key 
+			stat_label.name = statDef.key 
 			stat_label.add_theme_font_override("font", self.font)
 			stat_label.add_theme_font_size_override("font_size", 7)
 
-			self.Stats_List.add_child(stat_label)	
-		var statText = "%s   %d" % [String(key).replace("_", " ").to_upper(), playerStats.stats[key] ]
+			self.Stats_List.add_child(stat_label)
+				
+		var statVal = playerStats.getStat(statDef.key)
+		var statName = statDef.name
+				
+		var statText = "%s   %d" % [String(statName).replace("_", " ").to_upper(), statVal ]
 
 		stat_label.text = statText
-		
-		
-
-		
 		print(stat_label.text)
 		
 		

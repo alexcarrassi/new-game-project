@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlayerStats_Schemea" load_steps=9 format=3 uid="uid://c0dwivvtlebvc"]
+
+[ext_resource type="Script" uid="uid://dathgdokknctr" path="res://actors/player/Stats/PlayerStats_Schema.gd" id="1_l7tov"]
+[ext_resource type="Script" uid="uid://cqp4sjd3wojxd" path="res://actors/player/Stats/PlayerStatDef.gd" id="2_oidwc"]
+[ext_resource type="Resource" uid="uid://m1glm1yl7340" path="res://actors/player/Stats/StatDefs/bubbles_blown.tres" id="3_d8ukc"]
+[ext_resource type="Resource" uid="uid://c5oxc07h8wyq2" path="res://actors/player/Stats/StatDefs/bubbles_popped.tres" id="4_mh6dd"]
+[ext_resource type="Resource" uid="uid://ccj3ghc35gpoa" path="res://actors/player/Stats/StatDefs/items_collected.tres" id="5_igsot"]
+[ext_resource type="Resource" uid="uid://dlraaqtv40iun" path="res://actors/player/Stats/StatDefs/firebubbles_popped.tres" id="6_3mrcq"]
+[ext_resource type="Resource" uid="uid://cyam44uoq25pm" path="res://actors/player/Stats/StatDefs/thunderbubbles_popped.tres" id="7_u20gy"]
+[ext_resource type="Resource" uid="uid://bci2exi06pofb" path="res://actors/player/Stats/StatDefs/waterbubbles_popped.tres" id="8_rqgdt"]
+
+[resource]
+script = ExtResource("1_l7tov")
+stats = Array[ExtResource("2_oidwc")]([ExtResource("3_d8ukc"), ExtResource("4_mh6dd"), ExtResource("5_igsot"), ExtResource("6_3mrcq"), ExtResource("7_u20gy"), ExtResource("8_rqgdt")])
+metadata/_custom_type_script = "uid://56po8kqtldwj"

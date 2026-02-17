@@ -13,12 +13,15 @@ func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 func register_player(index: int, player: Player) -> PlayerEntry:
 	var playerEntry = PlayerEntry.new()
-	var playerStats = world.playerStats_Schema.duplicate(true)
+	#var playerStats = world.playerStats_Schema.duplicate(true)
+	
+	
 	
 	var inventory = InventoryController.new(player)
 	
 	playerEntry.player = player
-	playerEntry.stats = playerStats 
+	playerEntry.stats = PlayerStats.new() 
+	playerEntry.stats.createStatsFromSchema( preload("res://actors/player/Stats/PlayerStats_Schema.tres"))
 	playerEntry.id = index
 	playerEntry.inventory = inventory
 	self.playerEntries[index] = playerEntry

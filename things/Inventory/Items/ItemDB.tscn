@@ -15,5 +15,5 @@
 [node name="ItemDb" type="Node"]
 script = ExtResource("1_ga85r")
 extendBubbles_ = Array[ExtResource("2_dge23")]([ExtResource("2_rtp6i"), ExtResource("4_07r7e"), ExtResource("5_ax2dt"), ExtResource("6_3k0aa"), ExtResource("7_kgaya"), ExtResource("8_r5qeg")])
-items_ = Array[ExtResource("2_dge23")]([ExtResource("9_07r7e"), ExtResource("10_ax2dt"), ExtResource("11_3k0aa")])
+items_ = Array[ExtResource("2_dge23")]([ExtResource("9_07r7e"), ExtResource("10_ax2dt")])
 powerups_ = Array[ExtResource("2_dge23")]([ExtResource("11_3k0aa")])

@@ -1,6 +1,6 @@
 class_name PlayerEntry extends Resource
 
+var stats: PlayerStats 
 var player: Player 
-var stats: PlayerStats
 var inventory: InventoryController
 var id: int
