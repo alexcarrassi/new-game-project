@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Game="*res://Game.gd"
 LevelDatabase="*res://Levels/LevelDatabase.tscn"
 ItemDB="*res://things/Inventory/Items/ItemDB.tscn"
+gRewardTable="*res://things/Inventory/RewardTable/RewardTable.tres"
 
 [display]
 

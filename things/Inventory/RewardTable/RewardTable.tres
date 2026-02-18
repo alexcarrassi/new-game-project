@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RewardTable" load_steps=7 format=3 uid="uid://ci2ts12j3iqgq"]
+
+[ext_resource type="Script" uid="uid://df2d6ib26vtgc" path="res://things/Inventory/RewardTable/RewardEntry.gd" id="1_uc88q"]
+[ext_resource type="Resource" uid="uid://m1glm1yl7340" path="res://actors/player/Stats/StatDefs/bubbles_blown.tres" id="2_m8nai"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="3_eemkf"]
+[ext_resource type="Resource" uid="uid://bb1nip4uhqh70" path="res://things/Inventory/Items/Points/Onion.tres" id="4_vtrtj"]
+[ext_resource type="Script" uid="uid://blth5hxw1qdxr" path="res://things/Inventory/RewardTable/RewardTable.gd" id="5_5fmew"]
+
+[sub_resource type="Resource" id="Resource_3ebml"]
+script = ExtResource("1_uc88q")
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("4_vtrtj")])
+playerStatDef = ExtResource("2_m8nai")
+requirement = 5
+metadata/_custom_type_script = "uid://df2d6ib26vtgc"
+
+[resource]
+script = ExtResource("5_5fmew")
+rewardEntries = Array[ExtResource("1_uc88q")]([SubResource("Resource_3ebml")])
+metadata/_custom_type_script = "uid://blth5hxw1qdxr"

@@ -2,6 +2,7 @@ class_name GameWorld extends Node
 
 @export var playerScene: PackedScene
 @export var playerHUDScene: PackedScene
+@export var rewardTable: RewardTable
 var level: Level
 @onready var UI: WorldUI = $UI
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
@@ -14,6 +15,7 @@ var level: Level
 @export var level_debug: PackedScene
 @export var start_debug: bool
 @export var start_level_id: String = "0"
+
 
 
 
@@ -142,8 +144,19 @@ func startLevel(level: Level) -> void:
 # When starting a new level, a player may have earned one or more Items to spawn,
 # based on actions taken throughout the game
 func queue_items_for_spawn() -> void:
-	var pointItemID = ItemDB.items.keys().pick_random()
-	var reward: Item = ItemDB.getItem(pointItemID)
+	
+	#tally the playerstats across all players
+	var talliedStats: Dictionary[StringName, int] = {}
+	for i:int in Game.playerEntries:
+		var stats = Game.getPlayerEntry(i).stats
+		for j: StringName in stats.values:
+			talliedStats.set( j, talliedStats.get(j, 0) + stats.values[j])
+		
+	print(talliedStats)
+	
+	
+	var reward = self.rewardTable.returnFirstReward(talliedStats)
+	
 	level.item_spawn_6sec.items.append( reward )
 	level.item_spawn_6sec.spawnItem()
 	pass	
