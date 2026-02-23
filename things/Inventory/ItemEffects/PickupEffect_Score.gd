@@ -14,7 +14,9 @@ func apply( ctx: ItemUseContext) -> void:
 		actor.score += self.score
 		actor.scoreUpdated.emit(  )
 		
-		
+		var pointResource = ItemDB.pointsDB.getPointRect(actor.player_index, self.score)
+		ctx.itemPickup.spritePickup.texture = pointResource
+		ctx.itemPickup.spritePickup.region_rect = Rect2i(0, 0, pointResource.region.size.x, pointResource.region.size.y)
 		
 
 # Called when the node enters the scene tree for the first time.

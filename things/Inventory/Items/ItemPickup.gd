@@ -1,8 +1,10 @@
 class_name ItemPickup extends Area2D
 
 @onready var sprite2D: Sprite2D = $Sprite_World
+@onready var spritePickup: Sprite2D = $Sprite_Pickup
 @onready var collisionShape2D: CollisionShape2D = $CollisionShape2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+
 
 @export var popupShowTime: float = 0.50 
 @export var popupYSpeed: float = 50
@@ -17,7 +19,6 @@ func _ready() -> void:
 	self.monitorable = true
 	self.monitoring = true
 	self.body_entered.connect(self.getPickedUp)
-	
 	#Play the idle animation
 	self.applyItem()
 	self.animationPlayer.play("IDLE")
@@ -36,6 +37,8 @@ func getPickedUp( body: Node2D) -> void:
 
 		var itemUseContext =  ItemUseContext.new()
 		itemUseContext.actor = body
+		itemUseContext.itemPickup = self
+		itemUseContext.item = self.item
 		
 		for effect: ItemEffect in self.item.ItemEffects:
 			effect.apply( itemUseContext )
@@ -44,7 +47,6 @@ func getPickedUp( body: Node2D) -> void:
 		var stat = playerEntry.stats.getStat(PlayerStats.STATKEY_ITEMS_COLLECTED)
 		playerEntry.stats.setStat(PlayerStats.STATKEY_ITEMS_COLLECTED, stat + 1)	
 	
-	
 		await get_tree().create_timer( self.animationPlayer.get_animation("PICKUP").length).timeout
 		self.queue_free()
 
@@ -52,8 +54,6 @@ func getPickedUp( body: Node2D) -> void:
 
 func applyItem() -> void:
 	if(self.item != null) :
-
-		
 		pass
 		#also set collision shape later
 		
@@ -61,5 +61,6 @@ func applyItem() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	
+	if(self.spritePickup.visible):
+		pass
 	pass

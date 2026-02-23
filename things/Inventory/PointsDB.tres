@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PointsDB" load_steps=11 format=3 uid="uid://8buubb60v7tu"]
+
+[ext_resource type="Texture2D" uid="uid://bwttwirrg6td0" path="res://assets/misc/points/p1_300.tres" id="1_50uo8"]
+[ext_resource type="Script" uid="uid://mjecn7xcopi3" path="res://things/Inventory/PointsDB.gd" id="1_bh665"]
+[ext_resource type="Texture2D" uid="uid://cti32s1t7valn" path="res://assets/misc/points/p1_200.tres" id="2_wxh7o"]
+[ext_resource type="Texture2D" uid="uid://cvnivu184j4v7" path="res://assets/misc/points/p1_100.tres" id="3_wxh7o"]
+[ext_resource type="Texture2D" uid="uid://cmh55g86p46st" path="res://assets/misc/points/p1_400.tres" id="4_u8f22"]
+[ext_resource type="Texture2D" uid="uid://whxb5he1wqlu" path="res://assets/misc/points/p1_500.tres" id="5_tyj6y"]
+[ext_resource type="Texture2D" uid="uid://b4higuppy2cu0" path="res://assets/misc/points/p1_600.tres" id="6_ac1yw"]
+[ext_resource type="Texture2D" uid="uid://dtkpet8qtpchg" path="res://assets/misc/points/p1_700.tres" id="7_rmayu"]
+[ext_resource type="Texture2D" uid="uid://ddin5lksu058g" path="res://assets/misc/points/p1_800.tres" id="8_4pva5"]
+[ext_resource type="Texture2D" uid="uid://dg1ndnn01njtw" path="res://assets/misc/points/p1_900.tres" id="9_hnmcn"]
+
+[resource]
+script = ExtResource("1_bh665")
+pointMappingP1 = Dictionary[int, AtlasTexture]({
+100: ExtResource("3_wxh7o"),
+200: ExtResource("2_wxh7o"),
+300: ExtResource("1_50uo8"),
+400: ExtResource("4_u8f22"),
+500: ExtResource("5_tyj6y"),
+600: ExtResource("6_ac1yw"),
+700: ExtResource("7_rmayu"),
+800: ExtResource("8_4pva5"),
+900: ExtResource("9_hnmcn")
+})
+metadata/_custom_type_script = "uid://mjecn7xcopi3"

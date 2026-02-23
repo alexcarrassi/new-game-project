@@ -140,4 +140,4 @@ libraries = {
 visible = false
 texture = ExtResource("3_oml35")
 region_enabled = true
-region_rect = Rect2(6, 55, 14, 8)
+region_rect = Rect2(0, 0, 14, 8)

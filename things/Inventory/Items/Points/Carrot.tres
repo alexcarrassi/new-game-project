@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://14hxd5ild1x1"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_jsjsf"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_770qn"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_bs3e6"]
+[ext_resource type="PackedScene" uid="uid://rx86oc0p4fvv" path="res://things/Inventory/Items/Points/Carrot.tscn" id="3_770qn"]
+
+[sub_resource type="Resource" id="Resource_175si"]
+script = ExtResource("2_770qn")
+score = 200
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_bs3e6")
+id = &"carrot"
+display_name = "Carrot"
+ItemEffects = Array[ExtResource("1_jsjsf")]([SubResource("Resource_175si")])
+consume = true
+itemPickup = ExtResource("3_770qn")
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

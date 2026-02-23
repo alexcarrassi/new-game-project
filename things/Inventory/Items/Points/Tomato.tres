@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bvbgvb2pr5bsd"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_5nytj"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_4yly8"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_rai76"]
+[ext_resource type="PackedScene" uid="uid://dsdkp5xijl0yq" path="res://things/Inventory/Items/Points/Tomato.tscn" id="3_4yly8"]
+
+[sub_resource type="Resource" id="Resource_8pcfr"]
+script = ExtResource("2_4yly8")
+score = 400
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_rai76")
+id = &"tomato"
+display_name = "Tomato"
+ItemEffects = Array[ExtResource("1_5nytj")]([SubResource("Resource_8pcfr")])
+consume = true
+itemPickup = ExtResource("3_4yly8")
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"
