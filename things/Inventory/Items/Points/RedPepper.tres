@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://cu3vr3rk22776"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_sontn"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_kakr0"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_re88c"]
+[ext_resource type="Texture2D" uid="uid://cwcr05s46qssg" path="res://assets/sprites/Items/Redpepper.tres" id="3_b5g42"]
+
+[sub_resource type="Resource" id="Resource_7yl34"]
+script = ExtResource("2_kakr0")
+score = 600
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_re88c")
+id = &"redpepper"
+display_name = "Red Pepper"
+ingameIcon = ExtResource("3_b5g42")
+inventoryIcon = ExtResource("3_b5g42")
+ItemEffects = Array[ExtResource("1_sontn")]([SubResource("Resource_7yl34")])
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

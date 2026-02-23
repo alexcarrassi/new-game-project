@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_8rxh8"]
 [ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_et4xp"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_x6dqx"]
-[ext_resource type="PackedScene" uid="uid://ds61necrqboo1" path="res://things/Inventory/Items/Points/BellPepper.tscn" id="3_8fbgp"]
+[ext_resource type="Texture2D" uid="uid://2af4kohpsbkd" path="res://assets/sprites/Items/BellPepper.tres" id="3_et4xp"]
 
 [sub_resource type="Resource" id="Resource_5f5o1"]
 script = ExtResource("2_et4xp")
@@ -12,7 +12,10 @@ metadata/_custom_type_script = "uid://basavn3wcvwg7"
 
 [resource]
 script = ExtResource("2_x6dqx")
+id = &"bellpepper"
+display_name = "Bell pepper"
+ingameIcon = ExtResource("3_et4xp")
+inventoryIcon = ExtResource("3_et4xp")
 ItemEffects = Array[ExtResource("1_8rxh8")]([SubResource("Resource_5f5o1")])
 consume = true
-itemPickup = ExtResource("3_8fbgp")
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

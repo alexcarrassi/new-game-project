@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://cdgka4vleelqh"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_u6g3q"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_ido2u"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_iu1qg"]
+[ext_resource type="Texture2D" uid="uid://cqnally62d3tb" path="res://assets/sprites/Items/Melon.tres" id="3_u4jyu"]
+
+[sub_resource type="Resource" id="Resource_sy3s3"]
+script = ExtResource("2_iu1qg")
+score = 500
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_ido2u")
+id = &"melon"
+display_name = "Melon"
+ingameIcon = ExtResource("3_u4jyu")
+inventoryIcon = ExtResource("3_u4jyu")
+ItemEffects = Array[ExtResource("1_u6g3q")]([SubResource("Resource_sy3s3")])
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

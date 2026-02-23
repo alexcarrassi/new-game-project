@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://cvj43d00db81i"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_6y7d4"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_en8sh"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_th5md"]
+[ext_resource type="Texture2D" uid="uid://ddfr4kseo2i0n" path="res://assets/sprites/Items/Pickle.tres" id="3_v7bf6"]
+
+[sub_resource type="Resource" id="Resource_mnv5b"]
+script = ExtResource("2_en8sh")
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_th5md")
+id = &"pickle"
+display_name = "Pickle"
+ingameIcon = ExtResource("3_v7bf6")
+inventoryIcon = ExtResource("3_v7bf6")
+ItemEffects = Array[ExtResource("1_6y7d4")]([SubResource("Resource_mnv5b")])
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

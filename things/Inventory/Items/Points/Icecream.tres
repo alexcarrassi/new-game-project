@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://dk00b4nr5yn0m"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_te5po"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_adpyt"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_rmli1"]
+[ext_resource type="Texture2D" uid="uid://dsk8ex2hjpnpc" path="res://assets/sprites/Items/IceCream.tres" id="3_yvvku"]
+
+[sub_resource type="Resource" id="Resource_q467e"]
+script = ExtResource("2_rmli1")
+score = 600
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_adpyt")
+id = &"icecream"
+display_name = "Ice Cream"
+ingameIcon = ExtResource("3_yvvku")
+inventoryIcon = ExtResource("3_yvvku")
+ItemEffects = Array[ExtResource("1_te5po")]([SubResource("Resource_q467e")])
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

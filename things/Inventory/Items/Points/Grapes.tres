@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://qey7a6b8e2w3"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_2qp33"]
+[ext_resource type="Texture2D" uid="uid://7gpdcrcwhgfy" path="res://assets/sprites/Items/Grapes.tres" id="2_6nvyk"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_gw2hn"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_m64lu"]
+
+[sub_resource type="Resource" id="Resource_8tdex"]
+script = ExtResource("2_gw2hn")
+score = 800
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_m64lu")
+id = &"grapes"
+display_name = "Grapes"
+ingameIcon = ExtResource("2_6nvyk")
+inventoryIcon = ExtResource("2_6nvyk")
+ItemEffects = Array[ExtResource("1_2qp33")]([SubResource("Resource_8tdex")])
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

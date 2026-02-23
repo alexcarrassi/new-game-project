@@ -22,11 +22,14 @@ func _ready() -> void:
 	#Play the idle animation
 	self.applyItem()
 	self.animationPlayer.play("IDLE")
+	self.setData(self.item)
 	pass # Replace with function body.
 
 
 func setData( item: Item) -> void:
 	self.item = item
+	self.sprite2D.texture = self.item.ingameIcon
+	self.sprite2D.region_rect = Rect2i(Vector2i.ZERO, self.item.ingameIcon.region.size)
 
 func getPickedUp( body: Node2D) -> void:
 	

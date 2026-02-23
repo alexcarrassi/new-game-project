@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bjnw1pe5yi2gb"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_udo2n"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_mmgws"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_rxlpu"]
+[ext_resource type="Texture2D" uid="uid://ctovvmxgs13at" path="res://assets/sprites/Items/Fries.tres" id="3_v6let"]
+
+[sub_resource type="Resource" id="Resource_vqsck"]
+script = ExtResource("2_rxlpu")
+score = 900
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_mmgws")
+id = &"fries"
+display_name = "Fries"
+ingameIcon = ExtResource("3_v6let")
+inventoryIcon = ExtResource("3_v6let")
+ItemEffects = Array[ExtResource("1_udo2n")]([SubResource("Resource_vqsck")])
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

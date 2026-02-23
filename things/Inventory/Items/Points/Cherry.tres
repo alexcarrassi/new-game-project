@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://wyproy3x652p"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_5bngu"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_iuq80"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_wa15a"]
+[ext_resource type="Texture2D" uid="uid://cn6qacar0l5av" path="res://assets/sprites/Items/Cherry.tres" id="3_od4kc"]
+
+[sub_resource type="Resource" id="Resource_l3hid"]
+script = ExtResource("2_wa15a")
+score = 300
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[resource]
+script = ExtResource("2_iuq80")
+id = &"cherry"
+display_name = "Cherry"
+ingameIcon = ExtResource("3_od4kc")
+inventoryIcon = ExtResource("3_od4kc")
+ItemEffects = Array[ExtResource("1_5bngu")]([SubResource("Resource_l3hid")])
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

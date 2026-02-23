@@ -20,6 +20,6 @@ func returnFirstReward(talliedStats: Dictionary[StringName, int] = {}) -> Item:
 	#No reward. Pick a random Point item from the ItemDB		
 	print("No reward")
 	var pointItemID = ItemDB.items.keys().pick_random()
-	var reward: Item = ItemDB.getItem(pointItemID)
+	var reward: Item = ItemDB.getItem(pointItemID, &"Item")
 	
 	return reward

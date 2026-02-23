@@ -6,6 +6,8 @@ class_name ItemDB_ extends Node
 
 @export var pointsDB: PointsDB
 
+@export var default_item_pickup: PackedScene
+
 var items: Dictionary[StringName, Item]
 var extendBubbles: Dictionary[StringName, Item]
 var powerups: Dictionary[StringName, Item]
@@ -21,15 +23,21 @@ func _ready() -> void:
 	for item:Item in self.extendBubbles_:
 		self.extendBubbles[item.id] = item	
 		
-func getItem(name: StringName, itemType: StringName = &"item") -> Item:
+	for item:Item in self.powerups_:
+		self.powerups[item.id] = item
+			
+		
+func getItem(name: StringName, itemType: StringName = &"Item") -> Item:
 	
 	var source = self.items
 	match( itemType ):
 		&"ExtendBubble":
 			source = self.extendBubbles
+		&"Powerup":
+			source = self.powerups
 		&"Item", _:
 			source = self.items	
-	
+
 	var item = source.get(name, null)		
 	if(item == null) :
 		# If Not found, return the first available item
