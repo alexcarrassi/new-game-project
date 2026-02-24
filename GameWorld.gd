@@ -40,44 +40,49 @@ func levelTransition(options: Dictionary = {}) -> void:
 	self.is_transitioning_Levels = true
 	self.level.levelTimer.paused = true
 	
-
+	var loopCount = options.get("loopCount", 0)
+		
 	
 
 	# Reparent the players
 	for key: int in Game.playerEntries.keys():
 		if(Game.playerEntries[key]):
-			Game.playerEntries[key].player.reparent(self)
+			var player:Player = Game.playerEntries[key].player
+			player.reparent(self)
 	
 	if( options.has("timeout")):
 		await get_tree().create_timer(options["timeout"]).timeout
 
 	# Cleanup, after timeout
 	self.level.cleanup()
+	var nextLevel = null
+	var nextLevel_id = ""
 
-	# Create and Ready the next level
-	# Get the next Level's id. Either from the options or the logical next level		
-	var nextLevel_id = options.get("nextLevel_id", Game.getNextLevel_id())
+	for i in range(loopCount):
 
-	if(nextLevel_id == "") :
-		print("No Next level found.")
-		nextLevel_id = ""
-	
-	var nextLevel = createNextLevel(nextLevel_id)
-	
-	
-	if(options.has("cinematic")):
-		if(options["cinematic"]) :
-			#Put the players in Suspended Animation
-			self.suspendPlayers()
-			# Hide the UI 
-			self.UI.visible = false 
-			
-			#move the Levels
-			var moveLevelTween = self.tweenLevels(	self.level, nextLevel)
-			await moveLevelTween.finished
-			
-	self.swapLevels(nextLevel)
-	
+		# Create and Ready the next level
+		# Get the next Level's id. Either from the options or the logical next level		
+		nextLevel_id = options.get("nextLevel_id", Game.getNextLevel_id())
+
+		if(nextLevel_id == ""):
+			print("No Next level found.")
+		
+		nextLevel = createNextLevel(nextLevel_id)
+		
+		
+		if(options.has("cinematic")):
+			if(options["cinematic"]) :
+				#Put the players in Suspended Animation
+				self.suspendPlayers()
+				# Hide the UI 
+				self.UI.visible = false 
+				
+				#move the Levels
+				var moveLevelTween = self.tweenLevels(	self.level, nextLevel)
+				await moveLevelTween.finished
+				
+		self.swapLevels(nextLevel)
+		
 	
 	if(options.has("cinematic")):
 		if(options["cinematic"]) :
@@ -97,7 +102,7 @@ func levelTransition(options: Dictionary = {}) -> void:
 # If so, we can offically start the level by setting all the actors of the spawn to their ALIVE state
 	
 func startLevel(level: Level) -> void:
-	#spawn the plauyer
+	#spawn the player
 	#connect the levelTimer to the hurryUp sequence
 	if( level.hurry ) :
 		level.hurry.connect( self.onLevelHurry)
@@ -270,6 +275,8 @@ func spawnPlayers() -> void:
 		var spawnPoint = self.level.getPlayerSpawn( player.player_index)
 		player.position = spawnPoint.position
 		player.sm_status.state.finished.emit("ALIVE")
+		player.hurtbox.call_deferred("set_monitorable", true)
+
 		self.queue_extend_bubbles(key)		
 
 			

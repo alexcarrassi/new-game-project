@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://df2d6ib26vtgc" path="res://things/Inventory/RewardTable/RewardEntry.gd" id="1_uc88q"]
 [ext_resource type="Resource" uid="uid://m1glm1yl7340" path="res://actors/player/Stats/StatDefs/bubbles_blown.tres" id="2_m8nai"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="3_eemkf"]
-[ext_resource type="Resource" uid="uid://bb1nip4uhqh70" path="res://things/Inventory/Items/Points/Onion.tres" id="4_vtrtj"]
+[ext_resource type="Resource" uid="uid://cf48yxnxw7y84" path="res://things/Inventory/Items/Powerups/Umbrella_blue.tres" id="4_vtrtj"]
 [ext_resource type="Script" uid="uid://blth5hxw1qdxr" path="res://things/Inventory/RewardTable/RewardTable.gd" id="5_5fmew"]
 [ext_resource type="Resource" uid="uid://c5oxc07h8wyq2" path="res://actors/player/Stats/StatDefs/bubbles_popped.tres" id="5_vtrtj"]
 [ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://things/Inventory/Items/Points/Peach.tres" id="6_vtrtj"]

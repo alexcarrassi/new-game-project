@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://cf48yxnxw7y84"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_6af8t"]
+[ext_resource type="Script" uid="uid://cj0iphwn3qq6" path="res://things/Inventory/ItemEffects/debug_effect.gd" id="2_hirw4"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_w0pvv"]
+[ext_resource type="Texture2D" uid="uid://trb6ygwwc3yo" path="res://assets/sprites/Items/Umbrella_blue.tres" id="3_ultdd"]
+[ext_resource type="Script" uid="uid://e18vb1wl5way" path="res://things/Inventory/ItemEffects/SkipLevels.gd" id="3_wjwav"]
+
+[sub_resource type="Resource" id="Resource_wjwav"]
+script = ExtResource("2_hirw4")
+metadata/_custom_type_script = "uid://cj0iphwn3qq6"
+
+[sub_resource type="Resource" id="Resource_otm3p"]
+script = ExtResource("3_wjwav")
+levelCount_min = 2
+levelCount_max = 5
+metadata/_custom_type_script = "uid://e18vb1wl5way"
+
+[resource]
+script = ExtResource("2_w0pvv")
+id = &"umbrella_blue"
+display_name = "Blue Umbrella"
+ingameIcon = ExtResource("3_ultdd")
+inventoryIcon = ExtResource("3_ultdd")
+ItemEffects = Array[ExtResource("1_6af8t")]([SubResource("Resource_wjwav"), SubResource("Resource_otm3p")])
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"
