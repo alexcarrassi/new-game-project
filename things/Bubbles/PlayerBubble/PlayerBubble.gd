@@ -2,6 +2,7 @@ class_name PlayerBubble extends Bubble
 
 
 @export var actorTimerOffset = 3.0
+@export var shoot_range: float = 140 #range in pixels
 
 @onready var popTimer: Timer = $PopTimer
 @onready var prePopTimer: Timer = $PrepopTimer
@@ -15,9 +16,13 @@ var actor_parent: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
+	
+	var animationLength = self.shoot_range / self.hor_speed
+	print(animationLength)
+	animationPlayer.get_animation("EXPAND").length = animationLength
 	self.get_tree().create_timer( animationPlayer.get_animation("EXPAND").length  ).timeout.connect( self.setFloating)
 	self.animationPlayer.play("EXPAND")
+	
 	
 	
 	

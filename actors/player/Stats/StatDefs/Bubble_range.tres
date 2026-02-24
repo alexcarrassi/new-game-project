@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerStatDef" load_steps=2 format=3 uid="uid://cpgxls6bylose"]
+
+[ext_resource type="Script" uid="uid://cqp4sjd3wojxd" path="res://actors/player/Stats/PlayerStatDef.gd" id="1_nrqyo"]
+
+[resource]
+script = ExtResource("1_nrqyo")
+key = &"bubble_range"
+name = "Bubble Range"
+metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

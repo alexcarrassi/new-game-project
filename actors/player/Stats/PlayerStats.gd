@@ -31,5 +31,5 @@ func setStat(statKey: StringName, value: int) -> void:
 	if( stat != null) :
 		self.values[statKey] = value
 		
-		self.statsUpdated.emit()
+		self.statsUpdated.emit()	
 		
