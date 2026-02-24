@@ -113,6 +113,9 @@ func setFloating() -> void:
 	for the_timer: Timer in [self.redTimer, self.prePopTimer, self.popTimer]:
 		the_timer.wait_time += self.actorTimerOffset
 		
+	self.target_velocity = Vector2.ZERO	
+	self.linear_velocity = Vector2.ZERO
+		
 func _physics_process(delta: float) -> void:
 	
 	match self.state: 

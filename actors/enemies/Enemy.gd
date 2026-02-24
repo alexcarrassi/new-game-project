@@ -32,14 +32,18 @@ func instantiateLoot() -> ItemPickup:
 	if(self.LootTable.size() > 0):
 
 		var item: Item = self.LootTable[0]
-		var itemPickup = item.itemPickup.instantiate() as ItemPickup
-		itemPickup.setData( item )
-		
+		if(!item):
+			var random_itemKey = ItemDB.items.keys().pick_random()
+			item = ItemDB.getItem(random_itemKey)
+		var itemPickup = item.getPickup()
+		itemPickup.item = item
 
 		get_tree().root.add_child( itemPickup )
 		itemPickup.position = self.position
 		
 		return itemPickup
+
+		
 		
 	return null	
 

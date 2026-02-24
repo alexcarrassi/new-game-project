@@ -40,7 +40,7 @@ func levelTransition(options: Dictionary = {}) -> void:
 	self.is_transitioning_Levels = true
 	self.level.levelTimer.paused = true
 	
-	var loopCount = options.get("loopCount", 0)
+	var loopCount = options.get("loopCount", 1)
 		
 	
 
