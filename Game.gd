@@ -8,6 +8,7 @@ var currentLevel: int = 0
 var difficulty = 1
 var is_frameStepping = false
 
+signal playerRegistered(playerEntry: PlayerEntry) 
 
 func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -27,6 +28,7 @@ func register_player(index: int, player: Player) -> PlayerEntry:
 	self.playerEntries[index] = playerEntry
 	
 
+	playerRegistered.emit(playerEntry)
 	return playerEntry
 
 func deregister_player(index: int) -> Dictionary[int, PlayerEntry]:

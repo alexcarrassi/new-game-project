@@ -251,7 +251,6 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 		playerNode.actorDeath.connect( self.onActorDeath )
 		playerEntry.inventory.inventoryUpdated.connect( self.tryExtend.bind(playerNode))
 		self.spawnPlayerHUD( self.playerHUDScene, playerEntry )
-
 			
 	return playerNode
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://coyh0i17i7kaa" path="res://world_wrapper.gd" id="1_5v3dv"]
 [ext_resource type="PackedScene" uid="uid://c77k1tce7y5xe" path="res://GameWorld.tscn" id="1_f8wa7"]
-[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/misc/Fonts.png" id="2_5v3dv"]
+[ext_resource type="PackedScene" uid="uid://k470hfn00pdn" path="res://UI/StatTable.tscn" id="3_5v3dv"]
 
 [node name="WorldWrapper" type="Control"]
 custom_minimum_size = Vector2(512, 256)
@@ -13,7 +13,9 @@ offset_bottom = 256.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_5v3dv")
+debugMode = true
 gameWorld = ExtResource("1_f8wa7")
+statTable = ExtResource("3_5v3dv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -43,18 +45,3 @@ render_target_update_mode = 4
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Stats" type="MarginContainer" parent="HBoxContainer/PanelContainer_debug"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer_debug/Stats"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer_debug/Stats/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_5v3dv")
-theme_override_font_sizes/font_size = 10
-text = "STATS"
-
-[node name="Stats_list" type="VBoxContainer" parent="HBoxContainer/PanelContainer_debug/Stats/VBoxContainer"]
-layout_mode = 2
