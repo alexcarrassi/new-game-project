@@ -35,7 +35,6 @@ func _ready() -> void:
 	
 func levelTransition(options: Dictionary = {}) -> void:
 	print("TRANSITION")
-	
 	# Set state
 	self.is_transitioning_Levels = true
 	self.level.levelTimer.paused = true
