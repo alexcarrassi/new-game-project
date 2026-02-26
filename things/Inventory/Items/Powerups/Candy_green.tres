@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_mk1c7"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_c34wm"]
-[ext_resource type="Script" uid="uid://dsyys1pmwhgbo" path="res://things/Inventory/ItemEffects/Bubble_Range.gd" id="2_ssh8s"]
+[ext_resource type="Script" uid="uid://h206hxyhpwmj" path="res://things/Inventory/ItemEffects/Bubble_Rate.gd" id="2_ssh8s"]
 [ext_resource type="Texture2D" uid="uid://bstve6tknoxmn" path="res://assets/sprites/Items/Candy_green.tres" id="2_v41kd"]
 
 [sub_resource type="Resource" id="Resource_l3wmg"]
 script = ExtResource("2_ssh8s")
-metadata/_custom_type_script = "uid://dsyys1pmwhgbo"
+metadata/_custom_type_script = "uid://h206hxyhpwmj"
 
 [resource]
 script = ExtResource("2_c34wm")
