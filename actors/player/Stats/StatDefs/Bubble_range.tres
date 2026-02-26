@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_nrqyo")
 key = &"bubble_range"
-name = "Bubble Range"
+name = "Bubble Range Extension"
 metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

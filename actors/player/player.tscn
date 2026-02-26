@@ -10,8 +10,8 @@
 [ext_resource type="Script" uid="uid://dvrp2qg2igcl2" path="res://actors/player/scripts/State_Locomotion_Jumping.gd" id="8_pylmc"]
 [ext_resource type="Script" uid="uid://boe33mx0birrj" path="res://actors/scripts/Riding.gd" id="9_otn2r"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="9_pbfsw"]
-[ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_5tmop"]
 [ext_resource type="Script" uid="uid://cw0ep6ifeu7n4" path="res://actors/player/scripts/State_Act_Attack.gd" id="11_7ahtn"]
+[ext_resource type="Script" uid="uid://pmw3cebiomxc" path="res://actors/player/scripts/State_Act_None_Player.gd" id="11_otn2r"]
 [ext_resource type="PackedScene" uid="uid://cvp3jvwjx6bpl" path="res://things/Bubbles/PlayerBubble/PlayerBubble.tscn" id="12_dqf5y"]
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="13_7aotg"]
 [ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="14_k67x5"]
@@ -412,7 +412,7 @@ metadata/_custom_type_script = "uid://boe33mx0birrj"
 script = ExtResource("9_pbfsw")
 
 [node name="NONE" type="Node" parent="StateMachine_Act"]
-script = ExtResource("10_5tmop")
+script = ExtResource("11_otn2r")
 
 [node name="ATTACK" type="Node" parent="StateMachine_Act"]
 script = ExtResource("11_7ahtn")

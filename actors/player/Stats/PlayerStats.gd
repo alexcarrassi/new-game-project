@@ -10,11 +10,13 @@ const STATKEY_FIREBUBBLES_POPPED: StringName = &"firebubbles_popped"
 const STATKEY_THUNDERBUBBLES_POPPED: StringName = &"thunderbubbles_popped"
 const STATKEY_ITEMS_COLLECTED: StringName = &"items_collected"
 
+const STATKEY_BUBBLE_RATE_MULT: StringName = &"bubble_rate"
+
 signal statsUpdated()
 
 func createStatsFromSchema(statSchema: PlayerStats_Schema):
 	for statDef: PlayerStatDef in statSchema.stats:
-		self.values[statDef.key] = 0
+		self.values[statDef.key] = statDef.value
 		self.rewarded[statDef.key] = 0
 #get_stat
 func getStat(statKey: StringName) -> int:

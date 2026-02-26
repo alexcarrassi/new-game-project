@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_y2np4")
 key = &"bubble_rate"
-name = "Bubble Rate"
+name = "Bubble Rate Multiplier"
+value = 1
 metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

@@ -107,14 +107,10 @@ func post_move_and_slide() -> void:
 		
 func _input(event: InputEvent) -> void:
 	var inputState = self.inputState
-		
-	if (self.buffer_times['attack'] > 0.0):
-		var transition_data = { 
-			"domain" : "act",
-		}
-		self.actState.state.finished.emit("ATTACK", transition_data)
-	
-	
+
+	if event is InputEventKey:
+		pass
+
 func addToCombo(actor: Actor) -> void:
 	if(self.comboTimer.is_stopped()):
 		#No running combo yet. Start with 1
