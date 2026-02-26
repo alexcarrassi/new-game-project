@@ -18,7 +18,7 @@ func enter(previous_state_path: String, data: Dictionary) -> void:
 		pass
 
 func physics_update(delta: float) -> void:
-
+	var player: Player = self.body as Player
 	var inputState = self.body.inputState
 	
 	#horizontal movement
@@ -51,6 +51,8 @@ func physics_update(delta: float) -> void:
 		
 		#are we on a bubble?
 		if( self.body.buffer_times['jump'] > 0.0 and  self.body.BubbleSensor.is_colliding() ):
+			
+			player.statEvent.emit( &"bubbles_hopped", 1)
 			self.finished.emit("JUMPING")		
 
 		if( self.body.coyote_time > 0.0 and self.body.buffer_times['jump'] > 0.0) :

@@ -21,10 +21,9 @@ func playerPop(player: Player) -> void:
 	projectile.position = self.position
 	self.queue_free()
 	
-	
-	var stats = Game.getPlayerEntry(player.player_index).stats
-	var firePopped = stats.getStat(PlayerStats.STATKEY_FIREBUBBLES_POPPED)
-	stats.setStat(PlayerStats.STATKEY_FIREBUBBLES_POPPED, firePopped + 1)
+
+	player.statEvent.emit(PlayerStats.STATKEY_FIREBUBBLES_POPPED, 1)
+
 	pass
 	
 

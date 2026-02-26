@@ -23,6 +23,7 @@ func register_player(index: int, player: Player) -> PlayerEntry:
 	playerEntry.player = player
 	playerEntry.stats = PlayerStats.new() 
 	playerEntry.stats.createStatsFromSchema( preload("res://actors/player/Stats/PlayerStats_Schema.tres"))
+	player.statEvent.connect(playerEntry.stats.onStatEvent)
 	playerEntry.id = index
 	playerEntry.inventory = inventory
 	self.playerEntries[index] = playerEntry

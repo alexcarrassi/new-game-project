@@ -71,6 +71,5 @@ func playerPop(player: Player) -> void:
 
 	self.dir.x = 1 if player.sprite2D.flip_h else -1 
 	
-	var stats = Game.getPlayerEntry(player.player_index).stats
-	var popped = stats.getStat(PlayerStats.STATKEY_THUNDERBUBBLES_POPPED)
-	stats.setStat(PlayerStats.STATKEY_THUNDERBUBBLES_POPPED, popped + 1)
+
+	player.statEvent.emit(PlayerStats.STATKEY_THUNDERBUBBLES_POPPED, 1)

@@ -23,7 +23,7 @@ var current_comboRecord: int = 0
 var inputState: InputState
 var score = 0
 signal scoreUpdated()
-
+signal statEvent(statkey: StringName, value: int)
 
 func _ready() -> void:
 	super._ready()

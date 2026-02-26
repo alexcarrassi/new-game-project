@@ -9,6 +9,7 @@ const STATKEY_WATERBUBBLES_POPPED: StringName = &"waterbubbles_popped"
 const STATKEY_FIREBUBBLES_POPPED: StringName = &"firebubbles_popped"
 const STATKEY_THUNDERBUBBLES_POPPED: StringName = &"thunderbubbles_popped"
 const STATKEY_ITEMS_COLLECTED: StringName = &"items_collected"
+const STATKEY_BUBBLES_HOPPED: StringName = &"bubbles_hopped"
 
 const STATKEY_BUBBLE_RATE_MULT: StringName = &"bubble_rate"
 
@@ -34,4 +35,14 @@ func setStat(statKey: StringName, value: int) -> void:
 		self.values[statKey] = value
 		
 		self.statsUpdated.emit()	
-		
+func incrementStat(statKey: StringName, incr_by: int) -> void:
+	var statval = getStat( statKey)
+	setStat( statKey, statval + incr_by) 		
+
+func onStatEvent(statKey: StringName, value: int) -> void:
+	
+	match(statKey):
+		STATKEY_THUNDERBUBBLES_POPPED, STATKEY_FIREBUBBLES_POPPED, STATKEY_WATERBUBBLES_POPPED, STATKEY_ITEMS_COLLECTED, STATKEY_BUBBLES_POPPED, STATKEY_BUBBLES_HOPPED, STATKEY_BUBBLES_BLOWN:
+			incrementStat(statKey, value)
+	
+	print("Updating %s" %[statKey])
