@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerStatDef" load_steps=2 format=3 uid="uid://cy1okudnmjm71"]
+
+[ext_resource type="Script" uid="uid://cqp4sjd3wojxd" path="res://actors/player/Stats/PlayerStatDef.gd" id="1_ftqbu"]
+
+[resource]
+script = ExtResource("1_ftqbu")
+key = &"bot_to_top_teleports"
+name = "Teleports"
+metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

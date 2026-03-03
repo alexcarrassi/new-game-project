@@ -8,7 +8,8 @@ class_name RewardTable extends Resource
 func returnFirstReward(talliedStats: Dictionary[StringName, int] = {}) -> Item:
 	
 	for rewardEntry: RewardEntry in self.rewardEntries : 
-		var statValue = talliedStats.get(rewardEntry.playerStatDef.key, null)
+		var statKey = rewardEntry.playerStatDef.key
+		var statValue = talliedStats.get(statKey, null)
 		if(statValue and statValue >= rewardEntry.requirement * (rewardEntry.rewards_given + 1) ):
 			print("rewarded for %s" % [rewardEntry.playerStatDef.key])
 			rewardEntry.rewards_given += 1

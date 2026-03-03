@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cjlxt5wg105ji"]
+[gd_scene load_steps=29 format=3 uid="uid://cjlxt5wg105ji"]
 
 [ext_resource type="Script" uid="uid://dbqmmrqxr77g0" path="res://actors/enemies/PulPul/PulPul.gd" id="1_0iyba"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_6ny1d"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="8_hn4fc"]
 [ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="9_hn4fc"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_vyocm"]
+[ext_resource type="Script" uid="uid://pno03ev23dy3" path="res://actors/enemies/zenchan/petrified.gd" id="13_fqcsb"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="13_vyocm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_362ob"]
@@ -95,12 +96,31 @@ tracks/0/keys = {
 "values": [Rect2(5, 89, 16, 16)]
 }
 
+[sub_resource type="Animation" id="Animation_hn4fc"]
+resource_name = "PETRIFIED"
+length = 0.30000502
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(89, 89, 16, 16), Rect2(110, 89, 16, 16)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hn4fc"]
 _data = {
 &"BUBBLED": SubResource("Animation_362ob"),
 &"DEAD": SubResource("Animation_gitci"),
 &"FLY": SubResource("Animation_l65b0"),
 &"IDLE": SubResource("Animation_wofr7"),
+&"PETRIFIED": SubResource("Animation_hn4fc"),
 &"RESET": SubResource("Animation_fqcsb")
 }
 
@@ -214,6 +234,10 @@ script = ExtResource("8_fqcsb")
 
 [node name="RED" type="Node" parent="StateMachine_Status"]
 script = ExtResource("9_hn4fc")
+
+[node name="PETRIFIED" type="Node" parent="StateMachine_Status"]
+script = ExtResource("13_fqcsb")
+metadata/_custom_type_script = "uid://1bfgi14utrpi"
 
 [node name="StateMachine_Act" type="Node" parent="."]
 script = ExtResource("13_vyocm")

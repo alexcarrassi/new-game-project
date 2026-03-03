@@ -11,6 +11,9 @@ var level: Level
 @onready var extendBubbleSpawner_left: ExtendBubbleSpawner  = $ExtendBubble_left
 @onready var extendBubbleSpawner_right: ExtendBubbleSpawner = $ExtendBubble_right
 
+@onready var teleporterTop: Teleporter = $TeleporterTop
+@onready var teleporterBottom: Teleporter = $TeleporterBottom
+@onready var teleporterBottom2: Teleporter = $TeleporterBottom2
 
 @export var level_debug: PackedScene
 @export var start_debug: bool
@@ -30,8 +33,12 @@ func _ready() -> void:
 	self.swapLevels(startingLevel)
 	var player = self.createPlayer(0, self.playerScene)
 	self.UI.visible = false
-
 	self.startLevel(startingLevel)
+	
+
+	get_tree().create_timer(2).timeout.connect( func() -> void:
+		self.teleporterTop.monitoring = true
+	)
 	
 func levelTransition(options: Dictionary = {}) -> void:
 	print("TRANSITION")
@@ -272,6 +279,7 @@ func spawnPlayers() -> void:
 		player.reparent(self.level)
 		var spawnPoint = self.level.getPlayerSpawn( player.player_index)
 		player.position = spawnPoint.position
+		player.global_position = spawnPoint.global_position
 		player.sm_status.state.finished.emit("ALIVE")
 		player.hurtbox.call_deferred("set_monitorable", true)
 

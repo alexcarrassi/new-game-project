@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Item" load_steps=12 format=3 uid="uid://c1cfkmnxtqg6k"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_4b7vv"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_7ebko"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_487hn"]
+[ext_resource type="Texture2D" uid="uid://bpk8yn3wu4u6v" path="res://assets/sprites/Items/Heart.tres" id="3_4382n"]
+[ext_resource type="Script" uid="uid://ccjummkvu0ace" path="res://things/Inventory/ItemEffects/PetrifyEnemies.gd" id="3_n0gt1"]
+[ext_resource type="Script" uid="uid://ckydwu6mhstnk" path="res://things/Inventory/ItemEffects/GrantInvulnerability.gd" id="4_n0gt1"]
+[ext_resource type="Script" uid="uid://bqcg3dy5mt5np" path="res://things/Inventory/ItemEffects/GrantKillingAura.gd" id="5_ixp18"]
+
+[sub_resource type="Resource" id="Resource_n0gt1"]
+script = ExtResource("2_7ebko")
+metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[sub_resource type="Resource" id="Resource_m5kp2"]
+script = ExtResource("5_ixp18")
+metadata/_custom_type_script = "uid://bqcg3dy5mt5np"
+
+[sub_resource type="Resource" id="Resource_ixp18"]
+script = ExtResource("3_n0gt1")
+metadata/_custom_type_script = "uid://ccjummkvu0ace"
+
+[sub_resource type="Resource" id="Resource_am7qg"]
+script = ExtResource("4_n0gt1")
+metadata/_custom_type_script = "uid://ckydwu6mhstnk"
+
+[resource]
+script = ExtResource("2_487hn")
+ingameIcon = ExtResource("3_4382n")
+inventoryIcon = ExtResource("3_4382n")
+ItemEffects = Array[ExtResource("1_4b7vv")]([SubResource("Resource_n0gt1"), SubResource("Resource_m5kp2"), SubResource("Resource_ixp18"), SubResource("Resource_am7qg")])
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

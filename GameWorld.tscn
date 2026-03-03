@@ -53,7 +53,10 @@ anchor_mode = 0
 
 [node name="TeleporterTop" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
 position = Vector2(128, -8)
+monitoring = false
+monitorable = false
 Destination = NodePath("../TeleporterBottom")
+incrementStat = true
 
 [node name="TeleporterBottom" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
 position = Vector2(128, 224)

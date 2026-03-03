@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_0oc86")
-key = &"bubbles_popped"
-name = "Bubbles popped"
+key = &"bubbles_hopped"
+name = "Bubbles Hopped"
 metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

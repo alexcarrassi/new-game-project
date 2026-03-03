@@ -12,7 +12,7 @@ const STATKEY_ITEMS_COLLECTED: StringName = &"items_collected"
 const STATKEY_BUBBLES_HOPPED: StringName = &"bubbles_hopped"
 
 const STATKEY_BUBBLE_RATE_MULT: StringName = &"bubble_rate"
-
+const STATKEY_BOTTELEPORT: StringName	= &"bot_to_top_teleports"
 signal statsUpdated()
 
 func createStatsFromSchema(statSchema: PlayerStats_Schema):
@@ -42,7 +42,7 @@ func incrementStat(statKey: StringName, incr_by: int) -> void:
 func onStatEvent(statKey: StringName, value: int) -> void:
 	
 	match(statKey):
-		STATKEY_THUNDERBUBBLES_POPPED, STATKEY_FIREBUBBLES_POPPED, STATKEY_WATERBUBBLES_POPPED, STATKEY_ITEMS_COLLECTED, STATKEY_BUBBLES_POPPED, STATKEY_BUBBLES_HOPPED, STATKEY_BUBBLES_BLOWN:
+		_:
 			incrementStat(statKey, value)
 	
 	print("Updating %s" %[statKey])

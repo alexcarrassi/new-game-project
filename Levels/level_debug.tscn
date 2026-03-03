@@ -110,7 +110,7 @@ region_rect = Rect2(5, 89, 16, 16)
 [node name="Player_Spawns" type="Node" parent="."]
 
 [node name="p1_Start" type="Node2D" parent="Player_Spawns"]
-position = Vector2(111, 58)
+position = Vector2(168, 96)
 
 [node name="Bubble_Spawns" type="Node" parent="."]
 

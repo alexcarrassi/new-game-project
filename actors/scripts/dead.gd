@@ -10,10 +10,6 @@ var collision_disable_ms: float = 1.5
 # When reaching ground, Despawn.
 
 func enter(prev_state_path: String, data: Dictionary = {}) -> void:
-	print("ENTER DEAD")
-	
-	print(data)
-	
 	var jump_dir = data.get("dir", 1.0);
 	self.main_animation = "DEAD"
 
