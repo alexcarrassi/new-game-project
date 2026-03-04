@@ -7,15 +7,20 @@ func _init() -> void:
 func activate(actor: Actor) -> void:
 	
 	print("petrifying %s" %[actor.name])
-	actor.sm_status.state.finished.emit("PETRIFIED")
+	
+	actor.loco_locked = true 
+	actor.act_locked = true 
+	
+	actor.animationPlayer.current_state_animation = "PETRIFIED"
 	
 
 
 func deactivate(actor: Actor) -> void:
 	print("unpetrifying %s" %[actor.name])
-	actor.sm_status.state.finished.emit("ALIVE")
-	
-	
+
+	actor.loco_locked = false 
+	actor.act_locked = false 
+	actor.animationPlayer.current_state_animation = actor.sm_locomotion.state.main_animation
 func tick_physics(delta: float, actor: Actor) -> void:
 	pass
 	

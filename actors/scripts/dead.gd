@@ -27,6 +27,9 @@ func enter(prev_state_path: String, data: Dictionary = {}) -> void:
 	#disable collision with inner tiles.
 	actor.set_collision_mask_value(1, false)
 	
+	#Cancel all Mods on the actor
+	actor.modController.clear_all()
+	
 	#After some time, re enable the collision again
 	if(self.timer == null) :
 			

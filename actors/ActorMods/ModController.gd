@@ -21,6 +21,19 @@ func addMod( mod: ActorMod) -> void:
 		self.mods[mod.mod_id] = newEntry
 		
 
+# Clears all mods on an actor. Used in situations like Death.
+# Forcefull removal does not deactivate the mod, instead it deletes it outright.
+func clear_all(force: bool = true) -> void:
+	if(force) :
+		mods = {}
+		return
+		
+		
+	for modKey: StringName in mods:
+		var modEntry: ModEntry = mods.get(modKey)
+		removeMod( modEntry.mod, true)
+
+
 
 func removeMod( mod: ActorMod, remove_full: bool = false) -> void:
 	if(self.mods.has(mod.mod_id)) :

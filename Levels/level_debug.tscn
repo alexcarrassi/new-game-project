@@ -51,7 +51,7 @@ tile_set = SubResource("TileSet_cl2jo")
 position = Vector2(72, -40)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = true
+actorStayPut = false
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 164)
@@ -63,7 +63,7 @@ wait_time = 0.5
 position = Vector2(88, -40)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = true
+actorStayPut = false
 ActorScene = ExtResource("5_fck6n")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
