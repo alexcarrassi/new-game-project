@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cqvi5rec2cqj8"]
 
 [ext_resource type="Script" uid="uid://y6240lq33rw4" path="res://things/Bubbles/FireBubble/FireBubble.gd" id="1_bx6lx"]
-[ext_resource type="PackedScene" uid="uid://c5afnxmv4ewbe" path="res://things/Bubbles/FireBubble/FireProjectile.tscn" id="2_b6r2y"]
+[ext_resource type="PackedScene" uid="uid://c5afnxmv4ewbe" path="res://things/Projectiles/FireProjectile.tscn" id="2_b6r2y"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_uxtju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qslm"]

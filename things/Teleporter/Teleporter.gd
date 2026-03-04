@@ -5,7 +5,7 @@ class_name Teleporter extends Area2D
 @export var incrementStat: bool = false
 @onready var Area: CollisionShape2D = $Area
 
-var actors_destined: Array[Actor]
+var actors_destined: Array[CharacterBody2D]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,12 +18,12 @@ func _ready() -> void:
 #Handles teleportation to the Destination node 
 func onAreaEntered(body: Node2D) -> void:
 	
-	if(body is Actor):
+	if(body is CharacterBody2D):
 		if( self.actors_destined.find( body) == -1 && self.Destination != null):
 			self.teleportActor( body )
 			
 				
-func teleportActor(actor: Actor) -> void:
+func teleportActor(actor: CharacterBody2D) -> void:
 	self.Destination.actors_destined.append(actor)
 	actor.position.y = self.Destination.position.y
 	

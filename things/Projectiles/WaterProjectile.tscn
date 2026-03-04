@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://rc7uixkgn22v"]
 
-[ext_resource type="Script" uid="uid://bm18piqa1njvi" path="res://things/Bubbles/WaterBubble/water_projectile.gd" id="1_5qpjs"]
+[ext_resource type="Script" uid="uid://bm18piqa1njvi" path="res://things/Projectiles/water_projectile.gd" id="1_5qpjs"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_2gu18"]
 
 [sub_resource type="Curve2D" id="Curve2D_0rnva"]

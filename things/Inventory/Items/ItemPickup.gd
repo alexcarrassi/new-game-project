@@ -45,8 +45,10 @@ func getPickedUp( body: Node2D) -> void:
 		itemUseContext.actor = body
 		itemUseContext.itemPickup = self
 		itemUseContext.item = self.item
+		itemUseContext.usedAtPosition = position
 		
 		for effect: ItemEffect in self.item.ItemEffects:
+			itemUseContext.usedAtPosition = position
 			effect.apply( itemUseContext )
 			
 		var playerEntry = Game.getPlayerEntry(body.player_index)
