@@ -15,14 +15,16 @@ func _ready() -> void:
 func spawnItem() -> ItemPickup:
 	if( self.items.size() > 0 ) :
 		var item = self.items.pop_front()
-		var itemPickup = ItemDB.default_item_pickup.instantiate( ) as ItemPickup
-		if(item.itemPickup):
+		var itemPickup: ItemPickup
+		if(item.itemPickup != null):
 			itemPickup = item.itemPickup.instantiate() as ItemPickup
-			
+		else:
+			itemPickup = ItemDB.default_item_pickup.instantiate( ) as ItemPickup
 		
 		itemPickup.item = item
-		get_tree().root.add_child( itemPickup )
 		itemPickup.position = self.position
+
+		get_tree().root.add_child( itemPickup )
 		
 		return itemPickup
 	return null	

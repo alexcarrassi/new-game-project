@@ -21,10 +21,13 @@ func _ready() -> void:
 	self.body_entered.connect(self.getPickedUp)
 	#Play the idle animation
 	self.applyItem()
-	self.animationPlayer.play("IDLE")
 	self.setData(self.item)
+	self.animationPlayer.play("IDLE")
+
 	pass # Replace with function body.
 
+
+	self.animationPlayer.current_animation
 
 func setData( item: Item) -> void:
 	self.item = item

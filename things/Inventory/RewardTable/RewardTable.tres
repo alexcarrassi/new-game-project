@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://df2d6ib26vtgc"
 
 [sub_resource type="Resource" id="Resource_vusq6"]
 script = ExtResource("1_uc88q")
-rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("6_5fmew"), null, null])
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("6_5fmew")])
 playerStatDef = ExtResource("5_vtrtj")
 requirement = 2
 metadata/_custom_type_script = "uid://df2d6ib26vtgc"
