@@ -47,6 +47,9 @@ func getItem(name: StringName, itemType: StringName = &"Item") -> Item:
 			
 	return item		
 	
+func getRandomExtendBubbleKey() -> StringName:
+	return extendBubbles.keys().pick_random()
+	 	
 func getExtendbubble(name: StringName) -> Item:
 	var item = self.extendBubbles.get(name, null)		
 	if(item == null) :

@@ -12,7 +12,7 @@ var direction: Vector2 = Vector2(-1, -1)
 func _ready() -> void:
 	animationPlayer.play("PROPAGATE")
 	hitbox.area_entered.connect( onAreaEntered)
-	max_slides = 1
+	max_slides = 10
 	
 	timer.timeout.connect( func() -> void:
 		self.queue_free()	
@@ -29,10 +29,8 @@ func onAreaEntered( area: Area2D) -> void:
 func _physics_process(delta: float) -> void:
 	
 	velocity = direction  * SPEED
-
 	move_and_slide()
-	print("-----")
-	print(direction) 
+
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collision_normal = collision.get_normal()
@@ -43,6 +41,3 @@ func _physics_process(delta: float) -> void:
 		if(abs(collision_normal.y) > 0.3 ) :
 			direction.y =	  clamp(collision_normal.y, -1, 1)
 			
-	print(direction)
-		
-	print("-----")
