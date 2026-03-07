@@ -54,6 +54,7 @@ folder_colors={
 Enemies=""
 Pickups=""
 Invulnerable=""
+PlayerBubble="Bubbles created by players"
 
 [input]
 

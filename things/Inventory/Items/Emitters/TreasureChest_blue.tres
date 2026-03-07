@@ -1,15 +1,22 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://db366ksut54s"]
+[gd_resource type="Resource" script_class="Item" load_steps=10 format=3 uid="uid://db366ksut54s"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_7e1en"]
 [ext_resource type="Texture2D" uid="uid://dpe8ywgf18tsy" path="res://assets/sprites/Items/TreasureChest_purple.tres" id="2_gocdo"]
 [ext_resource type="Resource" uid="uid://dd6vs6o8dbwjj" path="res://things/Inventory/Items/Points/Diamond_bigpurple.tres" id="2_kixyv"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_wsdvl"]
 [ext_resource type="Script" uid="uid://b28ua3foreh4e" path="res://things/Inventory/ItemEffects/QueueEndLevelItem.gd" id="3_1chh3"]
+[ext_resource type="Script" uid="uid://co0ox4uewffqg" path="res://things/Inventory/ItemEffects/PlayerBubblesToItems.gd" id="4_1chh3"]
+[ext_resource type="Resource" uid="uid://cu3vr3rk22776" path="res://things/Inventory/Items/Points/RedPepper.tres" id="4_wmx3a"]
 
 [sub_resource type="Resource" id="Resource_wmx3a"]
 script = ExtResource("3_1chh3")
 item = ExtResource("2_kixyv")
 metadata/_custom_type_script = "uid://b28ua3foreh4e"
+
+[sub_resource type="Resource" id="Resource_barc3"]
+script = ExtResource("4_1chh3")
+item = ExtResource("4_wmx3a")
+metadata/_custom_type_script = "uid://co0ox4uewffqg"
 
 [resource]
 script = ExtResource("2_wsdvl")
@@ -17,6 +24,6 @@ id = &"treasurechest_purple"
 display_name = "Purple Treasure chest"
 ingameIcon = ExtResource("2_gocdo")
 inventoryIcon = ExtResource("2_gocdo")
-ItemEffects = Array[ExtResource("1_7e1en")]([SubResource("Resource_wmx3a")])
+ItemEffects = Array[ExtResource("1_7e1en")]([SubResource("Resource_wmx3a"), SubResource("Resource_barc3")])
 consume = true
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"
