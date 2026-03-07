@@ -6,10 +6,7 @@ class_name ItemPickup extends Area2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 
-@export var popupShowTime: float = 0.50 
-@export var popupYSpeed: float = 50
-@export var popupTime:float = 0
-@export var pickupPopupSprite: Sprite2D 
+
 
 var item : Item
 
@@ -65,6 +62,7 @@ func applyItem() -> void:
 		pass
 		#also set collision shape later
 		
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

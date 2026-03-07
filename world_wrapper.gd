@@ -10,6 +10,7 @@ class_name WorldWrapper extends Control
 func _ready() -> void:
 	
 	var game = gameWorld.instantiate() as GameWorld 
+	
 	Game.playerRegistered.connect( createStatTable)
 
 	subViewportContainer.add_child(game)

@@ -4,12 +4,14 @@ class_name ItemSpawn extends Node2D
 
 @export var items: Array[Item]
 @export var spawnTime: float = 6.0
+@export var autoStart: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	self.timer.wait_time = self.spawnTime
-	self.timer.timeout.connect( self.spawnItem)
+	if(autoStart):
+		self.timer.wait_time = self.spawnTime
+		self.timer.timeout.connect( self.spawnItem)
 	pass # Replace with function body.
 
 func spawnItem() -> ItemPickup:

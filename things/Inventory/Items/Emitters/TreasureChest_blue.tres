@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://db366ksut54s"]
+
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_7e1en"]
+[ext_resource type="Texture2D" uid="uid://dpe8ywgf18tsy" path="res://assets/sprites/Items/TreasureChest_purple.tres" id="2_gocdo"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_wsdvl"]
+
+[resource]
+script = ExtResource("2_wsdvl")
+id = &"treasurechest_purple"
+display_name = "Purple Treasure chest"
+ingameIcon = ExtResource("2_gocdo")
+inventoryIcon = ExtResource("2_gocdo")
+consume = true
+metadata/_custom_type_script = "uid://dqjjif8wmykqb"

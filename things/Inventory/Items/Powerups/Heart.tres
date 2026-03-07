@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://ccjummkvu0ace" path="res://things/Inventory/ItemEffects/PetrifyEnemies.gd" id="3_n0gt1"]
 [ext_resource type="Script" uid="uid://ckydwu6mhstnk" path="res://things/Inventory/ItemEffects/GrantInvulnerability.gd" id="4_n0gt1"]
 [ext_resource type="Script" uid="uid://bqcg3dy5mt5np" path="res://things/Inventory/ItemEffects/GrantKillingAura.gd" id="5_ixp18"]
-[ext_resource type="PackedScene" uid="uid://b8qrx407kgvhv" path="res://things/Inventory/Items/ItemPickup_Heart.tscn" id="7_am7qg"]
+[ext_resource type="PackedScene" uid="uid://b8qrx407kgvhv" path="res://things/Inventory/Items/Pickups/ItemPickup_Heart.tscn" id="7_am7qg"]
 
 [sub_resource type="Resource" id="Resource_n0gt1"]
 script = ExtResource("2_7ebko")
@@ -27,6 +27,8 @@ metadata/_custom_type_script = "uid://ckydwu6mhstnk"
 
 [resource]
 script = ExtResource("2_487hn")
+id = &"heart"
+display_name = "Heart"
 ingameIcon = ExtResource("3_4382n")
 inventoryIcon = ExtResource("3_4382n")
 ItemEffects = Array[ExtResource("1_4b7vv")]([SubResource("Resource_n0gt1"), SubResource("Resource_m5kp2"), SubResource("Resource_ixp18"), SubResource("Resource_am7qg")])

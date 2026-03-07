@@ -11,6 +11,8 @@ var level: Level
 @onready var extendBubbleSpawner_left: ExtendBubbleSpawner  = $ExtendBubble_left
 @onready var extendBubbleSpawner_right: ExtendBubbleSpawner = $ExtendBubble_right
 
+@onready var endLevelItemSpawn: ItemSpawn = $EndLevelItemSpawn
+
 @onready var teleporterTop: Teleporter = $TeleporterTop
 @onready var teleporterBottom: Teleporter = $TeleporterBottom
 @onready var teleporterBottom2: Teleporter = $TeleporterBottom2
@@ -19,7 +21,7 @@ var level: Level
 @export var start_debug: bool
 @export var start_level_id: String = "0"
 
-
+signal enemiesCleared() 
 
 
 var is_transitioning_Levels : bool = false
@@ -39,6 +41,8 @@ func _ready() -> void:
 	get_tree().create_timer(2).timeout.connect( func() -> void:
 		self.teleporterTop.monitoring = true
 	)
+	
+	enemiesCleared.connect(endLevelItemSpawn.spawnItem)
 	
 func levelTransition(options: Dictionary = {}) -> void:
 	print("TRANSITION")
@@ -322,6 +326,8 @@ func spawnEnemy(enemyScene: PackedScene, position: Vector2, spawnNode: Node = nu
 func onEnemyDeath(enemy: Enemy) -> void:
 	print("Enemy Death in World")
 	if(level.is_cleared() and !self.is_transitioning_Levels):
+		
+		enemiesCleared.emit()
 		
 		self.is_transitioning_Levels = true
 		self.levelTransition({"cinematic": true, "timeout" : 2.0})		

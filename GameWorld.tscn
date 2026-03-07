@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c77k1tce7y5xe"]
+[gd_scene load_steps=18 format=3 uid="uid://c77k1tce7y5xe"]
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://dwwu8nncg7gvt" path="res://things/Bubbles/BubbleSpawner/ExtendBubbleSpawner.gd" id="9_2dy0i"]
 [ext_resource type="PackedScene" uid="uid://cia1bm5ivt02" path="res://things/Bubbles/ExtendBubble/ExtendBubble.tscn" id="9_jih74"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="10_2dy0i"]
+[ext_resource type="PackedScene" uid="uid://cmjp0yrptke8g" path="res://things/ItemSpawn/ItemSpawn.tscn" id="13_waypw"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="14_i451r"]
+[ext_resource type="Resource" uid="uid://bk3bmpuvguirv" path="res://things/Inventory/Items/Points/Diamond_bigred.tres" id="15_6eaws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5c08"]
 size = Vector2(16, 307)
@@ -127,6 +130,12 @@ wait_time = 2.0
 modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("10_2dy0i")
 region_rect = Rect2(5, 67, 14, 16)
+
+[node name="EndLevelItemSpawn" parent="." instance=ExtResource("13_waypw")]
+position = Vector2(128, 28)
+items = Array[ExtResource("14_i451r")]([ExtResource("15_6eaws")])
+spawnTime = 0.0
+autoStart = false
 
 [editable path="ExtendBubble_left"]
 [editable path="ExtendBubble_right"]

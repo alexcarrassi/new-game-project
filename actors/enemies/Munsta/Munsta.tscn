@@ -1,9 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://c50spamxftvqt"]
+[gd_scene load_steps=30 format=3 uid="uid://c50spamxftvqt"]
 
 [ext_resource type="Script" uid="uid://cfehrxn1rsvv3" path="res://actors/enemies/Munsta/munsta.gd" id="1_0jpja"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_ua6ar"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_x8vk4"]
 [ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="3_arnfi"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="3_pwwog"]
+[ext_resource type="Resource" uid="uid://bb1nip4uhqh70" path="res://things/Inventory/Items/Points/Onion.tres" id="3_smetb"]
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="4_pwwog"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="5_s6skn"]
 [ext_resource type="Script" uid="uid://cefqxu1l7qvn7" path="res://actors/enemies/Munsta/fly.gd" id="6_co2n3"]
@@ -182,10 +184,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5o61"]
 size = Vector2(16, 15)
 
-[node name="Munsta" type="CharacterBody2D"]
+[node name="Munsta" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 4097
 script = ExtResource("1_0jpja")
+LootTable = Array[ExtResource("2_ua6ar")]([ExtResource("3_smetb")])
 MAX_RUN_VELOCITY = 30.0
 MAX_RISE_VELOCITY = 30.0
 direction = Vector2(-1, -1)
