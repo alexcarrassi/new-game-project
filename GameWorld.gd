@@ -167,13 +167,13 @@ func queue_items_for_spawn() -> void:
 		for j: StringName in stats.values:
 			talliedStats.set( j, talliedStats.get(j, 0) + stats.values[j])
 		
-	print(talliedStats)
+	#print(talliedStats)
 	
 	
 	var reward = self.rewardTable.returnFirstReward(talliedStats)
-	
-	level.item_spawn_6sec.items.append( reward )
-	level.item_spawn_6sec.spawnItem()
+	if(level.item_spawn_6sec):
+		level.item_spawn_6sec.items.append( reward )
+		level.item_spawn_6sec.spawnItem()
 	pass	
 
 

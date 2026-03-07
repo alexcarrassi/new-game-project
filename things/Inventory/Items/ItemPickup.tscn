@@ -1,14 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://mgmqdv2san8v"]
+[gd_scene load_steps=7 format=3 uid="uid://mgmqdv2san8v"]
 
 [ext_resource type="Script" uid="uid://wt71ovhq64j7" path="res://things/Inventory/Items/ItemPickup.gd" id="1_ik8ld"]
 [ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="2_q3l83"]
 [ext_resource type="Texture2D" uid="uid://dmey2ecmnmqbn" path="res://assets/misc/PointsAndFonts.png" id="3_oml35"]
 [ext_resource type="AnimationLibrary" uid="uid://j12283a8d3h8" path="res://assets/animations/ItemPickup.tres" id="3_xeaud"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hn2ha"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xeaud"]
+size = Vector2(14, 16)
 
-[node name="ItemPickup" type="Area2D"]
-collision_mask = 2
+[sub_resource type="CircleShape2D" id="CircleShape2D_xeaud"]
+radius = 8.062258
+
+[node name="ItemPickup" type="CharacterBody2D" groups=["Pickups"]]
+collision_layer = 1024
+collision_mask = 129
 script = ExtResource("1_ik8ld")
 
 [node name="Sprite_World" type="Sprite2D" parent="."]
@@ -17,7 +22,7 @@ region_enabled = true
 region_rect = Rect2(8, 9, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_hn2ha")
+shape = SubResource("RectangleShape2D_xeaud")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -29,3 +34,11 @@ visible = false
 texture = ExtResource("3_oml35")
 region_enabled = true
 region_rect = Rect2(0, 0, 14, 8)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_xeaud")
+debug_color = Color(0, 0.64300674, 0.31329158, 0.41960785)

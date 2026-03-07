@@ -11,10 +11,8 @@ func returnFirstReward(talliedStats: Dictionary[StringName, int] = {}) -> Item:
 		var statKey = rewardEntry.playerStatDef.key
 		var statValue = talliedStats.get(statKey, null)
 		if(statValue and statValue >= rewardEntry.requirement * (rewardEntry.rewards_given + 1) ):
-			print("rewarded for %s" % [rewardEntry.playerStatDef.key])
 			rewardEntry.rewards_given += 1
 			
-			print("this was the %d reward for this stat" % [rewardEntry.rewards_given])
 			return rewardEntry.rewardPool.pick_random()
 			
 			

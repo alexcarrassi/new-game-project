@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvmyjbewa3vgh"]
+
+[ext_resource type="PackedScene" uid="uid://mgmqdv2san8v" path="res://things/Inventory/Items/ItemPickup.tscn" id="1_wheyr"]
+[ext_resource type="Texture2D" uid="uid://c2eh37wx27735" path="res://assets/sprites/Items/Diamond_bigpurple.tres" id="2_hr6i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6i8"]
+size = Vector2(14, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wheyr"]
+radius = 21.213203
+
+[node name="ItemPickup" groups=["Pickups"] instance=ExtResource("1_wheyr")]
+collision_mask = 0
+
+[node name="Sprite_World" parent="." index="0"]
+texture = ExtResource("2_hr6i8")
+region_rect = Rect2(0, 0, 32, 27)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_hr6i8")
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_wheyr")

@@ -1,8 +1,15 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cynfq4un7kwh2"]
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://cynfq4un7kwh2"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_diafe"]
+[ext_resource type="Resource" uid="uid://bk3bmpuvguirv" path="res://things/Inventory/Items/Points/Diamond_bigred.tres" id="2_0jb2a"]
 [ext_resource type="Texture2D" uid="uid://briova76k442" path="res://assets/sprites/Items/TreasureChest_red.tres" id="2_diafe"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="3_0jb2a"]
+[ext_resource type="Script" uid="uid://b28ua3foreh4e" path="res://things/Inventory/ItemEffects/QueueEndLevelItem.gd" id="3_2na6w"]
+
+[sub_resource type="Resource" id="Resource_73fpl"]
+script = ExtResource("3_2na6w")
+item = ExtResource("2_0jb2a")
+metadata/_custom_type_script = "uid://b28ua3foreh4e"
 
 [resource]
 script = ExtResource("3_0jb2a")
@@ -10,5 +17,6 @@ id = &"treasurechest_red"
 display_name = "Red Treasure chest"
 ingameIcon = ExtResource("2_diafe")
 inventoryIcon = ExtResource("2_diafe")
+ItemEffects = Array[ExtResource("1_diafe")]([SubResource("Resource_73fpl")])
 consume = true
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

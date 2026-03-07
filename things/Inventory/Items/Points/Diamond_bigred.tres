@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bk3bmpuvguirv"]
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bk3bmpuvguirv"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_a1oyo"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_53o6e"]
 [ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_d05qj"]
 [ext_resource type="Texture2D" uid="uid://xywkofnb4xpb" path="res://assets/sprites/Items/Diamond_bigred.tres" id="3_wvw7c"]
+[ext_resource type="PackedScene" uid="uid://bvmyjbewa3vgh" path="res://things/Inventory/Items/Pickups/ItemPickup_BigDiamond.tscn" id="4_wvw7c"]
 
 [sub_resource type="Resource" id="Resource_sbwtu"]
 script = ExtResource("2_d05qj")
@@ -12,10 +13,11 @@ metadata/_custom_type_script = "uid://basavn3wcvwg7"
 
 [resource]
 script = ExtResource("2_53o6e")
-id = &"diamong_bigred"
+id = &"diamond_bigred"
 display_name = "Big Red Diamond"
 ingameIcon = ExtResource("3_wvw7c")
 inventoryIcon = ExtResource("3_wvw7c")
 ItemEffects = Array[ExtResource("1_a1oyo")]([SubResource("Resource_sbwtu")])
 consume = true
+itemPickup = ExtResource("4_wvw7c")
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"
