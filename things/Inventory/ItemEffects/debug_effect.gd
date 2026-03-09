@@ -1,5 +1,5 @@
 class_name DebugEffect extends ItemEffect
 
-func apply( ctx: ItemUseContext ) -> void:
+func apply( ctx: ItemActionContext ) -> void:
 	
 	print("Applied!")

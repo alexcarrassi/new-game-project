@@ -98,7 +98,7 @@ func cleanExtendBubbles() -> void:
 	var inventory = Game.getPlayerEntry(self.player_index).inventory
 
 	for bubbleItem: Item in allBubbles:
-		inventory.removeItem(bubbleItem.id)
+		inventory.consumeItem(bubbleItem.id)
 
 
 				

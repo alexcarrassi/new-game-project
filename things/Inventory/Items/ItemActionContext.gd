@@ -1,4 +1,4 @@
-class_name ItemUseContext extends RefCounted
+class_name ItemActionContext extends RefCounted
 
 var actor: Actor
 var item: Item

@@ -1,6 +1,6 @@
 class_name GrantKillingAura extends Powerup
 
-func start(ctx: ItemUseContext) -> void:
+func start(ctx: ItemActionContext) -> void:
 	var actor = ctx.actor 
 	var mod: ActorMod = KillingAura.new()
 	mod.timeActive = self.powerup_time
@@ -8,6 +8,6 @@ func start(ctx: ItemUseContext) -> void:
 	self.mod = mod
 
 
-func end(ctx: ItemUseContext) -> void:
+func end(ctx: ItemActionContext) -> void:
 	var actor = ctx.actor 
 	actor.modController.removeMod( mod )

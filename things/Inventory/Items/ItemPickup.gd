@@ -48,16 +48,18 @@ func getPickedUp( body: Node2D) -> void:
 		self.collisionShape2D.disabled = true 
 		self.animationPlayer.play("PICKUP")
 
-		var itemUseContext =  ItemUseContext.new()
+		var itemUseContext =  ItemActionContext.new()
 		itemUseContext.actor = body
 		itemUseContext.itemPickup = self
 		itemUseContext.item = self.item
 		itemUseContext.usedAtPosition = position
 		
 		#item.
-		for effect: ItemEffect in self.item.ItemEffects:
-			itemUseContext.usedAtPosition = position
-			effect.apply( itemUseContext )
+		#for effect: ItemEffect in self.item.ItemEffects:
+			#itemUseContext.usedAtPosition = position
+			#effect.apply( itemUseContext )
+			
+		item.pickup(itemUseContext)	
 			
 		var playerEntry = Game.getPlayerEntry(body.player_index)
 		var stat = playerEntry.stats.getStat(PlayerStats.STATKEY_ITEMS_COLLECTED)

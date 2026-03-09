@@ -5,11 +5,10 @@ class_name Item extends Resource
 @export var ingameIcon: AtlasTexture 
 @export var inventoryIcon: Texture2D
 @export var ItemEffects: Array[ItemEffect] = []
-@export var consume: bool 
 @export var stackable: bool = false
 @export var maxStack: int = 1
-@export var itemPickup: PackedScene
 
+@export var itemPickup: PackedScene
 @export var pickupBehavior: PickupBehavior
 @export var useBehavior: UseBehavior
 
@@ -26,6 +25,16 @@ func getPickup() -> ItemPickup :
 	return pickupToReturn		
 
 
-func use(ctx: ItemUseContext) -> void:
-	useBehavior.use(ctx)
+func getPickupBehavior() -> PickupBehavior:
+	return pickupBehavior if pickupBehavior != null else UseOnPickup.new()
+	
+	
+func getUseBehavior() -> UseBehavior:
+	return useBehavior if useBehavior != null else 	ConsumeOnUse.new()
+	
+func pickup(ctx: ItemActionContext) -> void:
+	getPickupBehavior().pickup(ctx)
+
+func use(ctx: ItemActionContext) -> void:
+	getUseBehavior().use(ctx)
 	pass

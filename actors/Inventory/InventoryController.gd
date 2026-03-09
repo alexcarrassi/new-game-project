@@ -33,7 +33,7 @@ func addItem(item_id: StringName, itemType: StringName = &"") -> void:
 func getItem(item_id: StringName) -> ItemEntry:
 	return self.items.get(item_id, null)
 	
-func removeItem(item_id: StringName) -> void: 
+func consumeItem(item_id: StringName) -> void: 
 	
 	var entryToRemove: ItemEntry = self.items.get(item_id, null)
 	if(entryToRemove):

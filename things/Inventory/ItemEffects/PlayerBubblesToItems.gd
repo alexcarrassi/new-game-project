@@ -2,7 +2,7 @@ class_name PlayerBubblesToItems extends ItemEffect
 
 @export var item: Item
 
-func apply( ctx: ItemUseContext ) -> void:
+func apply( ctx: ItemActionContext ) -> void:
 
 
 	if(item) :

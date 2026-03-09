@@ -4,7 +4,7 @@ class_name ItemEffect_SkipLevels extends ItemEffect
 @export var levelCount_max: int = 1
 
 
-func apply( ctx: ItemUseContext) -> void:
+func apply( ctx: ItemActionContext) -> void:
 	
 	var rng = RandomNumberGenerator.new()
 	var skipCount = rng.randi_range(self.levelCount_min, self.levelCount_max)

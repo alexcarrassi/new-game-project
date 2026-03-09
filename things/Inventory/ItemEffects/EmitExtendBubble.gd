@@ -1,7 +1,7 @@
 class_name EmitExtendBubble extends ItemEffect
 
 
-func apply( ctx: ItemUseContext ) -> void:
+func apply( ctx: ItemActionContext ) -> void:
 	
 	
 	var bubbleSpawner = Game.world.extendBubbleSpawner_left

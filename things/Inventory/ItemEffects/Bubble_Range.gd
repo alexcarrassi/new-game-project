@@ -1,7 +1,7 @@
 class_name Bubble_Range extends ItemEffect
 @export var range_extension: float = 60.0
 @export var powerup_time: float = 5.0
-func apply( ctx: ItemUseContext ) -> void:
+func apply( ctx: ItemActionContext ) -> void:
 	
 	var player = ctx.actor as Player
 	

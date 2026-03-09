@@ -1,7 +1,7 @@
 class_name PetrifyEnemies extends Powerup
 
 
-func start( ctx: ItemUseContext ) -> void:
+func start( ctx: ItemActionContext ) -> void:
 
 
 	print("petrify everyone")
@@ -16,7 +16,7 @@ func start( ctx: ItemUseContext ) -> void:
 
 	
 	
-func end(ctx: ItemUseContext) -> void:
+func end(ctx: ItemActionContext) -> void:
 	var enemies: Array[Node] = Game.get_tree().get_nodes_in_group("Enemies")
 	for enemyNode : Enemy in enemies:
 		enemyNode.modController.removeMod( mod )

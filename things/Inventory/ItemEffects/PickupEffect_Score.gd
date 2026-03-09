@@ -5,7 +5,7 @@ class_name PickupEffect_Score extends ItemEffect
 
 
 
-func apply( ctx: ItemUseContext) -> void:
+func apply( ctx: ItemActionContext) -> void:
 	
 	var actor  = ctx.actor
 	#var newPopup = popup.instantiate() as Sprite2D 

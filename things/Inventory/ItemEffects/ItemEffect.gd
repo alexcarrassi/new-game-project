@@ -1,6 +1,6 @@
 class_name ItemEffect extends Resource
-var ctx: ItemUseContext
+var ctx: ItemActionContext
 
-func apply(ctx: ItemUseContext) -> void:
+func apply(ctx: ItemActionContext) -> void:
 	self.ctx = ctx
 	pass
