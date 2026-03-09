@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://571fo2fyg6o3"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=6 format=3 uid="uid://571fo2fyg6o3"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_eu3gw"]
-[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_a446u"]
 [ext_resource type="Script" uid="uid://dsyys1pmwhgbo" path="res://things/Inventory/ItemEffects/Bubble_Range.gd" id="2_w7uxx"]
 [ext_resource type="Texture2D" uid="uid://d3n413u8i667j" path="res://assets/sprites/Items/Candy_blue.tres" id="3_oshx6"]
+[ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="4_w7uxx"]
 
 [sub_resource type="Resource" id="Resource_w7uxx"]
 script = ExtResource("2_w7uxx")
 metadata/_custom_type_script = "uid://dsyys1pmwhgbo"
 
 [resource]
-script = ExtResource("2_a446u")
+script = ExtResource("4_w7uxx")
 id = &"candy_blue"
 display_name = "Blue candy"
 ingameIcon = ExtResource("3_oshx6")

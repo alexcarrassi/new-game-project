@@ -10,6 +10,10 @@ class_name Item extends Resource
 @export var maxStack: int = 1
 @export var itemPickup: PackedScene
 
+@export var pickupBehavior: PickupBehavior
+@export var useBehavior: UseBehavior
+
+
 func getPickup() -> ItemPickup :
 	
 	var pickupToReturn = null
@@ -20,3 +24,8 @@ func getPickup() -> ItemPickup :
 		pickupToReturn = self.itemPickup.instantiate() as ItemPickup
 			
 	return pickupToReturn		
+
+
+func use(ctx: ItemUseContext) -> void:
+	useBehavior.use(ctx)
+	pass

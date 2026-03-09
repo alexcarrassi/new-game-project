@@ -54,6 +54,7 @@ func getPickedUp( body: Node2D) -> void:
 		itemUseContext.item = self.item
 		itemUseContext.usedAtPosition = position
 		
+		#item.
 		for effect: ItemEffect in self.item.ItemEffects:
 			itemUseContext.usedAtPosition = position
 			effect.apply( itemUseContext )

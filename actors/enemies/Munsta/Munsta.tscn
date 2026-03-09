@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://c50spamxftvqt"]
 
 [ext_resource type="Script" uid="uid://cfehrxn1rsvv3" path="res://actors/enemies/Munsta/munsta.gd" id="1_0jpja"]
-[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="2_ua6ar"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/ItemTypes/Item.gd" id="2_ua6ar"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_x8vk4"]
 [ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="3_arnfi"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="3_pwwog"]

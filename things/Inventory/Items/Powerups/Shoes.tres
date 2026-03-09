@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bq5kgs8mbrgaa"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=6 format=3 uid="uid://bq5kgs8mbrgaa"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_0bsci"]
 [ext_resource type="Script" uid="uid://dru3rpa4mhe1m" path="res://things/Inventory/ItemEffects/Movement_Speed.gd" id="2_0bsci"]
 [ext_resource type="Texture2D" uid="uid://cs8u0eso763s6" path="res://assets/sprites/Items/Shoes.tres" id="3_0bsci"]
-[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="4_d2sxx"]
+[ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="4_0bsci"]
 
 [sub_resource type="Resource" id="Resource_2smcx"]
 script = ExtResource("2_0bsci")
 metadata/_custom_type_script = "uid://dru3rpa4mhe1m"
 
 [resource]
-script = ExtResource("4_d2sxx")
+script = ExtResource("4_0bsci")
 id = &"shoes"
 display_name = "Shoes"
 ingameIcon = ExtResource("3_0bsci")

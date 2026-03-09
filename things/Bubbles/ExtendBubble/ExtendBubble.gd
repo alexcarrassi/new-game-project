@@ -17,7 +17,7 @@ func _enter_tree() -> void:
 	if(self.item != null):
 		print(self.item.id)
 	else:
-		print("item is null")
+		printerr("item is null")
 
 func playerPop(player: Player) -> void:	
 	super.playerPop(player)

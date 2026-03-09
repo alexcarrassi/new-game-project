@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://b5bj0ax5wbr3p"]
+[gd_resource type="Resource" script_class="CurrencyItem" load_steps=7 format=3 uid="uid://b5bj0ax5wbr3p"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_nrt2i"]
 [ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_tnc8d"]
 [ext_resource type="Texture2D" uid="uid://cieiq6pcxlnpa" path="res://assets/sprites/Items/Diamond_bigblue.tres" id="3_nrt2i"]
 [ext_resource type="PackedScene" uid="uid://bvmyjbewa3vgh" path="res://things/Inventory/Items/Pickups/ItemPickup_BigDiamond.tscn" id="4_8tg23"]
-[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/Items/Item.gd" id="5_0qvjj"]
+[ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://things/Inventory/ItemTypes/CurrencyItem.gd" id="5_nrt2i"]
 
 [sub_resource type="Resource" id="Resource_sbwtu"]
 script = ExtResource("2_tnc8d")
@@ -12,7 +12,7 @@ score = 800
 metadata/_custom_type_script = "uid://basavn3wcvwg7"
 
 [resource]
-script = ExtResource("5_0qvjj")
+script = ExtResource("5_nrt2i")
 id = &"diamond_bigblue"
 display_name = "Big Blu Diamond"
 ingameIcon = ExtResource("3_nrt2i")
