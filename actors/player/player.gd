@@ -21,9 +21,17 @@ var current_comboCount: int = 0
 var current_comboRecord: int = 0
 
 var inputState: InputState
-var score = 0
+var score: int = 0
 signal scoreUpdated()
 signal statEvent(statkey: StringName, value: int)
+
+
+func updateCurrency(currencyVal: float, currencyType: StringName) -> void:
+	
+	match(currencyType):
+		&"Score":
+			score += currencyVal
+			scoreUpdated.emit()
 
 func _ready() -> void:
 	super._ready()

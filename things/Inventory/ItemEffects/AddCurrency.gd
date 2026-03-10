@@ -1,7 +1,6 @@
-class_name PickupEffect_Score extends ItemEffect
+class_name AddCurrency extends ItemEffect
 
 @export var score: int = 100
-@export var texture: Texture2D
 
 
 
@@ -11,10 +10,10 @@ func apply( ctx: ItemActionContext) -> void:
 	#var newPopup = popup.instantiate() as Sprite2D 
 	if( actor is Player) :
 
-		actor.score += self.score
-		actor.scoreUpdated.emit(  )
+		var currencyItem = ctx.item as CurrencyItem
+		actor.updateCurrency( currencyItem.value, currencyItem.currencyType)
 		
-		var pointResource = ItemDB.pointsDB.getPointRect(actor.player_index, self.score)
+		var pointResource = ItemDB.pointsDB.getPointRect(actor.player_index, currencyItem.value)
 		ctx.itemPickup.spritePickup.texture = pointResource
 		ctx.itemPickup.spritePickup.region_rect = Rect2i(0, 0, pointResource.region.size.x, pointResource.region.size.y)
 		

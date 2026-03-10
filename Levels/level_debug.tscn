@@ -64,12 +64,14 @@ position = Vector2(176, -40)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
 actorStayPut = false
+disabled = true
 ActorScene = ExtResource("4_cl2jo")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
 position = Vector2(0, 208)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
+modulate = Color(1, 1, 1, 0.3)
 region_rect = Rect2(5, 68, 16, 16)
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]

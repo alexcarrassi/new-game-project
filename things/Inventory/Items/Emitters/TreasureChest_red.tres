@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://cynfq4un7kwh2"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=13 format=3 uid="uid://cynfq4un7kwh2"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_diafe"]
 [ext_resource type="Resource" uid="uid://bk3bmpuvguirv" path="res://things/Inventory/Items/Points/Diamond_bigred.tres" id="2_0jb2a"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://co0ox4uewffqg" path="res://things/Inventory/ItemEffects/PlayerBubblesToItems.gd" id="4_2na6w"]
 [ext_resource type="Resource" uid="uid://571fo2fyg6o3" path="res://things/Inventory/Items/Powerups/Candy_blue.tres" id="4_73fpl"]
 [ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="7_73fpl"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="7_cqxkn"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="8_vot3k"]
 
 [sub_resource type="Resource" id="Resource_73fpl"]
 script = ExtResource("3_2na6w")
@@ -18,6 +20,10 @@ script = ExtResource("4_2na6w")
 item = ExtResource("4_73fpl")
 metadata/_custom_type_script = "uid://co0ox4uewffqg"
 
+[sub_resource type="Resource" id="Resource_i38wr"]
+script = ExtResource("8_vot3k")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
+
 [resource]
 script = ExtResource("7_73fpl")
 id = &"treasurechest_red"
@@ -25,5 +31,5 @@ display_name = "Red Treasure chest"
 ingameIcon = ExtResource("2_diafe")
 inventoryIcon = ExtResource("2_diafe")
 ItemEffects = Array[ExtResource("1_diafe")]([SubResource("Resource_73fpl"), SubResource("Resource_uoeb3")])
-consume = true
+pickupActions = Array[ExtResource("7_cqxkn")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

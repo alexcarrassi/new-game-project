@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=6 format=3 uid="uid://dqj4q5gh83vsv"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://dqj4q5gh83vsv"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_mk1c7"]
 [ext_resource type="Script" uid="uid://h206hxyhpwmj" path="res://things/Inventory/ItemEffects/Bubble_Rate.gd" id="2_ssh8s"]
 [ext_resource type="Texture2D" uid="uid://bstve6tknoxmn" path="res://assets/sprites/Items/Candy_green.tres" id="2_v41kd"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_l3wmg"]
 [ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="4_v41kd"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_crl0r"]
 
 [sub_resource type="Resource" id="Resource_l3wmg"]
 script = ExtResource("2_ssh8s")
 metadata/_custom_type_script = "uid://h206hxyhpwmj"
+
+[sub_resource type="Resource" id="Resource_d6sno"]
+script = ExtResource("5_crl0r")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("4_v41kd")
@@ -16,5 +22,5 @@ display_name = "Green Candy"
 ingameIcon = ExtResource("2_v41kd")
 inventoryIcon = ExtResource("2_v41kd")
 ItemEffects = Array[ExtResource("1_mk1c7")]([SubResource("Resource_l3wmg")])
-consume = true
+pickupActions = Array[ExtResource("4_l3wmg")]([SubResource("Resource_d6sno")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

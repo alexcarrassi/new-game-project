@@ -1,20 +1,28 @@
-[gd_resource type="Resource" script_class="CurrencyItem" load_steps=6 format=3 uid="uid://wyproy3x652p"]
+[gd_resource type="Resource" script_class="CurrencyItem" load_steps=9 format=3 uid="uid://wyproy3x652p"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_5bngu"]
-[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_wa15a"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/AddCurrency.gd" id="2_wa15a"]
 [ext_resource type="Texture2D" uid="uid://cn6qacar0l5av" path="res://assets/sprites/Items/Cherry.tres" id="3_od4kc"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_l3hid"]
 [ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://things/Inventory/ItemTypes/CurrencyItem.gd" id="4_wa15a"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="6_1uxgj"]
 
 [sub_resource type="Resource" id="Resource_l3hid"]
 script = ExtResource("2_wa15a")
 score = 300
 metadata/_custom_type_script = "uid://basavn3wcvwg7"
 
+[sub_resource type="Resource" id="Resource_i38wr"]
+script = ExtResource("6_1uxgj")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
+
 [resource]
 script = ExtResource("4_wa15a")
+value = 700
 id = &"cherry"
 display_name = "Cherry"
 ingameIcon = ExtResource("3_od4kc")
 inventoryIcon = ExtResource("3_od4kc")
 ItemEffects = Array[ExtResource("1_5bngu")]([SubResource("Resource_l3hid")])
+useActions = Array[ExtResource("4_l3hid")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

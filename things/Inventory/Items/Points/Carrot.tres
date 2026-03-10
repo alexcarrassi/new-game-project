@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="CurrencyItem" load_steps=6 format=3 uid="uid://14hxd5ild1x1"]
+[gd_resource type="Resource" script_class="CurrencyItem" load_steps=9 format=3 uid="uid://14hxd5ild1x1"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_jsjsf"]
-[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_770qn"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/AddCurrency.gd" id="2_770qn"]
 [ext_resource type="Texture2D" uid="uid://gc54lddpt3j8" path="res://assets/sprites/Items/Carrot.tres" id="3_175si"]
 [ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://things/Inventory/ItemTypes/CurrencyItem.gd" id="4_770qn"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_c4uy2"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_syh6l"]
 
 [sub_resource type="Resource" id="Resource_175si"]
 script = ExtResource("2_770qn")
 score = 200
 metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[sub_resource type="Resource" id="Resource_i38wr"]
+script = ExtResource("5_syh6l")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("4_770qn")
@@ -17,5 +23,5 @@ display_name = "Carrot"
 ingameIcon = ExtResource("3_175si")
 inventoryIcon = ExtResource("3_175si")
 ItemEffects = Array[ExtResource("1_jsjsf")]([SubResource("Resource_175si")])
-consume = true
+pickupActions = Array[ExtResource("4_c4uy2")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

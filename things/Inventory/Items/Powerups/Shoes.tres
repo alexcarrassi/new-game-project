@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=6 format=3 uid="uid://bq5kgs8mbrgaa"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://bq5kgs8mbrgaa"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_0bsci"]
 [ext_resource type="Script" uid="uid://dru3rpa4mhe1m" path="res://things/Inventory/ItemEffects/Movement_Speed.gd" id="2_0bsci"]
 [ext_resource type="Texture2D" uid="uid://cs8u0eso763s6" path="res://assets/sprites/Items/Shoes.tres" id="3_0bsci"]
 [ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="4_0bsci"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_jpn07"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_d2sxx"]
 
 [sub_resource type="Resource" id="Resource_2smcx"]
 script = ExtResource("2_0bsci")
 metadata/_custom_type_script = "uid://dru3rpa4mhe1m"
+
+[sub_resource type="Resource" id="Resource_km310"]
+script = ExtResource("5_d2sxx")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("4_0bsci")
@@ -16,5 +22,5 @@ display_name = "Shoes"
 ingameIcon = ExtResource("3_0bsci")
 inventoryIcon = ExtResource("3_0bsci")
 ItemEffects = Array[ExtResource("1_0bsci")]([SubResource("Resource_2smcx")])
-consume = true
+pickupActions = Array[ExtResource("4_jpn07")]([SubResource("Resource_km310")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

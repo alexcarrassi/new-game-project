@@ -9,8 +9,8 @@ class_name Item extends Resource
 @export var maxStack: int = 1
 
 @export var itemPickup: PackedScene
-@export var pickupBehavior: PickupBehavior
-@export var useBehavior: UseBehavior
+@export var pickupActions: Array[ItemAction]
+@export var useActions: Array[ItemAction]
 
 
 func getPickup() -> ItemPickup :
@@ -25,16 +25,12 @@ func getPickup() -> ItemPickup :
 	return pickupToReturn		
 
 
-func getPickupBehavior() -> PickupBehavior:
-	return pickupBehavior if pickupBehavior != null else UseOnPickup.new()
-	
-	
-func getUseBehavior() -> UseBehavior:
-	return useBehavior if useBehavior != null else 	ConsumeOnUse.new()
 	
 func pickup(ctx: ItemActionContext) -> void:
-	getPickupBehavior().pickup(ctx)
+	for pickupAction: ItemAction in pickupActions:
+		pickupAction.execute(ctx)
 
 func use(ctx: ItemActionContext) -> void:
-	getUseBehavior().use(ctx)
+	for useAction: ItemAction in useActions:
+		useAction.execute(ctx)
 	pass

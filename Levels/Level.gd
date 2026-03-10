@@ -17,6 +17,7 @@ class_name Level extends Node2D
 var definition: LevelDefinition
 
 signal hurry()
+signal level_cleared()
 
 # Span the player
 # Connect the timer's timeout to the Hurry Up event
@@ -84,7 +85,7 @@ func is_cleared() -> bool:
 		if !enemy.is_in_group("Invulnerable") and enemy.sm_status.state.name != "DEAD":
 			return false
 		
-	print("LEVEL CLEARED")	
+	level_cleared.emit()	
 	return true	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

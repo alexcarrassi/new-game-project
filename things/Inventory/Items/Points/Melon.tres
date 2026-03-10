@@ -1,14 +1,20 @@
-[gd_resource type="Resource" script_class="CurrencyItem" load_steps=6 format=3 uid="uid://cdgka4vleelqh"]
+[gd_resource type="Resource" script_class="CurrencyItem" load_steps=9 format=3 uid="uid://cdgka4vleelqh"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_u6g3q"]
-[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_iu1qg"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/AddCurrency.gd" id="2_iu1qg"]
 [ext_resource type="Texture2D" uid="uid://cqnally62d3tb" path="res://assets/sprites/Items/Melon.tres" id="3_u4jyu"]
 [ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://things/Inventory/ItemTypes/CurrencyItem.gd" id="4_iu1qg"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_sy3s3"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_s8oc8"]
 
 [sub_resource type="Resource" id="Resource_sy3s3"]
 script = ExtResource("2_iu1qg")
 score = 500
 metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[sub_resource type="Resource" id="Resource_i38wr"]
+script = ExtResource("5_s8oc8")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("4_iu1qg")
@@ -17,5 +23,5 @@ display_name = "Melon"
 ingameIcon = ExtResource("3_u4jyu")
 inventoryIcon = ExtResource("3_u4jyu")
 ItemEffects = Array[ExtResource("1_u6g3q")]([SubResource("Resource_sy3s3")])
-consume = true
+pickupActions = Array[ExtResource("4_sy3s3")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

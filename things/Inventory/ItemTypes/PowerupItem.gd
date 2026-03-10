@@ -1,4 +1,4 @@
-#Powerup items are Inventory items with an activation lifecyle
+# Powerup items are Items that support inventory functionality, an activation lifecyle
 class_name PowerupItem extends InventoryItem
 
 @export var duration: float = -1
@@ -8,23 +8,39 @@ var isActive: bool = false
 var isOnCoolDown: bool = false 
 
 
-@export var activationBehavior: ActivationBehavior
-@export var deactivationBehavior: DeactivationBehavior 
+@export var activationActions: Array[ItemAction]
+@export var deactivationActions: Array[ItemAction]
 
 func activate( ctx: ItemActionContext) -> void:
 	
-	#Are we cooled down?
+	
+	# Can't activate if on cooldown
+	if( isOnCoolDown ) :
+		return
+			
 	#Are we active? Does our effect stack allow another activation?
 	
-	#apply effects 
-	#set a  cdeactivation timer, if duration > -1 . wire it up with the deactivation funcition
+	# Apply the item's effects 
+	for effect in ItemEffects:
+		effect.apply(ctx)
 	
+	# Set a deactivation timer if the powerup has a set duration
+	if(duration > 0):
+		ctx.actor.get_tree().create_timer(duration).timeout.connect( func() -> void:
+			deactivate(ctx)
+		)	
 	pass
 	
 func deactivate( ctx: ItemActionContext) -> void:
-	#can we deactivate?
-	#undo the effects
+	#If this is an Active item, we need to undo all the effects
+	if(isActive) :
+		for effect in ItemEffects: 
+			effect.clear( ctx )
 	
-	#set up a cooldown timer, if cooldown > -1. Set the isCooledDown flag to false at that timeout.
-	
+	# Setsup a cooldown timer, if cooldown > -1. 
+	# On timeout, unset the isOnCooldown flag
+	if(cooldown > 0) :
+		ctx.actor.get_tree().create_timer( cooldown).timeout.connect( func() -> void:
+			isOnCoolDown = false
+		)
 	pass	

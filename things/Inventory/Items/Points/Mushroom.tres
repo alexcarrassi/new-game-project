@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="CurrencyItem" load_steps=7 format=3 uid="uid://dq3jiks27mbyv"]
+[gd_resource type="Resource" script_class="CurrencyItem" load_steps=10 format=3 uid="uid://dq3jiks27mbyv"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_tyo2w"]
-[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_61dcf"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/AddCurrency.gd" id="2_61dcf"]
 [ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="3_oyqg4"]
 [ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://things/Inventory/ItemTypes/CurrencyItem.gd" id="4_61dcf"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_oyqg4"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_13b3k"]
 
 [sub_resource type="Resource" id="Resource_oyqg4"]
 script = ExtResource("2_61dcf")
@@ -14,11 +16,15 @@ metadata/_custom_type_script = "uid://basavn3wcvwg7"
 atlas = ExtResource("3_oyqg4")
 region = Rect2(113, 9, 16, 16)
 
+[sub_resource type="Resource" id="Resource_i38wr"]
+script = ExtResource("5_13b3k")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
+
 [resource]
 script = ExtResource("4_61dcf")
 id = &"mushroom"
 display_name = "Mushroom"
 ingameIcon = SubResource("AtlasTexture_13b3k")
 ItemEffects = Array[ExtResource("1_tyo2w")]([SubResource("Resource_oyqg4")])
-consume = true
+pickupActions = Array[ExtResource("4_oyqg4")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

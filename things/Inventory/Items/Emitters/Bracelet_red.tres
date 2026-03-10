@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=6 format=3 uid="uid://bn0n8ed4irvmf"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://bn0n8ed4irvmf"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_h35iw"]
 [ext_resource type="Script" uid="uid://bhlqpid6gafka" path="res://things/Inventory/ItemEffects/EmitOrb.gd" id="2_x4gbr"]
 [ext_resource type="Texture2D" uid="uid://bj832med4ln0d" path="res://assets/sprites/Items/Bracelet_red.tres" id="2_yg8xa"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_8jq10"]
 [ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="4_yg8xa"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_bs08g"]
 
 [sub_resource type="Resource" id="Resource_8jq10"]
 script = ExtResource("2_x4gbr")
 metadata/_custom_type_script = "uid://bhlqpid6gafka"
+
+[sub_resource type="Resource" id="Resource_i38wr"]
+script = ExtResource("5_bs08g")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("4_yg8xa")
@@ -16,5 +22,5 @@ display_name = "Red Bracelet"
 ingameIcon = ExtResource("2_yg8xa")
 inventoryIcon = ExtResource("2_yg8xa")
 ItemEffects = Array[ExtResource("1_h35iw")]([SubResource("Resource_8jq10")])
-consume = true
+pickupActions = Array[ExtResource("4_8jq10")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

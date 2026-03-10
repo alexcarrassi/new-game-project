@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="CurrencyItem" load_steps=8 format=3 uid="uid://bb1nip4uhqh70"]
+[gd_resource type="Resource" script_class="CurrencyItem" load_steps=11 format=3 uid="uid://bb1nip4uhqh70"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_63n3f"]
 [ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="2_dr52y"]
-[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_r2aje"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/AddCurrency.gd" id="2_r2aje"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_7kd34"]
 [ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://things/Inventory/ItemTypes/CurrencyItem.gd" id="4_dr52y"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_yhk4p"]
 
 [sub_resource type="Resource" id="Resource_7kd34"]
 script = ExtResource("2_r2aje")
@@ -18,11 +20,16 @@ region = Rect2(29, 30, 16, 16)
 atlas = ExtResource("2_dr52y")
 region = Rect2(29, 30, 16, 16)
 
+[sub_resource type="Resource" id="Resource_i38wr"]
+script = ExtResource("5_yhk4p")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
+
 [resource]
 script = ExtResource("4_dr52y")
+value = 400
 id = &"onion"
 ingameIcon = SubResource("AtlasTexture_7kd34")
 inventoryIcon = SubResource("AtlasTexture_yhk4p")
 ItemEffects = Array[ExtResource("1_63n3f")]([SubResource("Resource_7kd34")])
-consume = true
+pickupActions = Array[ExtResource("4_7kd34")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

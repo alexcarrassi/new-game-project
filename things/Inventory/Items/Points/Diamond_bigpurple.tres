@@ -1,15 +1,21 @@
-[gd_resource type="Resource" script_class="CurrencyItem" load_steps=7 format=3 uid="uid://dd6vs6o8dbwjj"]
+[gd_resource type="Resource" script_class="CurrencyItem" load_steps=10 format=3 uid="uid://dd6vs6o8dbwjj"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_qf5y3"]
-[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/PickupEffect_Score.gd" id="2_00tmo"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/AddCurrency.gd" id="2_qf5y3"]
 [ext_resource type="Texture2D" uid="uid://c2eh37wx27735" path="res://assets/sprites/Items/Diamond_bigpurple.tres" id="3_qf5y3"]
 [ext_resource type="PackedScene" uid="uid://bvmyjbewa3vgh" path="res://things/Inventory/Items/Pickups/ItemPickup_BigDiamond.tscn" id="4_j4nqd"]
 [ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://things/Inventory/ItemTypes/CurrencyItem.gd" id="5_qf5y3"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="5_rb44f"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="6_j4nqd"]
 
 [sub_resource type="Resource" id="Resource_sbwtu"]
-script = ExtResource("2_00tmo")
+script = ExtResource("2_qf5y3")
 score = 800
 metadata/_custom_type_script = "uid://basavn3wcvwg7"
+
+[sub_resource type="Resource" id="Resource_i38wr"]
+script = ExtResource("6_j4nqd")
+metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("5_qf5y3")
@@ -18,6 +24,6 @@ display_name = "Big Purple Diamond"
 ingameIcon = ExtResource("3_qf5y3")
 inventoryIcon = ExtResource("3_qf5y3")
 ItemEffects = Array[ExtResource("1_qf5y3")]([SubResource("Resource_sbwtu")])
-consume = true
 itemPickup = ExtResource("4_j4nqd")
+pickupActions = Array[ExtResource("5_rb44f")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"
