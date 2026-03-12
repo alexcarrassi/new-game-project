@@ -1,7 +1,7 @@
-class_name Invulnerability extends ActorMod
+class_name Give_Invulnerability extends ActorMod
 
 func _init() -> void:
-	self.timeActive = 2
+	self.timeActive = 6
 	self.mod_id = &"Invuln"
 
 func activate(actor: Actor) -> void:

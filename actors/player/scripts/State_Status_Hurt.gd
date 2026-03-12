@@ -35,7 +35,9 @@ func exit() -> void:
 	actor.act_locked = false
 	actor.hurtbox.set_collision_mask_value(3, true)
 	
-	actor.modController.addMod(Invulnerability.new() )
+	var invulnerability = Give_Invulnerability.new() 
+	invulnerability.timeActive = 2
+	actor.modController.addMod(invulnerability)
  
 
 func _ready() -> void:

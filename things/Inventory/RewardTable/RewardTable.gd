@@ -13,7 +13,9 @@ func returnFirstReward(talliedStats: Dictionary[StringName, int] = {}) -> Item:
 		if(statValue and statValue >= rewardEntry.requirement * (rewardEntry.rewards_given + 1) ):
 			rewardEntry.rewards_given += 1
 			
-			return rewardEntry.rewardPool.pick_random()
+			#return rewardEntry.rewardPool.pick_random()
+			return rewardEntry.rewardPool[0]
+
 			
 			
 	#No reward. Pick a random Point item from the ItemDB		

@@ -1,9 +1,9 @@
-class_name KillingAura extends ActorMod
+class_name Give_KillingAura extends ActorMod
 
 var aura: Area2D 
 
 func _init() -> void:
-	self.timeActive = 2
+	self.timeActive = 6
 	self.mod_id = &"Aura"
 
 func activate(actor: Actor) -> void:
@@ -24,7 +24,6 @@ func activate(actor: Actor) -> void:
 	aura.monitoring = true
 	aura.monitorable = true
 
-
 	aura.set_collision_mask_value(9, true)
 	self.aura = aura
 	aura.area_entered.connect( func(area: Area2D ) -> void:
@@ -35,9 +34,7 @@ func activate(actor: Actor) -> void:
 		pass	
 	)
 	#
-	#aura.body_entered.connect( func(body: Node2D)  -> void:
-		#print(body.name)	
-	#)
+
 	
 	
 	
@@ -46,8 +43,7 @@ func activate(actor: Actor) -> void:
 
 func deactivate(actor: Actor) -> void:
 	print("End Aura")
-	
-	#aura.queue_free()
+	aura.queue_free()
 	
 	
 func tick_physics(delta: float, actor: Actor) -> void:

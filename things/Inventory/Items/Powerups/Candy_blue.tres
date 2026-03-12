@@ -1,26 +1,39 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://571fo2fyg6o3"]
+[gd_resource type="Resource" script_class="PowerupItem" load_steps=14 format=3 uid="uid://571fo2fyg6o3"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_eu3gw"]
-[ext_resource type="Script" uid="uid://dsyys1pmwhgbo" path="res://things/Inventory/ItemEffects/Bubble_Range.gd" id="2_w7uxx"]
+[ext_resource type="Script" uid="uid://ciwo76i33bb6a" path="res://actors/ActorMods/Mods/ActorMod.gd" id="2_yexgv"]
+[ext_resource type="Script" uid="uid://c6xyo1h5tqod2" path="res://actors/ActorMods/Mods/Increase_Bubble_Range.gd" id="3_ix38x"]
 [ext_resource type="Texture2D" uid="uid://d3n413u8i667j" path="res://assets/sprites/Items/Candy_blue.tres" id="3_oshx6"]
+[ext_resource type="Script" uid="uid://cjkgtsv3vqgqv" path="res://things/Inventory/ItemEffects/ApplyActorMods.gd" id="4_1o7fd"]
 [ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_3ua2j"]
-[ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="4_w7uxx"]
 [ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_08rsx"]
+[ext_resource type="Script" uid="uid://duwhro1uubo6a" path="res://things/Inventory/ItemTypes/PowerupItem.gd" id="6_3ua2j"]
+[ext_resource type="Script" uid="uid://cl1v0i0mociff" path="res://things/Inventory/Actions/ActivateItem.gd" id="6_08rsx"]
 
-[sub_resource type="Resource" id="Resource_w7uxx"]
-script = ExtResource("2_w7uxx")
-metadata/_custom_type_script = "uid://dsyys1pmwhgbo"
+[sub_resource type="Resource" id="Resource_eiw2a"]
+script = ExtResource("3_ix38x")
+metadata/_custom_type_script = "uid://c6xyo1h5tqod2"
 
-[sub_resource type="Resource" id="Resource_uewjm"]
+[sub_resource type="Resource" id="Resource_826xu"]
+script = ExtResource("4_1o7fd")
+mods = Array[ExtResource("2_yexgv")]([SubResource("Resource_eiw2a")])
+metadata/_custom_type_script = "uid://cjkgtsv3vqgqv"
+
+[sub_resource type="Resource" id="Resource_08rsx"]
 script = ExtResource("5_08rsx")
 metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
+[sub_resource type="Resource" id="Resource_uewjm"]
+script = ExtResource("6_08rsx")
+metadata/_custom_type_script = "uid://cl1v0i0mociff"
+
 [resource]
-script = ExtResource("4_w7uxx")
+script = ExtResource("6_3ua2j")
+activationActions = Array[ExtResource("4_3ua2j")]([SubResource("Resource_08rsx")])
 id = &"candy_blue"
 display_name = "Blue candy"
 ingameIcon = ExtResource("3_oshx6")
 inventoryIcon = ExtResource("3_oshx6")
-ItemEffects = Array[ExtResource("1_eu3gw")]([SubResource("Resource_w7uxx")])
+ItemEffects = Array[ExtResource("1_eu3gw")]([SubResource("Resource_826xu")])
 pickupActions = Array[ExtResource("4_3ua2j")]([SubResource("Resource_uewjm")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

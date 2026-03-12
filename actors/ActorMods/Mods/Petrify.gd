@@ -1,7 +1,7 @@
 class_name Petrify extends ActorMod
 
 func _init() -> void:
-	self.timeActive = 2
+	self.timeActive = 6
 	self.mod_id = &"Petrified"
 
 func activate(actor: Actor) -> void:
