@@ -21,7 +21,6 @@ script = ExtResource("4_yvvku")
 id = &"icecream"
 display_name = "Ice Cream"
 ingameIcon = ExtResource("3_yvvku")
-inventoryIcon = ExtResource("3_yvvku")
 ItemEffects = Array[ExtResource("1_te5po")]([SubResource("Resource_q467e")])
 pickupActions = Array[ExtResource("4_q467e")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

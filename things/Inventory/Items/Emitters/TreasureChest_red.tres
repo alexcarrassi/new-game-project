@@ -29,7 +29,6 @@ script = ExtResource("7_73fpl")
 id = &"treasurechest_red"
 display_name = "Red Treasure chest"
 ingameIcon = ExtResource("2_diafe")
-inventoryIcon = ExtResource("2_diafe")
 ItemEffects = Array[ExtResource("1_diafe")]([SubResource("Resource_73fpl"), SubResource("Resource_uoeb3")])
 pickupActions = Array[ExtResource("7_cqxkn")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

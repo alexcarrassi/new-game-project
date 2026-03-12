@@ -1,15 +1,20 @@
 class_name LevelDatabase_ extends Node
 
-@export var levels: Dictionary[int, PackedScene]
-
 @export var levelDefinitions: Dictionary[String, LevelDefinition]
 
+@export var levels: Array[LevelDefinition]
+
 func getLevelDefinition( id: String) -> LevelDefinition:
-	return self.levelDefinitions.get(id, null)
+	var index =  levels.find_custom( func(level: LevelDefinition) -> bool: return level.id == id)
+	if(index == -1):
+		index = 0
+		
+	return levels[index]
 	
-func getNextLevelDefinitionByExit( current_id: String, exit_id: String) -> LevelDefinition:
-	if(self.levelDefinitions.has(current_id)) :
-		var next_id = self.levelDefinitions[current_id].default_next
+	
+func getNextLevelDefinitionByExit( current_id: int, exit_id: String) -> LevelDefinition:
+	if(levels[current_id]) :
+		var next_id = levels[current_id].default_next
 		
 		return self.getLevelDefinition(next_id)
 	

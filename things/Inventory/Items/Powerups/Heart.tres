@@ -41,10 +41,10 @@ metadata/_custom_type_script = "uid://cl1v0i0mociff"
 [resource]
 script = ExtResource("9_m5kp2")
 activationActions = Array[ExtResource("8_2pi8c")]([SubResource("Resource_2pi8c")])
+inventoryIcon = ExtResource("3_4382n")
 id = &"heart"
 display_name = "Heart"
 ingameIcon = ExtResource("3_4382n")
-inventoryIcon = ExtResource("3_4382n")
 ItemEffects = Array[ExtResource("1_4b7vv")]([SubResource("Resource_ixp18"), SubResource("Resource_21qr8")])
 itemPickup = ExtResource("7_am7qg")
 pickupActions = Array[ExtResource("8_2pi8c")]([SubResource("Resource_05eo7")])

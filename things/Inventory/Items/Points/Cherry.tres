@@ -22,7 +22,6 @@ value = 700
 id = &"cherry"
 display_name = "Cherry"
 ingameIcon = ExtResource("3_od4kc")
-inventoryIcon = ExtResource("3_od4kc")
 ItemEffects = Array[ExtResource("1_5bngu")]([SubResource("Resource_l3hid")])
 useActions = Array[ExtResource("4_l3hid")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

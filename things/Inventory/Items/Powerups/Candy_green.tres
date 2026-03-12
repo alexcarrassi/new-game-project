@@ -33,7 +33,6 @@ activationActions = Array[ExtResource("4_l3wmg")]([SubResource("Resource_3ojip")
 id = &"candy_green"
 display_name = "Green Candy"
 ingameIcon = ExtResource("2_v41kd")
-inventoryIcon = ExtResource("2_v41kd")
 ItemEffects = Array[ExtResource("1_mk1c7")]([SubResource("Resource_mre5r")])
 pickupActions = Array[ExtResource("4_l3wmg")]([SubResource("Resource_crl0r")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

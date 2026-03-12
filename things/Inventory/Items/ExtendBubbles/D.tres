@@ -15,7 +15,7 @@ region = Rect2(109, 67, 16, 16)
 
 [resource]
 script = ExtResource("3_uqy1l")
+inventoryIcon = SubResource("AtlasTexture_u2aai")
 id = &"extend_D"
 display_name = "Extend Bubble D"
 ingameIcon = SubResource("AtlasTexture_uqy1l")
-inventoryIcon = SubResource("AtlasTexture_u2aai")

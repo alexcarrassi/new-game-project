@@ -21,7 +21,6 @@ value = 400
 id = &"pickle"
 display_name = "Pickle"
 ingameIcon = ExtResource("3_v7bf6")
-inventoryIcon = ExtResource("3_v7bf6")
 ItemEffects = Array[ExtResource("1_6y7d4")]([SubResource("Resource_mnv5b")])
 pickupActions = Array[ExtResource("4_bdutv")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

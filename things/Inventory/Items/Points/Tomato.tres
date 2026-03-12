@@ -22,7 +22,6 @@ value = 300
 id = &"tomato"
 display_name = "Tomato"
 ingameIcon = ExtResource("3_4yly8")
-inventoryIcon = ExtResource("3_4yly8")
 ItemEffects = Array[ExtResource("1_5nytj")]([SubResource("Resource_8pcfr")])
 pickupActions = Array[ExtResource("4_8myb3")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

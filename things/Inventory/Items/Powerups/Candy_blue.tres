@@ -30,10 +30,10 @@ metadata/_custom_type_script = "uid://cl1v0i0mociff"
 [resource]
 script = ExtResource("6_3ua2j")
 activationActions = Array[ExtResource("4_3ua2j")]([SubResource("Resource_08rsx")])
+inventoryIcon = ExtResource("3_oshx6")
 id = &"candy_blue"
 display_name = "Blue candy"
 ingameIcon = ExtResource("3_oshx6")
-inventoryIcon = ExtResource("3_oshx6")
 ItemEffects = Array[ExtResource("1_eu3gw")]([SubResource("Resource_826xu")])
 pickupActions = Array[ExtResource("4_3ua2j")]([SubResource("Resource_uewjm")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

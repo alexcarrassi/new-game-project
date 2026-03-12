@@ -66,7 +66,6 @@ func spawnBubble() -> Bubble:
 		
 	var newBubble = self.bubbleScene.instantiate() 
 	newBubble.position = self.position
-	newBubble.destination = Game.world.level.bubbleDestination
 	Game.world.level.add_child(newBubble)
 	return newBubble
 	

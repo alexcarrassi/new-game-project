@@ -3,7 +3,6 @@ class_name Level extends Node2D
 
 @onready var p1_Start: Node2D = $p1_Start
 @onready var playerSpawns: Node = $Player_Spawns
-@onready var bubbleDestination: Node2D = $Bubble_Destination
 @onready var levelTimer: Timer = $Level_Timer
 @onready var hurrySpawn: ActorSpawn = $Hurry_Enemy_spawn
 @onready var enemy_spawns: Node = $Enemy_Spawns

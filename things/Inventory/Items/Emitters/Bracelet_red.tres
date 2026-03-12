@@ -17,10 +17,10 @@ metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("4_yg8xa")
+inventoryIcon = ExtResource("2_yg8xa")
 id = &"bracelet_red"
 display_name = "Red Bracelet"
 ingameIcon = ExtResource("2_yg8xa")
-inventoryIcon = ExtResource("2_yg8xa")
 ItemEffects = Array[ExtResource("1_h35iw")]([SubResource("Resource_8jq10")])
 pickupActions = Array[ExtResource("4_8jq10")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

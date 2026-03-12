@@ -19,7 +19,6 @@ var modController: ModController
 @export var MAX_FALL_VELOCITY: float = 100.0
 @export var MAX_RISE_VELOCITY: float = 350.0
 
-@export var Bubble_Destination: Node2D
 @export var FLOAT_SPEED: float = 30.0
 
 

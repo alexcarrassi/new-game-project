@@ -22,7 +22,6 @@ script = ExtResource("5_qf5y3")
 id = &"diamond_bigpurple"
 display_name = "Big Purple Diamond"
 ingameIcon = ExtResource("3_qf5y3")
-inventoryIcon = ExtResource("3_qf5y3")
 ItemEffects = Array[ExtResource("1_qf5y3")]([SubResource("Resource_sbwtu")])
 itemPickup = ExtResource("4_j4nqd")
 pickupActions = Array[ExtResource("5_rb44f")]([SubResource("Resource_i38wr")])

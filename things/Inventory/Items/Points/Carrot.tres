@@ -21,7 +21,6 @@ script = ExtResource("4_770qn")
 id = &"carrot"
 display_name = "Carrot"
 ingameIcon = ExtResource("3_175si")
-inventoryIcon = ExtResource("3_175si")
 ItemEffects = Array[ExtResource("1_jsjsf")]([SubResource("Resource_175si")])
 pickupActions = Array[ExtResource("4_c4uy2")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

@@ -19,10 +19,10 @@ metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("5_ultdd")
+inventoryIcon = ExtResource("3_ultdd")
 id = &"umbrella_blue"
 display_name = "Blue Umbrella"
 ingameIcon = ExtResource("3_ultdd")
-inventoryIcon = ExtResource("3_ultdd")
 ItemEffects = Array[ExtResource("1_6af8t")]([SubResource("Resource_otm3p")])
 pickupActions = Array[ExtResource("5_otm3p")]([SubResource("Resource_xc6gv")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

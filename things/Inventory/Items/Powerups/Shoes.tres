@@ -30,10 +30,10 @@ metadata/_custom_type_script = "uid://cl1v0i0mociff"
 [resource]
 script = ExtResource("6_jpn07")
 activationActions = Array[ExtResource("4_jpn07")]([SubResource("Resource_km310")])
+inventoryIcon = ExtResource("3_0bsci")
 id = &"shoes"
 display_name = "Shoes"
 ingameIcon = ExtResource("3_0bsci")
-inventoryIcon = ExtResource("3_0bsci")
 ItemEffects = Array[ExtResource("1_0bsci")]([SubResource("Resource_sq2cn")])
 pickupActions = Array[ExtResource("4_jpn07")]([SubResource("Resource_tlcoy")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

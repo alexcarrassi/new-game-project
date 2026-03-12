@@ -22,7 +22,6 @@ value = 200
 id = &"redpepper"
 display_name = "Red Pepper"
 ingameIcon = ExtResource("3_b5g42")
-inventoryIcon = ExtResource("3_b5g42")
 ItemEffects = Array[ExtResource("1_sontn")]([SubResource("Resource_7yl34")])
 pickupActions = Array[ExtResource("4_36j4s")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

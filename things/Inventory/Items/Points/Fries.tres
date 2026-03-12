@@ -22,7 +22,6 @@ value = 700
 id = &"fries"
 display_name = "Fries"
 ingameIcon = ExtResource("3_v6let")
-inventoryIcon = ExtResource("3_v6let")
 ItemEffects = Array[ExtResource("1_udo2n")]([SubResource("Resource_vqsck")])
 pickupActions = Array[ExtResource("4_vqsck")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

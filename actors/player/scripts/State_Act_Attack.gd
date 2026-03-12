@@ -27,7 +27,6 @@ func enter(prev_state_path: String, data: Dictionary ):
 	playerEntry.player.statEvent.emit(PlayerStats.STATKEY_BUBBLES_BLOWN, 1)
 	
 	var bubble: PlayerBubble = bubble.instantiate()
-	bubble.destination =  Game.world.level.bubbleDestination  
 	var body_dir = -1 if( self.body.sprite2D.flip_h) else 1
 	bubble.dir = Vector2(body_dir  , 0)
 	bubble.global_position = Vector2(self.body.position.x, self.body.position.y - self.body.sprite2D.get_rect().size.y/2 )

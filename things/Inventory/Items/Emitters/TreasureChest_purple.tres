@@ -26,10 +26,10 @@ metadata/_custom_type_script = "uid://b0f8o02gwgstj"
 
 [resource]
 script = ExtResource("7_uvfkd")
+inventoryIcon = ExtResource("2_hu7xg")
 id = &"treasurechest_blue"
 display_name = "Blue Treasure chest"
 ingameIcon = ExtResource("2_hu7xg")
-inventoryIcon = ExtResource("2_hu7xg")
 ItemEffects = Array[ExtResource("1_1uwl1")]([SubResource("Resource_uvfkd"), SubResource("Resource_ypxcl")])
 pickupActions = Array[ExtResource("7_4d220")]([SubResource("Resource_i38wr")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

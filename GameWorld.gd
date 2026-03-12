@@ -17,7 +17,6 @@ var level: Level
 @onready var teleporterBottom: Teleporter = $TeleporterBottom
 @onready var teleporterBottom2: Teleporter = $TeleporterBottom2
 
-@export var level_debug: PackedScene
 @export var start_debug: bool
 @export var start_level_id: String = "0"
 

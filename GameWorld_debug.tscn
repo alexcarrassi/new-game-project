@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bghtednl47qn2"]
+[gd_scene load_steps=33 format=3 uid="uid://bghtednl47qn2"]
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_o8k34"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_vjhf7"]
@@ -6,8 +6,19 @@
 [ext_resource type="Script" uid="uid://be25ljohrxyxt" path="res://UI/Player_UI.gd" id="4_uu52o"]
 [ext_resource type="Texture2D" uid="uid://bpbolnww5xfj" path="res://UI/Hurry.tres" id="5_l0b32"]
 [ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://things/Teleporter/teleporter.tscn" id="6_axol4"]
-[ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level_debug.tscn" id="7_vjhf7"]
-[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_01.tscn" id="8_cbrnd"]
+[ext_resource type="Script" uid="uid://dedry2pqikg2d" path="res://Levels/LevelDatabase.gd" id="8_2hjhx"]
+[ext_resource type="PackedScene" uid="uid://b87als3d3rs7n" path="res://Levels/level_012.tscn" id="8_cbrnd"]
+[ext_resource type="Script" uid="uid://cvnjelfj5bn7f" path="res://Levels/LevelDefinition.gd" id="9_s4xt5"]
+[ext_resource type="PackedScene" uid="uid://byvof7wuayhd8" path="res://Levels/level_00.tscn" id="10_7n253"]
+[ext_resource type="PackedScene" uid="uid://cqsafbsdns6yf" path="res://Levels/level_10.tscn" id="11_2vegt"]
+[ext_resource type="PackedScene" uid="uid://cey8bqayj4br0" path="res://Levels/level_1x.tscn" id="12_e81d0"]
+[ext_resource type="PackedScene" uid="uid://c3ltgwpa0ju6r" path="res://Levels/level_03.tscn" id="13_5kaae"]
+[ext_resource type="PackedScene" uid="uid://fbm6dibwaxtx" path="res://Levels/level_04.tscn" id="14_2gm0n"]
+[ext_resource type="PackedScene" uid="uid://dnoy82enwgv2t" path="res://Levels/level_05.tscn" id="15_32vob"]
+[ext_resource type="PackedScene" uid="uid://bnu2bw2k4fmsd" path="res://Levels/level_06_.tscn" id="16_ihwh5"]
+[ext_resource type="PackedScene" uid="uid://bccr3ilcagta" path="res://Levels/level_07.tscn" id="17_tphhf"]
+[ext_resource type="PackedScene" uid="uid://dh7h805hyaucm" path="res://Levels/level_08.tscn" id="18_xre8c"]
+[ext_resource type="PackedScene" uid="uid://d3bt46pp6vwia" path="res://Levels/level_09.tscn" id="19_qqq7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5c08"]
 size = Vector2(16, 307)
@@ -15,11 +26,86 @@ size = Vector2(16, 307)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0c47"]
 size = Vector2(20, 308.5)
 
+[sub_resource type="Resource" id="Resource_y7t6v"]
+script = ExtResource("9_s4xt5")
+id = "0"
+scene = ExtResource("10_7n253")
+default_next = "1"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_lgu4n"]
+script = ExtResource("9_s4xt5")
+id = "10"
+scene = ExtResource("11_2vegt")
+default_next = "0"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_27iff"]
+script = ExtResource("9_s4xt5")
+id = "101"
+scene = ExtResource("12_e81d0")
+default_next = "2"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_e2sgk"]
+script = ExtResource("9_s4xt5")
+id = "2"
+default_next = "1"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_n6t2k"]
+script = ExtResource("9_s4xt5")
+id = "3"
+scene = ExtResource("13_5kaae")
+default_next = "4"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_bbwll"]
+script = ExtResource("9_s4xt5")
+id = "4"
+scene = ExtResource("14_2gm0n")
+default_next = "5"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_l020j"]
+script = ExtResource("9_s4xt5")
+id = "5"
+scene = ExtResource("15_32vob")
+default_next = "6"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_j5rys"]
+script = ExtResource("9_s4xt5")
+id = "6"
+scene = ExtResource("16_ihwh5")
+default_next = "7"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_pguow"]
+script = ExtResource("9_s4xt5")
+id = "7"
+scene = ExtResource("17_tphhf")
+default_next = "8"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_pe6lb"]
+script = ExtResource("9_s4xt5")
+id = "8"
+scene = ExtResource("18_xre8c")
+default_next = "9"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_yg2qx"]
+script = ExtResource("9_s4xt5")
+id = "9"
+scene = ExtResource("19_qqq7r")
+default_next = "10"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
 [node name="GameWorld" type="Node"]
 script = ExtResource("1_o8k34")
 playerScene = ExtResource("2_vjhf7")
 playerHUDScene = ExtResource("3_cbrnd")
-level_debug = ExtResource("7_vjhf7")
 start_debug = true
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -87,3 +173,19 @@ position = Vector2(246, 99.25)
 shape = SubResource("RectangleShape2D_a0c47")
 
 [node name="Level_01" parent="." instance=ExtResource("8_cbrnd")]
+process_mode = 0
+script = ExtResource("8_2hjhx")
+levelDefinitions = Dictionary[String, ExtResource("9_s4xt5")]({
+"0": SubResource("Resource_y7t6v"),
+"10": SubResource("Resource_lgu4n"),
+"101": SubResource("Resource_27iff"),
+"2": SubResource("Resource_e2sgk"),
+"3": SubResource("Resource_n6t2k"),
+"4": SubResource("Resource_bbwll"),
+"5": SubResource("Resource_l020j"),
+"6": SubResource("Resource_j5rys"),
+"7": SubResource("Resource_pguow"),
+"8": SubResource("Resource_pe6lb"),
+"9": SubResource("Resource_yg2qx")
+})
+levels = Array[ExtResource("9_s4xt5")]([SubResource("Resource_y7t6v"), SubResource("Resource_27iff"), SubResource("Resource_e2sgk"), SubResource("Resource_n6t2k"), SubResource("Resource_bbwll"), SubResource("Resource_l020j"), SubResource("Resource_j5rys"), SubResource("Resource_pguow"), SubResource("Resource_pe6lb"), SubResource("Resource_yg2qx"), SubResource("Resource_lgu4n")])

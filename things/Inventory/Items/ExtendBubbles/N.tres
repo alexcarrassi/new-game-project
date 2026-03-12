@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://dkrbrhr2c5663"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://dkrbrhr2c5663"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_cpxb6"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_2hg55"]
@@ -9,13 +9,8 @@
 atlas = ExtResource("2_2hg55")
 region = Rect2(88, 67, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hg55"]
-atlas = ExtResource("2_2hg55")
-region = Rect2(88, 67, 16, 16)
-
 [resource]
 script = ExtResource("3_4l5xa")
 id = &"extend_N"
 display_name = "Extend Bubble N"
 ingameIcon = SubResource("AtlasTexture_cpxb6")
-inventoryIcon = SubResource("AtlasTexture_2hg55")
