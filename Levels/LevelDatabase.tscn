@@ -22,7 +22,9 @@ metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [sub_resource type="Resource" id="Resource_11keg"]
 script = ExtResource("13_vjd8q")
+id = "2"
 scene = ExtResource("5_a0wmx")
+default_next = "0"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [node name="LevelDatabase" type="Node"]

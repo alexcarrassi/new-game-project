@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="RewardTable" load_steps=25 format=3 uid="uid://ci2ts12j3iqgq"]
+[gd_resource type="Resource" script_class="RewardTable" load_steps=27 format=3 uid="uid://ci2ts12j3iqgq"]
 
 [ext_resource type="Script" uid="uid://df2d6ib26vtgc" path="res://things/Inventory/RewardTable/RewardEntry.gd" id="1_uc88q"]
 [ext_resource type="Resource" uid="uid://m1glm1yl7340" path="res://actors/player/Stats/StatDefs/bubbles_blown.tres" id="2_m8nai"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/ItemTypes/Item.gd" id="3_eemkf"]
+[ext_resource type="Resource" uid="uid://cj2h3xmscy0kc" path="res://things/Inventory/Items/Powerups/Extra_Life.tres" id="4_qwji4"]
+[ext_resource type="Resource" uid="uid://w0o8dnt5jik6" path="res://things/Inventory/Items/Emitters/Bracelent_green.tres" id="4_t51s0"]
 [ext_resource type="Resource" uid="uid://db366ksut54s" path="res://things/Inventory/Items/Emitters/TreasureChest_blue.tres" id="4_v8ry1"]
 [ext_resource type="Script" uid="uid://blth5hxw1qdxr" path="res://things/Inventory/RewardTable/RewardTable.gd" id="5_5fmew"]
 [ext_resource type="Resource" uid="uid://c5oxc07h8wyq2" path="res://actors/player/Stats/StatDefs/bubbles_popped.tres" id="5_vtrtj"]
@@ -22,7 +24,7 @@
 
 [sub_resource type="Resource" id="Resource_3ebml"]
 script = ExtResource("1_uc88q")
-rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("13_dboje"), ExtResource("12_t51s0"), ExtResource("4_v8ry1"), ExtResource("6_v8ry1"), ExtResource("10_g43x2"), ExtResource("7_okgvs"), ExtResource("6_5fmew"), ExtResource("12_v8ry1"), ExtResource("9_n41j0"), ExtResource("10_qwji4")])
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("4_t51s0"), ExtResource("4_qwji4"), ExtResource("10_qwji4"), ExtResource("9_n41j0"), ExtResource("13_dboje"), ExtResource("12_t51s0"), ExtResource("4_v8ry1"), ExtResource("6_v8ry1"), ExtResource("10_g43x2"), ExtResource("7_okgvs"), ExtResource("6_5fmew"), ExtResource("12_v8ry1")])
 playerStatDef = ExtResource("2_m8nai")
 requirement = 1
 metadata/_custom_type_script = "uid://df2d6ib26vtgc"

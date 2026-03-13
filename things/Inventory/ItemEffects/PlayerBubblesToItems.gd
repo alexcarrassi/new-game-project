@@ -9,7 +9,6 @@ func apply( ctx: ItemActionContext ) -> void:
 		
 		Game.world.level.level_cleared.connect( func() -> void: 
 			
-			print("YEAH??")
 			var bubbles = Game.world.get_tree().get_nodes_in_group("PlayerBubble")
 			for bubble: PlayerBubble in bubbles:
 				var itemPickup: ItemPickup

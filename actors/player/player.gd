@@ -32,6 +32,10 @@ func updateCurrency(currencyVal: float, currencyType: StringName) -> void:
 		&"Score":
 			score += currencyVal
 			scoreUpdated.emit()
+		&"Lives":
+			health += currencyVal
+			actorLifeUp.emit( self )
+				
 
 func _ready() -> void:
 	super._ready()

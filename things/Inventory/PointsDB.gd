@@ -15,10 +15,8 @@ func getPointRect(player_index: int, points: int) -> AtlasTexture:
 			return _getPointRect(points,  self.pointMappingP1)
 			
 func _getPointRect(points: int, pointMapping: Dictionary[int, AtlasTexture]) -> AtlasTexture:
-	if(pointMapping[points]):
-		return pointMapping[points]
+	return pointMapping.get(points)
 	
-	return null
 	
 			
 		
