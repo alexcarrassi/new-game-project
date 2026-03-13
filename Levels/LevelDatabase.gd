@@ -1,7 +1,5 @@
 class_name LevelDatabase_ extends Node
 
-@export var levelDefinitions: Dictionary[String, LevelDefinition]
-
 @export var levels: Array[LevelDefinition]
 
 func getLevelDefinition( id: String) -> LevelDefinition:

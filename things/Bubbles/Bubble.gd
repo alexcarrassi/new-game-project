@@ -19,7 +19,6 @@ enum BubbleState { Shooting, Floating, Popping }
 var state = BubbleState.Shooting
 
 
-var destination: Node2D
 var dir: Vector2 = Vector2.RIGHT
 var is_active: bool = true
 var is_popping: bool = false
@@ -74,42 +73,6 @@ func float(delta: float) -> Vector2:
 	
 	return Vector2.ZERO
 
-func float_xy(delta: float) -> Vector2:
-	self.set_collision_mask_value(4, true) # Collide with other bubbles now
-
-	var distance = (self.destination.position - self.position)
-	var velocity = distance * Vector2(self.float_hor_speed, self.float_vert_speed)
-	velocity.x = clamp(velocity.x, -self.float_hor_speed, self.float_hor_speed)
-	velocity.y = clamp(velocity.y, -self.float_vert_speed, self.float_vert_speed)
-	
-	#var alpha = 1.0 - pow(0.001, delta / max(0.0001, 0.15))
-
-	return velocity
-
-	#the bigger the difference, the bigger the velocity. Capped
-	#velocity = distance * max_speed 
-	#at some point, the distance should be clamped to 0. So if smaller than 0.1, it should be 0
-
-
-func float_x(delta: float) -> Vector2:
-
-	var distance = (self.destination.position - self.position)
-	var velocity = distance * Vector2(self.float_hor_speed, self.float_vert_speed)
-	velocity.x = clamp(velocity.x, -self.float_hor_speed, self.float_hor_speed)
-	velocity.y = clamp(velocity.y, -self.float_vert_speed, self.float_vert_speed)
-	
-	#var alpha = 1.0 - pow(0.001, delta / max(0.0001, 0.15))
-
-	return velocity
-
-	#the bigger the difference, the bigger the velocity. Capped
-	#velocity = distance * max_speed 
-	#at some point, the distance should be clamped to 0. So if smaller than 0.1, it should be 0
-
-func float_y(delta: float) -> Vector2:
-	
-	return Vector2(0, -self.float_vert_speed)
-
 
 func hitBoxBodyEntered(areaOwner: Node2D) -> void:
 	print(areaOwner)
@@ -128,8 +91,6 @@ func hitBoxAreaEntered(area: Area2D) -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if(!self.destination) :
-		self.destination = Game.world.level.bubbleDestination
 	match self.state: 
 		_:
 			self.target_velocity = self.float(delta)

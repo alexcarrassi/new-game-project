@@ -36,12 +36,7 @@ func _physics_process(delta: float) -> void:
 			self.target_velocity.x = self.zapSpeed * dir.x
 			
 		_:
-			if(self.destination != null):
-				if(self.position.y > self.destination.position.y):
-					self.target_velocity = self.float_y(delta)	
-				else:
-					self.target_velocity = self.float_x(delta) 	
-			
+			self.float(delta)
 	self.hurtbox_update(delta)
 	
 	

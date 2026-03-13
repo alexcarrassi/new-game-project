@@ -63,8 +63,6 @@ func determineExtendType(player: Player) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	if(!self.destination) :
-		self.destination = Game.world.level.bubbleDestination
 	match self.state: 
 		_:
 			self.target_velocity = self.float(delta)	

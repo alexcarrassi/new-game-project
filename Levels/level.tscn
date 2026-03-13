@@ -43,7 +43,7 @@ tile_set = SubResource("TileSet_cl2jo")
 [node name="Player_Spawns" type="Node" parent="."]
 
 [node name="p1_Start" type="Node2D" parent="Player_Spawns"]
-position = Vector2(168, 96)
+position = Vector2(32, 192)
 
 [node name="Bubble_Spawns" type="Node" parent="."]
 

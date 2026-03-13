@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=4 uid="uid://j3qcxet3n8x2"]
+
+[ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_axyg4"]
+[ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="2_o3tbn"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="3_te2dd"]
+[ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="4_p0c6p"]
+
+[node name="Level_01" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_axyg4")
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+position = Vector2(128, 111)
+tile_map_data = PackedByteArray("AADw//f/AQAAAAEAAADw//j/AQAAAAEAAADw//n/AQAAAAEAAADw//r/AQAAAAEAAADw//v/AQAAAAEAAADw//z/AQAAAAEAAADw//3/AQAAAAEAAADw//7/AQAAAAEAAADw////AQAAAAEAAADw/wAAAQAAAAEAAADw/wEAAQAAAAEAAADw/wIAAQAAAAEAAADw/wMAAQAAAAEAAADw/wQAAQAAAAEAAADw/wUAAQAAAAEAAADw/wYAAQAAAAEAAADw/wcAAQAAAAEAAADw/wgAAQAAAAEAAADw/wkAAQAAAAEAAADw/woAAQAAAAEAAADw/wsAAQAAAAEAAADx//f/AQAAAAEAAADx//j/AQAAAAEAAADx//n/AQAAAAEAAADx//r/AQAAAAEAAADx//v/AQAAAAEAAADx//z/AQAAAAEAAADx//3/AQAAAAEAAADx//7/AQAAAAEAAADx////AQAAAAEAAADx/wAAAQAAAAEAAADx/wEAAQAAAAEAAADx/wIAAQAAAAEAAADx/wMAAQAAAAEAAADx/wQAAQAAAAEAAADx/wUAAQAAAAEAAADx/wYAAQAAAAEAAADx/wcAAQAAAAEAAADx/wgAAQAAAAEAAADx/wkAAQAAAAEAAADx/woAAQAAAAEAAADx/wsAAQAAAAEAAADx/wwAAQAAAAEAAADy/wwAAQAAAAEAAADz/wwAAQAAAAEAAAD6/wwAAQAAAAEAAAD7/wwAAQAAAAEAAAD8/wwAAQAAAAEAAAADAAwAAQAAAAEAAAAEAAwAAQAAAAEAAAAFAAwAAQAAAAEAAAAGAAwAAQAAAAEAAAAHAAwAAQAAAAEAAAAIAAwAAQAAAAEAAAAJAAwAAQAAAAEAAAAKAAwAAQAAAAEAAAALAAwAAQAAAAEAAAAMAAwAAQAAAAEAAAANAAwAAQAAAAEAAAAOAPf/AQAAAAEAAAAOAPj/AQAAAAEAAAAOAPn/AQAAAAEAAAAOAPr/AQAAAAEAAAAOAPv/AQAAAAEAAAAOAPz/AQAAAAEAAAAOAP3/AQAAAAEAAAAOAP7/AQAAAAEAAAAOAP//AQAAAAEAAAAOAAAAAQAAAAEAAAAOAAEAAQAAAAEAAAAOAAIAAQAAAAEAAAAOAAMAAQAAAAEAAAAOAAQAAQAAAAEAAAAOAAUAAQAAAAEAAAAOAAYAAQAAAAEA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")
+tile_set = ExtResource("2_o3tbn")
+
+[node name="Bubble_Destination" type="Marker2D" parent="."]
+position = Vector2(128, 56)
+gizmo_extents = 40.0
+
+[node name="Level_Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Hurry_Enemy_spawn" parent="." instance=ExtResource("3_te2dd")]
+position = Vector2(41, 128)
+spawn_defer_time = 2.0
+actorStayPut = false
+ActorScene = ExtResource("4_p0c6p")
+
+[node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
+position = Vector2(0, 0)
+
+[node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
+region_rect = Rect2(5, 257, 16, 16)
+
+[node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
+wait_time = 2.0
+
+[node name="Enemy_Spawns" type="Node" parent="."]
+
+[node name="ActorSpawn" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_te2dd")]
+position = Vector2(160, -32)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+actorStayPut = false
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
+position = Vector2(0, 112)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
+flip_h = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn3" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_te2dd")]
+position = Vector2(136, -32)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+actorStayPut = false
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
+position = Vector2(0, 76)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
+flip_h = true
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn3" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn4" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_te2dd")]
+position = Vector2(120, -32)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+actorStayPut = false
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
+position = Vector2(0, 76)
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn2" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_te2dd")]
+position = Vector2(96, -29)
+spawn_defer_time = 0.5
+spawn_node = NodePath("../../Enemies")
+actorStayPut = false
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
+position = Vector2(0, 109)
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
+wait_time = 0.5
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Player_Spawns" type="Node" parent="."]
+
+[node name="p1_Start" type="Node2D" parent="Player_Spawns"]
+position = Vector2(40, 192)
+
+[editable path="Hurry_Enemy_spawn"]
+[editable path="Enemy_Spawns/ActorSpawn"]
+[editable path="Enemy_Spawns/ActorSpawn3"]
+[editable path="Enemy_Spawns/ActorSpawn4"]
+[editable path="Enemy_Spawns/ActorSpawn2"]
