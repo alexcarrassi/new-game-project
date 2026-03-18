@@ -1,4 +1,4 @@
-class_name WaterProjectile extends CharacterBody2D
+class_name WaterProjectile extends Projectile
 
 
 
@@ -24,6 +24,14 @@ func _ready() -> void:
 	self.hitBox.area_entered.connect( self.hitBoxAreaEntered)
 
 
+	Game.world.transitionStart.connect( releaseActors )
+	
+func captureActor( actor : Actor) -> void:
+	if(actor.sm_locomotion.state.name != "RIDING"):
+		actor.sm_locomotion.state.finished.emit("RIDING", {"owner": self})
+
+		#Put the Player in tailor made "Riding" state
+		self.actors.append (actor)
 func hitBoxAreaEntered(area: Area2D) -> void:
 	var areaOwner = area.get_parent()
 	if areaOwner is Enemy:
@@ -31,14 +39,12 @@ func hitBoxAreaEntered(area: Area2D) -> void:
 		areaOwner.sm_status.state.finished.emit("DEAD", {"dir": self.dir.x})
 		areaOwner.rotation = 0
 	
-	if areaOwner is Player:
-		if(areaOwner.sm_locomotion.state.name != "RIDING"):
-			areaOwner.sm_locomotion.state.finished.emit("RIDING", {"owner": self})
+	# If we collided with a player we don't yet have in our Actors, add them
+	if areaOwner is Player && !actors.find(areaOwner):
+		captureActor(areaOwner)
 
-			#Put the Player in tailor made "Riding" state
-			self.actors.append (areaOwner)
-		
-
+	if area is Teleporter:
+		releaseActors()
 
 	
 func tryAddPathPoint(point: Vector2) -> void:
@@ -83,7 +89,15 @@ func releaseActors() -> void:
 
 		#actor.reparent(Game.world.level)
 		#actor.position = self.position
+		actor.reparent( get_parent() )
 		actor.sm_locomotion.state.finished.emit("IDLE")
+
+func dissolve() -> void:
+	releaseActors()
+	hitBox.monitorable = false 
+	hitBox.monitoring = false
+	queue_free() 
+	
 
 func _process(delta: float) -> void:
 
@@ -108,10 +122,7 @@ func _process(delta: float) -> void:
 		
 		
 	if( curve_length > 0 && self.tidePathFollow.progress == curve_length ) :
-		self.queue_free()
-		self.hitBox.monitoring = false
-		self.hitBox.monitorable = false
-		self.releaseActors()
+		dissolve()
 
 
 		

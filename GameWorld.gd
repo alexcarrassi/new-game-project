@@ -21,6 +21,7 @@ var level: Level
 @export var start_level_id: String = "0"
 
 signal enemiesCleared() 
+signal transitionStart()
 
 
 var is_transitioning_Levels : bool = false
@@ -43,6 +44,7 @@ func _ready() -> void:
 	
 	enemiesCleared.connect(endLevelItemSpawn.spawnItem)
 	
+		
 func levelTransition(options: Dictionary = {}) -> void:
 	print("TRANSITION")
 	# Set state
@@ -54,16 +56,20 @@ func levelTransition(options: Dictionary = {}) -> void:
 	
 
 	# Reparent the players
-	for key: int in Game.playerEntries.keys():
-		if(Game.playerEntries[key]):
-			var player:Player = Game.playerEntries[key].player
-			player.reparent(self)
-	
+
 	if( options.has("timeout")):
 		await get_tree().create_timer(options["timeout"]).timeout
 
 	# Cleanup, after timeout
 	self.level.cleanup()
+	
+	for key: int in Game.playerEntries.keys():
+		if(Game.playerEntries[key]):
+			var player:Player = Game.playerEntries[key].player
+			player.reparent(self)
+		
+	
+	
 	var nextLevel = null
 	var nextLevel_id = ""
 

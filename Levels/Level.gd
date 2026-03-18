@@ -62,9 +62,16 @@ func cleanup() -> void:
 	self.cleanHurryEnemies()
 	self.cleanEnemies()
 	self.cleanPickups()
+	self.cleanProjectiles()
 
 	pass
 	
+func cleanProjectiles() -> void:
+	for projectile : Projectile in get_tree().get_nodes_in_group("Projectiles"):
+		projectile.dissolve()
+	pass
+	
+		
 func cleanPickups() -> void:
 	for pickup in get_tree().get_nodes_in_group("Pickups"):
 		pickup.queue_free()

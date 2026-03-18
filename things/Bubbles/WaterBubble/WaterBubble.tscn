@@ -9,7 +9,7 @@ friction = 0.0
 absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnaoe"]
-radius = 6.0207973
+radius = 8.0
 
 [sub_resource type="Animation" id="Animation_3mr26"]
 resource_name = "Pon"
@@ -125,6 +125,8 @@ script = ExtResource("2_gnaoe")
 projectile = ExtResource("3_rkt23")
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = true
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_gnaoe")
 
 [node name="Sprite2D" parent="." index="2"]

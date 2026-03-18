@@ -9,22 +9,6 @@ size = Vector2(8, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvg81"]
 size = Vector2(8, 12)
 
-[sub_resource type="Animation" id="Animation_pvg81"]
-resource_name = "spawn"
-length = 0.20000334
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Rect2(173, 46, 16, 16), Rect2(151, 46, 16, 16), Rect2(130, 46, 16, 16)]
-}
-
 [sub_resource type="Animation" id="Animation_34u6u"]
 length = 0.001
 tracks/0/type = "value"
@@ -56,6 +40,22 @@ tracks/0/keys = {
 "values": [Rect2(130, 46, 16, 16), Rect2(151, 46, 16, 16), Rect2(172, 46, 16, 16)]
 }
 
+[sub_resource type="Animation" id="Animation_pvg81"]
+resource_name = "spawn"
+length = 0.20000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(173, 46, 16, 16), Rect2(151, 46, 16, 16), Rect2(130, 46, 16, 16)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xnnyl"]
 _data = {
 &"RESET": SubResource("Animation_34u6u"),
@@ -63,7 +63,7 @@ _data = {
 &"spawn": SubResource("Animation_pvg81")
 }
 
-[node name="FireProjectile" type="CharacterBody2D"]
+[node name="FireProjectile" type="CharacterBody2D" groups=["Projectiles"]]
 collision_layer = 0
 script = ExtResource("1_pvg81")
 

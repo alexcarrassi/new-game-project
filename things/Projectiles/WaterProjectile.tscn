@@ -13,10 +13,11 @@ height = 11.0
 size = Vector2(12, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2gu18"]
-radius = 6.0
+radius = 7.0
 
-[node name="WaterProjectile" type="CharacterBody2D"]
+[node name="WaterProjectile" type="CharacterBody2D" groups=["Projectiles"]]
 collision_layer = 0
+collision_mask = 2049
 script = ExtResource("1_5qpjs")
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -33,6 +34,7 @@ region_enabled = true
 region_rect = Rect2(25, 46, 16, 16)
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 2
 monitoring = false
@@ -46,9 +48,8 @@ debug_color = Color(0.956338, 3.85046e-06, 0.5538029, 0.41960785)
 shape = SubResource("RectangleShape2D_5qpjs")
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 32
-collision_mask = 256
+collision_mask = 2304
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_2gu18")

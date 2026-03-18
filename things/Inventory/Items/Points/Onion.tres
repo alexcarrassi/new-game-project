@@ -9,7 +9,6 @@
 
 [sub_resource type="Resource" id="Resource_7kd34"]
 script = ExtResource("2_r2aje")
-score = 700
 metadata/_custom_type_script = "uid://basavn3wcvwg7"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kd34"]

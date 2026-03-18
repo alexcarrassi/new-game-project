@@ -24,6 +24,8 @@ func playerPop(player: Player) -> void:
 	var projectile: WaterProjectile = self.projectile.instantiate()
 	self.get_parent().add_child(projectile)
 	projectile.position = self.position
+	projectile.captureActor( player )
+	
 	self.queue_free()
 	
 		

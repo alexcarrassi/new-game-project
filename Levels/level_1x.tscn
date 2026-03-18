@@ -9,20 +9,21 @@
 
 [node name="Level_01" instance=ExtResource("1_tj7v0")]
 
-[node name="AirCurrent" parent="." index="0"]
-visible = true
-
 [node name="ActorSpawn" parent="Enemy_Spawns" index="0" instance=ExtResource("2_7i62u")]
 position = Vector2(168, -16)
 actorStayPut = false
+disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 40)
 
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
+modulate = Color(1, 1, 1, 0.3)
+
 [node name="ActorSpawn2" parent="Enemy_Spawns" index="1" instance=ExtResource("2_7i62u")]
 position = Vector2(88, -16)
 direction = Vector2(1, 0)
-actorStayPut = false
+actorStayPut = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
 position = Vector2(0, 40)
@@ -31,7 +32,7 @@ position = Vector2(0, 40)
 flip_h = true
 
 [node name="BubbleSpawner3" parent="Bubble_Spawns" index="0" instance=ExtResource("3_v2na5")]
-position = Vector2(88, -18)
+position = Vector2(64, -18)
 bubbleScene = ExtResource("4_v2na5")
 
 [node name="Icon" parent="Bubble_Spawns/BubbleSpawner3" index="1"]
@@ -42,6 +43,9 @@ region_rect = Rect2(46, 46, 16, 16)
 [node name="BubbleSpawner" parent="Bubble_Spawns" index="1" instance=ExtResource("3_v2na5")]
 position = Vector2(170, -16)
 bubbleScene = ExtResource("5_0plxl")
+
+[node name="IntervalTimer" parent="Bubble_Spawns/BubbleSpawner" index="0"]
+wait_time = 2.0
 
 [node name="Icon" parent="Bubble_Spawns/BubbleSpawner" index="1"]
 modulate = Color(1, 1, 1, 0.7)

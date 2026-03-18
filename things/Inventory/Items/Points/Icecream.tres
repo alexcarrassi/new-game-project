@@ -9,7 +9,6 @@
 
 [sub_resource type="Resource" id="Resource_q467e"]
 script = ExtResource("2_yvvku")
-score = 600
 metadata/_custom_type_script = "uid://basavn3wcvwg7"
 
 [sub_resource type="Resource" id="Resource_i38wr"]
