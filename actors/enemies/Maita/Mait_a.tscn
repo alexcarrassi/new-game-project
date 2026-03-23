@@ -1,0 +1,130 @@
+[gd_scene load_steps=25 format=3 uid="uid://cmxmtpng0q32c"]
+
+[ext_resource type="Script" uid="uid://cfvj2o7r4nik3" path="res://actors/enemies/Maita/maita.gd" id="1_vbxqv"]
+[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_fehrb"]
+[ext_resource type="PackedScene" uid="uid://duj08wr35boy5" path="res://actors/enemies/Maita/Fireball.tscn" id="2_qnvar"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/ItemTypes/Item.gd" id="3_3tqio"]
+[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="3_vxg4i"]
+[ext_resource type="Resource" uid="uid://cdgka4vleelqh" path="res://things/Inventory/Items/Points/Melon.tres" id="4_3tqio"]
+[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="4_h6i8j"]
+[ext_resource type="AnimationLibrary" uid="uid://bfk564bj0tp60" path="res://assets/animations/Actors/Maita.tres" id="5_243yh"]
+[ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://actors/enemies/zenchan/Idle.gd" id="5_j8r4g"]
+[ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="5_yc7gd"]
+[ext_resource type="AnimationLibrary" uid="uid://qypkes40mnf" path="res://assets/animations/Actors/Maita_RED.tres" id="6_5iypg"]
+[ext_resource type="Script" uid="uid://bju7fthcpdhx8" path="res://actors/enemies/zenchan/Running.gd" id="6_ots7w"]
+[ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://actors/enemies/zenchan/falling.gd" id="7_kmxbr"]
+[ext_resource type="Script" uid="uid://bfx36clb6wkhh" path="res://actors/enemies/zenchan/Jump_up.gd" id="8_b084e"]
+[ext_resource type="Script" uid="uid://dhxhusuigbtbb" path="res://actors/enemies/zenchan/Jump_forward.gd" id="9_qnvar"]
+[ext_resource type="Script" uid="uid://dpmx0ixy2cn61" path="res://actors/scripts/spawning.gd" id="11_v80yq"]
+[ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="12_3tqio"]
+[ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="13_phw54"]
+[ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="14_4nlib"]
+[ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="20_3tqio"]
+[ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="21_phw54"]
+[ext_resource type="Script" uid="uid://cm5etv0bee8qg" path="res://actors/enemies/Maita/throw_fireball.gd" id="22_phw54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxg4i"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6i8j"]
+size = Vector2(16, 16)
+
+[node name="Maita" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 129
+script = ExtResource("1_vbxqv")
+fireBallScene = ExtResource("2_qnvar")
+DECISION_PERIOD = 1.0
+LootTable = Array[ExtResource("3_3tqio")]([ExtResource("4_3tqio")])
+JUMP_VELOCITY = 300.0
+MAX_RUN_VELOCITY = 75.0
+MAX_RISE_VELOCITY = 400.0
+health = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": ExtResource("5_243yh"),
+&"RED": ExtResource("6_5iypg")
+}
+script = ExtResource("2_fehrb")
+metadata/_custom_type_script = "uid://cxwldrhfsres7"
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="Floor_above" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(0, -45)
+collision_mask = 129
+
+[node name="Floor_front" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(10, 10)
+collision_mask = 129
+
+[node name="Wall_front" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(9, 0)
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vxg4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_vxg4i")
+region_enabled = true
+region_rect = Rect2(5, 26, 16, 16)
+
+[node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_h6i8j")
+initial_state = NodePath("IDLE")
+metadata/_custom_type_script = "uid://bjbytyi2fepmq"
+
+[node name="IDLE" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("5_j8r4g")
+
+[node name="RUNNING" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("6_ots7w")
+
+[node name="FALLING" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("7_kmxbr")
+
+[node name="JUMP_UP" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("8_b084e")
+
+[node name="JUMP_FORWARD" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("9_qnvar")
+
+[node name="BUBBLED" type="Node" parent="StateMachine_Locomotion"]
+script = ExtResource("12_3tqio")
+
+[node name="StateMachine_Status" type="Node" parent="."]
+script = ExtResource("5_yc7gd")
+metadata/_custom_type_script = "uid://rlf241v6q1mt"
+
+[node name="SPAWNING" type="Node" parent="StateMachine_Status"]
+script = ExtResource("11_v80yq")
+
+[node name="DEAD" type="Node" parent="StateMachine_Status"]
+script = ExtResource("13_phw54")
+
+[node name="ALIVE" type="Node" parent="StateMachine_Status"]
+script = ExtResource("14_4nlib")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_h6i8j")
+debug_color = Color(0, 0.6402672, 0.35713857, 0.41960785)
+
+[node name="Decision_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StateMachine_Act" type="Node" parent="."]
+script = ExtResource("20_3tqio")
+metadata/_custom_type_script = "uid://pbqf3u3hfeho"
+
+[node name="State_act_None" type="Node" parent="StateMachine_Act"]
+script = ExtResource("21_phw54")
+metadata/_custom_type_script = "uid://bkjgyynhglj64"
+
+[node name="Throw_Fireball" type="Node" parent="StateMachine_Act"]
+script = ExtResource("22_phw54")
