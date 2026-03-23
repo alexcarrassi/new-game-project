@@ -1,12 +1,16 @@
-class_name RedSpeed extends ActorMod
+class_name Red extends ActorMod
 #generic speedboost
 
 func _init() -> void:
-	self.mod_id = &"REDSPEED"
+	self.mod_id = &"RED"
 
 func activate(actor: Actor) -> void:
 	actor.MAX_RUN_VELOCITY += 75
 	actor.DECISION_PERIOD -= 0.2
+	
+	actor.animationPlayer.set_current_library( "RED" )
+
+
 	print("ACTIVATE")
 
 	pass

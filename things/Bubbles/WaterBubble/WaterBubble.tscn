@@ -119,6 +119,7 @@ _data = {
 
 [node name="WaterBubble" instance=ExtResource("1_p0uk1")]
 collision_layer = 8
+collision_mask = 2051
 physics_material_override = SubResource("PhysicsMaterial_yisb2")
 max_contacts_reported = 3
 script = ExtResource("2_gnaoe")

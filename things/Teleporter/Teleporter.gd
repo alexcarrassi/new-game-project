@@ -19,6 +19,7 @@ func _ready() -> void:
 func onAreaEntered(body: Node2D) -> void:
 	
 	if(body is CharacterBody2D):
+		#If we find the actor in the destined array, don't teleport. We are their destination, not their starting point.
 		if( self.actors_destined.find( body) == -1 && self.Destination != null):
 			self.teleportActor( body )
 			

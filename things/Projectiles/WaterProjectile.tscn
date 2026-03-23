@@ -16,7 +16,7 @@ size = Vector2(12, 14)
 radius = 7.0
 
 [node name="WaterProjectile" type="CharacterBody2D" groups=["Projectiles"]]
-collision_layer = 0
+collision_layer = 8192
 collision_mask = 2049
 script = ExtResource("1_5qpjs")
 

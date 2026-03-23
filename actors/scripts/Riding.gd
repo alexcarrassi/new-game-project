@@ -33,7 +33,7 @@ func exit() -> void:
 	var projectileParent = self.body.get_parent() 
 	self.body.hurtbox.monitorable = true 
 	self.body.hurtbox.monitoring = true 
-	self.body.actor.sm_act.physics_process_paused = false 
+	self.body.sm_act.physics_process_paused = false 
 	
 	self.body.reparent(Game.world.level)
 	#self.body.collisionShape.disabled = false

@@ -409,8 +409,9 @@ allowed_states = [NodePath("../IDLE"), NodePath("../RUNNING"), NodePath("../JUMP
 script = ExtResource("8_pylmc")
 allowed_states = [NodePath("../IDLE"), NodePath("../RUNNING"), NodePath("../FALLING"), NodePath("../RIDING")]
 
-[node name="RIDING" type="Node" parent="StateMachine_Locomotion"]
+[node name="RIDING" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("9_otn2r")
+allowed_states = [NodePath("../IDLE")]
 metadata/_custom_type_script = "uid://boe33mx0birrj"
 
 [node name="StateMachine_Act" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

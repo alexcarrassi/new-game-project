@@ -44,7 +44,7 @@ func hitBoxAreaEntered(area: Area2D) -> void:
 		captureActor(areaOwner)
 
 	if area is Teleporter:
-		releaseActors()
+		dissolve()
 
 	
 func tryAddPathPoint(point: Vector2) -> void:
@@ -87,9 +87,8 @@ func _physics_process(delta: float) -> void:
 func releaseActors() -> void:
 	for actor: Actor in self.actors:
 
-		#actor.reparent(Game.world.level)
-		#actor.position = self.position
-		actor.reparent( get_parent() )
+		actor.reparent(Game.world.level)
+		actor.position = self.position
 		actor.sm_locomotion.state.finished.emit("IDLE")
 
 func dissolve() -> void:
