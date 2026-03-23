@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="2_280to"]
 [ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="3_nv54v"]
 [ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="4_tko0e"]
-[ext_resource type="PackedScene" uid="uid://b8ct23ua2ywrd" path="res://actors/enemies/Maita/Maita.tscn" id="5_xs8eu"]
+[ext_resource type="PackedScene" uid="uid://8liyre5r0auf" path="res://actors/enemies/Maita/Maita.tscn" id="5_xs8eu"]
 
 [node name="Level_01" type="Node2D"]
 process_mode = 1
@@ -28,16 +28,15 @@ autostart = true
 position = Vector2(29, 42)
 direction = Vector2(1, 0)
 spawn_defer_time = 2.0
+actorStayPut = false
 ActorScene = ExtResource("4_tko0e")
 
 [node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
 position = Vector2(0, 0)
 
 [node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
-modulate = Color(1, 1, 1, 0.7)
 flip_h = true
 region_rect = Rect2(5, 257, 16, 16)
-metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
 wait_time = 2.0
@@ -48,15 +47,14 @@ wait_time = 2.0
 position = Vector2(192, -8)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
+actorStayPut = false
 ActorScene = ExtResource("5_xs8eu")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn5" index="0"]
 position = Vector2(0, 40)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn5" index="1"]
-modulate = Color(1, 1, 1, 0.7)
 region_rect = Rect2(5, 26, 16, 16)
-metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn5" index="2"]
 wait_time = 0.5
@@ -66,16 +64,15 @@ position = Vector2(40, -8)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
+actorStayPut = false
 ActorScene = ExtResource("5_xs8eu")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn6" index="0"]
 position = Vector2(0, 72)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn6" index="1"]
-modulate = Color(1, 1, 1, 0.7)
 flip_h = true
 region_rect = Rect2(5, 26, 16, 16)
-metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn6" index="2"]
 wait_time = 0.5
@@ -85,16 +82,15 @@ position = Vector2(64, -8)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
+actorStayPut = false
 ActorScene = ExtResource("5_xs8eu")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
 position = Vector2(0, 40)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
-modulate = Color(1, 1, 1, 0.7)
 flip_h = true
 region_rect = Rect2(5, 26, 16, 16)
-metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
 wait_time = 0.5
@@ -103,15 +99,14 @@ wait_time = 0.5
 position = Vector2(208, -8)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
+actorStayPut = false
 ActorScene = ExtResource("5_xs8eu")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
 position = Vector2(0, 72)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
-modulate = Color(1, 1, 1, 0.7)
 region_rect = Rect2(5, 26, 16, 16)
-metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
 wait_time = 0.5
@@ -120,15 +115,14 @@ wait_time = 0.5
 position = Vector2(128, -8)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
+actorStayPut = false
 ActorScene = ExtResource("5_xs8eu")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
 position = Vector2(0, 96)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
-modulate = Color(1, 1, 1, 0.7)
 region_rect = Rect2(5, 26, 16, 16)
-metadata/_edit_lock_ = true
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn3" index="2"]
 wait_time = 0.5
