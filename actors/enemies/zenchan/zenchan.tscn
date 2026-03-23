@@ -325,7 +325,7 @@ allowed_states = [NodePath("../ALIVE")]
 
 [node name="ALIVE" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("12_s6xig")
-allowed_states = [NodePath("../DEAD"), NodePath("")]
+allowed_states = [NodePath("../DEAD"), null]
 
 [node name="DEAD" type="Node" parent="StateMachine_Status"]
 script = ExtResource("13_l6spp")

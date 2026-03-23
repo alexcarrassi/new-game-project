@@ -15,15 +15,18 @@ func _ready() -> void:
 	await self.owner.ready	
 
 	var body = self.get_parent() as CharacterBody2D
-	for state_node: State in self.find_children("*", "State"):
+	var state_nodes: Array[Node] = find_children("*", "State")
+	for state_node: State in state_nodes:
 		state_node.finished.connect(self.transition_to_next_state)
 		state_node.body = self.get_parent() as Actor
 		
 	
 	##then we wait for our owner to be fully ready
+	if(initial_state == null) :
+		initial_state = state_nodes[0]
 	
-	if(self.initial_state != null):
-		self.transition_to_next_state(self.initial_state.name)
+	if(initial_state != null):
+		self.transition_to_next_state(initial_state.name)
 		
 
 			
