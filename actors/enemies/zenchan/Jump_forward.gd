@@ -1,7 +1,7 @@
 class_name zenchan_jumpForward extends State
 
 
-func enter(prev_state_path: String, data: Dictionary = {} ) -> void:
+func enter(prev_state: State, data: Dictionary = {} ) -> void:
 	self.body.velocity.x = self.body.MAX_RUN_VELOCITY * self.body.direction.x
 	self.body.velocity.y = -self.body.JUMP_VELOCITY + 50.0
 	

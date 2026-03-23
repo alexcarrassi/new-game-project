@@ -14,11 +14,11 @@ func enterEffects() -> Array:
 	]
 	
 	
-func enter(prev_state_path: String, data: Dictionary = {}) -> void:
+func enter(prev_state: State, data: Dictionary = {}) -> void:
 	var actor = self.body
 
 	actor.collisionShape.disabled = false
-	actor.loco_locked = false
-	actor.act_locked = false
+	actor.sm_locomotion.physics_process_paused = false
+	actor.sm_act.physics_process_paused = false
 	
 	pass

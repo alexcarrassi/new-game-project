@@ -42,7 +42,7 @@ func setRed() -> void:
 	self.is_red = true
 	self.animationPlayer.play("RED")
 	if(self.actor != null ) :
-		self.actor.sm_status.state.finished.emit("RED")
+		self.actor.turnRed( true)
 
 	
 # Timer-triggered pop	

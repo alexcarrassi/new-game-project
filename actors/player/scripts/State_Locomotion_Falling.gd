@@ -14,7 +14,7 @@ func enterEffects() -> Array:
 		}	
 	]
 	
-func enter(previous_state_path: String, data: Dictionary) -> void:
+func enter(prev_state: State, data: Dictionary) -> void:
 		pass
 
 func physics_update(delta: float) -> void:

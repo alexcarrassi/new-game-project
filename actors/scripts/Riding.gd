@@ -7,8 +7,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func enter(previous_state_path: String, data: Dictionary) -> void:
-	self.body.act_locked = true 
+func enter(prev_state: State, data: Dictionary) -> void:
+	self.body.sm_act.physics_process_paused = true 
 	self.body.velocity = Vector2.ZERO
 	self.body.hurtbox.monitorable = false 
 	self.body.hurtbox.monitoring = false
@@ -33,7 +33,7 @@ func exit() -> void:
 	var projectileParent = self.body.get_parent() 
 	self.body.hurtbox.monitorable = true 
 	self.body.hurtbox.monitoring = true 
-	self.body.act_locked = false 
+	self.body.actor.sm_act.physics_process_paused = false 
 	
 	self.body.reparent(Game.world.level)
 	#self.body.collisionShape.disabled = false

@@ -2,7 +2,7 @@ class_name zenchan_JumpUp extends State
 
 var target_y: float = 0.0
 
-func enter(prev_state_path: String, data: Dictionary = {} ) -> void:
+func enter(prev_state: State, data: Dictionary = {} ) -> void:
 	var actor = self.body as Enemy
 	actor.velocity.x = 0
 	actor.velocity.y = 0

@@ -1,10 +1,10 @@
 class_name HURT extends State
 
 
-func enter(prev_state_path: String, data: Dictionary) -> void:
+func enter(prev_state: State, data: Dictionary) -> void:
 	var actor = self.body 
-	actor.loco_locked = true
-	actor.act_locked = true 
+	actor.sm_locomotion.physics_process_paused = true
+	actor.sm_act.physics_process_paused = true 
 	actor.hurtbox.set_collision_mask_value(3, false)
 	
 	var hurtLength = actor.animationPlayer.get_animation("hurt").length
@@ -31,8 +31,8 @@ func exit() -> void:
 	var actor = self.body 
 	actor.actorHurt.emit( actor )
 
-	actor.loco_locked = false 	
-	actor.act_locked = false
+	actor.sm_locomotion.physics_process_paused = false 	
+	actor.sm_act.physics_process_paused = false
 	actor.hurtbox.set_collision_mask_value(3, true)
 	
 	var invulnerability = Give_Invulnerability.new() 

@@ -19,7 +19,7 @@ func enterEffects() -> Array:
 	]	
 	
 	
-func enter(prev_state_path: String, data: Dictionary ):
+func enter(prev_state: State, data: Dictionary ):
 	
 	var player = body as Player
 	#Register stat

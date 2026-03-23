@@ -1,7 +1,7 @@
 class_name zenchan_Falling extends State
 
 
-func enter(prev_state_path: String, data: Dictionary = {}) -> void:
+func enter(prev_state: State, data: Dictionary = {}) -> void:
 	self.body.velocity.x = 0
 
 # Called when the node enters the scene tree for the first time.

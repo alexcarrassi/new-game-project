@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjlxt5wg105ji"]
+[gd_scene load_steps=27 format=3 uid="uid://cjlxt5wg105ji"]
 
 [ext_resource type="Script" uid="uid://dbqmmrqxr77g0" path="res://actors/enemies/PulPul/PulPul.gd" id="1_0iyba"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_6ny1d"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="7_wofr7"]
 [ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="8_fqcsb"]
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="8_hn4fc"]
-[ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="9_hn4fc"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_vyocm"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="13_vyocm"]
 
@@ -230,9 +229,6 @@ script = ExtResource("7_wofr7")
 
 [node name="DEAD" type="Node" parent="StateMachine_Status"]
 script = ExtResource("8_fqcsb")
-
-[node name="RED" type="Node" parent="StateMachine_Status"]
-script = ExtResource("9_hn4fc")
 
 [node name="StateMachine_Act" type="Node" parent="."]
 script = ExtResource("13_vyocm")

@@ -2,11 +2,11 @@ class_name Throw_Fireball extends State
 
 @export var FireballScene: PackedScene
 
-func enter(prev_state_path: String, transition_data: Dictionary) -> void:
+func enter(prev_state: State, transition_data: Dictionary) -> void:
 
 	var actor =  self.body
-	actor.loco_locked = true
-	actor.act_locked = true
+	actor.sm_locomotion.physics_process_paused = true
+	actor.sm_act.physics_process_paused = true
 	actor.decision_timer.stop()
 	
 	await get_tree().create_timer(1).timeout
@@ -25,8 +25,8 @@ func enter(prev_state_path: String, transition_data: Dictionary) -> void:
 func exit() -> void:
 	var actor = self.body
 	actor.decision_timer.start()
-	actor.loco_locked = false 
-	actor.act_locked = false
+	actor.sm_locomotion.physics_process_paused = false 
+	actor.sm_act.physics_process_paused = false
 	
 	
 	

@@ -12,7 +12,7 @@ func _ready() -> void:
 	self.set_current_library("")
 	#var parentPlayer = self.get_parent() as CharacterBody2D
 #	self.process_callback = AnimationPlayer.ANIMATION_PROCESS_PHYSICS
-	#self.sm_act = parentPlayer.actState
+
 	pass # Replace with function body.
 
 

@@ -389,53 +389,66 @@ libraries = {
 }
 script = ExtResource("3_bwjto")
 
-[node name="StateMachine_Locomotion" type="Node" parent="."]
+[node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_606se")
+initial_state = NodePath("IDLE")
 
-[node name="IDLE" type="Node" parent="StateMachine_Locomotion"]
+[node name="IDLE" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("5_u1c27")
+allowed_states = [NodePath("."), NodePath("../RUNNING"), NodePath("../FALLING"), NodePath("../JUMPING"), NodePath("../RIDING")]
 
-[node name="RUNNING" type="Node" parent="StateMachine_Locomotion"]
+[node name="RUNNING" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("6_op7ga")
+allowed_states = [NodePath("../IDLE"), NodePath("../FALLING"), NodePath("../JUMPING"), NodePath("../RIDING")]
 
-[node name="FALLING" type="Node" parent="StateMachine_Locomotion"]
+[node name="FALLING" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("7_q13i1")
+allowed_states = [NodePath("../IDLE"), NodePath("../RUNNING"), NodePath("../JUMPING"), NodePath("../RIDING"), NodePath(".")]
 
-[node name="JUMPING" type="Node" parent="StateMachine_Locomotion"]
+[node name="JUMPING" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("8_pylmc")
+allowed_states = [NodePath("../IDLE"), NodePath("../RUNNING"), NodePath("../FALLING"), NodePath("../RIDING")]
 
 [node name="RIDING" type="Node" parent="StateMachine_Locomotion"]
 script = ExtResource("9_otn2r")
 metadata/_custom_type_script = "uid://boe33mx0birrj"
 
-[node name="StateMachine_Act" type="Node" parent="."]
+[node name="StateMachine_Act" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("9_pbfsw")
+initial_state = NodePath("NONE")
 
-[node name="NONE" type="Node" parent="StateMachine_Act"]
+[node name="NONE" type="Node" parent="StateMachine_Act" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("11_otn2r")
+allowed_states = [NodePath("../ATTACK")]
 
-[node name="ATTACK" type="Node" parent="StateMachine_Act"]
+[node name="ATTACK" type="Node" parent="StateMachine_Act" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("11_7ahtn")
 bubble = ExtResource("12_dqf5y")
+allowed_states = [NodePath("../NONE")]
 
-[node name="StateMachine_Status" type="Node" parent="."]
+[node name="StateMachine_Status" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("13_7aotg")
+initial_state = NodePath("SUSPENDED")
 metadata/_custom_type_script = "uid://rlf241v6q1mt"
 
-[node name="ALIVE" type="Node" parent="StateMachine_Status"]
+[node name="ALIVE" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("15_12xki")
+allowed_states = [NodePath("../BUBBLED"), NodePath("../HURT"), NodePath("../DEAD"), NodePath("../SUSPENDED")]
 
-[node name="BUBBLED" type="Node" parent="StateMachine_Status"]
+[node name="BUBBLED" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("14_k67x5")
+allowed_states = [NodePath("../ALIVE"), NodePath("../HURT"), NodePath("../DEAD"), NodePath("../SUSPENDED")]
 
-[node name="HURT" type="Node" parent="StateMachine_Status"]
+[node name="HURT" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("16_rt46e")
+allowed_states = [NodePath("../ALIVE"), NodePath("../DEAD"), NodePath("../SUSPENDED")]
 
 [node name="DEAD" type="Node" parent="StateMachine_Status"]
 script = ExtResource("17_0wchr")
 
-[node name="SUSPENDED" type="Node" parent="StateMachine_Status"]
+[node name="SUSPENDED" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("18_dqf5y")
+allowed_states = [NodePath("../ALIVE")]
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 256

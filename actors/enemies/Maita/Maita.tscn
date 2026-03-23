@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b8ct23ua2ywrd"]
+[gd_scene load_steps=37 format=3 uid="uid://b8ct23ua2ywrd"]
 
 [ext_resource type="Script" uid="uid://cfvj2o7r4nik3" path="res://actors/enemies/Maita/maita.gd" id="1_vbxqv"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_fehrb"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="12_3tqio"]
 [ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="13_phw54"]
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="14_4nlib"]
-[ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="15_bxqq8"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="20_3tqio"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="21_phw54"]
 [ext_resource type="Script" uid="uid://cm5etv0bee8qg" path="res://actors/enemies/Maita/throw_fireball.gd" id="22_phw54"]
@@ -318,9 +317,6 @@ script = ExtResource("13_phw54")
 
 [node name="ALIVE" type="Node" parent="StateMachine_Status"]
 script = ExtResource("14_4nlib")
-
-[node name="RED" type="Node" parent="StateMachine_Status"]
-script = ExtResource("15_bxqq8")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 256

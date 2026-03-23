@@ -46,7 +46,7 @@ func _ready() -> void:
 	
 func onHurtboxEntered( body: Node2D ) :
 	if( body is Enemy):
-		if(body.sm_status.state.name == "ALIVE" || body.sm_status.state.name == "RED"):
+		if(body.sm_status.state.name == "ALIVE"):
 			
 			body.onPlayerCollide( self )
 	
@@ -64,7 +64,7 @@ func exposeInputSnapshot() -> String:
 	
 	var speedSnapshot = "speed h: %.2f  ,  speed v: %.2f" % [self.velocity.x, self.velocity.y] 
 	
-	var stateSnapShot = "loco: %s ,  act: %s" % [self.sm_locomotion.state.name, self.actState.state.name]
+	var stateSnapShot = "loco: %s ,  act: %s" % [self.sm_locomotion.state.name, self.sm_act.state.name]
 	
 	var animation = "locked: %s , animation: %s" % [self.animationPlayer.animationLock != null, self.animationPlayer.current_animation]
 	

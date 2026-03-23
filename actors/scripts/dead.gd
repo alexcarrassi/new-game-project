@@ -9,15 +9,21 @@ var collision_disable_ms: float = 1.5
 # When reaching Max fall velocity: fall down vertically (no x velocity), collide with inner geometry. 
 # When reaching ground, Despawn.
 
-func enter(prev_state_path: String, data: Dictionary = {}) -> void:
+func enter(prev_state: State, data: Dictionary = {}) -> void:
 	var jump_dir = data.get("dir", 1.0);
 	self.main_animation = "DEAD"
 
 	var actor = self.body 
-	actor.loco_locked = true
-	actor.act_locked = true 
-	
+	actor.sm_locomotion.physics_process_paused = true
+	actor.sm_act.physics_process_paused = true 
+	actor.sm_act.transition_locked = true 
+	actor.sm_locomotion.transition_locked = true
 	#starting velocity: following a jump arc
+	
+	actor.hurtbox.monitorable = false
+	actor.hurtbox.monitoring = false
+	
+	
 	actor.velocity = self.jump_velocity
 	if(sign( jump_dir ) !=  sign( actor.direction.x ) ):
 		actor.flip()

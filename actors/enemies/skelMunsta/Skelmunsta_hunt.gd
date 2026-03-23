@@ -1,6 +1,6 @@
 class_name SkelMunsta_Hunt extends State
 
-func enter(prev_state_path: String, data: Dictionary) -> void:
+func enter(prev_state: State, data: Dictionary) -> void:
 	self.main_animation = "move"
 	
 	var actor = self.body as SkelMunsta

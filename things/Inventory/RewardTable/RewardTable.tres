@@ -24,7 +24,7 @@
 
 [sub_resource type="Resource" id="Resource_3ebml"]
 script = ExtResource("1_uc88q")
-rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("4_t51s0"), ExtResource("4_qwji4"), ExtResource("10_qwji4"), ExtResource("9_n41j0"), ExtResource("13_dboje"), ExtResource("12_t51s0"), ExtResource("4_v8ry1"), ExtResource("6_v8ry1"), ExtResource("10_g43x2"), ExtResource("7_okgvs"), ExtResource("6_5fmew"), ExtResource("12_v8ry1")])
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("6_v8ry1"), ExtResource("4_t51s0"), ExtResource("4_qwji4"), ExtResource("10_qwji4"), ExtResource("9_n41j0"), ExtResource("13_dboje"), ExtResource("12_t51s0"), ExtResource("4_v8ry1"), ExtResource("10_g43x2"), ExtResource("7_okgvs"), ExtResource("6_5fmew"), ExtResource("12_v8ry1")])
 playerStatDef = ExtResource("2_m8nai")
 requirement = 1
 metadata/_custom_type_script = "uid://df2d6ib26vtgc"

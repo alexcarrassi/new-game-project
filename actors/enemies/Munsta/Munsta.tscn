@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c50spamxftvqt"]
+[gd_scene load_steps=29 format=3 uid="uid://c50spamxftvqt"]
 
 [ext_resource type="Script" uid="uid://cfehrxn1rsvv3" path="res://actors/enemies/Munsta/munsta.gd" id="1_0jpja"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/ItemTypes/Item.gd" id="2_ua6ar"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="8_p35vh"]
 [ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="9_nh8vh"]
 [ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="9_njdb1"]
-[ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="10_njdb1"]
 [ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://actors/enemies/zenchan/falling.gd" id="10_smetb"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="16_ua6ar"]
 
@@ -240,9 +239,6 @@ script = ExtResource("8_p35vh")
 
 [node name="DEAD" type="Node" parent="StateMachine_Status"]
 script = ExtResource("9_nh8vh")
-
-[node name="RED" type="Node" parent="StateMachine_Status"]
-script = ExtResource("10_njdb1")
 
 [node name="StateMachine_Act" type="Node" parent="."]
 script = ExtResource("5_s6skn")

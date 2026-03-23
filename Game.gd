@@ -33,7 +33,7 @@ func register_player(index: int, player: Player) -> PlayerEntry:
 	return playerEntry
 
 func deregister_player(index: int) -> Dictionary[int, PlayerEntry]:
-	self.players.erase(index)  
+	self.playerEntries.erase(index)  
 	return self.playerEntries
 
 func getLevelById( id: String) -> LevelDefinition:

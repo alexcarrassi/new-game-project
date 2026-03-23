@@ -16,7 +16,7 @@ func enterEffects() -> Array:
 		}
 	]	
 
-func enter(previous_state_path: String, data: Dictionary) -> void:
+func enter(prev_state: State, data: Dictionary) -> void:
 	
 	self.body.velocity.y = -self.body.JUMP_VELOCITY
 	#consume coyote and jump buffer

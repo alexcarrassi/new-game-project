@@ -3,6 +3,7 @@ class_name State extends Node
 var body: Actor
 var animationController: AnimationController
 @export var main_animation : String
+@export var allowed_states : Array[State] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,11 +16,14 @@ func enterEffects() -> Array:
 func exitEffects() -> Array:
 	return []
 
-func enter(prev_state_path: String, data: Dictionary) -> void :
+func enter(prev_state: State, data: Dictionary) -> void :
 	pass
 	
 func exit() -> void:
 	pass
+func can_enter(newState: State) -> bool: 
+	return newState in allowed_states
+
 
 func update(delta: float) -> void:
 	pass

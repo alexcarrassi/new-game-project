@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=35 format=3 uid="uid://b2kwfbabyr0bm"]
 
 [ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
 [ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="1_s72y3"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="12_s6xig"]
 [ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="13_l6spp"]
 [ext_resource type="Script" uid="uid://dpmx0ixy2cn61" path="res://actors/scripts/spawning.gd" id="14_t4a2j"]
-[ext_resource type="Script" uid="uid://prsd521pdxvs" path="res://actors/enemies/zenchan/Red.gd" id="18_gbd71"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="19_rfo4i"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="20_s4w05"]
 
@@ -290,44 +289,50 @@ one_shot = true
 
 [node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_hlciv")
-initial_state = NodePath("FALLING")
+initial_state = NodePath("IDLE")
 
-[node name="BUBBLED" type="Node" parent="StateMachine_Locomotion"]
+[node name="BUBBLED" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("10_kdg0o")
+allowed_states = [NodePath("../FALLING"), NodePath("../IDLE"), NodePath("../RUNNING")]
 
-[node name="RUNNING" type="Node" parent="StateMachine_Locomotion"]
+[node name="RUNNING" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("5_fbiw4")
+allowed_states = [NodePath("../IDLE"), NodePath("../BUBBLED"), NodePath("../FALLING"), NodePath("../JUMP_UP"), NodePath("../JUMP_FORWARD")]
 
-[node name="IDLE" type="Node" parent="StateMachine_Locomotion"]
+[node name="IDLE" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("4_dne8i")
+allowed_states = [NodePath("../RUNNING"), NodePath("../BUBBLED"), NodePath("../FALLING"), NodePath("../JUMP_UP"), NodePath("../JUMP_FORWARD")]
 
-[node name="FALLING" type="Node" parent="StateMachine_Locomotion"]
+[node name="FALLING" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("7_jxh4g")
+allowed_states = [NodePath("../IDLE"), NodePath("../RUNNING"), NodePath("../BUBBLED")]
 
-[node name="JUMP_UP" type="Node" parent="StateMachine_Locomotion"]
+[node name="JUMP_UP" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("8_6dyg7")
+allowed_states = [NodePath("../FALLING"), NodePath("../RUNNING"), NodePath("../BUBBLED"), NodePath("../IDLE")]
 
-[node name="JUMP_FORWARD" type="Node" parent="StateMachine_Locomotion"]
+[node name="JUMP_FORWARD" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("9_e7xus")
+allowed_states = [NodePath("../FALLING"), NodePath("../RUNNING"), NodePath("../BUBBLED"), NodePath("../IDLE")]
 
 [node name="StateMachine_Status" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_dflga")
 initial_state = NodePath("SPAWNING")
 
-[node name="SPAWNING" type="Node" parent="StateMachine_Status"]
+[node name="SPAWNING" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("14_t4a2j")
+allowed_states = [NodePath("../ALIVE")]
 
-[node name="ALIVE" type="Node" parent="StateMachine_Status"]
+[node name="ALIVE" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
 script = ExtResource("12_s6xig")
+allowed_states = [NodePath("../DEAD"), NodePath("")]
 
 [node name="DEAD" type="Node" parent="StateMachine_Status"]
 script = ExtResource("13_l6spp")
 
-[node name="RED" type="Node" parent="StateMachine_Status"]
-script = ExtResource("18_gbd71")
-
-[node name="StateMachine_Act" type="Node" parent="."]
+[node name="StateMachine_Act" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("19_rfo4i")
+initial_state = NodePath("State_act_None")
 metadata/_custom_type_script = "uid://pbqf3u3hfeho"
 
 [node name="State_act_None" type="Node" parent="StateMachine_Act"]

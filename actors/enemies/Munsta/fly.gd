@@ -4,7 +4,7 @@ func _ready() -> void:
 	self.main_animation = "FLY"
 
 
-func enter(prev_state_path: String, transition_data: Dictionary) -> void:
+func enter(prev_state: State, transition_data: Dictionary) -> void:
 	var actor = self.body 
 	actor.velocity = Vector2(actor.MAX_RUN_VELOCITY, actor.MAX_RUN_VELOCITY) * actor.direction
 

@@ -3,7 +3,7 @@ class_name State_Locomotion_Running extends State
 func _ready() -> void:
 	self.main_animation = "run"
 
-func enter(previous_state_path: String, data: Dictionary) -> void:
+func enter(prev_state: State, data: Dictionary) -> void:
 	self.body.coyote_time = self.body.coyote_max
 
 

@@ -94,7 +94,7 @@ func spawnActor() -> Tween:
 		#return
 	
 	
-	if(actor.sm_status.name != "SPAWNING"):
+	if(actor.sm_status.state.name != "SPAWNING"):
 		actor.sm_status.state.finished.emit("SPAWNING")
 	
 	var transportSpeed = 70
