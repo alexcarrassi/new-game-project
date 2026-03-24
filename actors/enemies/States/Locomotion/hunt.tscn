@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwtt7c5xvpdy"]
+
+[ext_resource type="Script" uid="uid://diema0raspjjd" path="res://actors/enemies/States/Locomotion/hunt.gd" id="1_1senr"]
+
+[node name="HUNT" type="Node"]
+script = ExtResource("1_1senr")
+allowed_states = Array[StringName]([&"IDLE"])
+metadata/_custom_type_script = "uid://1bfgi14utrpi"

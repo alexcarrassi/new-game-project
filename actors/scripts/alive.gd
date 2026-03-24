@@ -4,8 +4,6 @@ func enter(prev_state: State, data: Dictionary = {}) -> void:
 	var actor = self.body
 
 	actor.collisionShape.disabled = false
-	actor.hurtbox.monitorable = true
-	actor.hurtbox.monitoring = true
 	actor.sm_locomotion.physics_process_paused = false
 	actor.sm_act.physics_process_paused = false
 

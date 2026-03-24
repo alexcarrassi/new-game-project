@@ -5,8 +5,7 @@ func enter(prev_state: State, data: Dictionary) -> void:
 	var actor = self.body 
 	actor.sm_locomotion.physics_process_paused = true
 	actor.sm_act.physics_process_paused = true 
-	actor.hurtbox.set_collision_mask_value(3, false)
-	
+
 	var hurtLength = actor.animationPlayer.get_animation("hurt").length
 	var animationLock = AnimationLock.new( 20, hurtLength, 3 )
 	
@@ -33,7 +32,6 @@ func exit() -> void:
 
 	actor.sm_locomotion.physics_process_paused = false 	
 	actor.sm_act.physics_process_paused = false
-	actor.hurtbox.set_collision_mask_value(3, true)
 	
 	var invulnerability = Give_Invulnerability.new() 
 	invulnerability.timeActive = 2

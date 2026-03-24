@@ -28,9 +28,7 @@ func physics_update(delta: float) -> void:
 		if(abs(collision_normal.y) > 0.3 ) :
 			actor.direction.y =	  1 if collision_normal.y > 0 else -1
 	
-	print(actor.direction) 
 	actor.sprite2D.flip_h = actor.direction.x > 0.0
-
 	actor.velocity = Vector2(actor.MAX_RUN_VELOCITY, actor.MAX_RISE_VELOCITY) * actor.direction
 	pass
 	

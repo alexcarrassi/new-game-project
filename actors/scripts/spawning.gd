@@ -18,4 +18,6 @@ func enter(prev_state: State, data: Dictionary = {}) -> void:
 	
 func exit() -> void:
 	var actor = self.body
+	actor.hurtbox.monitorable = true
+	actor.hurtbox.monitoring = true
 	pass	

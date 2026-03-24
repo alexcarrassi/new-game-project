@@ -1,7 +1,7 @@
 class_name zenchan_JumpUp extends State
 
 var target_y: float = 0.0
-
+var tween: Tween
 func enter(prev_state: State, data: Dictionary = {} ) -> void:
 	var actor = self.body as Enemy
 	actor.velocity.x = 0
@@ -16,13 +16,19 @@ func enter(prev_state: State, data: Dictionary = {} ) -> void:
 	
 	self.target_y = actor.get_floor_above_y()
 	
-	var tween = create_tween()
+	tween = create_tween()
 	tween.tween_property(actor, "position", Vector2(actor.position.x, self.target_y), 0.7)
 	
 	tween.finished.connect( func() -> void: self.finished.emit("FALLING"))
 	#tween.finished.connect( self.exit)
 
-# Called when the node enters the scene tree for the first time.
+
+
+func exit() -> void:
+	if(tween) :
+		tween.kill()
+	
+	
 func _ready() -> void:
 	self.main_animation = "RUN"
 	pass # Replace with function body.

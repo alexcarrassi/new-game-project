@@ -1,146 +1,36 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwoyt67p86stw"]
+[gd_scene load_steps=8 format=3 uid="uid://dwoyt67p86stw"]
 
 [ext_resource type="Script" uid="uid://f0er152wijpj" path="res://actors/enemies/skelMunsta/skel_munsta.gd" id="1_77ank"]
-[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_io5g2"]
-[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="3_65e71"]
+[ext_resource type="PackedScene" uid="uid://jbkj40qgwjk8" path="res://actors/enemies/Enemy.tscn" id="1_et3mk"]
+[ext_resource type="AnimationLibrary" uid="uid://cepn4gbxppfon" path="res://assets/animations/Actors/SkelMunsta.tres" id="3_65e71"]
 [ext_resource type="Script" uid="uid://dol77tnphlle0" path="res://actors/enemies/skelMunsta/Idle.gd" id="4_65e71"]
-[ext_resource type="Script" uid="uid://diema0raspjjd" path="res://actors/enemies/skelMunsta/Skelmunsta_hunt.gd" id="4_et3mk"]
-[ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="5_65e71"]
+[ext_resource type="PackedScene" uid="uid://bwtt7c5xvpdy" path="res://actors/enemies/States/Locomotion/hunt.tscn" id="5_et3mk"]
 [ext_resource type="Script" uid="uid://jw8kajeeir7i" path="res://actors/enemies/skelMunsta/alive.gd" id="7_65e71"]
-[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="7_et3mk"]
-[ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="9_ygupy"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_14kdx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rs4ll"]
-size = Vector2(16, 15)
-
-[sub_resource type="Animation" id="Animation_phnyb"]
-resource_name = "idle"
-length = 0.46667004
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Rect2(5, 257, 16, 16), Rect2(26, 257, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_ygupy"]
-resource_name = "move"
-length = 0.26667002
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Rect2(5, 257, 16, 16), Rect2(26, 257, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_65e71"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(5, 257, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_et3mk"]
-resource_name = "Spawn"
-length = 0.16667001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Rect2(68, 257, 16, 16), Rect2(47, 257, 16, 16)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_65e71"]
-_data = {
-&"IDLE": SubResource("Animation_phnyb"),
-&"MOVE": SubResource("Animation_ygupy"),
-&"SPAWN": SubResource("Animation_65e71"),
-&"Spawn": SubResource("Animation_et3mk")
-}
-
-[node name="SkelMunsta" type="CharacterBody2D" groups=["Enemies", "Invulnerable"]]
-collision_layer = 4
-collision_mask = 3
+[node name="SkelMunsta" groups=["Invulnerable"] instance=ExtResource("1_et3mk")]
 script = ExtResource("1_77ank")
-MAX_RUN_VELOCITY = 125.0
+SPEED_INITIAL = 100.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_rs4ll")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" parent="." index="1"]
 libraries = {
-&"": SubResource("AnimationLibrary_65e71")
+&"": ExtResource("3_65e71")
 }
-script = ExtResource("2_io5g2")
-metadata/_custom_type_script = "uid://cxwldrhfsres7"
 
-[node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_65e71")
-initial_state = NodePath("IDLE")
+[node name="Sprite2D" parent="." index="2"]
+region_rect = Rect2(5, 257, 16, 16)
 
-[node name="IDLE" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
+[node name="IDLE" type="Node" parent="StateMachine_Locomotion" index="0"]
 script = ExtResource("4_65e71")
-allowed_states = [NodePath("../HUNT")]
+allowed_states = Array[StringName]([&"HUNT"])
 metadata/_custom_type_script = "uid://1bfgi14utrpi"
 
-[node name="HUNT" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("4_et3mk")
-allowed_states = [NodePath("../IDLE")]
-metadata/_custom_type_script = "uid://1bfgi14utrpi"
+[node name="HUNT" parent="StateMachine_Locomotion" index="1" instance=ExtResource("5_et3mk")]
 
-[node name="StateMachine_Status" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("5_65e71")
-initial_state = NodePath("ALIVE")
-metadata/_custom_type_script = "uid://rlf241v6q1mt"
-
-[node name="ALIVE" type="Node" parent="StateMachine_Status"]
+[node name="ALIVE" type="Node" parent="StateMachine_Status" index="0"]
 script = ExtResource("7_65e71")
 metadata/_custom_type_script = "uid://d07c3lrod8lda"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("7_et3mk")
-flip_h = true
-region_enabled = true
-region_rect = Rect2(5, 257, 16, 16)
-
-[node name="Sensors" type="Node2D" parent="."]
-
-[node name="StateMachine_Act" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("9_ygupy")
-initial_state = NodePath("State_act_None")
-metadata/_custom_type_script = "uid://pbqf3u3hfeho"
-
-[node name="State_act_None" type="Node" parent="StateMachine_Act"]
+[node name="State_act_None" type="Node" parent="StateMachine_Act" index="0"]
 script = ExtResource("10_14kdx")
 metadata/_custom_type_script = "uid://bkjgyynhglj64"
