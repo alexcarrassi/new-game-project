@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cufsaqpabnav"]
+
+[ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="1_feak3"]
+
+[node name="BUBBLED" type="Node"]
+script = ExtResource("1_feak3")
+allowed_states = Array[StringName]([&"FALLING", &"IDLE", &"RUNNING"])

@@ -1,4 +1,4 @@
-class_name Stact_act_None_Player extends State_act_None
+class_name Stact_act_None_Player extends None
 
 
 func physics_update(delta: float) -> void:

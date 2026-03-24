@@ -1,0 +1,108 @@
+[gd_resource type="AnimationLibrary" load_steps=7 format=3 uid="uid://ddhe71werskpy"]
+
+[sub_resource type="Animation" id="Animation_nh8vh"]
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(131, 68, 16, 16), Rect2(152, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_k3hic"]
+resource_name = "DEAD"
+length = 0.5333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.40000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(257, 68, 16, 16), Rect2(277, 68, 16, 16), Rect2(299, 68, 16, 16), Rect2(320, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_p35vh"]
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(5, 68, 16, 16), Rect2(26, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_co2n3"]
+length = 0.06667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(5, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_ua6ar"]
+resource_name = "PETRIFIED"
+length = 0.30000502
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(89, 68, 16, 16), Rect2(110, 68, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_njdb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 68, 16, 16)]
+}
+
+[resource]
+_data = {
+&"BUBBLED": SubResource("Animation_nh8vh"),
+&"DEAD": SubResource("Animation_k3hic"),
+&"FLY": SubResource("Animation_p35vh"),
+&"IDLE": SubResource("Animation_co2n3"),
+&"PETRIFIED": SubResource("Animation_ua6ar"),
+&"RESET": SubResource("Animation_njdb1")
+}

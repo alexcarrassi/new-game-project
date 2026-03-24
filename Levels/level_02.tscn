@@ -5,12 +5,13 @@
 
 [node name="Level_01" instance=ExtResource("1_ot7dp")]
 
-[node name="ActorSpawn" parent="Enemy_Spawns" index="0" node_paths=PackedStringArray("spawn_node") instance=ExtResource("2_d3ajd")]
+[node name="AirCurrent" parent="." index="0"]
+visible = false
+
+[node name="ActorSpawn" parent="Enemy_Spawns" index="0" instance=ExtResource("2_d3ajd")]
 position = Vector2(160, -32)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
-spawn_node = NodePath("")
-actorStayPut = false
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 112)
@@ -21,12 +22,10 @@ flip_h = true
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
 wait_time = 0.5
 
-[node name="ActorSpawn3" parent="Enemy_Spawns" index="1" node_paths=PackedStringArray("spawn_node") instance=ExtResource("2_d3ajd")]
+[node name="ActorSpawn3" parent="Enemy_Spawns" index="1" instance=ExtResource("2_d3ajd")]
 position = Vector2(136, -32)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
-spawn_node = NodePath("")
-actorStayPut = false
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
 position = Vector2(0, 76)
@@ -37,11 +36,9 @@ flip_h = true
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn3" index="2"]
 wait_time = 0.5
 
-[node name="ActorSpawn4" parent="Enemy_Spawns" index="2" node_paths=PackedStringArray("spawn_node") instance=ExtResource("2_d3ajd")]
+[node name="ActorSpawn4" parent="Enemy_Spawns" index="2" instance=ExtResource("2_d3ajd")]
 position = Vector2(120, -32)
 spawn_defer_time = 0.5
-spawn_node = NodePath("")
-actorStayPut = false
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
 position = Vector2(0, 76)
@@ -49,11 +46,9 @@ position = Vector2(0, 76)
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
 wait_time = 0.5
 
-[node name="ActorSpawn2" parent="Enemy_Spawns" index="3" node_paths=PackedStringArray("spawn_node") instance=ExtResource("2_d3ajd")]
+[node name="ActorSpawn2" parent="Enemy_Spawns" index="3" instance=ExtResource("2_d3ajd")]
 position = Vector2(96, -29)
 spawn_defer_time = 0.5
-spawn_node = NodePath("")
-actorStayPut = false
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
 position = Vector2(0, 109)

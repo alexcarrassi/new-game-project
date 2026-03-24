@@ -1,4 +1,4 @@
-class_name State_act_None extends State
+class_name None extends State
 
 func enter(prev_state: State, data: Dictionary) -> void:
 	pass

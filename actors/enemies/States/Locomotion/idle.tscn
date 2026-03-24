@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://0srxgjo4gkm1"]
+
+[ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://actors/enemies/States/Locomotion/Idle.gd" id="1_mekxo"]
+
+[node name="IDLE" type="Node"]
+script = ExtResource("1_mekxo")
+allowed_states = Array[StringName]([&"RUNNING", &"JUMP_UP", &"JUMP_FORWARD", &"FALLING", &"BUBBLED"])

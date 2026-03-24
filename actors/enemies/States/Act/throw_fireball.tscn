@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmtfsrug8q0p2"]
+
+[ext_resource type="Script" uid="uid://cm5etv0bee8qg" path="res://actors/enemies/Maita/throw_fireball.gd" id="1_ch62e"]
+
+[node name="THROW_FIREBALL" type="Node"]
+script = ExtResource("1_ch62e")
+allowed_states = Array[StringName]([&"NONE"])

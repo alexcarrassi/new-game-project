@@ -75,6 +75,7 @@ func releaseActor() -> Actor:
 func killActor() -> Actor:
 	if(self.actor != null) :
 		self.actor.reparent( self.actor_parent )
+		self.actor.modController.clear_all()
 		self.actor.sm_locomotion.state.finished.emit("FALLING")
 		self.actor.sm_status.state.finished.emit("DEAD", {"dir": self.dir.x})
 		self.actor.rotation = 0

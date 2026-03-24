@@ -18,6 +18,7 @@ func activate(actor: Actor) -> void:
 func deactivate(actor: Actor) -> void:
 	actor.MAX_RUN_VELOCITY -= 75
 	actor.DECISION_PERIOD += 0.2
+	actor.animationPlayer.set_current_library( "" )
 	print("DEACTIVATE")
 	pass
 	

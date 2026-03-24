@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://t5s0sxumquql"]
+
+[ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="1_ol00p"]
+
+[node name="NONE" type="Node"]
+script = ExtResource("1_ol00p")
+allowed_states = Array[StringName]([&"THROW_FIREBALL"])
+metadata/_custom_type_script = "uid://bkjgyynhglj64"

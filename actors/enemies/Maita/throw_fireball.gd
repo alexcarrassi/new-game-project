@@ -10,7 +10,7 @@ func enter(prev_state: State, transition_data: Dictionary) -> void:
 	actor.decision_timer.stop()
 	
 	await get_tree().create_timer(1).timeout
-	var fireball = actor.fireBallScene.instantiate() as Fireball
+	var fireball = FireballScene.instantiate() as Fireball
 	fireball.dir = actor.direction
 	fireball.speed = actor.MAX_RUN_VELOCITY * 1.1
 	fireball.position = actor.position
@@ -18,7 +18,7 @@ func enter(prev_state: State, transition_data: Dictionary) -> void:
 	
 	actor.set_owned(&"Fireball", fireball)
 	#actor.owns['fireball'] =fireball 
-	self.finished.emit(&"State_act_None")
+	self.finished.emit(&"NONE")
 	#actor.intent.locomotion = &"RUNNING"
 	pass
 	

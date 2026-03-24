@@ -35,8 +35,8 @@ func transition_to_next_state(target_state_path: String, transition_data: Dictio
 		printerr("prevented transition to %s from %s" %[target_state_path, state.name])
 		return 
 		
-	if ( not self.has_node( target_state_path) ):
-		printerr(self.owner.name + "Undefined state at " + target_state_path)
+	if ( not has_node( target_state_path) ):
+		printerr(owner.name + ": Undefined state at " + target_state_path)
 		
 		if(!self.initial_state):
 			printerr("No initial state set. ")
@@ -48,7 +48,7 @@ func transition_to_next_state(target_state_path: String, transition_data: Dictio
 	var next_state = self.get_node(target_state_path)	
 
 	if(prev_state):
-		if( !prev_state.can_enter( next_state )):
+		if( !prev_state.can_enter( target_state_path.to_upper())):
 			return
 
 	

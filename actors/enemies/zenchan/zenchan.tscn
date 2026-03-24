@@ -1,134 +1,37 @@
-[gd_scene load_steps=23 format=3 uid="uid://b2kwfbabyr0bm"]
+[gd_scene load_steps=13 format=3 uid="uid://c1pgsrwvsoer3"]
 
-[ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="1_aigf2"]
-[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="1_s72y3"]
-[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="2_6hnld"]
-[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/ItemTypes/Item.gd" id="2_rfo4i"]
-[ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://things/Inventory/Items/Points/Peach.tres" id="3_s4w05"]
-[ext_resource type="Script" uid="uid://csxcjsgwddtfm" path="res://actors/enemies/zenchan/Idle.gd" id="4_dne8i"]
-[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="4_hlciv"]
-[ext_resource type="AnimationLibrary" uid="uid://bg2ur4fd854fq" path="res://assets/animations/Actors/zenchan.tres" id="4_rfo4i"]
-[ext_resource type="Script" uid="uid://bju7fthcpdhx8" path="res://actors/enemies/zenchan/Running.gd" id="5_fbiw4"]
-[ext_resource type="AnimationLibrary" uid="uid://b3p7t8jfoligj" path="res://assets/animations/Actors/zenchan_RED.tres" id="5_s4w05"]
-[ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://actors/enemies/zenchan/falling.gd" id="7_jxh4g"]
-[ext_resource type="Script" uid="uid://bfx36clb6wkhh" path="res://actors/enemies/zenchan/Jump_up.gd" id="8_6dyg7"]
-[ext_resource type="Script" uid="uid://dhxhusuigbtbb" path="res://actors/enemies/zenchan/Jump_forward.gd" id="9_e7xus"]
-[ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="10_dflga"]
-[ext_resource type="Script" uid="uid://dwojhok7mmh25" path="res://actors/scripts/bubbled.gd" id="10_kdg0o"]
-[ext_resource type="Script" uid="uid://d07c3lrod8lda" path="res://actors/scripts/alive.gd" id="12_s6xig"]
-[ext_resource type="Script" uid="uid://ce5gdpb3jlnu0" path="res://actors/scripts/dead.gd" id="13_l6spp"]
-[ext_resource type="Script" uid="uid://dpmx0ixy2cn61" path="res://actors/scripts/spawning.gd" id="14_t4a2j"]
-[ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="19_rfo4i"]
-[ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="20_s4w05"]
+[ext_resource type="PackedScene" uid="uid://jbkj40qgwjk8" path="res://actors/enemies/Enemy.tscn" id="1_0ipqe"]
+[ext_resource type="PackedScene" uid="uid://cufsaqpabnav" path="res://actors/enemies/States/Locomotion/bubbled.tscn" id="2_d746r"]
+[ext_resource type="Script" uid="uid://bou6clfjfdtgw" path="res://actors/enemies/zenchan/zenchan.gd" id="2_l8m8o"]
+[ext_resource type="PackedScene" uid="uid://c0rg7mskp21x8" path="res://actors/enemies/States/Locomotion/falling.tscn" id="3_a7m12"]
+[ext_resource type="PackedScene" uid="uid://0srxgjo4gkm1" path="res://actors/enemies/States/Locomotion/idle.tscn" id="4_nh11d"]
+[ext_resource type="PackedScene" uid="uid://b12bha87h16ve" path="res://actors/enemies/States/Locomotion/jump_forward.tscn" id="5_d88in"]
+[ext_resource type="PackedScene" uid="uid://ch7sg8yu7b6jy" path="res://actors/enemies/States/Locomotion/jump_up.tscn" id="6_8kfm4"]
+[ext_resource type="PackedScene" uid="uid://cj1an83jpejo7" path="res://actors/enemies/States/Locomotion/running.tscn" id="7_l8m8o"]
+[ext_resource type="PackedScene" uid="uid://bqwkq0kk13tyo" path="res://actors/enemies/States/Status/alive.tscn" id="8_d88in"]
+[ext_resource type="PackedScene" uid="uid://dptailbc5e58x" path="res://actors/enemies/States/Status/dead.tscn" id="9_8kfm4"]
+[ext_resource type="PackedScene" uid="uid://biyjbn7hgj0q7" path="res://actors/enemies/States/Status/spawning.tscn" id="10_l8m8o"]
+[ext_resource type="PackedScene" uid="uid://t5s0sxumquql" path="res://actors/enemies/States/Act/None.tscn" id="11_8kfm4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rfo4i"]
-radius = 7.0
-height = 16.0
+[node name="Zenchan" instance=ExtResource("1_0ipqe")]
+script = ExtResource("2_l8m8o")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbd71"]
-size = Vector2(13.5, 14)
+[node name="IDLE" parent="StateMachine_Locomotion" index="0" instance=ExtResource("4_nh11d")]
 
-[node name="Zenchan" type="CharacterBody2D" groups=["Enemies"]]
-collision_layer = 4
-collision_mask = 129
-script = ExtResource("1_aigf2")
-LootTable = Array[ExtResource("2_rfo4i")]([ExtResource("3_s4w05")])
-JUMP_VELOCITY = 300.0
-MAX_RUN_VELOCITY = 75.0
-MAX_RISE_VELOCITY = 400.0
+[node name="BUBBLED" parent="StateMachine_Locomotion" index="1" instance=ExtResource("2_d746r")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_rfo4i")
+[node name="FALLING" parent="StateMachine_Locomotion" index="2" instance=ExtResource("3_a7m12")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": ExtResource("4_rfo4i"),
-&"RED": ExtResource("5_s4w05")
-}
-script = ExtResource("2_6hnld")
+[node name="JUMP_FORWARD" parent="StateMachine_Locomotion" index="3" instance=ExtResource("5_d88in")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_s72y3")
-region_enabled = true
-region_rect = Rect2(5, 5, 16, 16)
+[node name="JUMP_UP" parent="StateMachine_Locomotion" index="4" instance=ExtResource("6_8kfm4")]
 
-[node name="Sensors" type="Node2D" parent="."]
+[node name="RUNNING" parent="StateMachine_Locomotion" index="5" instance=ExtResource("7_l8m8o")]
 
-[node name="Wall_front" type="RayCast2D" parent="Sensors"]
-position = Vector2(0, 3)
-target_position = Vector2(9, 0)
-collision_mask = 129
+[node name="SPAWNING" parent="StateMachine_Status" index="0" instance=ExtResource("10_l8m8o")]
 
-[node name="Floor_above" type="RayCast2D" parent="Sensors"]
-position = Vector2(0, -7)
-target_position = Vector2(0, -34)
-collision_mask = 129
+[node name="ALIVE" parent="StateMachine_Status" index="1" instance=ExtResource("8_d88in")]
 
-[node name="Floor_front" type="RayCast2D" parent="Sensors"]
-target_position = Vector2(9, 10)
-collision_mask = 129
+[node name="DEAD" parent="StateMachine_Status" index="2" instance=ExtResource("9_8kfm4")]
 
-[node name="Decision_Timer" type="Timer" parent="."]
-one_shot = true
-
-[node name="StateMachine_Locomotion" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_hlciv")
-initial_state = NodePath("IDLE")
-
-[node name="BUBBLED" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("10_kdg0o")
-allowed_states = [NodePath("../FALLING"), NodePath("../IDLE"), NodePath("../RUNNING")]
-
-[node name="RUNNING" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("5_fbiw4")
-allowed_states = [NodePath("../IDLE"), NodePath("../BUBBLED"), NodePath("../FALLING"), NodePath("../JUMP_UP"), NodePath("../JUMP_FORWARD")]
-
-[node name="IDLE" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("4_dne8i")
-allowed_states = [NodePath("../RUNNING"), NodePath("../BUBBLED"), NodePath("../FALLING"), NodePath("../JUMP_UP"), NodePath("../JUMP_FORWARD")]
-
-[node name="FALLING" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("7_jxh4g")
-allowed_states = [NodePath("../IDLE"), NodePath("../RUNNING"), NodePath("../BUBBLED")]
-
-[node name="JUMP_UP" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("8_6dyg7")
-allowed_states = [NodePath("../FALLING"), NodePath("../RUNNING"), NodePath("../BUBBLED"), NodePath("../IDLE")]
-
-[node name="JUMP_FORWARD" type="Node" parent="StateMachine_Locomotion" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("9_e7xus")
-allowed_states = [NodePath("../FALLING"), NodePath("../RUNNING"), NodePath("../BUBBLED"), NodePath("../IDLE")]
-
-[node name="StateMachine_Status" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("10_dflga")
-initial_state = NodePath("SPAWNING")
-
-[node name="SPAWNING" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("14_t4a2j")
-allowed_states = [NodePath("../ALIVE")]
-
-[node name="ALIVE" type="Node" parent="StateMachine_Status" node_paths=PackedStringArray("allowed_states")]
-script = ExtResource("12_s6xig")
-allowed_states = [NodePath("../DEAD"), null]
-
-[node name="DEAD" type="Node" parent="StateMachine_Status"]
-script = ExtResource("13_l6spp")
-
-[node name="StateMachine_Act" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("19_rfo4i")
-initial_state = NodePath("State_act_None")
-metadata/_custom_type_script = "uid://pbqf3u3hfeho"
-
-[node name="State_act_None" type="Node" parent="StateMachine_Act"]
-script = ExtResource("20_s4w05")
-metadata/_custom_type_script = "uid://bkjgyynhglj64"
-
-[node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, 7)
-collision_layer = 256
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0.25, -7)
-shape = SubResource("RectangleShape2D_gbd71")
-debug_color = Color(0.29961187, 0.5557529, 0, 0.41960785)
+[node name="State_act_None" parent="StateMachine_Act" index="0" instance=ExtResource("11_8kfm4")]

@@ -23,7 +23,7 @@ func addMod( mod: ActorMod) -> void:
 
 # Clears all mods on an actor. Used in situations like Death.
 # Forcefull removal does not deactivate the mod, instead it deletes it outright.
-func clear_all(force: bool = true) -> void:
+func clear_all(force: bool = false) -> void:
 	if(force) :
 		mods = {}
 		return

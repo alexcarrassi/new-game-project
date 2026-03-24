@@ -1,10 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://8liyre5r0auf"]
+[gd_scene load_steps=17 format=3 uid="uid://8liyre5r0auf"]
 
-[ext_resource type="PackedScene" uid="uid://b2kwfbabyr0bm" path="res://actors/enemies/zenchan/zenchan.tscn" id="1_a4hkh"]
+[ext_resource type="PackedScene" uid="uid://jbkj40qgwjk8" path="res://actors/enemies/Enemy.tscn" id="1_a4hkh"]
 [ext_resource type="AnimationLibrary" uid="uid://bfk564bj0tp60" path="res://assets/animations/Actors/Maita.tres" id="2_fehrb"]
+[ext_resource type="Script" uid="uid://cfvj2o7r4nik3" path="res://actors/enemies/Maita/maita.gd" id="2_j8r4g"]
 [ext_resource type="AnimationLibrary" uid="uid://qypkes40mnf" path="res://assets/animations/Actors/Maita_RED.tres" id="3_fehrb"]
+[ext_resource type="PackedScene" uid="uid://cufsaqpabnav" path="res://actors/enemies/States/Locomotion/bubbled.tscn" id="4_rl2i6"]
+[ext_resource type="PackedScene" uid="uid://c0rg7mskp21x8" path="res://actors/enemies/States/Locomotion/falling.tscn" id="5_j8r4g"]
+[ext_resource type="PackedScene" uid="uid://0srxgjo4gkm1" path="res://actors/enemies/States/Locomotion/idle.tscn" id="6_ots7w"]
+[ext_resource type="PackedScene" uid="uid://b12bha87h16ve" path="res://actors/enemies/States/Locomotion/jump_forward.tscn" id="7_kmxbr"]
+[ext_resource type="PackedScene" uid="uid://ch7sg8yu7b6jy" path="res://actors/enemies/States/Locomotion/jump_up.tscn" id="8_b084e"]
+[ext_resource type="PackedScene" uid="uid://cj1an83jpejo7" path="res://actors/enemies/States/Locomotion/running.tscn" id="9_qnvar"]
+[ext_resource type="PackedScene" uid="uid://bqwkq0kk13tyo" path="res://actors/enemies/States/Status/alive.tscn" id="10_v80yq"]
+[ext_resource type="PackedScene" uid="uid://dptailbc5e58x" path="res://actors/enemies/States/Status/dead.tscn" id="11_3tqio"]
+[ext_resource type="PackedScene" uid="uid://biyjbn7hgj0q7" path="res://actors/enemies/States/Status/spawning.tscn" id="12_phw54"]
+[ext_resource type="PackedScene" uid="uid://t5s0sxumquql" path="res://actors/enemies/States/Act/None.tscn" id="13_4nlib"]
+[ext_resource type="PackedScene" uid="uid://cmtfsrug8q0p2" path="res://actors/enemies/States/Act/throw_fireball.tscn" id="14_bxqq8"]
+[ext_resource type="PackedScene" uid="uid://duj08wr35boy5" path="res://actors/enemies/Maita/Fireball.tscn" id="16_ots7w"]
 
-[node name="Zenchan" instance=ExtResource("1_a4hkh")]
+[node name="Maita" instance=ExtResource("1_a4hkh")]
+script = ExtResource("2_j8r4g")
+fireBallScene = null
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -15,5 +30,25 @@ libraries = {
 [node name="Sprite2D" parent="." index="2"]
 region_rect = Rect2(5, 26, 16, 16)
 
-[node name="ALIVE" parent="StateMachine_Status" index="1" node_paths=PackedStringArray("allowed_states")]
-allowed_states = [NodePath("../DEAD"), null]
+[node name="IDLE" parent="StateMachine_Locomotion" index="0" instance=ExtResource("6_ots7w")]
+
+[node name="BUBBLED" parent="StateMachine_Locomotion" index="1" instance=ExtResource("4_rl2i6")]
+
+[node name="FALLING" parent="StateMachine_Locomotion" index="2" instance=ExtResource("5_j8r4g")]
+
+[node name="JUMP_FORWARD" parent="StateMachine_Locomotion" index="3" instance=ExtResource("7_kmxbr")]
+
+[node name="JUMP_UP" parent="StateMachine_Locomotion" index="4" instance=ExtResource("8_b084e")]
+
+[node name="RUNNING" parent="StateMachine_Locomotion" index="5" instance=ExtResource("9_qnvar")]
+
+[node name="SPAWNING" parent="StateMachine_Status" index="0" instance=ExtResource("12_phw54")]
+
+[node name="ALIVE" parent="StateMachine_Status" index="1" instance=ExtResource("10_v80yq")]
+
+[node name="DEAD" parent="StateMachine_Status" index="2" instance=ExtResource("11_3tqio")]
+
+[node name="NONE" parent="StateMachine_Act" index="0" instance=ExtResource("13_4nlib")]
+
+[node name="THROW_FIREBALL" parent="StateMachine_Act" index="1" instance=ExtResource("14_bxqq8")]
+FireballScene = ExtResource("16_ots7w")

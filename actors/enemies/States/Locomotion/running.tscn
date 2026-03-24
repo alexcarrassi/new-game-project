@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj1an83jpejo7"]
+
+[ext_resource type="Script" uid="uid://bju7fthcpdhx8" path="res://actors/enemies/States/Locomotion/Running.gd" id="1_qqds7"]
+
+[node name="RUNNING" type="Node"]
+script = ExtResource("1_qqds7")
+allowed_states = Array[StringName]([&"IDLE", &"JUMP_FORWARD", &"JUMP_UP", &"BUBBLED", &"FALLING"])

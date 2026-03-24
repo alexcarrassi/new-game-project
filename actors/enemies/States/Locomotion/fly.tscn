@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu346y3jcqwov"]
+
+[ext_resource type="Script" uid="uid://cefqxu1l7qvn7" path="res://actors/enemies/States/Locomotion/fly.gd" id="1_n1w2n"]
+
+[node name="FLY" type="Node"]
+script = ExtResource("1_n1w2n")

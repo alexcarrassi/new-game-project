@@ -22,14 +22,13 @@ func physics_update(delta: float) -> void:
 	for i in actor.get_slide_collision_count():
 		var collision = actor.get_slide_collision(i)
 		var collision_normal = collision.get_normal()
-		
-		# Bouncing is pretty much copying the collision normal's direction.
-		if(abs(collision_normal.x ) > 0.0) :
-			actor.direction.x = collision_normal.x
-			
-		if( abs(collision_normal.y) > 0.0) :
-			actor.direction.y = collision_normal.y	
+
+		if( abs(collision_normal.x) > 0.3):
+			actor.direction.x =  1 if collision_normal.x > 0 else -1
+		if(abs(collision_normal.y) > 0.3 ) :
+			actor.direction.y =	  1 if collision_normal.y > 0 else -1
 	
+	print(actor.direction) 
 	actor.sprite2D.flip_h = actor.direction.x > 0.0
 
 	actor.velocity = Vector2(actor.MAX_RUN_VELOCITY, actor.MAX_RISE_VELOCITY) * actor.direction

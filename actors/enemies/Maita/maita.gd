@@ -14,5 +14,5 @@ func think() -> void:
 	
 	if( random_number < 1 && !self.has_owned(&"Fireball")):
 		if( self.player_above() == 0 && self.isFacing( self.get_targetPlayer())):
-			self.intent.act = &"Throw_Fireball"
+			self.intent.act = &"THROW_FIREBALL"
 			

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0rg7mskp21x8"]
+
+[ext_resource type="Script" uid="uid://cudtf51fi251h" path="res://actors/enemies/States/Locomotion/falling.gd" id="1_5mh61"]
+
+[node name="FALLING" type="Node"]
+script = ExtResource("1_5mh61")
+allowed_states = Array[StringName]([&"IDLE", &"RUNNING", &"BUBBLED"])

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b12bha87h16ve"]
+
+[ext_resource type="Script" uid="uid://dhxhusuigbtbb" path="res://actors/enemies/States/Locomotion/Jump_forward.gd" id="1_h08p7"]
+
+[node name="JUMP_FORWARD" type="Node"]
+script = ExtResource("1_h08p7")
+allowed_states = Array[StringName]([&"BUBBLED", &"FALLING", &"RUNNING", &"IDLE"])

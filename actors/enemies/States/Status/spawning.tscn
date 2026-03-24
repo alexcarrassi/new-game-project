@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://biyjbn7hgj0q7"]
+
+[ext_resource type="Script" uid="uid://dpmx0ixy2cn61" path="res://actors/scripts/spawning.gd" id="1_6e1ly"]
+
+[node name="SPAWNING" type="Node"]
+script = ExtResource("1_6e1ly")
+allowed_states = Array[StringName]([&"ALIVE"])

@@ -34,7 +34,7 @@ func enter(prev_state: State, data: Dictionary = {}) -> void:
 	actor.set_collision_mask_value(1, false)
 	
 	#Cancel all Mods on the actor
-	actor.modController.clear_all()
+	actor.modController.clear_all(true)
 	
 	#After some time, re enable the collision again
 	if(self.timer == null) :

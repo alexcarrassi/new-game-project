@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://jbkj40qgwjk8"]
+
+[ext_resource type="Script" uid="uid://cx828ycxarj3w" path="res://actors/enemies/Enemy.gd" id="1_s6a2x"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/ItemTypes/Item.gd" id="2_n721a"]
+[ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://things/Inventory/Items/Points/Peach.tres" id="3_texev"]
+[ext_resource type="AnimationLibrary" uid="uid://bg2ur4fd854fq" path="res://assets/animations/Actors/zenchan.tres" id="4_7x0wi"]
+[ext_resource type="AnimationLibrary" uid="uid://b3p7t8jfoligj" path="res://assets/animations/Actors/zenchan_RED.tres" id="5_vtx8q"]
+[ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="6_65ebo"]
+[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="7_w28qu"]
+[ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="8_bffln"]
+[ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="15_gpg4s"]
+[ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="19_a4hre"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rfo4i"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbd71"]
+size = Vector2(13.5, 14)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 129
+script = ExtResource("1_s6a2x")
+LootTable = Array[ExtResource("2_n721a")]([ExtResource("3_texev")])
+JUMP_VELOCITY = 300.0
+MAX_RUN_VELOCITY = 75.0
+MAX_RISE_VELOCITY = 400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rfo4i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": ExtResource("4_7x0wi"),
+&"RED": ExtResource("5_vtx8q")
+}
+script = ExtResource("6_65ebo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("7_w28qu")
+region_enabled = true
+region_rect = Rect2(5, 5, 16, 16)
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="Wall_front" type="RayCast2D" parent="Sensors"]
+position = Vector2(0, 3)
+target_position = Vector2(9, 0)
+collision_mask = 129
+
+[node name="Floor_above" type="RayCast2D" parent="Sensors"]
+position = Vector2(0, -7)
+target_position = Vector2(0, -34)
+collision_mask = 129
+
+[node name="Floor_front" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(9, 10)
+collision_mask = 129
+
+[node name="Decision_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StateMachine_Locomotion" type="Node" parent="."]
+script = ExtResource("8_bffln")
+
+[node name="StateMachine_Status" type="Node" parent="."]
+script = ExtResource("15_gpg4s")
+
+[node name="StateMachine_Act" type="Node" parent="."]
+script = ExtResource("19_a4hre")
+metadata/_custom_type_script = "uid://pbqf3u3hfeho"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 7)
+collision_layer = 256
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.25, -7)
+shape = SubResource("RectangleShape2D_gbd71")
+debug_color = Color(0.29961187, 0.5557529, 0, 0.41960785)

@@ -32,14 +32,19 @@ func physics_update(delta: float) -> void:
 	elif(!self.body.is_on_floor()) :
 		self.finished.emit("FALLING")	
 		
-	match(actor.intent.locomotion):
-		&"JUMP_UP":
-			self.finished.emit("JUMP_UP")
-			actor.intent.clear_locomotion()	
-	
-		&"IDLE":
-			self.finished.emit("IDLE")
-			actor.intent.clear_locomotion()	
+		
+	if(actor.intent.locomotion) :		
+		finished.emit( actor.intent.locomotion)
+		actor.intent.clear_locomotion()		
+	#match(actor.intent.locomotion):
+#
+#
+		#&"JUMP_UP":
+			#self.finished.emit("JUMP_UP")
+			#actor.intent.clear_locomotion()	
+	#
+		#&"IDLE":
+			#self.finished.emit("IDLE")
 
 func exit() -> void:
 	self.body.decision_timer.stop()	
