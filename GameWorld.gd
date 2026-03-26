@@ -345,6 +345,11 @@ func onActorDeath( actor: Actor) -> void:
 	if(actor is Player):
 		self.onPlayerDeath(actor)
 	actor.queue_free()	
+	
+	# Check if there are no players anymore. If so, go back to main menu
+	if ( Game.playerEntries.values().size() < 1) :
+		Game.exit_to_main_menu()
+		
 
 func getTransitionSlot( player_index: int) -> Marker2D:
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://0m2bg6htt36p"]
 
 [ext_resource type="Script" uid="uid://b3olf4n8g8urp" path="res://UI/player_hud.gd" id="1_ylgw7"]
-[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/misc/Fonts.png" id="2_d3wnd"]
+[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/fonts/Fonts.png" id="2_d3wnd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d3wnd"]
 load_path = "res://.godot/imported/Bubble_types.png-a046bf583e00a8b503c328dbdbb68a45.ctex"

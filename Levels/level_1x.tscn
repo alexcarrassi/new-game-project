@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=4 uid="uid://cey8bqayj4br0"]
 
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level.tscn" id="1_tj7v0"]
-[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="2_7i62u"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="2_7i62u"]
 [ext_resource type="PackedScene" uid="uid://8liyre5r0auf" path="res://actors/enemies/Maita/Maita.tscn" id="3_0plxl"]
-[ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="3_v2na5"]
-[ext_resource type="PackedScene" uid="uid://dgbacp2xdq52f" path="res://things/Bubbles/ZapBubble/ZapBubble.tscn" id="4_v2na5"]
-[ext_resource type="PackedScene" uid="uid://0qbs3c111ic0" path="res://things/Bubbles/WaterBubble/WaterBubble.tscn" id="5_0plxl"]
+[ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://Things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="3_v2na5"]
+[ext_resource type="PackedScene" uid="uid://dgbacp2xdq52f" path="res://Things/Bubbles/ZapBubble/ZapBubble.tscn" id="4_v2na5"]
+[ext_resource type="PackedScene" uid="uid://0qbs3c111ic0" path="res://Things/Bubbles/WaterBubble/WaterBubble.tscn" id="5_0plxl"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="5_jofef"]
 
 [node name="Level_01" instance=ExtResource("1_tj7v0")]
@@ -36,23 +36,21 @@ flip_h = true
 [node name="BubbleSpawner3" parent="Bubble_Spawns" index="0" instance=ExtResource("3_v2na5")]
 position = Vector2(64, -18)
 bubbleScene = ExtResource("4_v2na5")
-disabled = true
 
 [node name="Icon" parent="Bubble_Spawns/BubbleSpawner3" index="1"]
-modulate = Color(1, 1, 1, 0.3)
+modulate = Color(1, 1, 1, 0.7)
 texture = ExtResource("5_jofef")
 region_rect = Rect2(46, 46, 16, 16)
 
 [node name="BubbleSpawner" parent="Bubble_Spawns" index="1" instance=ExtResource("3_v2na5")]
 position = Vector2(151, -16)
 bubbleScene = ExtResource("5_0plxl")
-disabled = true
 
 [node name="IntervalTimer" parent="Bubble_Spawns/BubbleSpawner" index="0"]
 wait_time = 2.0
 
 [node name="Icon" parent="Bubble_Spawns/BubbleSpawner" index="1"]
-modulate = Color(1, 1, 1, 0.3)
+modulate = Color(1, 1, 1, 0.7)
 texture = ExtResource("5_jofef")
 region_rect = Rect2(4, 46, 16, 16)
 

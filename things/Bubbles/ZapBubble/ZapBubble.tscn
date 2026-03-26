@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dgbacp2xdq52f"]
 
-[ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://things/Bubbles/Bubble.tscn" id="1_vekhu"]
-[ext_resource type="Script" uid="uid://inj8rxgwwfs8" path="res://things/Bubbles/ZapBubble/ZapBubble.gd" id="2_4tdxl"]
+[ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://Things/Bubbles/Bubble.tscn" id="1_vekhu"]
+[ext_resource type="Script" uid="uid://inj8rxgwwfs8" path="res://Things/Bubbles/ZapBubble/ZapBubble.gd" id="2_4tdxl"]
 
 [sub_resource type="Animation" id="Animation_3mr26"]
 resource_name = "Pon"

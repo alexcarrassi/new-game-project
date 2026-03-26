@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://mgmqdv2san8v"]
 
-[ext_resource type="Script" uid="uid://wt71ovhq64j7" path="res://things/Inventory/Items/ItemPickup.gd" id="1_ik8ld"]
+[ext_resource type="Script" uid="uid://wt71ovhq64j7" path="res://Things/Inventory/Items/ItemPickup.gd" id="1_ik8ld"]
 [ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="2_q3l83"]
-[ext_resource type="Texture2D" uid="uid://dmey2ecmnmqbn" path="res://assets/misc/PointsAndFonts.png" id="3_oml35"]
+[ext_resource type="Texture2D" uid="uid://dmey2ecmnmqbn" path="res://assets/fonts/PointsAndFonts.png" id="3_oml35"]
 [ext_resource type="AnimationLibrary" uid="uid://j12283a8d3h8" path="res://assets/animations/ItemPickup.tres" id="3_xeaud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeaud"]

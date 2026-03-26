@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://0qbs3c111ic0"]
 
-[ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://things/Bubbles/Bubble.tscn" id="1_p0uk1"]
-[ext_resource type="Script" uid="uid://bjnd4fpfta08t" path="res://things/Bubbles/WaterBubble/WaterBubble.gd" id="2_gnaoe"]
-[ext_resource type="PackedScene" uid="uid://rc7uixkgn22v" path="res://things/Projectiles/WaterProjectile.tscn" id="3_rkt23"]
+[ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://Things/Bubbles/Bubble.tscn" id="1_p0uk1"]
+[ext_resource type="Script" uid="uid://bjnd4fpfta08t" path="res://Things/Bubbles/WaterBubble/WaterBubble.gd" id="2_gnaoe"]
+[ext_resource type="PackedScene" uid="uid://rc7uixkgn22v" path="res://Things/Projectiles/WaterProjectile.tscn" id="3_rkt23"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yisb2"]
 friction = 0.0

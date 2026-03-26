@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://jbkj40qgwjk8"]
 
 [ext_resource type="Script" uid="uid://cx828ycxarj3w" path="res://actors/enemies/Enemy.gd" id="1_s6a2x"]
-[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://things/Inventory/ItemTypes/Item.gd" id="2_n721a"]
-[ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://things/Inventory/Items/Points/Peach.tres" id="3_texev"]
+[ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://Things/Inventory/ItemTypes/Item.gd" id="2_n721a"]
+[ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://Things/Inventory/Items/Points/Peach.tres" id="3_texev"]
 [ext_resource type="AnimationLibrary" uid="uid://bg2ur4fd854fq" path="res://assets/animations/Actors/zenchan.tres" id="4_7x0wi"]
 [ext_resource type="AnimationLibrary" uid="uid://b3p7t8jfoligj" path="res://assets/animations/Actors/zenchan_RED.tres" id="5_vtx8q"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="6_65ebo"]

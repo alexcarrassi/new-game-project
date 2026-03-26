@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="1_ca2et"]
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_esed1"]
-[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/misc/Fonts.png" id="3_0rc55"]
+[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/fonts/Fonts.png" id="3_0rc55"]
 
 [node name="Level00" type="Node2D"]
 script = ExtResource("1_esed1")

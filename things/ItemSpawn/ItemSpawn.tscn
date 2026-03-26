@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cmjp0yrptke8g"]
 
-[ext_resource type="Script" uid="uid://ciugjxa0dsb26" path="res://things/ItemSpawn/ItemSpawn.gd" id="1_oeicf"]
+[ext_resource type="Script" uid="uid://ciugjxa0dsb26" path="res://Things/ItemSpawn/ItemSpawn.gd" id="1_oeicf"]
 
 [node name="ItemSpawn" type="Marker2D"]
 script = ExtResource("1_oeicf")

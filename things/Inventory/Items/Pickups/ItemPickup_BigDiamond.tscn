@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvmyjbewa3vgh"]
 
-[ext_resource type="PackedScene" uid="uid://mgmqdv2san8v" path="res://things/Inventory/Items/ItemPickup.tscn" id="1_wheyr"]
+[ext_resource type="PackedScene" uid="uid://mgmqdv2san8v" path="res://Things/Inventory/Items/ItemPickup.tscn" id="1_wheyr"]
 [ext_resource type="Texture2D" uid="uid://c2eh37wx27735" path="res://assets/sprites/Items/Diamond_bigpurple.tres" id="2_hr6i8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr6i8"]

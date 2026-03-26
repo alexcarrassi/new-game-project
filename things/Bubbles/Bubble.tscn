@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://wraeqkcnwm3t"]
 
-[ext_resource type="Script" uid="uid://cd5jgtlg8kex6" path="res://things/Bubbles/PlayerBubble/PlayerBubble.gd" id="1_fnoqv"]
+[ext_resource type="Script" uid="uid://cd5jgtlg8kex6" path="res://Things/Bubbles/PlayerBubble/PlayerBubble.gd" id="1_fnoqv"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_4pbcg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qslm"]

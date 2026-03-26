@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_3mdkx"]
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="2_8w6fg"]
-[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="4_424uw"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="4_424uw"]
 [ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="5_x58bo"]
 
 [node name="Level_01" type="Node2D"]
@@ -27,7 +27,6 @@ autostart = true
 position = Vector2(29, 42)
 direction = Vector2(1, 0)
 spawn_defer_time = 2.0
-actorStayPut = false
 ActorScene = ExtResource("5_x58bo")
 
 [node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
@@ -46,7 +45,6 @@ wait_time = 2.0
 position = Vector2(200, -8)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
@@ -62,7 +60,6 @@ wait_time = 0.5
 position = Vector2(176, -8)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn5" index="0"]
@@ -79,7 +76,6 @@ position = Vector2(80, -8)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn6" index="0"]
@@ -96,7 +92,6 @@ wait_time = 0.5
 position = Vector2(208, -8)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
@@ -113,7 +108,6 @@ position = Vector2(48, -8)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
@@ -131,7 +125,6 @@ position = Vector2(56, -8)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]

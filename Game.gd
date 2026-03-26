@@ -2,6 +2,10 @@
 class_name auGame extends Node
 
 
+var root: WorldWrapper
+var gameWorldScene = load("res://GameWorld.tscn")
+var mainMenuScene = load("res://Screens/MainMenu.tscn")
+
 var world: GameWorld 
 var playerEntries : Dictionary[int, PlayerEntry]
 var currentLevel: int = 0
@@ -12,6 +16,9 @@ signal playerRegistered(playerEntry: PlayerEntry)
 
 func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+func register_root( root_node: WorldWrapper) -> void:
+	root = root_node	
 func register_player(index: int, player: Player) -> PlayerEntry:
 	var playerEntry = PlayerEntry.new()
 	#var playerStats = world.playerStats_Schema.duplicate(true)
@@ -151,3 +158,22 @@ func register_gameWorld(node:GameWorld) -> GameWorld:
 
 func getPlayerEntry(index: int) -> PlayerEntry: 
 	return self.playerEntries.get(index, null)
+
+
+func start_new_game() -> void: 
+	world = gameWorldScene.instantiate() as GameWorld 
+	for child in root.gameViewPort.get_children():
+		child.free() 
+		
+	root.gameViewPort.add_child(world) 
+	
+	for child in root.screenlayer.get_children():
+		child.free()
+	# Creates the stat table for the debug panel
+	#playerRegistered.connect( createStatTable)
+
+func exit_to_main_menu() -> void:
+	world.queue_free()
+		
+	var mainMenu = mainMenuScene.instantiate() as MainMenu 
+	root.screenlayer.add_child(mainMenu)

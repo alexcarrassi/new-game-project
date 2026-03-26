@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmey2ecmnmqbn"
-path="res://.godot/imported/PointsAndFonts.png-c92035d65cd041fae8f6bb67406a3dc2.ctex"
+path="res://.godot/imported/PointsAndFonts.png-41b843a5684c3f1a08e3aea8dd450640.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/misc/PointsAndFonts.png"
-dest_files=["res://.godot/imported/PointsAndFonts.png-c92035d65cd041fae8f6bb67406a3dc2.ctex"]
+source_file="res://assets/fonts/PointsAndFonts.png"
+dest_files=["res://.godot/imported/PointsAndFonts.png-41b843a5684c3f1a08e3aea8dd450640.ctex"]
 
 [params]
 

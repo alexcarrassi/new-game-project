@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://k470hfn00pdn"]
 
 [ext_resource type="Script" uid="uid://drry5o20dvs0k" path="res://UI/StatTable.gd" id="1_lvaok"]
-[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/misc/Fonts.png" id="2_agyip"]
+[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/fonts/Fonts.png" id="2_agyip"]
 
 [node name="StatTable" type="MarginContainer"]
 script = ExtResource("1_lvaok")

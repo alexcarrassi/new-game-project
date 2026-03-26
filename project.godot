@@ -20,13 +20,13 @@ config/icon="res://icon.svg"
 
 Game="*res://Game.gd"
 LevelDatabase="*res://Levels/LevelDatabase.tscn"
-ItemDB="*res://things/Inventory/Items/ItemDB.tscn"
-gRewardTable="*res://things/Inventory/RewardTable/RewardTable.tres"
+ItemDB="*res://Things/Inventory/Items/ItemDB.tscn"
+gRewardTable="*res://Things/Inventory/RewardTable/RewardTable.tres"
 
 [display]
 
 window/size/viewport_width=256
-window/size/viewport_height=224
+window/size/viewport_height=256
 window/size/always_on_top=true
 window/size/window_width_override=1280
 window/size/window_height_override=720

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c5afnxmv4ewbe"]
 
-[ext_resource type="Script" uid="uid://cfmxlohsnml8m" path="res://things/Projectiles/FireProjectile.gd" id="1_pvg81"]
+[ext_resource type="Script" uid="uid://cfmxlohsnml8m" path="res://Things/Projectiles/FireProjectile.gd" id="1_pvg81"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="1_pycr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qy6gl"]

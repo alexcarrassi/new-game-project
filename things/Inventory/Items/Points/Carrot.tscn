@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rx86oc0p4fvv"]
 
-[ext_resource type="PackedScene" uid="uid://mgmqdv2san8v" path="res://things/Inventory/Items/ItemPickup.tscn" id="1_1octy"]
+[ext_resource type="PackedScene" uid="uid://mgmqdv2san8v" path="res://Things/Inventory/Items/ItemPickup.tscn" id="1_1octy"]
 
 [node name="ItemPickup" instance=ExtResource("1_1octy")]
 fallingspeed = null

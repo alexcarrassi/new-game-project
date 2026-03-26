@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="CurrencyItem" load_steps=9 format=3 uid="uid://c2ddgjwf7aef7"]
 
-[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_8rxh8"]
-[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://things/Inventory/ItemEffects/AddCurrency.gd" id="2_5f5o1"]
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_8rxh8"]
+[ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://Things/Inventory/ItemEffects/AddCurrency.gd" id="2_5f5o1"]
 [ext_resource type="Texture2D" uid="uid://2af4kohpsbkd" path="res://assets/sprites/Items/BellPepper.tres" id="3_et4xp"]
-[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_8fbgp"]
-[ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://things/Inventory/ItemTypes/CurrencyItem.gd" id="4_et4xp"]
-[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_5f5o1"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://Things/Inventory/Actions/ItemAction.gd" id="4_8fbgp"]
+[ext_resource type="Script" uid="uid://b8mwup15awmm" path="res://Things/Inventory/ItemTypes/CurrencyItem.gd" id="4_et4xp"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://Things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_5f5o1"]
 
 [sub_resource type="Resource" id="Resource_5f5o1"]
 script = ExtResource("2_5f5o1")

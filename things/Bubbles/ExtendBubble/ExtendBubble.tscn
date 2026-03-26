@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cia1bm5ivt02"]
 
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_08rji"]
-[ext_resource type="Script" uid="uid://beryiloj80x5h" path="res://things/Bubbles/ExtendBubble/ExtendBubble.gd" id="2_rvayx"]
+[ext_resource type="Script" uid="uid://beryiloj80x5h" path="res://Things/Bubbles/ExtendBubble/ExtendBubble.gd" id="2_rvayx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qslm"]
 size = Vector2(12, 13)

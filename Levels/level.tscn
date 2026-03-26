@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_dvejp"]
 [ext_resource type="Texture2D" uid="uid://cnw6d84pc5ead" path="res://assets/tiles/Arrows.png" id="2_3hgmi"]
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="10_wjjle"]
-[ext_resource type="PackedScene" uid="uid://cmjp0yrptke8g" path="res://things/ItemSpawn/ItemSpawn.tscn" id="11_1sae0"]
-[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://things/ActorSpawn/ActorSpawn.tscn" id="12_twn60"]
+[ext_resource type="PackedScene" uid="uid://cmjp0yrptke8g" path="res://Things/ItemSpawn/ItemSpawn.tscn" id="11_1sae0"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="12_twn60"]
 [ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="13_r2ueb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_854xt"]

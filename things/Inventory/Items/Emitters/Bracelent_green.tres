@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://w0o8dnt5jik6"]
 
-[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_hujdt"]
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_hujdt"]
 [ext_resource type="Texture2D" uid="uid://dde3rkiuwcu1y" path="res://assets/sprites/Items/Bracelet_green.tres" id="2_5t6ta"]
-[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="2_hvupq"]
-[ext_resource type="Resource" uid="uid://cj2h3xmscy0kc" path="res://things/Inventory/Items/Powerups/Extra_Life.tres" id="2_np770"]
-[ext_resource type="Script" uid="uid://g8o3dwa6gro8" path="res://things/Inventory/ItemEffects/PlayerBubbleToItem.gd" id="2_uugpf"]
-[ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="3_5t6ta"]
-[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="4_5t6ta"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://Things/Inventory/Actions/ItemAction.gd" id="2_hvupq"]
+[ext_resource type="Resource" uid="uid://cj2h3xmscy0kc" path="res://Things/Inventory/Items/Powerups/Extra_Life.tres" id="2_np770"]
+[ext_resource type="Script" uid="uid://g8o3dwa6gro8" path="res://Things/Inventory/ItemEffects/PlayerBubbleToItem.gd" id="2_uugpf"]
+[ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://Things/Inventory/ItemTypes/InventoryItem.gd" id="3_5t6ta"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://Things/Inventory/Actions/ApplyAllItemEffects.gd" id="4_5t6ta"]
 
 [sub_resource type="Resource" id="Resource_np770"]
 script = ExtResource("2_uugpf")

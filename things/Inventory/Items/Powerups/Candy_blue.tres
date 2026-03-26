@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="PowerupItem" load_steps=14 format=3 uid="uid://571fo2fyg6o3"]
 
-[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_eu3gw"]
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_eu3gw"]
 [ext_resource type="Script" uid="uid://ciwo76i33bb6a" path="res://actors/ActorMods/Mods/ActorMod.gd" id="2_yexgv"]
 [ext_resource type="Script" uid="uid://c6xyo1h5tqod2" path="res://actors/ActorMods/Mods/Increase_Bubble_Range.gd" id="3_ix38x"]
 [ext_resource type="Texture2D" uid="uid://d3n413u8i667j" path="res://assets/sprites/Items/Candy_blue.tres" id="3_oshx6"]
-[ext_resource type="Script" uid="uid://cjkgtsv3vqgqv" path="res://things/Inventory/ItemEffects/ApplyActorMods.gd" id="4_1o7fd"]
-[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_3ua2j"]
-[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_08rsx"]
-[ext_resource type="Script" uid="uid://duwhro1uubo6a" path="res://things/Inventory/ItemTypes/PowerupItem.gd" id="6_3ua2j"]
-[ext_resource type="Script" uid="uid://cl1v0i0mociff" path="res://things/Inventory/Actions/ActivateItem.gd" id="6_08rsx"]
+[ext_resource type="Script" uid="uid://cjkgtsv3vqgqv" path="res://Things/Inventory/ItemEffects/ApplyActorMods.gd" id="4_1o7fd"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://Things/Inventory/Actions/ItemAction.gd" id="4_3ua2j"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://Things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_08rsx"]
+[ext_resource type="Script" uid="uid://duwhro1uubo6a" path="res://Things/Inventory/ItemTypes/PowerupItem.gd" id="6_3ua2j"]
+[ext_resource type="Script" uid="uid://cl1v0i0mociff" path="res://Things/Inventory/Actions/ActivateItem.gd" id="6_08rsx"]
 
 [sub_resource type="Resource" id="Resource_eiw2a"]
 script = ExtResource("3_ix38x")

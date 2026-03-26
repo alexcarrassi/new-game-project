@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvp3jvwjx6bpl"]
 
-[ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://things/Bubbles/Bubble.tscn" id="1_5hdk0"]
+[ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://Things/Bubbles/Bubble.tscn" id="1_5hdk0"]
 
 [node name="Bubble" groups=["PlayerBubble"] instance=ExtResource("1_5hdk0")]
 collision_mask = 1

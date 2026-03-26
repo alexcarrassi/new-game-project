@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://wx663m1v2jal"]
 
 [ext_resource type="Texture2D" uid="uid://bngofwx1so1rx" path="res://assets/sprites/Items/Orb.tres" id="1_80skr"]
-[ext_resource type="Script" uid="uid://co1iwsu0k8s6i" path="res://things/Projectiles/OrbProjectile.gd" id="1_kf6hk"]
+[ext_resource type="Script" uid="uid://co1iwsu0k8s6i" path="res://Things/Projectiles/OrbProjectile.gd" id="1_kf6hk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kf6hk"]
 radius = 7.0

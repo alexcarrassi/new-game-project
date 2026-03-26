@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://1qwdmhna3p38"]
 
-[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://things/Inventory/ItemEffects/ItemEffect.gd" id="1_82qua"]
-[ext_resource type="Script" uid="uid://dp0qpmk38px0h" path="res://things/Inventory/ItemEffects/EmitExtendBubble.gd" id="2_7j24i"]
+[ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_82qua"]
+[ext_resource type="Script" uid="uid://dp0qpmk38px0h" path="res://Things/Inventory/ItemEffects/EmitExtendBubble.gd" id="2_7j24i"]
 [ext_resource type="Texture2D" uid="uid://tccbno7536an" path="res://assets/sprites/Items/Bracelet_blue.tres" id="2_jk5pc"]
-[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://things/Inventory/Actions/ItemAction.gd" id="4_1nagd"]
-[ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://things/Inventory/ItemTypes/InventoryItem.gd" id="4_jk5pc"]
-[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_r04ld"]
+[ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://Things/Inventory/Actions/ItemAction.gd" id="4_1nagd"]
+[ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://Things/Inventory/ItemTypes/InventoryItem.gd" id="4_jk5pc"]
+[ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://Things/Inventory/Actions/ApplyAllItemEffects.gd" id="5_r04ld"]
 
 [sub_resource type="Resource" id="Resource_1nagd"]
 script = ExtResource("2_7j24i")
