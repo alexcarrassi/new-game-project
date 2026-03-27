@@ -4,7 +4,8 @@ class_name auGame extends Node
 
 var root: WorldWrapper
 var gameWorldScene = load("res://GameWorld.tscn")
-var mainMenuScene = load("res://Screens/MainMenu.tscn")
+var mainMenuScene = load("res://Screens/MainMenu/MainMenu.tscn")
+var titleScene    = load("res://Screens/Title/TitleScreen.tscn")
 
 var world: GameWorld 
 var playerEntries : Dictionary[int, PlayerEntry]
@@ -177,3 +178,6 @@ func exit_to_main_menu() -> void:
 		
 	var mainMenu = mainMenuScene.instantiate() as MainMenu 
 	root.screenlayer.add_child(mainMenu)
+
+func exit() -> void:
+	get_tree().quit()

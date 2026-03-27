@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://rqyk4dvc2t4i"]
+
+[ext_resource type="SpriteFrames" uid="uid://b8gut47oafho8" path="res://assets/misc/bg_stars.tres" id="1_b76y3"]
+[ext_resource type="Script" uid="uid://cww4j7t7ibldn" path="res://Screens/Title/bg_star.gd" id="2_ooi04"]
+
+[node name="BG_Star" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_b76y3")
+animation = &"shine"
+frame_progress = 0.4704184
+script = ExtResource("2_ooi04")
