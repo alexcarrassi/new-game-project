@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_gpyco"]
 [ext_resource type="Script" uid="uid://do3pxjeiwr08k" path="res://Screens/MainMenu/main_menu.gd" id="2_bcgfw"]
-[ext_resource type="Texture2D" uid="uid://by2vhvg8257p1" path="res://assets/misc/Splash.tres" id="3_7t5rn"]
+[ext_resource type="Texture2D" uid="uid://trb6ygwwc3yo" path="res://assets/sprites/Items/Umbrella_blue.tres" id="3_5f575"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,59 +14,69 @@ grow_vertical = 2
 theme = ExtResource("1_gpyco")
 script = ExtResource("2_bcgfw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -71.5
-offset_top = 20.0
-offset_right = 71.5
-offset_bottom = 132.0
-grow_horizontal = 2
-texture = ExtResource("3_7t5rn")
-stretch_mode = 4
-
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -48.0
-offset_top = -117.0
+offset_top = -48.0
 offset_right = 48.0
-offset_bottom = -21.0
+offset_bottom = 48.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="Options" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="btn_New_Game" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Options"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_bottom = 11
+
+[node name="Label" type="Label" parent="CenterContainer/Options/MarginContainer"]
+layout_mode = 2
+text = "BUBBLE BOBBLE BETA
+BY CARRASSI"
+
+[node name="btn_New_Game" type="Button" parent="CenterContainer/Options"]
 layout_mode = 2
 text = "NEW GAME"
 alignment = 0
 
-[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="CenterContainer/Options"]
 layout_mode = 2
 text = "VERSUS MODE"
 alignment = 0
 
-[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Button4" type="Button" parent="CenterContainer/Options"]
 layout_mode = 2
 text = "ONLINE
 "
 alignment = 0
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="CenterContainer/Options"]
 layout_mode = 2
 text = "OPTIONS"
 alignment = 0
 
-[node name="btn_Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="btn_Exit" type="Button" parent="CenterContainer/Options"]
 layout_mode = 2
 text = "EXIT
 "
 alignment = 0
+
+[node name="Cursor" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 40.0
+offset_top = 98.0
+offset_right = 80.0
+offset_bottom = 138.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_5f575")
+stretch_mode = 4
+flip_h = true

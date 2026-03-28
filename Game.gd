@@ -174,7 +174,11 @@ func start_new_game() -> void:
 	#playerRegistered.connect( createStatTable)
 
 func exit_to_main_menu() -> void:
-	world.queue_free()
+	if(world):
+		world.queue_free()
+	
+	for child in root.screenlayer.get_children():
+		child.free()
 		
 	var mainMenu = mainMenuScene.instantiate() as MainMenu 
 	root.screenlayer.add_child(mainMenu)
