@@ -26,7 +26,7 @@ func spawnItem() -> ItemPickup:
 		itemPickup.item = item
 		itemPickup.position = self.position
 
-		get_tree().root.add_child( itemPickup )
+		Game.world.level.add_child(itemPickup)
 		
 		return itemPickup
 	return null	

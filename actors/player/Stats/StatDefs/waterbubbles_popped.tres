@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_cfb74")
 key = &"waterbubbles_popped"
-name = "Waterbubbles popped"
+name = "Waterbubbles"
 metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

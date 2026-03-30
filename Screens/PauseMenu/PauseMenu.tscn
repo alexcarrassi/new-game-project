@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://c30g70ajcytdv"]
+
+[ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_chuao"]
+[ext_resource type="Script" uid="uid://c811nsq3f05yj" path="res://Screens/PauseMenu/pause_menu.gd" id="1_xi74f"]
+[ext_resource type="PackedScene" uid="uid://k470hfn00pdn" path="res://Screens/PauseMenu/StatTable.tscn" id="2_8trls"]
+[ext_resource type="Texture2D" uid="uid://tccbno7536an" path="res://assets/sprites/Items/Bracelet_blue.tres" id="4_kema0"]
+[ext_resource type="Texture2D" uid="uid://trb6ygwwc3yo" path="res://assets/sprites/Items/Umbrella_blue.tres" id="4_l5o7h"]
+
+[node name="PauseMenu" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_chuao")
+script = ExtResource("1_xi74f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.79607844)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "PAUSE "
+horizontal_alignment = 1
+
+[node name="TabBar" type="TabBar" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="tab_Stats" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/tab_Stats"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 0
+
+[node name="StatTable_P1" parent="MarginContainer/VBoxContainer/tab_Stats/MarginContainer" instance=ExtResource("2_8trls")]
+clip_contents = true
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/tab_Stats"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="StatTable_P2" parent="MarginContainer/VBoxContainer/tab_Stats/MarginContainer2" instance=ExtResource("2_8trls")]
+clip_contents = true
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 12
+
+[node name="tab_Pause" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_toGame" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/tab_Pause"]
+layout_mode = 2
+text = "BACK TO GAME"
+
+[node name="btn_toTitle" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/tab_Pause"]
+layout_mode = 2
+theme_override_icons/icon = ExtResource("4_kema0")
+text = "EXIT TO TITLE
+"
+
+[node name="Cursor" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 40.0
+offset_top = 98.0
+offset_right = 80.0
+offset_bottom = 138.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_l5o7h")
+stretch_mode = 4
+flip_h = true

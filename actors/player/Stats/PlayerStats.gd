@@ -4,6 +4,7 @@ class_name PlayerStats extends Resource
 @export var rewarded: Dictionary[StringName, int] = {}
 
 const STATKEY_BUBBLES_BLOWN: StringName = &"bubbles_blown"
+
 const STATKEY_BUBBLES_POPPED: StringName = &"bubbles_popped"
 const STATKEY_WATERBUBBLES_POPPED: StringName = &"waterbubbles_popped"
 const STATKEY_FIREBUBBLES_POPPED: StringName = &"firebubbles_popped"

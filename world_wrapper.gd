@@ -5,7 +5,7 @@ class_name WorldWrapper extends Control
 @onready var gameplayLayer = $HBoxContainer/GameArea/GameplayLayer
 @onready var gameViewPort = $HBoxContainer/GameArea/GameplayLayer
 @onready var debugLayer: Control = $HBoxContainer/DebugLayer
-@onready var screenlayer: Control = $HBoxContainer/GameArea/ScreenLayer
+@onready var screenlayer: CanvasLayer = $HBoxContainer/GameArea/ScreenLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,11 +43,7 @@ func _fit_to_viewport() -> void:
 	size = get_viewport_rect().size
 	
 	
-func createStatTable(playerEntry: PlayerEntry) -> void:
-	var table = statTable.instantiate()
-	table.playerEntry = playerEntry
-	debugLayer.add_child( table )
-	pass
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

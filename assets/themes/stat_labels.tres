@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b8sdgjk835cq5"]
+
+[ext_resource type="FontFile" uid="uid://epe1dj0nvr4v" path="res://assets/fonts/taitoid.otf" id="1_yvvcl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3f3va"]
+
+[resource]
+default_font = ExtResource("1_yvvcl")
+default_font_size = 8
+Button/styles/focus = SubResource("StyleBoxEmpty_3f3va")

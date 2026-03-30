@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://cidakdiv2bhax"]
 
-[ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/fonts/Fonts.png" id="1_3f3va"]
+[ext_resource type="FontFile" uid="uid://epe1dj0nvr4v" path="res://assets/fonts/taitoid.otf" id="1_3f3va"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3f3va"]
 

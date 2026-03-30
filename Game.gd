@@ -3,9 +3,10 @@ class_name auGame extends Node
 
 
 var root: WorldWrapper
-var gameWorldScene = load("res://GameWorld.tscn")
-var mainMenuScene = load("res://Screens/MainMenu/MainMenu.tscn")
-var titleScene    = load("res://Screens/Title/TitleScreen.tscn")
+var gameWorldScene :PackedScene = load("res://GameWorld.tscn")
+var mainMenuScene :PackedScene = load("res://Screens/MainMenu/MainMenu.tscn")
+var titleScene :PackedScene    = load("res://Screens/Title/TitleScreen.tscn")
+var pauseMenuScene :PackedScene = load("res://Screens/PauseMenu/PauseMenu.tscn")
 
 var world: GameWorld 
 var playerEntries : Dictionary[int, PlayerEntry]
@@ -44,6 +45,8 @@ func deregister_player(index: int) -> Dictionary[int, PlayerEntry]:
 	self.playerEntries.erase(index)  
 	return self.playerEntries
 
+
+
 func getLevelById( id: String) -> LevelDefinition:
 	return LevelDatabase.getLevelDefinition(id)
 
@@ -63,8 +66,13 @@ func getNextLevel_id() -> String:
 		
 func _input(event: InputEvent) -> void:
 	if ( event.is_action_pressed("ui_start") ):
+		if(world == null) :
+			return
 		var tree = get_tree()
-		tree.paused = !tree.paused
+		if(!tree.paused):
+			pause_game()
+		else:
+			resume_game()
 		pass
 	elif(event.is_action_pressed("debug_LevelStart")):
 		self.world.level.cleanup()
@@ -160,9 +168,29 @@ func register_gameWorld(node:GameWorld) -> GameWorld:
 func getPlayerEntry(index: int) -> PlayerEntry: 
 	return self.playerEntries.get(index, null)
 
+	
+
+func pause_game() -> void:
+	var tree = get_tree()
+
+	var pauseMenu = pauseMenuScene.instantiate()
+	root.screenlayer.add_child(pauseMenu)
+	tree.paused = true
+
+	pass
+func resume_game() -> void:
+
+	for child: Control in root.screenlayer.	get_children():
+		child.free()
+		
+	var tree = get_tree()
+	tree.paused = false
+
+	pass
 
 func start_new_game() -> void: 
 	world = gameWorldScene.instantiate() as GameWorld 
+	
 	for child in root.gameViewPort.get_children():
 		child.free() 
 		
@@ -170,18 +198,36 @@ func start_new_game() -> void:
 	
 	for child in root.screenlayer.get_children():
 		child.free()
-	# Creates the stat table for the debug panel
-	#playerRegistered.connect( createStatTable)
-
+		
 func exit_to_main_menu() -> void:
-	if(world):
-		world.queue_free()
+	
+	clean_layers()
+		
+	var mainMenu = mainMenuScene.instantiate() as MainMenu 
+	root.screenlayer.add_child(mainMenu)
+
+
+func clean_layers() -> void: 
+	get_tree().paused = false
+	
+	world = null
+	for child in root.gameViewPort.get_children():
+		child.free() 
 	
 	for child in root.screenlayer.get_children():
 		child.free()
 		
-	var mainMenu = mainMenuScene.instantiate() as MainMenu 
-	root.screenlayer.add_child(mainMenu)
+		
+	for i: int in playerEntries.keys():
+		deregister_player(i)
+		
+
+func exit_to_title() -> void: 
+	clean_layers()
+		
+	var titleScene = titleScene.instantiate() as TitleScreen
+	root.screenlayer.add_child( titleScene ) 
+
 
 func exit() -> void:
 	get_tree().quit()

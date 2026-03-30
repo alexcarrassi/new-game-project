@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_kqn16")
 key = &"movement_speed_multiplier"
-name = "Movement Speed Multiplier"
+name = "Speed x"
 value = 1
 metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

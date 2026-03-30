@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_hujv5")
 key = &"items_collected"
-name = "Items collected"
+name = "Items"
 metadata/_custom_type_script = "uid://cqp4sjd3wojxd"

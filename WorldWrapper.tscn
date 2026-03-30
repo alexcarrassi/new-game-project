@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dks51s3ef7k1n"]
 
 [ext_resource type="Script" uid="uid://coyh0i17i7kaa" path="res://world_wrapper.gd" id="1_5v3dv"]
-[ext_resource type="PackedScene" uid="uid://k470hfn00pdn" path="res://UI/StatTable.tscn" id="3_5v3dv"]
+[ext_resource type="PackedScene" uid="uid://k470hfn00pdn" path="res://Screens/PauseMenu/StatTable.tscn" id="3_5v3dv"]
 
 [node name="WorldWrapper" type="Control"]
 layout_mode = 3
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0316549, 0.0316549, 0.031654898, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="DebugLayer" type="Control" parent="."]
 anchors_preset = 0
@@ -44,37 +44,12 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScreenLayer" type="Control" parent="HBoxContainer/GameArea"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
+[node name="ScreenLayer" type="CanvasLayer" parent="HBoxContainer/GameArea"]
+process_mode = 3
+layer = 2
 
 [node name="GameplayLayer" type="Control" parent="HBoxContainer/GameArea"]
 anchors_preset = 0
 offset_left = 256.0
 offset_right = 256.0
 offset_bottom = 256.0
-
-[node name="_GameplayLayer" type="SubViewportContainer" parent="HBoxContainer/GameArea"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="HBoxContainer/GameArea/_GameplayLayer"]
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-oversampling = false
-size = Vector2i(256, 256)
-size_2d_override = Vector2i(256, 256)
-size_2d_override_stretch = true
-render_target_update_mode = 0
