@@ -1,32 +1,40 @@
-[gd_scene load_steps=9 format=3 uid="uid://3yl1bxl5o8i5"]
+[gd_scene load_steps=11 format=3 uid="uid://3yl1bxl5o8i5"]
 
 [ext_resource type="Script" uid="uid://dedry2pqikg2d" path="res://Levels/LevelDatabase.gd" id="1_da1vx"]
+[ext_resource type="PackedScene" uid="uid://byvof7wuayhd8" path="res://Levels/level_00.tscn" id="3_11keg"]
 [ext_resource type="PackedScene" uid="uid://bf0462ur1u34s" path="res://Levels/level_02.tscn" id="5_a0wmx"]
 [ext_resource type="PackedScene" uid="uid://cey8bqayj4br0" path="res://Levels/level_1x.tscn" id="6_y7t6v"]
 [ext_resource type="Script" uid="uid://cvnjelfj5bn7f" path="res://Levels/LevelDefinition.gd" id="13_vjd8q"]
 [ext_resource type="PackedScene" uid="uid://behfohavlssx4" path="res://Levels/level_01.tscn" id="14_e2sgk"]
 
-[sub_resource type="Resource" id="Resource_27iff"]
+[sub_resource type="Resource" id="Resource_5t0jc"]
 script = ExtResource("13_vjd8q")
 id = "0"
-scene = ExtResource("6_y7t6v")
+scene = ExtResource("3_11keg")
 default_next = "1"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_27iff"]
+script = ExtResource("13_vjd8q")
+id = "1"
+scene = ExtResource("6_y7t6v")
+default_next = "2"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [sub_resource type="Resource" id="Resource_1spmx"]
 script = ExtResource("13_vjd8q")
-id = "1"
+id = "2"
 scene = ExtResource("14_e2sgk")
-default_next = "2"
+default_next = "3"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [sub_resource type="Resource" id="Resource_11keg"]
 script = ExtResource("13_vjd8q")
-id = "2"
+id = "3"
 scene = ExtResource("5_a0wmx")
 default_next = "0"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [node name="LevelDatabase" type="Node"]
 script = ExtResource("1_da1vx")
-levels = Array[ExtResource("13_vjd8q")]([SubResource("Resource_27iff"), SubResource("Resource_1spmx"), SubResource("Resource_11keg")])
+levels = Array[ExtResource("13_vjd8q")]([SubResource("Resource_5t0jc"), SubResource("Resource_27iff"), SubResource("Resource_1spmx"), SubResource("Resource_11keg")])
