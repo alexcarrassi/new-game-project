@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://0m2bg6htt36p"]
+[gd_scene load_steps=11 format=3 uid="uid://0m2bg6htt36p"]
 
 [ext_resource type="Script" uid="uid://b3olf4n8g8urp" path="res://UI/player_hud.gd" id="1_ylgw7"]
 [ext_resource type="FontFile" uid="uid://dwk5vkg3mgmvt" path="res://assets/fonts/Fonts.png" id="2_d3wnd"]
+[ext_resource type="PackedScene" uid="uid://dpdr1wuo3nem" path="res://UI/StartToJoin.tscn" id="3_ssc20"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d3wnd"]
 load_path = "res://.godot/imported/Bubble_types.png-a046bf583e00a8b503c328dbdbb68a45.ctex"
@@ -31,6 +32,7 @@ atlas = SubResource("CompressedTexture2D_d3wnd")
 region = Rect2(109, 67, 16, 16)
 
 [node name="PlayerHUD" type="Control"]
+layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,84 +42,110 @@ grow_vertical = 2
 script = ExtResource("1_ylgw7")
 font = ExtResource("2_d3wnd")
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 56.0
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="StartToJoin" parent="MarginContainer2" instance=ExtResource("3_ssc20")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="Ingame" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Ingame"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_right = 72.0
 offset_bottom = 17.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="Score" type="Label" parent="Margin"]
+[node name="Score" type="Label" parent="Ingame/Margin"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_d3wnd")
 theme_override_font_sizes/font_size = 12
 text = "1200"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="Ingame"]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -31.0
-grow_horizontal = 2
+offset_right = 30.0
 grow_vertical = 0
-theme_override_constants/margin_left = 9
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 14
 
-[node name="Lives" type="Label" parent="MarginContainer"]
+[node name="Lives" type="Label" parent="Ingame/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_d3wnd")
 theme_override_font_sizes/font_size = 12
 text = "2"
 vertical_alignment = 2
 
-[node name="Inventory" type="MarginContainer" parent="."]
+[node name="Inventory" type="MarginContainer" parent="Ingame"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
+offset_top = -58.0
+offset_right = 16.0
+offset_bottom = 58.0
 grow_vertical = 2
+theme_override_constants/margin_left = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ingame/Inventory"]
 layout_mode = 2
 
-[node name="extend_E1" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_E1" type="TextureRect" parent="Ingame/Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_ssc20")
 stretch_mode = 4
 
-[node name="extend_X" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_X" type="TextureRect" parent="Ingame/Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_wk6a1")
 stretch_mode = 4
 
-[node name="extend_T" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_T" type="TextureRect" parent="Ingame/Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_3v5a7")
 stretch_mode = 4
 
-[node name="extend_E2" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_E2" type="TextureRect" parent="Ingame/Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_uo3e5")
 stretch_mode = 4
 
-[node name="extend_N" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_N" type="TextureRect" parent="Ingame/Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_snitt")
 stretch_mode = 4
 
-[node name="extend_D" type="TextureRect" parent="Inventory/VBoxContainer"]
+[node name="extend_D" type="TextureRect" parent="Ingame/Inventory/VBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_yx7cs")
 stretch_mode = 4
 
-[node name="Stats" type="MarginContainer" parent="."]
+[node name="Stats" type="MarginContainer" parent="Ingame"]
 visible = false
 layout_mode = 1
 offset_left = 33.0
@@ -125,14 +153,14 @@ offset_top = 22.0
 offset_right = 93.0
 offset_bottom = 62.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Stats"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ingame/Stats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Stats/VBoxContainer"]
+[node name="Label" type="Label" parent="Ingame/Stats/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_d3wnd")
 theme_override_font_sizes/font_size = 10
 text = "STATS"
 
-[node name="Stats_list" type="VBoxContainer" parent="Stats/VBoxContainer"]
+[node name="Stats_list" type="VBoxContainer" parent="Ingame/Stats/VBoxContainer"]
 layout_mode = 2

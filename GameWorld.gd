@@ -5,6 +5,8 @@ class_name GameWorld extends Node
 @export var rewardTable: RewardTable
 var level: Level
 @onready var UI: WorldUI = $UI
+@onready var HUD_p1: PlayerHUD = $UI/Root/P1/HUD/PlayerHUD
+@onready var HUD_p2: PlayerHUD = $UI/Root/P2/HUD/PlayerHUD
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
 @onready var TransitionSlots: Node = $TransitionSlots
 
@@ -266,7 +268,7 @@ func createPlayer(index: int, player:PackedScene ) -> Player:
 		playerNode.actorHurt.connect( self.onActorHurt )
 		playerNode.actorDeath.connect( self.onActorDeath )
 		playerEntry.inventory.inventoryUpdated.connect( self.tryExtend.bind(playerNode))
-		self.spawnPlayerHUD( self.playerHUDScene, playerEntry )
+		self.injectPlayerIntoHUD(playerEntry)
 			
 	return playerNode
 
@@ -309,10 +311,12 @@ func createNextLevel(level_id: String) -> Level:
 	
 	return null	
 
-func spawnPlayerHUD( hudScene: PackedScene, playerEntry: PlayerEntry) -> void:
-	var playerHUD = hudScene.instantiate()
-	playerHUD.playerEntry = playerEntry
-	self.UI.add_child(playerHUD) 
+func injectPlayerIntoHUD(playerEntry: PlayerEntry) -> void:
+	if(playerEntry.id == 0) :
+		HUD_p1.setPlayerEntry(playerEntry)
+	else:
+		HUD_p2.setPlayerEntry( playerEntry)
+
 	
 
 func spawnEnemy(enemyScene: PackedScene, position: Vector2, spawnNode: Node = null) -> Enemy:

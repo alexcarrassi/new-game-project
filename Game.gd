@@ -210,17 +210,20 @@ func exit_to_main_menu() -> void:
 func clean_layers() -> void: 
 	get_tree().paused = false
 	
-	world = null
 	for child in root.gameViewPort.get_children():
-		child.free() 
+		child.queue_free() 
 	
 	for child in root.screenlayer.get_children():
-		child.free()
+		child.queue_free()
 		
 		
 	for i: int in playerEntries.keys():
 		deregister_player(i)
 		
+	call_deferred("finalize_cleanup")	
+		
+func finalize_world_cleanup() -> void:
+	world = null
 
 func exit_to_title() -> void: 
 	clean_layers()

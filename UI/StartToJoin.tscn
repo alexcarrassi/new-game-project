@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpdr1wuo3nem"]
+
+[ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_v1ovx"]
+[ext_resource type="Texture2D" uid="uid://3uaqti8yihmw" path="res://assets/sprites/Items/Player1.tres" id="2_48vrp"]
+
+[node name="StartToJoin" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+theme = ExtResource("1_v1ovx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_48vrp")
+stretch_mode = 4
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="CENTERME" type="Label" parent="VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Press start to join"
+horizontal_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 2
