@@ -30,14 +30,15 @@ func enter(prev_state: State, data: Dictionary ):
 	var body_dir = -1 if( self.body.sprite2D.flip_h) else 1
 	bubble.dir = Vector2(body_dir  , 0)
 	bubble.global_position = Vector2(self.body.position.x, self.body.position.y - self.body.sprite2D.get_rect().size.y/2 )
-	
-	
+
 	#Add the bubble range extensions
 	var extension = playerEntry.stats.getStat(&"bubble_range") 
 	bubble.shoot_range += extension
 	
 	Game.world.level.add_child(bubble)
 	get_tree().current_scene.add_child(bubble)
+	if(player.bubbleSpriteSheet):
+		bubble.sprite.texture = player.bubbleSpriteSheet
 	
 	
 	var cooldown_mult = playerEntry.stats.getStat(PlayerStats.STATKEY_BUBBLE_RATE_MULT)

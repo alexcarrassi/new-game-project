@@ -261,19 +261,22 @@ func createPlayer(index: int) -> Player:
 		
 		var inputActionMapping: PlayerInputActions
 		var spriteSheet: AtlasTexture
+		var bubbleSpriteSheet: AtlasTexture
 		if(index == 0):
 			inputActionMapping = load("res://actors/player/Input/P1_InputActions.tres")
 			spriteSheet = load("res://assets/sprites/ActorSheets/player_1.tres")
+			bubbleSpriteSheet = load("res://assets/sprites/ActorSheets/bubble_p1.tres")
 		else:
 			inputActionMapping = load("res://actors/player/Input/P1_InputActions.tres")
 			spriteSheet = load("res://assets/sprites/ActorSheets/player_2.tres")
+			bubbleSpriteSheet = load("res://assets/sprites/ActorSheets/bubble_p2.tres")
 
 
 
 		self.add_child( playerNode )
 		playerNode.inputActions = inputActionMapping
 		playerNode.setSpriteSheet(spriteSheet)
-		
+		playerNode.setBubbleSpriteSheet( bubbleSpriteSheet )
 		playerNode.sm_status.state.finished.emit("SUSPENDED")
 		var transitionSlot = getTransitionSlot(playerNode.player_index)
 		playerNode.global_position = transitionSlot.global_position

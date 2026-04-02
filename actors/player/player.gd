@@ -20,6 +20,8 @@ var buffer_times : Dictionary = {"jump" = 0.0, "attack" = 0.0}
 var current_comboCount: int = 0
 var current_comboRecord: int = 0
 
+var bubbleSpriteSheet: AtlasTexture
+
 var inputActions: PlayerInputActions
 var inputState: InputState
 var score: int = 0
@@ -29,6 +31,9 @@ signal statEvent(statkey: StringName, value: int)
 
 func setSpriteSheet( spriteSheet: AtlasTexture) -> void:
 	sprite2D.texture = spriteSheet
+
+func setBubbleSpriteSheet( spriteSheet: AtlasTexture) -> void:
+	bubbleSpriteSheet = spriteSheet
 
 func updateCurrency(currencyVal: float, currencyType: StringName) -> void:
 	
