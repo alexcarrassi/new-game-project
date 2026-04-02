@@ -51,14 +51,15 @@ offset_top = -50.0
 offset_right = 56.0
 grow_vertical = 0
 theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 27
 theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 0
 
 [node name="StartToJoin" parent="MarginContainer2" instance=ExtResource("3_ssc20")]
 layout_direction = 2
 layout_mode = 2
 
 [node name="Ingame" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

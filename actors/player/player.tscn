@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://actors/player/player.gd" id="1_ivps1"]
-[ext_resource type="Texture2D" uid="uid://b8ilnnvefuioo" path="res://assets/sprites/characters.png" id="2_urp6f"]
+[ext_resource type="Texture2D" uid="uid://dl44hb8rywpxf" path="res://assets/sprites/ActorSheets/player_1.tres" id="2_otn2r"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="3_bwjto"]
 [ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="4_606se"]
 [ext_resource type="Script" uid="uid://vwygst2u1v4o" path="res://actors/player/scripts/State_Locomotion_Idle.gd" id="5_u1c27"]
@@ -373,7 +373,7 @@ health = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.5, -8.5)
-texture = ExtResource("2_urp6f")
+texture = ExtResource("2_otn2r")
 region_enabled = true
 region_rect = Rect2(2, 35, 16, 16)
 

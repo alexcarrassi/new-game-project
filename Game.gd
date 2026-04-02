@@ -65,15 +65,42 @@ func getNextLevel_id() -> String:
 	return nextLevel_id
 		
 func _input(event: InputEvent) -> void:
+	if(world) :
+		ingame_input(event)
+
+
+func ingame_input(event: InputEvent) -> void:
 	if ( event.is_action_pressed("ui_start") ):
-		if(world == null) :
-			return
-		var tree = get_tree()
-		if(!tree.paused):
-			pause_game()
+		# If Player 1 is already alive, then this is the Pause button.
+		if(getPlayerEntry(0)) :
+				# pause 
+			var tree = get_tree()
+			if(!tree.paused):
+				pause_game()
+			else:
+				resume_game()
 		else:
-			resume_game()
+			# Spawn player 
+			var player = world.createPlayer(0)
+			register_player(0, player)
+			player.sm_status.state.finished.emit("ALIVE")
+
 		pass
+	elif(event.is_action_pressed("ui_accept_p2")):
+	# If Player 2 is already alive, then this is the Pause button.
+		if(getPlayerEntry(1)) :
+				# pause 
+			var tree = get_tree()
+			if(!tree.paused):
+				pause_game()
+			else:
+				resume_game()
+		else:
+			# Spawn player 
+			var player = world.createPlayer(1)
+			register_player(1, player)
+			player.sm_status.state.finished.emit("ALIVE")
+					
 	elif(event.is_action_pressed("debug_LevelStart")):
 		self.world.level.cleanup()
 		self.world.level.levelTimer.start( self.world.level.levelTimer.wait_time)
@@ -89,7 +116,6 @@ func _input(event: InputEvent) -> void:
 			player.hurtbox.monitorable = !player.hurtbox.monitorable 
 			player.hurtbox.monitoring = !player.hurtbox.monitoring
 			player.sprite2D.modulate = Color(100, 100, 0, 0.5) if !player.hurtbox.monitorable else Color(1,1,1,1)
-			
 	elif(event.is_action_pressed("debug_advanceFrame")):
 		var tree = get_tree()
 		if(tree.paused && !self.is_frameStepping):
@@ -102,7 +128,6 @@ func _input(event: InputEvent) -> void:
 			tree.paused = true
 			
 			self.is_frameStepping = false	
-			
 	elif(event.is_action_pressed("debug_LevelWarper")):
 		var tree = get_tree()
 		
@@ -142,7 +167,6 @@ func _input(event: InputEvent) -> void:
 			tree.paused = true
 	elif(event.is_action_pressed("debug_KillAll")):
 		self.world.level.cleanEnemies()
-		
 	elif(event.is_action_pressed("debug_queueRewards")):
 		self.world.queue_items_for_spawn()	
 		

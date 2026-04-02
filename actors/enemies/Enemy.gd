@@ -51,6 +51,12 @@ func get_targetPlayer() -> Player:
 	if( Game.playerEntries.is_empty()) :
 		return null
 	
+	if(Game.playerEntries.get(0)):
+		return Game.playerEntries[0].player
+	if(Game.playerEntries.get(1)):
+		return Game.playerEntries[1].player
+		
+
 	return Game.playerEntries[0].player	
 	
 func player_above() -> int:

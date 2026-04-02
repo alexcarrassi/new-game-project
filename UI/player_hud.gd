@@ -19,8 +19,7 @@ var playerEntry: PlayerEntry
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	layer_ingame.visible = false 
-	startToJoin.visible = true
+	toggleIngame(false)
 	
 	pass # Replace with function body.
 
@@ -43,16 +42,14 @@ func setPlayerEntry( new_playerEntry: PlayerEntry):
 			child.modulate = Color(1, 1, 1, 0)
 		
 		layout_direction = Control.LAYOUT_DIRECTION_LTR if playerEntry.player.player_index == 0 else Control.LAYOUT_DIRECTION_RTL
-		startToJoin.visible = false
-		layer_ingame.visible = true
+		toggleIngame(true)
+
 	
-func removePlayerEntry() -> void: 
+func removePlayerEntry(actor: Actor) -> void: 
 	clean_connections() 
 	playerEntry = null
 	
-	startToJoin.visible = true
-	layer_ingame.visible = false
-		
+	toggleIngame(false)
 		
 func clean_connections() -> void:
 	if(playerEntry ):
@@ -67,6 +64,11 @@ func clean_connections() -> void:
 			
 		if(playerEntry.inventory.inventoryUpdated.is_connected(updateExtendInventory )):
 			playerEntry.inventory.inventoryUpdated.disconnect(updateExtendInventory)	
+
+
+func toggleIngame(on: bool) -> void: 
+	layer_ingame.visible = on 
+	startToJoin.visible = !on
 
 
 func updateScore() -> void:

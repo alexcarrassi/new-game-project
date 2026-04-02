@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c77k1tce7y5xe"]
+[gd_scene load_steps=17 format=3 uid="uid://c77k1tce7y5xe"]
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
@@ -7,7 +7,9 @@
 [ext_resource type="Resource" uid="uid://ci2ts12j3iqgq" path="res://Things/Inventory/RewardTable/RewardTable.tres" id="4_waypw"]
 [ext_resource type="PackedScene" uid="uid://0m2bg6htt36p" path="res://UI/PlayerHud.tscn" id="6_a0c47"]
 [ext_resource type="PackedScene" uid="uid://drmm7cr2perqd" path="res://Things/Teleporter/teleporter.tscn" id="6_hej4t"]
+[ext_resource type="Texture2D" uid="uid://dl44hb8rywpxf" path="res://assets/sprites/ActorSheets/player_1.tres" id="7_oql0q"]
 [ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://Things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="8_28gir"]
+[ext_resource type="Texture2D" uid="uid://c24gipp3mgsr5" path="res://assets/sprites/ActorSheets/player_2.tres" id="8_i451r"]
 [ext_resource type="Script" uid="uid://dwwu8nncg7gvt" path="res://Things/Bubbles/BubbleSpawner/ExtendBubbleSpawner.gd" id="9_2dy0i"]
 [ext_resource type="PackedScene" uid="uid://cia1bm5ivt02" path="res://Things/Bubbles/ExtendBubble/ExtendBubble.tscn" id="9_jih74"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="10_2dy0i"]
@@ -67,6 +69,9 @@ grow_vertical = 2
 [node name="PlayerHUD" parent="UI/Root/P1/HUD" instance=ExtResource("6_a0c47")]
 layout_mode = 2
 
+[node name="StartToJoin" parent="UI/Root/P1/HUD/PlayerHUD/MarginContainer2" index="0"]
+sprite = ExtResource("7_oql0q")
+
 [node name="P2" type="Control" parent="UI/Root"]
 layout_direction = 3
 layout_mode = 1
@@ -88,6 +93,10 @@ grow_vertical = 2
 [node name="PlayerHUD" parent="UI/Root/P2/HUD" instance=ExtResource("6_a0c47")]
 layout_direction = 3
 layout_mode = 2
+
+[node name="StartToJoin" parent="UI/Root/P2/HUD/PlayerHUD/MarginContainer2" index="0"]
+sprite = ExtResource("8_i451r")
+flip_sprite = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

@@ -35,7 +35,7 @@ func _ready() -> void:
 	startingLevel.position = Vector2.ZERO
 	
 	self.swapLevels(startingLevel)
-	var player = self.createPlayer(0, self.playerScene)
+	var player = self.createPlayer(0)
 	self.UI.visible = false
 	self.startLevel(startingLevel)
 	
@@ -252,13 +252,27 @@ func suspendPlayers() -> void:
 
 
 #Creates the player at their suspend point
-func createPlayer(index: int, player:PackedScene ) -> Player:
-	var playerEntry = Game.playerEntries.get(0, null)
+func createPlayer(index: int) -> Player:
+	var playerEntry = Game.playerEntries.get(index, null)
 	var playerNode = null 
 	if(playerEntry == null):
-		playerNode = player.instantiate() as Player
+		playerNode = playerScene.instantiate() as Player
 		playerEntry = Game.register_player(index, playerNode)
+		
+		var inputActionMapping: PlayerInputActions
+		var spriteSheet: AtlasTexture
+		if(index == 0):
+			inputActionMapping = load("res://actors/player/Input/P1_InputActions.tres")
+			spriteSheet = load("res://assets/sprites/ActorSheets/player_1.tres")
+		else:
+			inputActionMapping = load("res://actors/player/Input/P1_InputActions.tres")
+			spriteSheet = load("res://assets/sprites/ActorSheets/player_2.tres")
+
+
+
 		self.add_child( playerNode )
+		playerNode.inputActions = inputActionMapping
+		playerNode.setSpriteSheet(spriteSheet)
 		
 		playerNode.sm_status.state.finished.emit("SUSPENDED")
 		var transitionSlot = getTransitionSlot(playerNode.player_index)
@@ -343,6 +357,7 @@ func onEnemyDeath(enemy: Enemy) -> void:
 
 func onPlayerDeath(player: Player) -> void:
 	Game.deregister_player(0)	
+	
 	
 
 func onActorDeath( actor: Actor) -> void:

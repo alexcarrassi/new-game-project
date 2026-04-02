@@ -1,7 +1,7 @@
 class_name Player extends Actor
 #ITSIMSCET  
 
-var player_index : int = 1
+var player_index : int = 0
 @export var ground_accel: float = 2800.0
 @export var ground_decel: float = 3000.0
 @export var air_accel: float = 2000.0
@@ -20,11 +20,15 @@ var buffer_times : Dictionary = {"jump" = 0.0, "attack" = 0.0}
 var current_comboCount: int = 0
 var current_comboRecord: int = 0
 
+var inputActions: PlayerInputActions
 var inputState: InputState
 var score: int = 0
 signal scoreUpdated()
 signal statEvent(statkey: StringName, value: int)
 
+
+func setSpriteSheet( spriteSheet: AtlasTexture) -> void:
+	sprite2D.texture = spriteSheet
 
 func updateCurrency(currencyVal: float, currencyType: StringName) -> void:
 	
@@ -73,7 +77,7 @@ func exposeInputSnapshot() -> String:
 func _physics_process(delta: float) -> void:
 	
 	#Get Input snapshot
-	self.inputState = InputState.snapShot()
+	self.inputState = InputState.snapShot(inputActions)
 	
 	#Update early timers (based on Input, preparing for state logic)
 		#jump timer
@@ -170,7 +174,7 @@ class InputState:
 	var jump_held: bool = false
 	var attack: bool = false
 	
-	static func snapShot() -> InputState:
+	static func snapShot(actions: PlayerInputActions) -> InputState:
 		var s = InputState.new()
 		
 		s.haxis = Input.get_axis("ui_left", "ui_right")
