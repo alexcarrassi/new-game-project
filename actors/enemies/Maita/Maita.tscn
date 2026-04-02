@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://8liyre5r0auf"]
+[gd_scene load_steps=16 format=3 uid="uid://8liyre5r0auf"]
 
 [ext_resource type="PackedScene" uid="uid://jbkj40qgwjk8" path="res://actors/enemies/Enemy.tscn" id="1_a4hkh"]
-[ext_resource type="AnimationLibrary" uid="uid://bfk564bj0tp60" path="res://assets/animations/Actors/Maita.tres" id="2_fehrb"]
 [ext_resource type="Script" uid="uid://cfvj2o7r4nik3" path="res://actors/enemies/Maita/maita.gd" id="2_j8r4g"]
-[ext_resource type="AnimationLibrary" uid="uid://qypkes40mnf" path="res://assets/animations/Actors/Maita_RED.tres" id="3_fehrb"]
+[ext_resource type="Texture2D" uid="uid://eu217xj5s5to" path="res://assets/sprites/ActorSheets/maita.tres" id="3_j8r4g"]
 [ext_resource type="PackedScene" uid="uid://cufsaqpabnav" path="res://actors/enemies/States/Locomotion/bubbled.tscn" id="4_rl2i6"]
 [ext_resource type="PackedScene" uid="uid://c0rg7mskp21x8" path="res://actors/enemies/States/Locomotion/falling.tscn" id="5_j8r4g"]
 [ext_resource type="PackedScene" uid="uid://0srxgjo4gkm1" path="res://actors/enemies/States/Locomotion/idle.tscn" id="6_ots7w"]
@@ -21,14 +20,11 @@
 script = ExtResource("2_j8r4g")
 fireBallScene = null
 
-[node name="AnimationPlayer" parent="." index="1"]
-libraries = {
-&"": ExtResource("2_fehrb"),
-&"RED": ExtResource("3_fehrb")
-}
-
 [node name="Sprite2D" parent="." index="2"]
-region_rect = Rect2(5, 26, 16, 16)
+texture = ExtResource("3_j8r4g")
+
+[node name="StateMachine_Locomotion" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("IDLE")
 
 [node name="IDLE" parent="StateMachine_Locomotion" index="0" instance=ExtResource("6_ots7w")]
 

@@ -1,7 +1,7 @@
 class_name Fly extends State
 
 func _ready() -> void:
-	self.main_animation = "FLY"
+	self.main_animation = "RUN"
 
 
 func enter(prev_state: State, transition_data: Dictionary) -> void:

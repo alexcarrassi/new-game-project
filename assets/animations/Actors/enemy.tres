@@ -14,7 +14,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(131, 5, 16, 16), Rect2(152, 5, 16, 16)]
+"values": [Rect2(126, 0, 16, 16), Rect2(147, 0, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_gbd71"]
@@ -27,10 +27,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.40000004),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Rect2(257, 5, 16, 16), Rect2(278, 5, 16, 16), Rect2(298, 5, 16, 16), Rect2(319, 5, 16, 16)]
+"values": [Rect2(252, 0, 16, 16), Rect2(272, 0, 16, 16), Rect2(293, 0, 16, 16), Rect2(314, 0, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_fbiw4"]
@@ -47,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.33333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(5, 5, 16, 16), Rect2(26, 5, 16, 16)]
+"values": [Rect2(0, 0, 16, 16), Rect2(21, 0, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_aigf2"]
@@ -64,7 +64,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.36666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(5, 5, 16, 16), Rect2(26, 5, 16, 16)]
+"values": [Rect2(0, 0, 16, 16), Rect2(21, 0, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_6dyg7"]
@@ -81,7 +81,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(26, 5, 16, 16)]
+"values": [Rect2(21, 0, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_rfo4i"]
@@ -99,7 +99,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(89, 5, 16, 16), Rect2(110, 5, 16, 16)]
+"values": [Rect2(84, 0, 16, 16), Rect2(105, 0, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_s72y3"]
@@ -114,7 +114,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(5, 5, 16, 16)]
+"values": [Rect2(0, 0, 16, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_j704g"]
@@ -127,10 +127,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.20000002),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(5, 5, 16, 16), Rect2(26, 5, 16, 16)]
+"values": [Rect2(0, 0, 16, 16), Rect2(21, 0, 16, 16)]
 }
 
 [resource]

@@ -1,27 +1,26 @@
-[gd_scene load_steps=8 format=4 uid="uid://cey8bqayj4br0"]
+[gd_scene load_steps=9 format=4 uid="uid://cey8bqayj4br0"]
 
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level.tscn" id="1_tj7v0"]
 [ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="2_7i62u"]
-[ext_resource type="PackedScene" uid="uid://8liyre5r0auf" path="res://actors/enemies/Maita/Maita.tscn" id="3_0plxl"]
+[ext_resource type="PackedScene" uid="uid://c50spamxftvqt" path="res://actors/enemies/Munsta/Munsta.tscn" id="3_jofef"]
 [ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://Things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="3_v2na5"]
+[ext_resource type="Texture2D" uid="uid://50ucietf83mx" path="res://assets/sprites/ActorSheets/munsta.tres" id="4_jofef"]
 [ext_resource type="PackedScene" uid="uid://dgbacp2xdq52f" path="res://Things/Bubbles/ZapBubble/ZapBubble.tscn" id="4_v2na5"]
 [ext_resource type="PackedScene" uid="uid://0qbs3c111ic0" path="res://Things/Bubbles/WaterBubble/WaterBubble.tscn" id="5_0plxl"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="5_jofef"]
 
 [node name="Level_01" instance=ExtResource("1_tj7v0")]
 
-[node name="AirCurrent" parent="." index="0"]
-visible = false
-
 [node name="ActorSpawn" parent="Enemy_Spawns" index="0" instance=ExtResource("2_7i62u")]
 position = Vector2(168, -16)
-ActorScene = ExtResource("3_0plxl")
+ActorScene = ExtResource("3_jofef")
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 45)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
-region_rect = Rect2(5, 26, 16, 16)
+texture = ExtResource("4_jofef")
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="ActorSpawn2" parent="Enemy_Spawns" index="1" instance=ExtResource("2_7i62u")]
 position = Vector2(88, -16)

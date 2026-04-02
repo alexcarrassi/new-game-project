@@ -1,6 +1,39 @@
-[gd_resource type="AnimationLibrary" load_steps=5 format=3 uid="uid://qypkes40mnf"]
+[gd_resource type="AnimationLibrary" load_steps=5 format=3 uid="uid://b3p7t8jfoligj"]
 
-[sub_resource type="Animation" id="Animation_phw54"]
+[sub_resource type="Animation" id="Animation_lbobw"]
+resource_name = "BUBBLED"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(210, 0, 16, 16), Rect2(231, 0, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_00q3p"]
+length = 0.13333668
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(63, 0, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_tqq7e"]
 length = 0.66667
 loop_mode = 1
 tracks/0/type = "value"
@@ -13,42 +46,10 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.33333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(215, 26, 16, 16), Rect2(236, 26, 16, 16)]
+"values": [Rect2(42, 0, 16, 16), Rect2(63, 0, 16, 16)]
 }
 
-[sub_resource type="Animation" id="Animation_4nlib"]
-length = 0.06667
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(47, 26, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_bxqq8"]
-length = 0.06667
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(47, 26, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_d0vjr"]
+[sub_resource type="Animation" id="Animation_kn3fv"]
 length = 0.26667002
 loop_mode = 1
 tracks/0/type = "value"
@@ -61,13 +62,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.13333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Rect2(47, 26, 16, 16), Rect2(68, 26, 16, 16)]
+"values": [Rect2(42, 0, 16, 16), Rect2(63, 0, 16, 16)]
 }
 
 [resource]
 _data = {
-&"BUBBLED": SubResource("Animation_phw54"),
-&"FALL": SubResource("Animation_4nlib"),
-&"IDLE": SubResource("Animation_bxqq8"),
-&"RUN": SubResource("Animation_d0vjr")
+&"BUBBLED": SubResource("Animation_lbobw"),
+&"FALL": SubResource("Animation_00q3p"),
+&"IDLE": SubResource("Animation_tqq7e"),
+&"RUN": SubResource("Animation_kn3fv")
 }

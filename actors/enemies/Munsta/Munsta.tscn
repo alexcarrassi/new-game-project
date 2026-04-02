@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c50spamxftvqt"]
+[gd_scene load_steps=10 format=3 uid="uid://c50spamxftvqt"]
 
 [ext_resource type="PackedScene" uid="uid://jbkj40qgwjk8" path="res://actors/enemies/Enemy.tscn" id="1_0jpja"]
-[ext_resource type="AnimationLibrary" uid="uid://ddhe71werskpy" path="res://assets/animations/Actors/Munsta.tres" id="2_k5uq3"]
-[ext_resource type="AnimationLibrary" uid="uid://cx4dfd8tg85dr" path="res://assets/animations/Actors/Munsta_RED.tres" id="3_yojcq"]
+[ext_resource type="Script" uid="uid://cfehrxn1rsvv3" path="res://actors/enemies/Munsta/munsta.gd" id="2_enfmc"]
+[ext_resource type="PackedScene" uid="uid://cufsaqpabnav" path="res://actors/enemies/States/Locomotion/bubbled.tscn" id="3_s6skn"]
+[ext_resource type="Texture2D" uid="uid://50ucietf83mx" path="res://assets/sprites/ActorSheets/munsta.tres" id="4_enfmc"]
 [ext_resource type="PackedScene" uid="uid://bqwkq0kk13tyo" path="res://actors/enemies/States/Status/alive.tscn" id="6_enfmc"]
 [ext_resource type="PackedScene" uid="uid://t5s0sxumquql" path="res://actors/enemies/States/Act/None.tscn" id="6_pwwog"]
 [ext_resource type="PackedScene" uid="uid://dptailbc5e58x" path="res://actors/enemies/States/Status/dead.tscn" id="7_w5o61"]
@@ -11,20 +12,22 @@
 
 [node name="Enemy" instance=ExtResource("1_0jpja")]
 collision_mask = 4225
+script = ExtResource("2_enfmc")
 MAX_RUN_VELOCITY = 45.0
 MAX_RISE_VELOCITY = 45.0
 direction = Vector2(-1, 1)
 
-[node name="AnimationPlayer" parent="." index="1"]
-libraries = {
-&"": ExtResource("2_k5uq3"),
-&"RED": ExtResource("3_yojcq")
-}
-
 [node name="Sprite2D" parent="." index="2"]
-region_rect = Rect2(5, 68, 16, 16)
+texture = ExtResource("4_enfmc")
+
+[node name="StateMachine_Locomotion" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("FLY")
 
 [node name="FLY" parent="StateMachine_Locomotion" index="0" instance=ExtResource("9_smetb")]
+allowed_states = Array[StringName]([&"BUBBLED"])
+
+[node name="BUBBLED" parent="StateMachine_Locomotion" index="1" instance=ExtResource("3_s6skn")]
+allowed_states = Array[StringName]([&"FALLING", &"IDLE", &"RUNNING", &"FLY"])
 
 [node name="SPAWNING" parent="StateMachine_Status" index="0" instance=ExtResource("8_akgn0")]
 

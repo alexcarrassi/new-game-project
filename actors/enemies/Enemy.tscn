@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://cx828ycxarj3w" path="res://actors/enemies/Enemy.gd" id="1_s6a2x"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://Things/Inventory/ItemTypes/Item.gd" id="2_n721a"]
 [ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://Things/Inventory/Items/Points/Peach.tres" id="3_texev"]
-[ext_resource type="AnimationLibrary" uid="uid://bg2ur4fd854fq" path="res://assets/animations/Actors/zenchan.tres" id="4_7x0wi"]
-[ext_resource type="AnimationLibrary" uid="uid://b3p7t8jfoligj" path="res://assets/animations/Actors/zenchan_RED.tres" id="5_vtx8q"]
+[ext_resource type="AnimationLibrary" uid="uid://bg2ur4fd854fq" path="res://assets/animations/Actors/enemy.tres" id="4_7x0wi"]
+[ext_resource type="AnimationLibrary" uid="uid://b3p7t8jfoligj" path="res://assets/animations/Actors/enemy_RED.tres" id="5_vtx8q"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="6_65ebo"]
-[ext_resource type="Texture2D" uid="uid://dtj7kwmq1s7nw" path="res://assets/sprites/Enemies.png" id="7_w28qu"]
+[ext_resource type="Texture2D" uid="uid://dp60pcoyrbdhu" path="res://assets/sprites/ActorSheets/zenchan.tres" id="7_s6a2x"]
 [ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="8_bffln"]
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="15_gpg4s"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="19_a4hre"]
@@ -38,9 +38,9 @@ libraries = {
 script = ExtResource("6_65ebo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("7_w28qu")
+texture = ExtResource("7_s6a2x")
 region_enabled = true
-region_rect = Rect2(5, 5, 16, 16)
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Sensors" type="Node2D" parent="."]
 

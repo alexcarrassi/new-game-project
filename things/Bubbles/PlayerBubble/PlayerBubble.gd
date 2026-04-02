@@ -67,7 +67,8 @@ func playerPop(player: Player) -> void:
 func releaseActor() -> Actor:
 		if(self.actor != null):
 			self.actor.reparent( self.actor_parent)
-			self.actor.sm_locomotion.state.finished.emit("IDLE")
+			
+			self.actor.sm_locomotion.state.finished.emit(actor.sm_locomotion.initial_state.name)
 			self.actor.rotation = 0
 		return self.actor	
 
