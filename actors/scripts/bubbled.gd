@@ -5,7 +5,16 @@ func enter(prev_state: State, data: Dictionary = {} ) -> void :
 	
 	print("BUBBLED")
 	var actor = self.body
+	var bubble: PlayerBubble = data.get("bubble") 
+
+
+	# we default the P! Bubbled animation
 	self.main_animation = "BUBBLED"
+
+
+	if(bubble):
+		if( bubble.ownerPlayer ):
+			main_animation = "BUBBLED" if bubble.ownerPlayer.player_index == 0 else "BUBBLED_P2"
 	
 	actor.sm_locomotion.physics_process_paused = true
 	actor.sm_act.physics_process_paused = true 

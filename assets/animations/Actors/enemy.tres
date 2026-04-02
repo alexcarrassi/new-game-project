@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=9 format=3 uid="uid://bg2ur4fd854fq"]
+[gd_resource type="AnimationLibrary" load_steps=10 format=3 uid="uid://bg2ur4fd854fq"]
 
 [sub_resource type="Animation" id="Animation_hlciv"]
 resource_name = "Bubbled"
@@ -133,9 +133,27 @@ tracks/0/keys = {
 "values": [Rect2(0, 0, 16, 16), Rect2(21, 0, 16, 16)]
 }
 
+[sub_resource type="Animation" id="Animation_f8ma1"]
+resource_name = "BUBBLED_P2"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(168, 0, 16, 16), Rect2(189, 0, 16, 16)]
+}
+
 [resource]
 _data = {
 &"BUBBLED": SubResource("Animation_hlciv"),
+&"BUBBLED_P2": SubResource("Animation_f8ma1"),
 &"DEAD": SubResource("Animation_gbd71"),
 &"FALL": SubResource("Animation_fbiw4"),
 &"IDLE": SubResource("Animation_aigf2"),

@@ -28,6 +28,8 @@ signal transitionStart()
 
 var is_transitioning_Levels : bool = false
 
+var game_mode:int = 0
+
 func _ready() -> void:
 	
 	Game.register_gameWorld( self )
@@ -35,7 +37,14 @@ func _ready() -> void:
 	startingLevel.position = Vector2.ZERO
 	
 	self.swapLevels(startingLevel)
-	var player = self.createPlayer(0)
+	
+	match game_mode:
+		0:	
+			var player = self.createPlayer(0)
+		1:
+			var player = self.createPlayer(0)
+			var player_2 = self.createPlayer(1)
+
 	self.UI.visible = false
 	self.startLevel(startingLevel)
 	
@@ -278,9 +287,10 @@ func createPlayer(index: int) -> Player:
 		playerNode.setSpriteSheet(spriteSheet)
 		playerNode.setBubbleSpriteSheet( bubbleSpriteSheet )
 		playerNode.sm_status.state.finished.emit("SUSPENDED")
+		playerNode.player_index = index
+
 		var transitionSlot = getTransitionSlot(playerNode.player_index)
 		playerNode.global_position = transitionSlot.global_position
-		playerNode.player_index = index
 		
 		playerNode.actorHurt.connect( self.onActorHurt )
 		playerNode.actorDeath.connect( self.onActorDeath )
@@ -298,20 +308,24 @@ func tryExtend( player: Player) -> void:
 		self.levelTransition({"cinematic": true, "timeout" : 0.1})	
 	
 			
+			
+func spawnPlayer(player: Player) -> void:
+	player.reparent(self.level)
+	var spawnPoint = self.level.getPlayerSpawn( player.player_index)
+	player.position = spawnPoint.position
+	player.global_position = spawnPoint.global_position
+	player.sm_status.state.finished.emit("ALIVE")
+	player.hurtbox.call_deferred("set_monitorable", true)
+
+	self.queue_extend_bubbles(player.player_index)		
+
 		
 	
 # Puts players in the current level, Positions them at the spawn point, set state to ALIVE
 func spawnPlayers() -> void:
 	for key: int in Game.playerEntries.keys():
-		var player = Game.playerEntries[key].player
-		player.reparent(self.level)
-		var spawnPoint = self.level.getPlayerSpawn( player.player_index)
-		player.position = spawnPoint.position
-		player.global_position = spawnPoint.global_position
-		player.sm_status.state.finished.emit("ALIVE")
-		player.hurtbox.call_deferred("set_monitorable", true)
-
-		self.queue_extend_bubbles(key)		
+		
+		spawnPlayer(Game.playerEntries[key].player)
 
 			
 		

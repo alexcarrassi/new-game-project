@@ -1,5 +1,6 @@
 class_name MainMenu extends Control
 @onready var btn_newGame: Button = $CenterContainer/Options/btn_New_Game
+@onready var btn_newGame_2p: Button = $CenterContainer/Options/btn_New_Game_2players
 @onready var btn_Exit: Button = $CenterContainer/Options/btn_Exit
 @onready var optionsContainer: VBoxContainer = $CenterContainer/Options
 @onready var cursor: TextureRect = $Cursor
@@ -9,7 +10,8 @@ class_name MainMenu extends Control
 func _ready() -> void:
 	await get_tree().process_frame
 
-	btn_newGame.pressed.connect( func() -> void: Game.start_new_game() )
+	btn_newGame.pressed.connect( func() -> void: Game.start_new_game(0) )
+	btn_newGame_2p.pressed.connect( func() -> void: Game.start_new_game(1))
 	btn_Exit.pressed.connect( func() -> void: Game.exit()  )
 	
 	btn_newGame.grab_focus()

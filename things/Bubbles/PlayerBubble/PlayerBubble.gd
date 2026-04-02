@@ -8,6 +8,7 @@ class_name PlayerBubble extends Bubble
 @onready var prePopTimer: Timer = $PrepopTimer
 @onready var redTimer: Timer = $RedTimer
 
+var ownerPlayer: Player
 
 var is_red: bool = false
 var actor: Actor
@@ -18,14 +19,10 @@ var actor_parent: Node
 func _ready() -> void:
 	
 	var animationLength = self.shoot_range / self.hor_speed
-	print(animationLength)
 	animationPlayer.get_animation("EXPAND").length = animationLength
 	self.get_tree().create_timer( animationPlayer.get_animation("EXPAND").length  ).timeout.connect( self.setFloating)
 	self.animationPlayer.play("EXPAND")
-	
-	
-	
-	
+
 	self.popTimer.timeout.connect( self.autoPop)
 	self.prePopTimer.timeout.connect( self.prePop )
 	self.redTimer.timeout.connect( self.setRed )
@@ -96,7 +93,8 @@ func hitBoxAreaEntered(area: Area2D) -> void:
 
 		self.actor = areaOwner
 		self.actor.sm_status.state.finished.emit("ALIVE")
-		self.actor.sm_locomotion.state.finished.emit("BUBBLED")
+		
+		self.actor.sm_locomotion.state.finished.emit("BUBBLED", {"bubble" : self})
 		
 		self.actor_parent = self.actor.get_parent()
 		self.actor.reparent(self)

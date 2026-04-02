@@ -31,6 +31,8 @@ func physics_update(delta: float) -> void:
 
 func exit() -> void:
 	var projectileParent = self.body.get_parent() 
+	if(projectileParent is Projectile):
+		projectileParent.actors.erase( self.body)
 	self.body.hurtbox.monitorable = true 
 	self.body.hurtbox.monitoring = true 
 	self.body.sm_act.physics_process_paused = false 

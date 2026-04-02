@@ -84,6 +84,7 @@ func ingame_input(event: InputEvent) -> void:
 			var player = world.createPlayer(0)
 			register_player(0, player)
 			player.sm_status.state.finished.emit("ALIVE")
+			world.spawnPlayer(player)		
 
 		pass
 	elif(event.is_action_pressed("ui_accept_p2")):
@@ -100,6 +101,7 @@ func ingame_input(event: InputEvent) -> void:
 			var player = world.createPlayer(1)
 			register_player(1, player)
 			player.sm_status.state.finished.emit("ALIVE")
+			world.spawnPlayer(player)		
 					
 	elif(event.is_action_pressed("debug_LevelStart")):
 		self.world.level.cleanup()
@@ -193,7 +195,6 @@ func getPlayerEntry(index: int) -> PlayerEntry:
 	return self.playerEntries.get(index, null)
 
 	
-
 func pause_game() -> void:
 	var tree = get_tree()
 
@@ -212,8 +213,9 @@ func resume_game() -> void:
 
 	pass
 
-func start_new_game() -> void: 
+func start_new_game(game_mode = 0) -> void: 
 	world = gameWorldScene.instantiate() as GameWorld 
+	world.game_mode = game_mode
 	
 	for child in root.gameViewPort.get_children():
 		child.free() 
@@ -222,6 +224,7 @@ func start_new_game() -> void:
 	
 	for child in root.screenlayer.get_children():
 		child.free()
+		
 		
 func exit_to_main_menu() -> void:
 	

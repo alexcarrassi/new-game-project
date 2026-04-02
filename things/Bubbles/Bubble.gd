@@ -28,7 +28,7 @@ var target_velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+		
 	self.hitbox.monitoring = true 
 	self.hitbox.monitorable = true 
 	

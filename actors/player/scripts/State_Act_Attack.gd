@@ -21,7 +21,7 @@ func enterEffects() -> Array:
 	
 func enter(prev_state: State, data: Dictionary ):
 	
-	var player = body as Player
+	var player: Player = body as Player
 	#Register stat
 	var playerEntry: PlayerEntry = Game.getPlayerEntry(self.body.player_index) 
 	playerEntry.player.statEvent.emit(PlayerStats.STATKEY_BUBBLES_BLOWN, 1)
@@ -30,6 +30,7 @@ func enter(prev_state: State, data: Dictionary ):
 	var body_dir = -1 if( self.body.sprite2D.flip_h) else 1
 	bubble.dir = Vector2(body_dir  , 0)
 	bubble.global_position = Vector2(self.body.position.x, self.body.position.y - self.body.sprite2D.get_rect().size.y/2 )
+	bubble.ownerPlayer = player
 
 	#Add the bubble range extensions
 	var extension = playerEntry.stats.getStat(&"bubble_range") 

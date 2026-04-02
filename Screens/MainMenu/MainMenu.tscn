@@ -48,6 +48,13 @@ alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
+[node name="btn_New_Game_2players" type="Button" parent="CenterContainer/Options"]
+layout_mode = 2
+text = "NEW GAME 2P"
+alignment = 0
+script = ExtResource("3_me62i")
+metadata/_custom_type_script = "uid://vcbnel1krs2x"
+
 [node name="Button3" type="Button" parent="CenterContainer/Options"]
 layout_mode = 2
 text = "VERSUS MODE"
