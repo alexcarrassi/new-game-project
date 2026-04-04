@@ -23,9 +23,9 @@ collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_s6a2x")
 LootTable = Array[ExtResource("2_n721a")]([ExtResource("3_texev")])
-JUMP_VELOCITY = 300.0
+JUMP_VELOCITY = 230.0
 MAX_RUN_VELOCITY = 75.0
-MAX_RISE_VELOCITY = 400.0
+MAX_RISE_VELOCITY = 260.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_rfo4i")
