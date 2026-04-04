@@ -8,7 +8,7 @@ var level: Level
 @onready var HUD_p1: PlayerHUD = $UI/Root/P1/HUD/PlayerHUD
 @onready var HUD_p2: PlayerHUD = $UI/Root/P2/HUD/PlayerHUD
 @onready var NextLevelMarker: Marker2D = $NextLevelMarker
-@onready var TransitionSlots: Node = $TransitionSlots
+@onready var TransitionSlots: Node2D = $TransitionSlots
 
 @onready var extendBubbleSpawner_left: ExtendBubbleSpawner  = $ExtendBubble_left
 @onready var extendBubbleSpawner_right: ExtendBubbleSpawner = $ExtendBubble_right
@@ -33,17 +33,19 @@ var game_mode:int = 0
 func _ready() -> void:
 	
 	Game.register_gameWorld( self )
-	var startingLevel = createNextLevel( self.start_level_id )	
-	startingLevel.position = Vector2.ZERO
-	
-	self.swapLevels(startingLevel)
-	
 	match game_mode:
 		0:	
 			var player = self.createPlayer(0)
 		1:
 			var player = self.createPlayer(0)
 			var player_2 = self.createPlayer(1)
+			
+	var startingLevel = createNextLevel( self.start_level_id )	
+	startingLevel.position = Vector2.ZERO
+	
+	self.swapLevels(startingLevel)
+	
+
 
 	self.UI.visible = false
 	self.startLevel(startingLevel)
@@ -132,10 +134,10 @@ func startLevel(level: Level) -> void:
 	#connect the levelTimer to the hurryUp sequence
 	if( level.hurry ) :
 		level.hurry.connect( self.onLevelHurry)
-
+	level.start()
 	if(level.playerSpawns.get_children().size() == 0 ):
 		#No level-start marker for the players, so move on to the next level
-		self.levelTransition({"cinematic": true, "timeout" : 2.0})	
+		self.levelTransition({"cinematic": true, "timeout" : 5.0})	
 	else:
 		self.spawnPlayers()
 		self.UI.visible = true	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=37 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://actors/player/player.gd" id="1_ivps1"]
 [ext_resource type="Texture2D" uid="uid://dl44hb8rywpxf" path="res://assets/sprites/ActorSheets/player_1.tres" id="2_otn2r"]
@@ -24,9 +24,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iafiv"]
 size = Vector2(14, 13.999999)
 
+[sub_resource type="Animation" id="Animation_otn2r"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_lj3dd"]
 resource_name = "Suspended"
-length = 0.8
+length = 1.6000034
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -35,10 +38,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32), Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32)]
+"values": [Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32), Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32), Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32), Rect2(2, 1, 28, 32), Rect2(30, 1, 28, 32)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -47,10 +50,10 @@ tracks/1/path = NodePath("Sprite2D:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_ctwkf"]
@@ -288,6 +291,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qlag8"]
 _data = {
+&"RESET": SubResource("Animation_otn2r"),
 &"Suspended": SubResource("Animation_lj3dd"),
 &"attack": SubResource("Animation_ctwkf"),
 &"hurt": SubResource("Animation_icg72"),
@@ -350,6 +354,7 @@ size = Vector2(13.5, 14)
 size = Vector2(12, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(0, 20)
 collision_layer = 2
 collision_mask = 129
 platform_on_leave = 1
@@ -374,8 +379,9 @@ health = 2
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.5, -8.5)
 texture = ExtResource("2_otn2r")
+flip_h = true
 region_enabled = true
-region_rect = Rect2(2, 35, 16, 16)
+region_rect = Rect2(2, 1, 28, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -7.5)

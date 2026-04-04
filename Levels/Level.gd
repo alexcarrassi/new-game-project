@@ -26,10 +26,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 	if(self.AirCurrent):
-		self.AirCurrent.visible = true	
+		self.AirCurrent.visible = false	
 		
-
-		
+	
+func start() -> void: 
+	pass	
 			
 
 # Flash the Hurry message, pause during it. Spawn Skel-Monsta after a few seconds.

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dks51s3ef7k1n"]
+[gd_scene load_steps=5 format=3 uid="uid://dks51s3ef7k1n"]
 
 [ext_resource type="Script" uid="uid://coyh0i17i7kaa" path="res://world_wrapper.gd" id="1_5v3dv"]
 [ext_resource type="PackedScene" uid="uid://k470hfn00pdn" path="res://Screens/PauseMenu/StatTable.tscn" id="3_5v3dv"]
+[ext_resource type="PackedScene" uid="uid://c77k1tce7y5xe" path="res://GameWorld.tscn" id="3_lw4vl"]
+[ext_resource type="PackedScene" uid="uid://cey8bqayj4br0" path="res://Levels/level_1x.tscn" id="4_lw4vl"]
 
 [node name="WorldWrapper" type="Control"]
 layout_mode = 3
@@ -49,7 +51,13 @@ process_mode = 3
 layer = 2
 
 [node name="GameplayLayer" type="Control" parent="HBoxContainer/GameArea"]
-anchors_preset = 0
-offset_left = 256.0
-offset_right = 256.0
-offset_bottom = 256.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameWorld" parent="HBoxContainer/GameArea/GameplayLayer" instance=ExtResource("3_lw4vl")]
+
+[node name="Level_01" parent="HBoxContainer/GameArea/GameplayLayer/GameWorld" instance=ExtResource("4_lw4vl")]

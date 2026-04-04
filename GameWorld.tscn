@@ -27,7 +27,6 @@ playerScene = ExtResource("2_28gir")
 playerHUDScene = ExtResource("6_a0c47")
 rewardTable = ExtResource("4_waypw")
 start_debug = true
-start_level_id = "1"
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -122,7 +121,7 @@ Destination = NodePath("../TeleporterTop")
 [node name="NextLevelMarker" type="Marker2D" parent="."]
 position = Vector2(0, 280)
 
-[node name="TransitionSlots" type="Node" parent="."]
+[node name="TransitionSlots" type="Node2D" parent="."]
 
 [node name="P1" type="Marker2D" parent="TransitionSlots"]
 position = Vector2(48, 64)
