@@ -106,6 +106,7 @@ height = 11.0
 [node name="Bubble" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 3
+mass = 0.02
 lock_rotation = true
 script = ExtResource("1_bx6lx")
 projectile = ExtResource("2_b6r2y")

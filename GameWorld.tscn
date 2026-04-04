@@ -27,6 +27,7 @@ playerScene = ExtResource("2_28gir")
 playerHUDScene = ExtResource("6_a0c47")
 rewardTable = ExtResource("4_waypw")
 start_debug = true
+start_level_id = "1"
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -136,7 +137,7 @@ position = Vector2(48, 160)
 position = Vector2(208, 160)
 
 [node name="Wall_Left" type="StaticBody2D" parent="."]
-collision_layer = 1025
+collision_layer = 20481
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left"]
@@ -144,7 +145,7 @@ position = Vector2(8, 99.5)
 shape = SubResource("RectangleShape2D_n5c08")
 
 [node name="Wall_Right" type="StaticBody2D" parent="."]
-collision_layer = 1025
+collision_layer = 16385
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right"]

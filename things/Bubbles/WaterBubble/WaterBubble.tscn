@@ -1,12 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://0qbs3c111ic0"]
+[gd_scene load_steps=12 format=3 uid="uid://0qbs3c111ic0"]
 
 [ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://Things/Bubbles/Bubble.tscn" id="1_p0uk1"]
 [ext_resource type="Script" uid="uid://bjnd4fpfta08t" path="res://Things/Bubbles/WaterBubble/WaterBubble.gd" id="2_gnaoe"]
 [ext_resource type="PackedScene" uid="uid://rc7uixkgn22v" path="res://Things/Projectiles/WaterProjectile.tscn" id="3_rkt23"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yisb2"]
-friction = 0.0
-absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnaoe"]
 radius = 8.0
@@ -120,7 +116,6 @@ _data = {
 [node name="WaterBubble" instance=ExtResource("1_p0uk1")]
 collision_layer = 8
 collision_mask = 2051
-physics_material_override = SubResource("PhysicsMaterial_yisb2")
 max_contacts_reported = 3
 script = ExtResource("2_gnaoe")
 projectile = ExtResource("3_rkt23")

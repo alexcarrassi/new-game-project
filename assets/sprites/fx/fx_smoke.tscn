@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxxpm6ejayuk"]
+
+[ext_resource type="Texture2D" uid="uid://cur51de215dh2" path="res://assets/sprites/fx/smoke.tres" id="1_4mxlf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14kdx"]
+atlas = ExtResource("1_4mxlf")
+region = Rect2(19, 0, 19, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sfe1"]
+atlas = ExtResource("1_4mxlf")
+region = Rect2(0, 0, 19, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_os0nr"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_14kdx")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_5sfe1")
+}],
+"loop": false,
+"name": &"in",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_5sfe1")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_14kdx")
+}],
+"loop": false,
+"name": &"out",
+"speed": 60.0
+}]
+
+[node name="fx_Smoke" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_os0nr")
+animation = &"in"

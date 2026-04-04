@@ -29,10 +29,16 @@ allowed_states = Array[StringName]([&"BUBBLED"])
 [node name="BUBBLED" parent="StateMachine_Locomotion" index="1" instance=ExtResource("3_s6skn")]
 allowed_states = Array[StringName]([&"FALLING", &"IDLE", &"RUNNING", &"FLY"])
 
+[node name="StateMachine_Status" parent="." index="6" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("SPAWNING")
+
 [node name="SPAWNING" parent="StateMachine_Status" index="0" instance=ExtResource("8_akgn0")]
 
 [node name="ALIVE" parent="StateMachine_Status" index="1" instance=ExtResource("6_enfmc")]
 
 [node name="DEAD" parent="StateMachine_Status" index="2" instance=ExtResource("7_w5o61")]
+
+[node name="StateMachine_Act" parent="." index="7" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("State_act_None")
 
 [node name="State_act_None" parent="StateMachine_Act" index="0" instance=ExtResource("6_pwwog")]

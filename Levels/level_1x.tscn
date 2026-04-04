@@ -44,21 +44,23 @@ position = Vector2(222, 190)
 [node name="BubbleSpawner3" parent="Bubble_Spawns" index="0" instance=ExtResource("3_v2na5")]
 position = Vector2(64, -18)
 bubbleScene = ExtResource("4_v2na5")
+disabled = true
 
 [node name="Icon" parent="Bubble_Spawns/BubbleSpawner3" index="1"]
-modulate = Color(1, 1, 1, 0.7)
+modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("5_jofef")
 region_rect = Rect2(46, 46, 16, 16)
 
 [node name="BubbleSpawner" parent="Bubble_Spawns" index="1" instance=ExtResource("3_v2na5")]
 position = Vector2(151, -16)
 bubbleScene = ExtResource("5_0plxl")
+disabled = true
 
 [node name="IntervalTimer" parent="Bubble_Spawns/BubbleSpawner" index="0"]
 wait_time = 2.0
 
 [node name="Icon" parent="Bubble_Spawns/BubbleSpawner" index="1"]
-modulate = Color(1, 1, 1, 0.7)
+modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("5_jofef")
 region_rect = Rect2(4, 46, 16, 16)
 
@@ -68,11 +70,8 @@ tile_map_data = PackedByteArray("AADy/wwAAQAAAAMAAgDz/wwAAQAAAAMAAgALAAwAAQAAAAM
 [node name="ItemSpawn_6sec" parent="Item_Spawns" index="0"]
 position = Vector2(48, 168)
 
-[node name="Level_Timer" parent="." index="7"]
-wait_time = 30.0
-
 [node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
-texture = ExtResource("5_gp1y3")
+region_rect = Rect2(0, 0, 16, 15)
 
 [editable path="Enemy_Spawns/ActorSpawn"]
 [editable path="Enemy_Spawns/ActorSpawn2"]

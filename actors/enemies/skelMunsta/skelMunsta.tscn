@@ -1,16 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwoyt67p86stw"]
+[gd_scene load_steps=11 format=3 uid="uid://dwoyt67p86stw"]
 
 [ext_resource type="Script" uid="uid://f0er152wijpj" path="res://actors/enemies/skelMunsta/skel_munsta.gd" id="1_77ank"]
 [ext_resource type="PackedScene" uid="uid://jbkj40qgwjk8" path="res://actors/enemies/Enemy.tscn" id="1_et3mk"]
 [ext_resource type="AnimationLibrary" uid="uid://cepn4gbxppfon" path="res://assets/animations/Actors/SkelMunsta.tres" id="3_65e71"]
 [ext_resource type="Script" uid="uid://dol77tnphlle0" path="res://actors/enemies/skelMunsta/Idle.gd" id="4_65e71"]
+[ext_resource type="Texture2D" uid="uid://ba6jyv6mu4cul" path="res://assets/sprites/ActorSheets/skelmunsta.tres" id="4_phnyb"]
 [ext_resource type="PackedScene" uid="uid://bwtt7c5xvpdy" path="res://actors/enemies/States/Locomotion/hunt.tscn" id="5_et3mk"]
 [ext_resource type="Script" uid="uid://jw8kajeeir7i" path="res://actors/enemies/skelMunsta/alive.gd" id="7_65e71"]
+[ext_resource type="PackedScene" uid="uid://biyjbn7hgj0q7" path="res://actors/enemies/States/Status/spawning.tscn" id="7_phnyb"]
 [ext_resource type="Script" uid="uid://bkjgyynhglj64" path="res://actors/player/scripts/State_Act_None.gd" id="10_14kdx"]
+[ext_resource type="PackedScene" uid="uid://cxxpm6ejayuk" path="res://assets/sprites/fx/fx_smoke.tscn" id="10_ygupy"]
 
 [node name="SkelMunsta" groups=["Invulnerable"] instance=ExtResource("1_et3mk")]
+collision_mask = 131
 script = ExtResource("1_77ank")
 SPEED_INITIAL = 100.0
+fx_smokeScene = ExtResource("10_ygupy")
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -18,7 +23,11 @@ libraries = {
 }
 
 [node name="Sprite2D" parent="." index="2"]
-region_rect = Rect2(5, 257, 16, 16)
+texture = ExtResource("4_phnyb")
+region_rect = Rect2(0, 0, 16, 15)
+
+[node name="StateMachine_Locomotion" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("IDLE")
 
 [node name="IDLE" type="Node" parent="StateMachine_Locomotion" index="0"]
 script = ExtResource("4_65e71")
@@ -27,9 +36,17 @@ metadata/_custom_type_script = "uid://1bfgi14utrpi"
 
 [node name="HUNT" parent="StateMachine_Locomotion" index="1" instance=ExtResource("5_et3mk")]
 
-[node name="ALIVE" type="Node" parent="StateMachine_Status" index="0"]
+[node name="StateMachine_Status" parent="." index="6" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("SPAWNING")
+
+[node name="SPAWNING" parent="StateMachine_Status" index="0" instance=ExtResource("7_phnyb")]
+
+[node name="ALIVE" type="Node" parent="StateMachine_Status" index="1"]
 script = ExtResource("7_65e71")
 metadata/_custom_type_script = "uid://d07c3lrod8lda"
+
+[node name="StateMachine_Act" parent="." index="7" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("State_act_None")
 
 [node name="State_act_None" type="Node" parent="StateMachine_Act" index="0"]
 script = ExtResource("10_14kdx")

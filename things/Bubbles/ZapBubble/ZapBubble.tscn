@@ -113,10 +113,7 @@ _data = {
 
 [node name="ZapBubble" instance=ExtResource("1_vekhu")]
 script = ExtResource("2_4tdxl")
-zapSpeed = 300
-
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
+zapSpeed = 10.0
 
 [node name="Sprite2D" parent="." index="2"]
 region_rect = Rect2(46, 46, 16, 16)
@@ -125,9 +122,6 @@ region_rect = Rect2(46, 46, 16, 16)
 libraries = {
 &"": SubResource("AnimationLibrary_vekhu")
 }
-
-[node name="Hitbox" parent="." index="4"]
-visible = true
 
 [node name="HitboxShape" parent="Hitbox" index="0"]
 visible = true

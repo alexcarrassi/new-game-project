@@ -2,7 +2,7 @@ class_name PlayerBubble extends Bubble
 
 
 @export var actorTimerOffset = 3.0
-@export var shoot_range: float = 140 #range in pixels
+@export var shoot_range: float = 120 #range in pixels
 
 @onready var popTimer: Timer = $PopTimer
 @onready var prePopTimer: Timer = $PrepopTimer
@@ -125,14 +125,11 @@ func _physics_process(delta: float) -> void:
 	
 	match self.state: 
 		BubbleState.Popping:
-			self.target_velocity = Vector2.ZERO
+			self.linear_velocity = Vector2.ZERO
 			return
 		BubbleState.Shooting:
 			if(self.is_active) :
-				self.target_velocity.x = dir.x * self.hor_speed
-		BubbleState.Floating:
-			self.target_velocity = self.float(delta)
-	
+				self.linear_velocity.x = dir.x * self.hor_speed
 	self.hurtbox_update(delta)
 
 	

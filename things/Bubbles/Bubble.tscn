@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://wraeqkcnwm3t"]
+[gd_scene load_steps=13 format=3 uid="uid://wraeqkcnwm3t"]
 
 [ext_resource type="Script" uid="uid://cd5jgtlg8kex6" path="res://Things/Bubbles/PlayerBubble/PlayerBubble.gd" id="1_fnoqv"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_4pbcg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qslm"]
-size = Vector2(12, 13)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jnbca"]
+friction = 0.0
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jnbca"]
+radius = 8.01561
 
 [sub_resource type="Animation" id="Animation_3mr26"]
 resource_name = "Pon"
@@ -128,7 +132,9 @@ height = 11.0
 
 [node name="Bubble" type="RigidBody2D"]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 16384
+mass = 0.02
+physics_material_override = SubResource("PhysicsMaterial_jnbca")
 lock_rotation = true
 script = ExtResource("1_fnoqv")
 actorTimerOffset = 1.0
@@ -149,7 +155,7 @@ horizontal_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_3qslm")
+shape = SubResource("CircleShape2D_jnbca")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4pbcg")

@@ -1,8 +1,8 @@
 class_name Bubble extends RigidBody2D
 
 @export var hor_speed: float = 300.0
-@export var float_vert_speed: float = 30.0
-@export var float_hor_speed: float = 30.0
+@export var float_vert_speed: float = 3.0
+@export var float_hor_speed: float = 3.0
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $Hitbox
@@ -57,21 +57,54 @@ func toggle_collision(toggle: bool) -> void:
 	self.set_collision_mask_value(2, toggle) #Collide with Players
 	self.set_collision_layer_value(4, toggle) #Collide with other bubbles
 
-func float(delta: float) -> Vector2:
+
+
+
+func get_swirl_velocity(vortex_center: Vector2) -> Vector2:
+	
+	var radial: Vector2 = global_position - vortex_center
+	var dist: float = radial.length() 
+	
+	if(dist < 0.001) :
+		return Vector2.ZERO	
+	
+	var radial_dir: Vector2 = radial / dist 
+	var tangent_dir: Vector2  = Vector2(-radial_dir.y, radial_dir.x )	
+	
+	var tangential: Vector2 = tangent_dir * 2.0 
+	var inward: Vector2 = -radial+dir * 2.0 
+	return tangential + inward
+		
+
+func get_airCurrent_velocity() -> Vector2: 
 	var airCurrent: TileMapLayer = Game.world.level.AirCurrent
 	if(airCurrent):
 		var localMapPos = airCurrent.to_local( self.global_position)
 		var pos = airCurrent.local_to_map(localMapPos )
 		var cellData = airCurrent.get_cell_tile_data(pos)
-		var dir = Vector2.UP
+		var current_dir = Vector2.UP
 		if(cellData):
-			dir =  cellData.get_custom_data("Direction")
+			current_dir =  cellData.get_custom_data("Direction")
 		
-		return dir * Vector2(self.float_hor_speed, self.float_vert_speed)
+		if(current_dir == Vector2.ZERO):
+			# Swirl tile.
+			var local_center = airCurrent.map_to_local(pos)
+			var global_center = airCurrent.to_global(local_center)
+			
+			return get_swirl_velocity(global_center)
+			#return dir * Vector2(self.float_hor_speed, self.float_vert_speed)
+
+		else:
+			dir = current_dir
+		return current_dir * Vector2(self.float_hor_speed, self.float_vert_speed)
 		pass
 		
 	
 	return Vector2.ZERO
+		
+
+func float(delta: float) -> Vector2:
+	return get_airCurrent_velocity()
 
 
 func hitBoxBodyEntered(areaOwner: Node2D) -> void:
@@ -91,11 +124,6 @@ func hitBoxAreaEntered(area: Area2D) -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	match self.state: 
-		_:
-			self.target_velocity = self.float(delta)
-
-
 	self.hurtbox_update(delta)
 	
 # Give the Hurtbox a slight Lag, behind our overall position
@@ -112,22 +140,15 @@ func hurtbox_update(delta: float) -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	
-	if(self.lock_force_damp):
+	if( self.state != BubbleState.Floating):
 		return
-	var target_v = self.target_velocity
-	var current_v = state.linear_velocity
-	var v_damp = 12 
-	var force_max = 1200
+	var desired_velocity: Vector2 = get_airCurrent_velocity()
+	var steered: Vector2 = desired_velocity  # Slowly steer the force by subtracting our current linear vel
+	var strength: float = 1
 	
-	var v_delta = target_v - current_v 
+	state.apply_central_force(steered * strength)
 	
-	var force = v_delta  * v_damp * mass
-	
-	if(force.length() > force_max):
-		force = force.normalized() * force_max
-		
-		
-	state.apply_central_force(force)
+	self.linear_damp = 4.0
 	pass	
 
 # Player-triggered pop	
