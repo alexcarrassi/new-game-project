@@ -57,6 +57,18 @@ func _ready() -> void:
 	
 	enemiesCleared.connect(endLevelItemSpawn.spawnItem)
 	
+	
+	await get_tree().process_frame
+	print("Scene joypads: ", Input.get_connected_joypads())
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton:
+		print("Button ", event.button_index, " device ", event.device, " pressed=", event.pressed)
+
+	if event is InputEventJoypadMotion and abs(event.axis_value) > 0.2:
+		print("Axis ", event.axis, " value=", event.axis_value, " device ", event.device)
+		
+		
 		
 func levelTransition(options: Dictionary = {}) -> void:
 	print("TRANSITION")

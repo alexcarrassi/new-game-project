@@ -17,6 +17,7 @@ var is_frameStepping = false
 signal playerRegistered(playerEntry: PlayerEntry) 
 
 func _ready() -> void:
+
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func register_root( root_node: WorldWrapper) -> void:

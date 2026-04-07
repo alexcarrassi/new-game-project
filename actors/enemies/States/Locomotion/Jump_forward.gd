@@ -2,7 +2,7 @@ class_name zenchan_jumpForward extends State
 
 
 func enter(prev_state: State, data: Dictionary = {} ) -> void:
-	self.body.velocity.x = self.body.MAX_RUN_VELOCITY * self.body.direction.x
+	self.body.velocity.x = self.body.MAX_RUN_VELOCITY *2 * self.body.direction.x
 	self.body.velocity.y = -self.body.JUMP_VELOCITY + 20.0
 	
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +19,7 @@ func physics_update(delta: float) -> void:
 	
 	if( self.body.wall_ahead() ):
 		self.body.flip()
-		self.body.velocity.x = self.body.MAX_RUN_VELOCITY * self.body.direction.x
+		self.body.velocity.x = self.body.MAX_RUN_VELOCITY *2* self.body.direction.x
 
 		
 	#var collision_count = body.get_slide_collision_count()

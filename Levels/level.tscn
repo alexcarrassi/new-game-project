@@ -29,6 +29,7 @@ sources/0 = SubResource("TileSetAtlasSource_854xt")
 
 [node name="Level_01" type="Node2D"]
 process_mode = 1
+position = Vector2(0, 8)
 script = ExtResource("1_dvejp")
 
 [node name="AirCurrent" type="TileMapLayer" parent="."]

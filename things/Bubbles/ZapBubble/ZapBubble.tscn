@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgbacp2xdq52f"]
+[gd_scene load_steps=11 format=3 uid="uid://dgbacp2xdq52f"]
 
 [ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://Things/Bubbles/Bubble.tscn" id="1_vekhu"]
 [ext_resource type="Script" uid="uid://inj8rxgwwfs8" path="res://Things/Bubbles/ZapBubble/ZapBubble.gd" id="2_4tdxl"]
+[ext_resource type="PackedScene" uid="uid://c4i87og5f26yb" path="res://Things/Projectiles/LightningProjectile.tscn" id="3_p50wo"]
 
 [sub_resource type="Animation" id="Animation_3mr26"]
 resource_name = "Pon"
@@ -113,6 +114,7 @@ _data = {
 
 [node name="ZapBubble" instance=ExtResource("1_vekhu")]
 script = ExtResource("2_4tdxl")
+scene_LightningProjectile = ExtResource("3_p50wo")
 zapSpeed = 10.0
 
 [node name="Sprite2D" parent="." index="2"]
