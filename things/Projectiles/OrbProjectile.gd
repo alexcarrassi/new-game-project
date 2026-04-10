@@ -1,4 +1,4 @@
-class_name OrbProjectile extends CharacterBody2D
+class_name OrbProjectile extends Projectile
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $Hitbox
@@ -15,7 +15,7 @@ func _ready() -> void:
 	max_slides = 10
 	
 	timer.timeout.connect( func() -> void:
-		self.queue_free()	
+		dissolve()
 	)
 
 func onAreaEntered( area: Area2D) -> void:

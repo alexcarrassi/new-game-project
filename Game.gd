@@ -25,9 +25,6 @@ func register_root( root_node: WorldWrapper) -> void:
 func register_player(index: int, player: Player) -> PlayerEntry:
 	var playerEntry = PlayerEntry.new()
 	#var playerStats = world.playerStats_Schema.duplicate(true)
-	
-	
-	
 	var inventory = InventoryController.new(player)
 	
 	playerEntry.player = player
@@ -203,6 +200,8 @@ func pause_game() -> void:
 	root.screenlayer.add_child(pauseMenu)
 	tree.paused = true
 
+	print(SaveGame.serialize())
+	SaveGame.saveFile()
 	pass
 func resume_game() -> void:
 
@@ -227,6 +226,12 @@ func start_new_game(game_mode = 0) -> void:
 		child.free()
 		
 		
+func continue_game() -> void:
+	print("continue")
+
+	SaveGame.loadFile()
+	
+	
 func exit_to_main_menu() -> void:
 	
 	clean_layers()

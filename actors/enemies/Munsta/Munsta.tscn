@@ -11,9 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cu346y3jcqwov" path="res://actors/enemies/States/Locomotion/fly.tscn" id="9_smetb"]
 
 [node name="Enemy" instance=ExtResource("1_0jpja")]
-collision_mask = 4225
+collision_mask = 20609
 script = ExtResource("2_enfmc")
-MAX_RUN_VELOCITY = 45.0
 MAX_RISE_VELOCITY = 45.0
 direction = Vector2(-1, 1)
 

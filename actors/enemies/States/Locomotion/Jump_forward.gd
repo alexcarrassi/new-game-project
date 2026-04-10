@@ -20,7 +20,7 @@ func physics_update(delta: float) -> void:
 	if( self.body.wall_ahead() ):
 		self.body.flip()
 		self.body.velocity.x = self.body.MAX_RUN_VELOCITY *2* self.body.direction.x
-
+		body.velocity = body.velocity.limit_length( body.MAX_RUN_VELOCITY)
 		
 	#var collision_count = body.get_slide_collision_count()
 	#for i in range(collision_count):

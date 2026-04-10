@@ -1,4 +1,4 @@
-class_name LightningProjectile extends CharacterBody2D
+class_name LightningProjectile extends Projectile
 
 
 const max_speed: float = 500.0
@@ -47,4 +47,4 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if( get_slide_collision_count() > 0 ) :
-		queue_free()
+		dissolve()

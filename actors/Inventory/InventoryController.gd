@@ -46,3 +46,13 @@ func consumeItem(item_id: StringName) -> void:
 	self.inventoryUpdated.emit()	
 
 			
+			
+func serialize() -> Dictionary:
+	var data = {"entries" = {}}
+	
+	for itemID: StringName in items.keys(): 
+		var itemEntry = getItem(itemID)
+		data["entries"][itemID] = itemEntry.stack
+	
+	return data 
+				

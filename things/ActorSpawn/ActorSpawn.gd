@@ -44,7 +44,7 @@ var is_spawning: bool = false
 			
 var actor: Actor			
 
-signal actorSpawned()
+signal actorSpawned(actor: Actor)
 
 
 
@@ -72,7 +72,6 @@ func _ready() -> void:
 # Run the defer_timer. After timeout, spawn the Actor
 func deferSpawn() -> void:
 	if(!self.disabled):
-		
 		self.defer_timer.start() 
 	pass
 	
@@ -106,7 +105,7 @@ func spawnActor() -> Tween:
 	transportTween.set_ease(Tween.EaseType.EASE_IN)
 	
 	transportTween.finished.connect( func() -> void:
-		self.actorSpawned.emit()
+		self.actorSpawned.emit(actor)
 	)
 	
 	return transportTween

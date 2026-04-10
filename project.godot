@@ -159,6 +159,7 @@ ui_accept_p2={
 2d_physics/layer_10="ENEMY_PROJECTILE"
 2d_physics/layer_11="PICKUP"
 2d_physics/layer_12="TELEPORTER"
+2d_physics/layer_13="TILES_INNER_2"
 2d_physics/layer_14="PLAYER_PROJECTILE"
 2d_physics/layer_15="OUTER_WALLS"
 

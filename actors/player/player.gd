@@ -165,6 +165,18 @@ func getEligibleExtendBubbles(count: int) -> Array[StringName]:
 
 	return bubbles
 	
+func serialize() -> Dictionary:
+	var data = {}
+	
+	
+	data["lives"] = health 
+	data["score"] = score
+	data["combocount"]= current_comboCount
+	data["comborecord"] = current_comboRecord
+		
+	
+	return data	
+	
 	
 class InputState:
 	var haxis: float = 0.0
@@ -204,3 +216,5 @@ class InputState:
 			self.jump_pressed,
 			self.jump_held
 		]
+		
+		

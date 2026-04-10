@@ -62,6 +62,12 @@ alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
+[node name="btn_Continue" type="Button" parent="CenterContainer/Options"]
+layout_mode = 2
+text = "CONTINUE"
+alignment = 0
+script = ExtResource("3_me62i")
+
 [node name="Button4" type="Button" parent="CenterContainer/Options"]
 layout_mode = 2
 text = "ONLINE

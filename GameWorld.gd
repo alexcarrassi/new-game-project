@@ -95,7 +95,7 @@ func levelTransition(options: Dictionary = {}) -> void:
 		
 	
 	
-	var nextLevel = null
+	var nextLevel: Level = null
 	var nextLevel_id = ""
 
 	for i in range(loopCount):
@@ -133,7 +133,6 @@ func levelTransition(options: Dictionary = {}) -> void:
 	
 			
 	self.startLevel(nextLevel)
-
 
 # The level contains an array of ActorSpawns.  
 # We call the spawning functions on each of them, which return Tweens for their transport.
@@ -186,6 +185,9 @@ func startLevel(level: Level) -> void:
 	if(level.item_spawn_6sec):
 		self.queue_items_for_spawn()
 
+			
+			
+			
 # When starting a new level, a player may have earned one or more Items to spawn,
 # based on actions taken throughout the game
 func queue_items_for_spawn() -> void:
@@ -386,6 +388,7 @@ func onEnemyDeath(enemy: Enemy) -> void:
 		self.is_transitioning_Levels = true
 		self.levelTransition({"cinematic": true, "timeout" : 2.0})		
 
+
 func onPlayerDeath(player: Player) -> void:
 	Game.deregister_player(0)	
 	
@@ -416,10 +419,6 @@ func onActorHurt( actor: Actor) -> void:
 		self.level.cleanHurryEnemies()
 		self.level.levelTimer.start()
 
-func onActorSpawned() -> void:
-	
-	pass
-			
 
 func onLevelHurry() -> void:
 	var hurryTween = self.UI.showHurry()

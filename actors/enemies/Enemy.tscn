@@ -20,7 +20,7 @@ size = Vector2(13.5, 14)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
-collision_mask = 129
+collision_mask = 16513
 script = ExtResource("1_s6a2x")
 LootTable = Array[ExtResource("2_n721a")]([ExtResource("3_texev")])
 JUMP_VELOCITY = 220.0

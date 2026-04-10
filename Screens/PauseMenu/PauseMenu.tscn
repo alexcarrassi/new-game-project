@@ -47,9 +47,6 @@ theme_override_font_sizes/font_size = 16
 text = "PAUSE "
 horizontal_alignment = 1
 
-[node name="TabBar" type="TabBar" parent="MarginContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-
 [node name="tab_Stats" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 visible = false
 clip_contents = true

@@ -28,6 +28,15 @@ func _ready() -> void:
 	if(self.AirCurrent):
 		self.AirCurrent.visible = false	
 		
+		
+	if( hurrySpawn )	:
+		
+		hurrySpawn.actorSpawned.connect( func(actor: Actor) -> void:
+			print("hurry spawned")
+			actor.sm_status.state.finished.emit("ALIVE")
+
+			pass	
+		)	
 	
 func start() -> void: 
 	pass	
@@ -92,6 +101,7 @@ func is_cleared() -> bool:
 		if !enemy.is_in_group("Invulnerable") and enemy.sm_status.state.name != "DEAD":
 			return false
 		
+	print("IS CLEARED")	
 	level_cleared.emit()	
 	return true	
 	

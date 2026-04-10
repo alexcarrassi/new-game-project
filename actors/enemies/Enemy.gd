@@ -38,7 +38,7 @@ func instantiateLoot() -> ItemPickup:
 		var itemPickup = item.getPickup()
 		itemPickup.item = item
 
-		get_tree().root.add_child( itemPickup )
+		Game.world.level.add_child( itemPickup )
 		itemPickup.position = self.position
 		
 		return itemPickup

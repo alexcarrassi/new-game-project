@@ -9,9 +9,8 @@ func activate(actor: Actor) -> void:
 	print("petrifying %s" %[actor.name])
 	
 	actor.sm_locomotion.physics_process_paused = true 
-	actor.sm_locomotion.physics_process_paused = true 
 	actor.sm_act.physics_process_paused = true 
-	
+	actor.sm_status.physics_process_paused = false
 	actor.animationPlayer.current_state_animation = "PETRIFIED"
 	
 

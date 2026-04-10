@@ -1,4 +1,4 @@
-class_name FireProjectile extends CharacterBody2D
+class_name FireProjectile extends Projectile
 
 var fallingSpeed: float = 80.0
 
@@ -23,7 +23,7 @@ func _ready() -> void:
 		var dissolveLength = self.animationPlayer.get_animation("dissolve").length
 		await get_tree().create_timer(dissolveLength).timeout
 		self.queue_free()
-		print("dissolveTimer timeout")	
+		dissolve()
 	)
 	
 	self.hitBox.area_entered.connect( self.hitBoxAreaEntered)

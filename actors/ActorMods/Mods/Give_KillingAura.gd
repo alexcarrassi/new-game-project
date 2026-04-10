@@ -30,7 +30,6 @@ func activate(actor: Actor) -> void:
 		var areaOwner = area.get_parent()
 		if(areaOwner is Enemy) :
 			areaOwner.sm_status.state.finished.emit("DEAD")
-
 		pass	
 	)
 	#
