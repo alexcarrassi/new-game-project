@@ -11,8 +11,8 @@ class_name MainMenu extends Control
 func _ready() -> void:
 	await get_tree().process_frame
 
-	btn_newGame.pressed.connect( func() -> void: Game.start_new_game(0) )
-	btn_newGame_2p.pressed.connect( func() -> void: Game.start_new_game(1))
+	btn_newGame.pressed.connect( func() -> void: Game.start_new_game({"gamestate": {"game_mode" : 0}}) )
+	btn_newGame_2p.pressed.connect( func() -> void: Game.start_new_game( {"gamestate": {"game_mode" : 1}}))
 	btn_Exit.pressed.connect( func() -> void: Game.exit()  )
 	btn_Continue.pressed.connect( func() -> void: Game.continue_game() )
 	btn_newGame.grab_focus()

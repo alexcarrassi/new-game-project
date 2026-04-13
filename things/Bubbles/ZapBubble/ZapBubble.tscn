@@ -127,6 +127,3 @@ libraries = {
 
 [node name="HitboxShape" parent="Hitbox" index="0"]
 visible = true
-
-[node name="Hurtbox" parent="." index="5"]
-visible = false

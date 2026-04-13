@@ -165,6 +165,16 @@ func getEligibleExtendBubbles(count: int) -> Array[StringName]:
 
 	return bubbles
 	
+func deserialize(data: Dictionary) -> void:
+	print("deserialize player")
+	print(data)
+	health = data.get("lives", health)
+	score = data.get("score", score )
+	current_comboCount = data.get("combocount", current_comboCount)
+	current_comboRecord = data.get("comborecord", current_comboRecord)
+	
+	scoreUpdated.emit()
+	
 func serialize() -> Dictionary:
 	var data = {}
 	
@@ -173,7 +183,7 @@ func serialize() -> Dictionary:
 	data["score"] = score
 	data["combocount"]= current_comboCount
 	data["comborecord"] = current_comboRecord
-		
+	data["player_index"] = player_index	
 	
 	return data	
 	

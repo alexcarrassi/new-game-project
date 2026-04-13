@@ -5,7 +5,7 @@ const SAVEGAME_PATH = "user://savegame.json"
 
 
 static func serialize() -> Dictionary:
-	var dict = {"playerentries" = {}, "gamestate" = {}}
+	var dict = {"playerentries" = [], "gamestate" = {}}
 
 	dict["gamestate"] = {
 		levelid = Game.world.level.definition.id,
@@ -14,11 +14,12 @@ static func serialize() -> Dictionary:
 	}
 	for player_index: int in Game.playerEntries.keys():
 		var playerEntry = Game.playerEntries.get(player_index)
-		dict["playerentries"][player_index] = playerEntry.serialize()
+		dict["playerentries"].append( playerEntry.serialize() )
 
 	return dict
 	
 static func deserialize(dict: Dictionary) -> void:
+	
 	
 	
 	print(dict)
@@ -39,22 +40,26 @@ static func saveFile() -> bool:
 	file.close() 
 	return true
 		
-static func loadFile(  ) -> bool:
+static func hasSaveFile() -> bool: 
 	if not FileAccess.file_exists( SAVEGAME_PATH):
-		return false
+		return false 
+		
+	return true		
+	
+static func loadFile(  ) -> Dictionary :
+	if not FileAccess.file_exists( SAVEGAME_PATH):
+		return {}
 	
 	var file: FileAccess = FileAccess.open( SAVEGAME_PATH, FileAccess.READ)
 	if file == null: 
-		return false 
+		return {} 
 		
 	var content: String = file.get_as_text()	
 	file.close() 
 	
 	var json = JSON.new() 
 	if(json.parse(content) != OK):
-		return false
-		
+		return {}
+	#SaveGame.deserialize( json.data )	
 	
-	SaveGame.deserialize( json.data )	
-	
-	return true 
+	return json.data 

@@ -213,9 +213,8 @@ func resume_game() -> void:
 
 	pass
 
-func start_new_game(game_mode = 0) -> void: 
+func start_new_game(params: Dictionary) -> void: 
 	world = gameWorldScene.instantiate() as GameWorld 
-	world.game_mode = game_mode
 	
 	for child in root.gameViewPort.get_children():
 		child.free() 
@@ -225,11 +224,20 @@ func start_new_game(game_mode = 0) -> void:
 	for child in root.screenlayer.get_children():
 		child.free()
 		
+	world.initialize(params)	
 		
 func continue_game() -> void:
-	print("continue")
+	print("continue")	
 
-	SaveGame.loadFile()
+	var saveData = SaveGame.loadFile()
+	if(saveData) :
+		Game.difficulty = saveData["gamestate"]["difficulty"]
+		Game.currentLevel = saveData["gamestate"]["levelid"]
+		Game.start_new_game(saveData)
+	else :
+		Game.start_new_game({})
+			
+
 	
 	
 func exit_to_main_menu() -> void:

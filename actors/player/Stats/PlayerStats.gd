@@ -35,6 +35,14 @@ func setStat(statKey: StringName, value: int) -> void:
 		self.values[statKey] = value
 		
 		self.statsUpdated.emit()	
+		
+func setRewarded(rewardKey: StringName, value: int) -> void:
+	var stat = self.rewarded.get(rewardKey, null)
+	if( stat != null) :
+		self.rewarded[rewardKey] = value
+		
+		self.statsUpdated.emit()	
+		
 func incrementStat(statKey: StringName, incr_by: int) -> void:
 	var statval = getStat( statKey)
 	setStat( statKey, statval + incr_by) 		
@@ -47,18 +55,30 @@ func onStatEvent(statKey: StringName, value: int) -> void:
 	
 	print("Updating %s" %[statKey])
 
+func deserialize( data: Dictionary) -> void:
+	
+	print("deserialize stats")
+	print(data)
+	if(data.has("values")):
+		for statKey: StringName in data["values"].keys():
+			setStat(statKey, data["values"][statKey])
+
+	if(data.has("rewarded")):
+		for statKey: StringName in data["rewarded"].keys():
+			setRewarded(statKey, data["rewarded"][statKey])
+
 
 func serialize() -> Dictionary: 
 	var data = {
 		"values" = {},
-		"rewared" = {}
+		"rewarded" = {}
 		} 
 	
 	for statKey: StringName in values.keys():
 		data["values"][statKey] = values.get(statKey)
 	
 	for statKey: StringName in rewarded.keys():
-		data["rewared"][statKey] = rewarded.get(statKey)
+		data["rewarded"][statKey] = rewarded.get(statKey)
 	
 	
 	

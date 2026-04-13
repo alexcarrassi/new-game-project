@@ -6,11 +6,7 @@ var inventory: InventoryController
 var id: int
 
 func serialize() -> Dictionary:
-	var data = {
-		"&stats" = {},
-		"$player" = {},
-		"$inv"	= {}
-	}
+	var data = {}
 	
 	
 	data["stats"] = stats.serialize()

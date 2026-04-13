@@ -11,18 +11,10 @@ func _ready() -> void:
 
 	pass # Replace with function body.
 
-func _enter_tree() -> void:
-	
-	#Assume player 1 for now
-	if(self.item != null):
-		print(self.item.id)
-	else:
-		printerr("item is null")
-
 func playerPop(player: Player) -> void:	
 	super.playerPop(player)
 	var inventory = Game.getPlayerEntry(player.player_index).inventory
-	inventory.addItem( self.item.id )
+	inventory.addItem( self.item.id, &"ExtendBubble" )
 	
 func setType(type: StringName) -> void:
 	
@@ -66,6 +58,7 @@ func _physics_process(delta: float) -> void:
 	match self.state: 
 		_:
 			self.target_velocity = self.float(delta)	
+	self.hurtbox_update(delta)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

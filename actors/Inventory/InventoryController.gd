@@ -20,7 +20,7 @@ func addItem(item_id: StringName, itemType: StringName = &"") -> void:
 			pass 
 		else: 
 			#create new entry
-			entry = ItemEntry.new(itemToAdd, 1) 		
+			entry = ItemEntry.new(itemToAdd, 1, itemType) 		
 			self.items[item_id] = entry
 			
 	#emit a signal	
@@ -47,12 +47,33 @@ func consumeItem(item_id: StringName) -> void:
 
 			
 			
+func deserialize(data: Dictionary) -> void:
+	
+	print("deserialize inventory")
+	
+	if(data.has("entries")):
+		for itemData: Dictionary in data["entries"]:
+			addItem(itemData["id"], itemData["type"])
+			getItem(itemData["id"]).stack = itemData["stack"]
+			
+			
+	print(data)
+	
+	inventoryUpdated.emit()	
+
+	
+	return
+
 func serialize() -> Dictionary:
-	var data = {"entries" = {}}
+	var data = {"entries" = []}
 	
 	for itemID: StringName in items.keys(): 
 		var itemEntry = getItem(itemID)
-		data["entries"][itemID] = itemEntry.stack
+		data["entries"].append({ 
+			"id" : itemID,
+			"stack" : itemEntry.stack,
+			"type": itemEntry.type
+		})
 	
 	return data 
 				

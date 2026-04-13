@@ -31,16 +31,34 @@ var is_transitioning_Levels : bool = false
 var game_mode:int = 0
 
 func _ready() -> void:
-	
+	pass
+
+func initialize(params: Dictionary) -> void:
 	Game.register_gameWorld( self )
+	
+	game_mode = params["gamestate"]["game_mode"]
+	var level_id = start_level_id if not params["gamestate"].has("levelid") else params["gamestate"]["levelid"]	
+
+
 	match game_mode:
 		0:	
 			var player = self.createPlayer(0)
 		1:
 			var player = self.createPlayer(0)
 			var player_2 = self.createPlayer(1)
+		
 			
-	var startingLevel = createNextLevel( self.start_level_id )	
+			
+	if(params.has("playerentries")):
+		for playerData in params["playerentries"]:
+			var playerEntry: PlayerEntry = Game.getPlayerEntry( playerData["player"]["player_index"])
+			if(playerEntry):
+				playerEntry.player.deserialize( playerData["player"])
+				playerEntry.stats.deserialize( playerData["stats"])
+				playerEntry.inventory.deserialize( playerData["inv"])
+			
+		
+	var startingLevel = createNextLevel( level_id )	
 	startingLevel.position = Vector2.ZERO
 	
 	self.swapLevels(startingLevel)
@@ -60,7 +78,6 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	print("Scene joypads: ", Input.get_connected_joypads())
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton:
 		print("Button ", event.button_index, " device ", event.device, " pressed=", event.pressed)
