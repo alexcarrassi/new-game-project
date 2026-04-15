@@ -8,6 +8,8 @@ var mainMenuScene :PackedScene = load("res://Screens/MainMenu/MainMenu.tscn")
 var titleScene :PackedScene    = load("res://Screens/Title/TitleScreen.tscn")
 var pauseMenuScene :PackedScene = load("res://Screens/PauseMenu/PauseMenu.tscn")
 
+
+
 var world: GameWorld 
 var playerEntries : Dictionary[int, PlayerEntry]
 var currentLevel: int = 0
@@ -203,6 +205,7 @@ func pause_game() -> void:
 	print(SaveGame.serialize())
 	SaveGame.saveFile()
 	pass
+	
 func resume_game() -> void:
 
 	for child: Control in root.screenlayer.	get_children():
@@ -237,16 +240,12 @@ func continue_game() -> void:
 	else :
 		Game.start_new_game({})
 			
-
-	
-	
 func exit_to_main_menu() -> void:
 	
 	clean_layers()
 		
 	var mainMenu = mainMenuScene.instantiate() as MainMenu 
 	root.screenlayer.add_child(mainMenu)
-
 
 func clean_layers() -> void: 
 	get_tree().paused = false

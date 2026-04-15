@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://mgmqdv2san8v"]
+[gd_scene load_steps=8 format=3 uid="uid://mgmqdv2san8v"]
 
 [ext_resource type="Script" uid="uid://wt71ovhq64j7" path="res://Things/Inventory/Items/ItemPickup.gd" id="1_ik8ld"]
 [ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="2_q3l83"]
+[ext_resource type="AudioStream" uid="uid://dtn32dlc86oaj" path="res://assets/sfx/sfx_pickupFood.wav" id="2_yyn4d"]
 [ext_resource type="Texture2D" uid="uid://dmey2ecmnmqbn" path="res://assets/fonts/PointsAndFonts.png" id="3_oml35"]
 [ext_resource type="AnimationLibrary" uid="uid://j12283a8d3h8" path="res://assets/animations/ItemPickup.tres" id="3_xeaud"]
 
@@ -15,6 +16,7 @@ radius = 8.062258
 collision_layer = 1024
 collision_mask = 129
 script = ExtResource("1_ik8ld")
+pickup_sound = ExtResource("2_yyn4d")
 
 [node name="Sprite_World" type="Sprite2D" parent="."]
 texture = ExtResource("2_q3l83")
@@ -42,3 +44,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_xeaud")
 debug_color = Color(0, 0.64300674, 0.31329158, 0.41960785)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

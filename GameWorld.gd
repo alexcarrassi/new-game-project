@@ -19,6 +19,8 @@ var level: Level
 @onready var teleporterBottom: Teleporter = $TeleporterBottom
 @onready var teleporterBottom2: Teleporter = $TeleporterBottom2
 
+@onready var audioPlayer: AudioStreamPlayer = $AudioStreamPlayer
+
 @export var start_debug: bool
 @export var start_level_id: String = "0"
 
@@ -325,8 +327,8 @@ func createPlayer(index: int) -> Player:
 		var transitionSlot = getTransitionSlot(playerNode.player_index)
 		playerNode.global_position = transitionSlot.global_position
 		
-		playerNode.actorHurt.connect( self.onActorHurt )
-		playerNode.actorDeath.connect( self.onActorDeath )
+		playerNode.actorHurt.connect( self.onActorHurt.bind(playerNode) )
+		playerNode.actorDeath.connect( self.onActorDeath.bind(playerNode) )
 		playerEntry.inventory.inventoryUpdated.connect( self.tryExtend.bind(playerNode))
 		self.injectPlayerIntoHUD(playerEntry)
 			
@@ -388,7 +390,7 @@ func spawnEnemy(enemyScene: PackedScene, position: Vector2, spawnNode: Node = nu
 	enemy.position = position
 	
 
-	enemy.actorDeath.connect( self.onEnemyDeath)
+	enemy.actorDeath.connect( self.onEnemyDeath.bind(enemy))
 	if(spawnNode != null) :
 		spawnNode.add_child(enemy)
 	else :
@@ -398,6 +400,7 @@ func spawnEnemy(enemyScene: PackedScene, position: Vector2, spawnNode: Node = nu
 
 func onEnemyDeath(enemy: Enemy) -> void:
 	print("Enemy Death in World")
+	
 	if(level.is_cleared() and !self.is_transitioning_Levels):
 		
 		enemiesCleared.emit()

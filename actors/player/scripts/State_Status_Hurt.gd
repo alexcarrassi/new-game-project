@@ -3,6 +3,7 @@ class_name HURT extends State
 
 func enter(prev_state: State, data: Dictionary) -> void:
 	var actor = self.body 
+	actor.actorHurtStart.emit()
 	actor.sm_locomotion.physics_process_paused = true
 	actor.sm_act.physics_process_paused = true 
 
@@ -28,7 +29,7 @@ func enter(prev_state: State, data: Dictionary) -> void:
 	
 func exit() -> void:
 	var actor = self.body 
-	actor.actorHurt.emit( actor )
+	actor.actorHurt.emit(  )
 
 	actor.sm_locomotion.physics_process_paused = false 	
 	actor.sm_act.physics_process_paused = false

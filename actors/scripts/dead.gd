@@ -37,6 +37,7 @@ func enter(prev_state: State, data: Dictionary = {}) -> void:
 	#Cancel all Mods on the actor, do not let them use their deactivation procedures
 	actor.modController.clear_all(true)
 	
+	actor.actorDeathStart.emit()
 	#After some time, re enable the collision again
 	if(self.timer == null) :
 			
@@ -75,7 +76,7 @@ func physics_update(delta: float) -> void:
 	if(actor.is_on_floor()):
 	
 		actor.instantiateLoot()
-		actor.actorDeath.emit(actor)
+		actor.actorDeath.emit()
 		actor.queue_free()
 	pass
 

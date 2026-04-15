@@ -5,11 +5,12 @@ class_name ItemPickup extends CharacterBody2D
 @onready var collisionShape2D: CollisionShape2D = $CollisionShape2D
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var hurtBox: Area2D  = $Hurtbox
-
+@onready var audioPlayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 @export var fallingspeed :float = 200.0
 @export var disableCollision: bool = false
+@export var pickup_sound: AudioStream
 
 var item : Item
 
@@ -69,6 +70,9 @@ func getPickedUp( body: Node2D) -> void:
 		self.fallingspeed = 0
 		velocity = Vector2.ZERO
 
+		if(pickup_sound):
+			audioPlayer.stream = pickup_sound
+			audioPlayer.play()
 		await get_tree().create_timer( self.animationPlayer.get_animation("PICKUP").length).timeout
 		self.queue_free()
 

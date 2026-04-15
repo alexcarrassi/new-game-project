@@ -18,10 +18,14 @@ func enterEffects() -> Array:
 
 func enter(prev_state: State, data: Dictionary) -> void:
 	
-	self.body.velocity.y = -self.body.JUMP_VELOCITY
+	var player: Player = body as Player 
+	
+	player.velocity.y = -self.body.JUMP_VELOCITY
 	#consume coyote and jump buffer
-	self.body.buffer_times["jump"] = 0
-	self.body.coyote_time = 0
+	player.buffer_times["jump"] = 0
+	player.coyote_time = 0
+	player.has_jumped.emit()
+	
 	
 func physics_update(delta: float) -> void:
 	

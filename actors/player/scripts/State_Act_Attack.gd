@@ -52,6 +52,7 @@ func enter(prev_state: State, data: Dictionary ):
 	self.add_child(self.timer)
 
 	self.timer.start()
+	player.has_shot_bubble.emit()
 
 
 

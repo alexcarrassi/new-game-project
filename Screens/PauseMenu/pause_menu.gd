@@ -7,6 +7,8 @@ class_name PauseMenu extends Control
 @onready var btn_toGame = $MarginContainer/VBoxContainer2/MarginContainer/tab_Pause/btn_toGame
 @onready var btn_toTitle = $MarginContainer/VBoxContainer2/MarginContainer/tab_Pause/btn_toTitle
 
+@export var pauseSound: AudioStream
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -20,6 +22,11 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	btn_toGame.grab_focus()
+	
+	Game.world.audioPlayer.stop() 
+	if(pauseSound):
+		Game.world.audioPlayer.stream = pauseSound
+		Game.world.audioPlayer.play()
 
 	pass # Replace with function body.
 

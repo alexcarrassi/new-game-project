@@ -7,7 +7,7 @@ func enter(prev_state: State, data: Dictionary) -> void:
 	
 	actor.sm_locomotion.physics_process_paused = true
 	actor.sm_act.physics_process_paused = true
-	actor.actorDeath.emit(actor)
+	actor.actorDeath.emit()
 
 	
 

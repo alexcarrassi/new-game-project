@@ -186,6 +186,8 @@ position = Vector2(128, -52)
 spawnTime = 0.0
 autoStart = false
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [editable path="UI/Root/P1/HUD/PlayerHUD"]
 [editable path="UI/Root/P2/HUD/PlayerHUD"]
 [editable path="TeleporterBottom"]

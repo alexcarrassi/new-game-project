@@ -45,7 +45,7 @@ func setPlayerEntry( new_playerEntry: PlayerEntry):
 		toggleIngame(true)
 
 	
-func removePlayerEntry(actor: Actor) -> void: 
+func removePlayerEntry() -> void: 
 	clean_connections() 
 	playerEntry = null
 	
@@ -74,7 +74,7 @@ func toggleIngame(on: bool) -> void:
 func updateScore() -> void:
 	self.label_Score.text = str(self.playerEntry.player.score)
 
-func updateLives(actor: Actor) -> void:
+func updateLives() -> void:
 	self.label_Lives.text = str(self.playerEntry.player.health)
 	
 func updateExtendInventory() -> void:

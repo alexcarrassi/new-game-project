@@ -25,8 +25,13 @@ var bubbleSpriteSheet: AtlasTexture
 var inputActions: PlayerInputActions
 var inputState: InputState
 var score: int = 0
+
 signal scoreUpdated()
 signal statEvent(statkey: StringName, value: int)
+
+signal has_jumped()
+signal has_shot_bubble()
+
 
 
 func setSpriteSheet( spriteSheet: AtlasTexture) -> void:
@@ -52,6 +57,8 @@ func _ready() -> void:
 	self.hurtbox.body_entered.connect( self.onHurtboxEntered)
 	
 	self.comboTimer.timeout.connect( self.endCombo )
+	
+	
 	
 func onHurtboxEntered( body: Node2D ) :
 	if( body is Enemy):

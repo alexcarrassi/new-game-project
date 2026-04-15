@@ -7,7 +7,7 @@ class_name Actor extends CharacterBody2D
 @onready var sm_act: StateMachine_Act = $StateMachine_Act
 @onready var sm_status: StateMachine_Status = $StateMachine_Status
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
-
+@onready var presentation: Presentation = $Presentation
 
 var modController: ModController 
 
@@ -33,8 +33,10 @@ var intent: ActorIntent
 var nodes_owned: Dictionary[StringName, Node]
 var stayPut: bool = false
 
-signal actorDeath(actor: Actor) 
-signal actorHurt(actor: Actor)
+signal actorDeathStart()
+signal actorDeath() 
+signal actorHurt()
+signal actorHurtStart()
 signal actorLifeUp(actor: Actor)
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +55,9 @@ func _ready() -> void:
 	
 	self.modController = ModController.new()
 	self.modController.actor = self
+	
+	if(presentation):
+		presentation.initialize(self)
 	
 func get_owned(name: StringName) -> Node:
 	return self.nodes_owned.get(name, null)
