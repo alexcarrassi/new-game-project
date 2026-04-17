@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://cf48yxnxw7y84"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://cf48yxnxw7y84"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_6af8t"]
 [ext_resource type="Texture2D" uid="uid://trb6ygwwc3yo" path="res://assets/sprites/Items/Umbrella_blue.tres" id="3_ultdd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cxasmjj30qd0g" path="res://Things/Inventory/Actions/ItemAction.gd" id="5_otm3p"]
 [ext_resource type="Script" uid="uid://t1esfelw60s6" path="res://Things/Inventory/ItemTypes/InventoryItem.gd" id="5_ultdd"]
 [ext_resource type="Script" uid="uid://b0f8o02gwgstj" path="res://Things/Inventory/Actions/ApplyAllItemEffects.gd" id="6_5uvgr"]
+[ext_resource type="AudioStream" uid="uid://do6pox35o5xdy" path="res://assets/sfx/sfx_powerup.wav" id="6_131h6"]
 
 [sub_resource type="Resource" id="Resource_otm3p"]
 script = ExtResource("3_wjwav")
@@ -24,5 +25,6 @@ id = &"umbrella_blue"
 display_name = "Blue Umbrella"
 ingameIcon = ExtResource("3_ultdd")
 ItemEffects = Array[ExtResource("1_6af8t")]([SubResource("Resource_otm3p")])
+pickupSound = ExtResource("6_131h6")
 pickupActions = Array[ExtResource("5_otm3p")]([SubResource("Resource_xc6gv")])
 metadata/_custom_type_script = "uid://dqjjif8wmykqb"

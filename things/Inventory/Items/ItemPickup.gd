@@ -69,7 +69,7 @@ func getPickedUp( body: Node2D) -> void:
 		
 		self.fallingspeed = 0
 		velocity = Vector2.ZERO
-
+		pickup_sound = pickup_sound if not item.pickupSound else item.pickupSound
 		if(pickup_sound):
 			audioPlayer.stream = pickup_sound
 			audioPlayer.play()

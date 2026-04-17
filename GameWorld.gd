@@ -20,6 +20,7 @@ var level: Level
 @onready var teleporterBottom2: Teleporter = $TeleporterBottom2
 
 @onready var audioPlayer: AudioStreamPlayer = $AudioStreamPlayer
+@onready var bgmPlayer: AudioStreamPlayer = $audio_bgm
 
 @export var start_debug: bool
 @export var start_level_id: String = "0"
@@ -79,6 +80,7 @@ func initialize(params: Dictionary) -> void:
 	
 	
 	await get_tree().process_frame
+	bgmPlayer.play()
 	print("Scene joypads: ", Input.get_connected_joypads())
 func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton:

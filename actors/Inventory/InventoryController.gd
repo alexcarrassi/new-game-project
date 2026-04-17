@@ -23,7 +23,7 @@ func addItem(item_id: StringName, itemType: StringName = &"") -> void:
 			entry = ItemEntry.new(itemToAdd, 1, itemType) 		
 			self.items[item_id] = entry
 			
-	#emit a signal	
+
 	self.inventoryUpdated.emit()	
 	if(self.actor is Player):
 		self.actor.statEvent.emit(PlayerStats.STATKEY_ITEMS_COLLECTED, 1 )

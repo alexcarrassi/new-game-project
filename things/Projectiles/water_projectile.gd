@@ -19,6 +19,7 @@ var actors: Array[Actor] = []
 var _flicker_accum: float = 0.0
 
 func _ready() -> void:	
+	super._ready()
 	self.tidePath.set_as_top_level(true)
 	self.tidePath.curve = Curve2D.new()
 	self.hitBox.area_entered.connect( self.hitBoxAreaEntered)

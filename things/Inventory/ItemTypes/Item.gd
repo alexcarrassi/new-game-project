@@ -4,7 +4,7 @@ class_name Item extends Resource
 @export var display_name: String
 @export var ingameIcon: AtlasTexture 
 @export var ItemEffects: Array[ItemEffect] = []
-
+@export var pickupSound: AudioStream = load("res://assets/sfx/sfx_pickupFood.wav")
 
 @export var itemPickup: PackedScene
 @export var pickupActions: Array[ItemAction]

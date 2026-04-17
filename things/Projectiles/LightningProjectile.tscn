@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4i87og5f26yb"]
+[gd_scene load_steps=8 format=3 uid="uid://c4i87og5f26yb"]
 
 [ext_resource type="Script" uid="uid://djj4vuelvpetk" path="res://Things/Projectiles/LightningProjectile.gd" id="1_aclv5"]
+[ext_resource type="AudioStream" uid="uid://ocbu28mmloqf" path="res://assets/sfx/sfx_zapstun.wav" id="2_4ym7s"]
 [ext_resource type="Texture2D" uid="uid://ba0hlc8sqanm1" path="res://assets/sprites/Projectiles/Lightning.tres" id="2_8v0nj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ru8t"]
@@ -33,6 +34,7 @@ radius = 8.0
 collision_layer = 8192
 collision_mask = 16384
 script = ExtResource("1_aclv5")
+sfx_emission = ExtResource("2_4ym7s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7ru8t")
@@ -60,3 +62,5 @@ debug_color = Color(0.94405836, 0.027815627, 0.588335, 0.41960785)
 wait_time = 0.25
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

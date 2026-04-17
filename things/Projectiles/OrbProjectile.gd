@@ -10,6 +10,8 @@ var actor: Actor
 var direction: Vector2 = Vector2(-1, -1)
 
 func _ready() -> void:
+	super._ready()
+
 	animationPlayer.play("PROPAGATE")
 	hitbox.area_entered.connect( onAreaEntered)
 	max_slides = 10

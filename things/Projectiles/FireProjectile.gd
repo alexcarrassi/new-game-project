@@ -14,7 +14,8 @@ var isGrounded: bool = false
 var spawnSegments: bool = true
 
 func _ready() -> void:
-	
+	super._ready()
+
 	self.hitBox.monitorable = false 
 	self.hitBox.monitoring = false
 	#connect timer with self.queue_free()

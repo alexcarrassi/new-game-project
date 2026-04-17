@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpk8yn3wu4u6v" path="res://assets/sprites/Items/Heart.tres" id="2_pj820"]
 [ext_resource type="AnimationLibrary" uid="uid://41pp60amswl7" path="res://assets/animations/ItemPickup_Heart.tres" id="3_r1lfa"]
 
-[node name="ItemPickup" groups=["Pickups"] instance=ExtResource("1_24frg")]
+[node name="ItemPickup" instance=ExtResource("1_24frg")]
 
 [node name="Sprite_World" parent="." index="0"]
 texture = ExtResource("2_pj820")

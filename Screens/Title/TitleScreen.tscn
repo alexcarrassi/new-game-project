@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://3bcxoaf1tuql"]
+[gd_scene load_steps=9 format=3 uid="uid://3bcxoaf1tuql"]
 
 [ext_resource type="Script" uid="uid://ehfvri2xgad8" path="res://Screens/Title/title_screen.gd" id="1_rx7o8"]
 [ext_resource type="Texture2D" uid="uid://by2vhvg8257p1" path="res://assets/misc/Splash.tres" id="2_gxwbk"]
 [ext_resource type="Texture2D" uid="uid://kxq0wc7qtfx7" path="res://assets/misc/Taito.tres" id="3_klvhi"]
 [ext_resource type="PackedScene" uid="uid://rqyk4dvc2t4i" path="res://Screens/Title/bg_star.tscn" id="4_tiu78"]
+[ext_resource type="AudioStream" uid="uid://mytu44xujvlv" path="res://assets/sfx/sfx_introscreen.wav" id="5_gxwbk"]
 
 [sub_resource type="Animation" id="Animation_8viuw"]
 length = 0.001
@@ -185,3 +186,6 @@ libraries = {
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gxwbk")

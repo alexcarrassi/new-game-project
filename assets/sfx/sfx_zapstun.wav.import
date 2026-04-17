@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ocbu28mmloqf"
-path="res://.godot/imported/Bubble Bobble SFX (1).wav-47af04e57242f08ab44677c0acaeb05a.sample"
+path="res://.godot/imported/sfx_zapstun.wav-99a830b546bc50d43caeae7e3ef72a63.sample"
 
 [deps]
 
-source_file="res://assets/sfx/Bubble Bobble SFX (1).wav"
-dest_files=["res://.godot/imported/Bubble Bobble SFX (1).wav-47af04e57242f08ab44677c0acaeb05a.sample"]
+source_file="res://assets/sfx/sfx_zapstun.wav"
+dest_files=["res://.godot/imported/sfx_zapstun.wav-99a830b546bc50d43caeae7e3ef72a63.sample"]
 
 [params]
 

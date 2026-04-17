@@ -16,6 +16,12 @@ func playerPop(player: Player) -> void:
 	var inventory = Game.getPlayerEntry(player.player_index).inventory
 	inventory.addItem( self.item.id, &"ExtendBubble" )
 	
+		#emit a signal	
+	if(item.pickupSound):
+		player.presentation.SFX.channel_status.stream = item.pickupSound
+		player.presentation.SFX.channel_status.play()
+	
+	
 func setType(type: StringName) -> void:
 	
 	var item = ItemDB.extendBubbles.get(type)

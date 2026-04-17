@@ -4,6 +4,7 @@ class_name TitleScreen extends Control
 @export var starCount: float = 20
 @onready var animationPlayer = $AnimationPlayer
 @onready var starsLayer = $StarsLayer
+@onready var audioPlayer: AudioStreamPlayer = $AudioStreamPlayer
 
 var rng := RandomNumberGenerator.new()
 var stars: Array[bg_Star] = []
@@ -13,6 +14,7 @@ signal logo_at_full_opacity
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	audioPlayer.play()
 	animationPlayer.play("Splash Intro")
 	await get_tree().process_frame
 

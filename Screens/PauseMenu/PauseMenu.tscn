@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_chuao"]
 [ext_resource type="Script" uid="uid://c811nsq3f05yj" path="res://Screens/PauseMenu/pause_menu.gd" id="1_xi74f"]
 [ext_resource type="PackedScene" uid="uid://k470hfn00pdn" path="res://Screens/PauseMenu/StatTable.tscn" id="2_8trls"]
-[ext_resource type="AudioStream" uid="uid://do6pox35o5xdy" path="res://assets/sfx/Bubble Bobble SFX (20).wav" id="3_kema0"]
+[ext_resource type="AudioStream" uid="uid://do6pox35o5xdy" path="res://assets/sfx/sfx_powerup.wav" id="3_kema0"]
 [ext_resource type="Script" uid="uid://vcbnel1krs2x" path="res://UI/ButtonWithIcon/button_with_icon.gd" id="4_kema0"]
 
 [node name="PauseMenu" type="Control"]

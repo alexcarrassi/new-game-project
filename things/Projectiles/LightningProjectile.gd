@@ -10,7 +10,8 @@ var shooting: bool = false
 @onready var hitbox: Area2D = $Hitbox
 
 func _ready() -> void: 
-	
+	super._ready()
+
 	timer.timeout.connect( func() -> void:
 		shooting = true	
 		pass
