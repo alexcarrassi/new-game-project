@@ -7,7 +7,7 @@ var gameWorldScene :PackedScene = load("res://GameWorld.tscn")
 var mainMenuScene :PackedScene = load("res://Screens/MainMenu/MainMenu.tscn")
 var titleScene :PackedScene    = load("res://Screens/Title/TitleScreen.tscn")
 var pauseMenuScene :PackedScene = load("res://Screens/PauseMenu/PauseMenu.tscn")
-
+var settingsMenuScene :PackedScene = load("res://Screens/Settings/SettingsMenu.tscn")
 
 
 var world: GameWorld 
@@ -21,6 +21,7 @@ signal playerRegistered(playerEntry: PlayerEntry)
 func _ready() -> void:
 
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	Settings.load_settings()
 	
 func register_root( root_node: WorldWrapper) -> void:
 	root = root_node	
@@ -264,6 +265,12 @@ func clean_layers() -> void:
 		
 func finalize_world_cleanup() -> void:
 	world = null
+	
+func open_settings_menu() -> void:
+	clean_layers()
+
+	var settingsMenu = settingsMenuScene.instantiate() as SettingsScreen
+	root.screenlayer.add_child(settingsMenu)		
 
 func exit_to_title() -> void: 
 	clean_layers()

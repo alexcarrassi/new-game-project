@@ -76,9 +76,9 @@ alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
-[node name="Button2" type="Button" parent="CenterContainer/Options"]
+[node name="btn_Settings" type="Button" parent="CenterContainer/Options"]
 layout_mode = 2
-text = "OPTIONS"
+text = "Settings"
 alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
