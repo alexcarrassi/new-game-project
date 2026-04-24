@@ -158,7 +158,6 @@ position = Vector2(56, 268)
 script = ExtResource("9_2dy0i")
 bubbleQueue = Array[StringName]([&"extend_D"])
 bubbleScene = ExtResource("9_jih74")
-disabled = true
 
 [node name="IntervalTimer" parent="ExtendBubble_left" index="0"]
 wait_time = 2.0
