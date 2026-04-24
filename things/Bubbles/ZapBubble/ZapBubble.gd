@@ -39,7 +39,10 @@ func playerPop(player: Player) -> void:
 		var projectile: LightningProjectile = scene_LightningProjectile.instantiate() as LightningProjectile
 		get_parent().add_child(projectile)
 		projectile.position = position
-		projectile.direction = player.direction * Vector2(-1, 0)
+
+		var player_direction = Vector2.RIGHT if player.sprite2D.flip_h == false else Vector2.LEFT
+
+		projectile.direction = player_direction * Vector2(-1, 0)
 		
 		
 	

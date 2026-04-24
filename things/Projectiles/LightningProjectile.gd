@@ -41,8 +41,10 @@ func hitBoxAreaEntered(area: Area2D) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	print(direction)
 	if( shooting ):
-		velocity.x = move_toward(velocity.x, max_speed, delta * acceleration) *direction.x
+		var max_speed = max_speed * direction.x
+		velocity.x = move_toward(velocity.x, max_speed, delta * acceleration)
 	
 	move_and_slide()
 	
