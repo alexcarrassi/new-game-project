@@ -80,30 +80,88 @@ layout_mode = 2
 text = "Controls "
 fit_content = true
 
-[node name="RebindRow" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+[node name="Controls_tab" type="TabContainer" parent="MarginContainer/Options"]
+layout_mode = 2
+current_tab = 0
+
+[node name="p1" type="Control" parent="MarginContainer/Options/Controls_tab"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Options/Controls_tab/p1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_right = 74.0
+offset_bottom = 96.0
+grow_horizontal = 2
+
+[node name="RebindRow" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer" instance=ExtResource("3_ee5ln")]
 layout_mode = 2
 action_name = &"ui_jump"
-label_name = "P1 Jump"
+label_name = "Jump"
 
-[node name="RebindRow2" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+[node name="RebindRow2" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer" instance=ExtResource("3_ee5ln")]
 layout_mode = 2
 action_name = &"attack"
-label_name = "P1 Shoot"
+label_name = "Shoot"
 
-[node name="RebindRow3" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+[node name="RebindRow3" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer" instance=ExtResource("3_ee5ln")]
 layout_mode = 2
 action_name = &"ui_left"
-label_name = "P1 left"
+label_name = "left"
 
-[node name="RebindRow4" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+[node name="RebindRow4" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer" instance=ExtResource("3_ee5ln")]
 layout_mode = 2
 action_name = &"ui_right"
-label_name = "P1 right"
+label_name = "right"
 
-[node name="RebindRow5" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+[node name="RebindRow5" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer" instance=ExtResource("3_ee5ln")]
 layout_mode = 2
 action_name = &"ui_start"
-label_name = "P1 Pause"
+label_name = "Pause"
+
+[node name="p2" type="Control" parent="MarginContainer/Options/Controls_tab"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Options/Controls_tab/p2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_right = 74.0
+offset_bottom = 96.0
+grow_horizontal = 2
+
+[node name="RebindRow" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"ui_jump_p2"
+label_name = "Jump"
+
+[node name="RebindRow2" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"attack_p2"
+label_name = "Shoot"
+
+[node name="RebindRow3" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"ui_left_p2"
+label_name = "Left"
+
+[node name="RebindRow4" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"ui_right_p2"
+label_name = "Right"
+
+[node name="RebindRow5" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"ui_accept_p2"
+label_name = "Pause"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
