@@ -83,7 +83,6 @@ func ingame_input(event: InputEvent) -> void:
 		else:
 			# Spawn player 
 			var player = world.createPlayer(0)
-			register_player(0, player)
 			player.sm_status.state.finished.emit("ALIVE")
 			world.spawnPlayer(player)		
 
@@ -100,7 +99,6 @@ func ingame_input(event: InputEvent) -> void:
 		else:
 			# Spawn player 
 			var player = world.createPlayer(1)
-			register_player(1, player)
 			player.sm_status.state.finished.emit("ALIVE")
 			world.spawnPlayer(player)		
 					

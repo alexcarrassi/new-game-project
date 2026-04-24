@@ -341,7 +341,7 @@ func tryExtend( player: Player) -> void:
 	if(player.checkForExtend()):
 		player.health += 1
 		player.cleanExtendBubbles()
-		player.actorLifeUp.emit(player)
+		player.actorLifeUp.emit()
 		self.levelTransition({"cinematic": true, "timeout" : 0.1})	
 	
 			

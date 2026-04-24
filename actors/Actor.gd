@@ -37,7 +37,7 @@ signal actorDeathStart()
 signal actorDeath() 
 signal actorHurt()
 signal actorHurtStart()
-signal actorLifeUp(actor: Actor)
+signal actorLifeUp()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
