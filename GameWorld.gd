@@ -313,7 +313,7 @@ func createPlayer(index: int) -> Player:
 			spriteSheet = load("res://assets/sprites/ActorSheets/player_1.tres")
 			bubbleSpriteSheet = load("res://assets/sprites/ActorSheets/bubble_p1.tres")
 		else:
-			inputActionMapping = load("res://actors/player/Input/P1_InputActions.tres")
+			inputActionMapping = load("res://actors/player/Input/P2_InputActions.tres")
 			spriteSheet = load("res://assets/sprites/ActorSheets/player_2.tres")
 			bubbleSpriteSheet = load("res://assets/sprites/ActorSheets/bubble_p2.tres")
 

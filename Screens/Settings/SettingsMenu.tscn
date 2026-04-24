@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://8wdqykiq61wg"]
+[gd_scene load_steps=5 format=3 uid="uid://8wdqykiq61wg"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_nrhvq"]
 [ext_resource type="Script" uid="uid://i7dysj0h7r1w" path="res://Screens/Settings/settings_menu.gd" id="2_nrhvq"]
+[ext_resource type="PackedScene" uid="uid://dbyrr32or6l3v" path="res://UI/RebindRow/RebindRow.tscn" id="3_ee5ln"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nrhvq"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -30,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
 
@@ -67,15 +70,40 @@ size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
 
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Options"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_nrhvq")
+
 [node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/Options"]
 layout_mode = 2
 text = "Controls "
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Options/RichTextLabel2"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="RebindRow" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"ui_jump"
+label_name = "P1 Jump"
+
+[node name="RebindRow2" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"attack"
+label_name = "P1 Shoot"
+
+[node name="RebindRow3" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"ui_left"
+label_name = "P1 left"
+
+[node name="RebindRow4" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"ui_right"
+label_name = "P1 right"
+
+[node name="RebindRow5" parent="MarginContainer/Options" instance=ExtResource("3_ee5ln")]
+layout_mode = 2
+action_name = &"ui_start"
+label_name = "P1 Pause"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2

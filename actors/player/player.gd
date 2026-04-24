@@ -211,17 +211,17 @@ class InputState:
 	static func snapShot(actions: PlayerInputActions) -> InputState:
 		var s = InputState.new()
 		
-		s.haxis = Input.get_axis("ui_left", "ui_right")
-		s.vaxis = Input.get_axis("ui_down", "ui_up")
+		s.haxis = Input.get_axis(actions.left, actions.right)
+		s.vaxis = Input.get_axis(actions.down, actions.up)
 		
-		s.right = Input.is_action_pressed("ui_right")
-		s.down = Input.is_action_pressed("ui_down")
-		s.left = Input.is_action_pressed("ui_left")
-		s.up = Input.is_action_pressed("ui_up")
+		s.right = Input.is_action_pressed(actions.right)
+		s.down = Input.is_action_pressed(actions.down)
+		s.left = Input.is_action_pressed(actions.left)
+		s.up = Input.is_action_pressed(actions.up)
 		
-		s.jump_pressed = Input.is_action_just_pressed("ui_jump")
-		s.jump_held = Input.is_action_pressed("ui_jump")
-		s.attack = Input.is_action_just_pressed("attack")
+		s.jump_pressed = Input.is_action_just_pressed(actions.jump)
+		s.jump_held = Input.is_action_pressed(actions.jump)
+		s.attack = Input.is_action_just_pressed(actions.attack)
 		
 		return s
 		
