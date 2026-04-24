@@ -412,7 +412,7 @@ func onEnemyDeath(enemy: Enemy) -> void:
 
 
 func onPlayerDeath(player: Player) -> void:
-	Game.deregister_player(0)	
+	Game.deregister_player(player.player_index)	
 	
 	
 

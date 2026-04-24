@@ -44,6 +44,9 @@ func register_player(index: int, player: Player) -> PlayerEntry:
 
 func deregister_player(index: int) -> Dictionary[int, PlayerEntry]:
 	self.playerEntries.erase(index)  
+	
+	if(playerEntries.is_empty()):
+		exit_to_main_menu()
 	return self.playerEntries
 
 
