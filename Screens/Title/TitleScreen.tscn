@@ -189,3 +189,4 @@ offset_bottom = 23.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_gxwbk")
+bus = &"Music"

@@ -100,7 +100,10 @@ sfx = Dictionary[StringName, AudioStream]({
 })
 
 [node name="channel_action" type="AudioStreamPlayer2D" parent="Presentation/SFX"]
+bus = &"SFX"
 
 [node name="channel_locomotion" type="AudioStreamPlayer2D" parent="Presentation/SFX"]
+bus = &"SFX"
 
 [node name="channel_status" type="AudioStreamPlayer2D" parent="Presentation/SFX"]
+bus = &"SFX"

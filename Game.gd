@@ -45,7 +45,7 @@ func register_player(index: int, player: Player) -> PlayerEntry:
 func deregister_player(index: int) -> Dictionary[int, PlayerEntry]:
 	self.playerEntries.erase(index)  
 	
-	if(playerEntries.is_empty()):
+	if(playerEntries.is_empty() and !Game.world.is_paused):
 		exit_to_main_menu()
 	return self.playerEntries
 
@@ -206,6 +206,8 @@ func pause_game() -> void:
 
 	print(SaveGame.serialize())
 	SaveGame.saveFile()
+	
+	Game.world.is_paused = true
 	pass
 	
 func resume_game() -> void:
@@ -215,6 +217,8 @@ func resume_game() -> void:
 		
 	var tree = get_tree()
 	tree.paused = false
+	
+	Game.world.is_paused = false
 
 	pass
 

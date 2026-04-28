@@ -70,6 +70,32 @@ size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Options"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Options/HBoxContainer2"]
+layout_mode = 2
+text = "MUSIC"
+
+[node name="slider_volume_music" type="HSlider" parent="MarginContainer/Options/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Options"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Options/HBoxContainer3"]
+layout_mode = 2
+text = "SFX"
+
+[node name="slider_volume_sfx" type="HSlider" parent="MarginContainer/Options/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Options"]
 layout_mode = 2
 theme_override_constants/separation = 8

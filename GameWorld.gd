@@ -30,6 +30,7 @@ signal transitionStart()
 
 
 var is_transitioning_Levels : bool = false
+var is_paused: bool = false
 
 var game_mode:int = 0
 

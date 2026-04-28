@@ -22,8 +22,9 @@ func save_settings() -> void:
 		
 		
 func apply_audio_settings(config: ConfigFile) -> void:
-	var volume_master = config.get_value("audio", "volume_master", 1.0)	
-	AudioServer.set_bus_volume_linear( AudioServer.get_bus_index("Master"), volume_master )
+	AudioServer.set_bus_volume_linear( AudioServer.get_bus_index("Master"), config.get_value("audio", "volume_master", 0.5)	 )
+	AudioServer.set_bus_volume_linear( AudioServer.get_bus_index("Music"), config.get_value("audio", "volume_music", 1.0)	 )
+	AudioServer.set_bus_volume_linear( AudioServer.get_bus_index("SFX"), config.get_value("audio", "volume_sfx", 1.0)	 )
 
 
 func apply_control_settings(config: ConfigFile) -> void:
@@ -63,8 +64,9 @@ func apply_control_settings(config: ConfigFile) -> void:
 
 func save_audio_settings(config: ConfigFile) -> ConfigFile:
 	
-	var current_volume_master = AudioServer.get_bus_volume_linear( AudioServer.get_bus_index("Master"))
-	config.set_value("audio", "volume_master", current_volume_master )
+	config.set_value("audio", "volume_master", AudioServer.get_bus_volume_linear( AudioServer.get_bus_index("Master")) )
+	config.set_value("audio", "volume_music", AudioServer.get_bus_volume_linear( AudioServer.get_bus_index("Music")) )
+	config.set_value("audio", "volume_sfx", AudioServer.get_bus_volume_linear( AudioServer.get_bus_index("SFX")) )
 
 	return config
 

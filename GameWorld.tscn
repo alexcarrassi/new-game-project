@@ -187,11 +187,13 @@ spawnTime = 0.0
 autoStart = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="audio_bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_i451r")
 volume_db = -4.963
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [editable path="UI/Root/P1/HUD/PlayerHUD"]

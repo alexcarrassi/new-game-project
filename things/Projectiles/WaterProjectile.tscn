@@ -63,3 +63,4 @@ region_enabled = true
 region_rect = Rect2(25, 46, 16, 16)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

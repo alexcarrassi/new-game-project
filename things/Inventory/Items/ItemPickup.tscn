@@ -46,3 +46,4 @@ shape = SubResource("CircleShape2D_xeaud")
 debug_color = Color(0, 0.64300674, 0.31329158, 0.41960785)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
