@@ -2,19 +2,20 @@ class_name SettingsManager extends Node
 
 const SETTINGS_PATH: String = "user://settings.cfg"
 
-func load_settings() -> void:
+func load_settings() -> ConfigFile:
 	var config: ConfigFile = ConfigFile.new()
 	var err = config.load( SETTINGS_PATH )
 	if(err != OK):
 		printerr(err)
 		
 	apply_settings(config)
-	pass
+	return config
 		
 func save_settings() -> void:
 	var config : ConfigFile = ConfigFile.new() 
 	config = save_audio_settings(config)
 	config = save_control_settings(config)
+	config = save_customization_settings(config)
 
 	var err = config.save( SETTINGS_PATH )
 	if(err != OK):
@@ -99,8 +100,44 @@ func save_control_settings(config: ConfigFile) -> ConfigFile:
 	
 	return config
 	
+func save_customization_settings(config: ConfigFile) -> ConfigFile:
+	config.set_value("players", "p1_name", PlayerCustomization.player_names[0])
+	config.set_value("players", "p2_name", PlayerCustomization.player_names[1])
+
+	config.set_value("players", "p1_color_0", PlayerCustomization.player_colors[0][0])
+	config.set_value("players", "p1_color_1", PlayerCustomization.player_colors[0][1])
+	config.set_value("players", "p1_color_2", PlayerCustomization.player_colors[0][2])
+	config.set_value("players", "p1_color_3", PlayerCustomization.player_colors[0][3])
+
+	config.set_value("players", "p2_color_0", PlayerCustomization.player_colors[1][0])
+	config.set_value("players", "p2_color_1", PlayerCustomization.player_colors[1][1])
+	config.set_value("players", "p2_color_2", PlayerCustomization.player_colors[1][2])
+	config.set_value("players", "p2_color_3", PlayerCustomization.player_colors[1][3])
+
+	
+	return config
+	
+func apply_customization_settings(config: ConfigFile) -> void:
+	
+	PlayerCustomization.player_names[0] = config.get_value("players", "p1_name", "Bub")
+	PlayerCustomization.player_names[1] = config.get_value("players", "p2_name", "Bob")
+
+	PlayerCustomization.player_colors[0][0] = config.get_value("players", "p1_color_0", Color.BLACK)
+	PlayerCustomization.player_colors[0][1] = config.get_value("players", "p1_color_1", Color.BLACK)
+	PlayerCustomization.player_colors[0][2] = config.get_value("players", "p1_color_2", Color.BLACK)
+	PlayerCustomization.player_colors[0][3] = config.get_value("players", "p1_color_3", Color.BLACK)
+
+	PlayerCustomization.player_colors[1][0] = config.get_value("players", "p2_color_0", Color.BLACK)
+	PlayerCustomization.player_colors[1][1] = config.get_value("players", "p2_color_1", Color.BLACK)
+	PlayerCustomization.player_colors[1][2] = config.get_value("players", "p2_color_2", Color.BLACK)
+	PlayerCustomization.player_colors[1][3] = config.get_value("players", "p2_color_3", Color.BLACK)
+
+	
+	pass	
 	
 func apply_settings(config: ConfigFile) -> void:
 	apply_audio_settings(config)
 	apply_control_settings(config)
+	apply_customization_settings(config)
+	
 	

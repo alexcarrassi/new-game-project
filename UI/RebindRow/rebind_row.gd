@@ -59,7 +59,6 @@ func refresh_text() -> void:
 		return
 		
 	var events: Array[InputEvent] = InputMap.action_get_events( action_name )
-	print(action_name, " -> ", events)
 
 	if events.is_empty():
 		action_button.text = "Unbound"

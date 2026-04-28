@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://8wdqykiq61wg"]
+[gd_scene load_steps=7 format=3 uid="uid://8wdqykiq61wg"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_nrhvq"]
 [ext_resource type="Script" uid="uid://i7dysj0h7r1w" path="res://Screens/Settings/settings_menu.gd" id="2_nrhvq"]
 [ext_resource type="PackedScene" uid="uid://dbyrr32or6l3v" path="res://UI/RebindRow/RebindRow.tscn" id="3_ee5ln"]
+[ext_resource type="Texture2D" uid="uid://3uaqti8yihmw" path="res://assets/sprites/Items/Player1.tres" id="3_s76wx"]
+[ext_resource type="Texture2D" uid="uid://h2nrxnila2ro" path="res://assets/sprites/Items/Player2.tres" id="5_sb1mt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nrhvq"]
 
@@ -46,83 +48,165 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_bottom = 11
+theme_override_constants/margin_bottom = 0
 
 [node name="Label" type="Label" parent="MarginContainer/Options/MarginContainer"]
 layout_mode = 2
 text = "Settings"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Options"]
+[node name="Controls_tab" type="TabContainer" parent="MarginContainer/Options"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/side_margin = 0
+theme_override_constants/icon_separation = 6
+tab_alignment = 2
+current_tab = 2
+clip_tabs = false
+
+[node name="Audio" type="Control" parent="MarginContainer/Options/Controls_tab"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Options/Controls_tab/Audio"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 156.0
+offset_bottom = 28.0
 text = "Sound"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Options"]
-layout_mode = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/Audio"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 156.0
+offset_bottom = 48.0
 
-[node name="Label" type="Label" parent="MarginContainer/Options/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/Options/Controls_tab/Audio/HBoxContainer"]
 layout_mode = 2
 text = "Master"
 
-[node name="slider_volume_master" type="HSlider" parent="MarginContainer/Options/HBoxContainer"]
+[node name="slider_volume_master" type="HSlider" parent="MarginContainer/Options/Controls_tab/Audio/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Options"]
-layout_mode = 2
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/Audio"]
+layout_mode = 0
+offset_top = 52.0
+offset_right = 156.0
+offset_bottom = 68.0
 
-[node name="Label" type="Label" parent="MarginContainer/Options/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/Options/Controls_tab/Audio/HBoxContainer2"]
 layout_mode = 2
 text = "MUSIC"
 
-[node name="slider_volume_music" type="HSlider" parent="MarginContainer/Options/HBoxContainer2"]
+[node name="slider_volume_music" type="HSlider" parent="MarginContainer/Options/Controls_tab/Audio/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Options"]
-layout_mode = 2
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/Audio"]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 156.0
+offset_bottom = 88.0
 
-[node name="Label" type="Label" parent="MarginContainer/Options/HBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/Options/Controls_tab/Audio/HBoxContainer3"]
 layout_mode = 2
 text = "SFX"
 
-[node name="slider_volume_sfx" type="HSlider" parent="MarginContainer/Options/HBoxContainer3"]
+[node name="slider_volume_sfx" type="HSlider" parent="MarginContainer/Options/Controls_tab/Audio/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/Options"]
-layout_mode = 2
-theme_override_constants/separation = 8
-theme_override_styles/separator = SubResource("StyleBoxEmpty_nrhvq")
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/Options"]
-layout_mode = 2
-text = "Controls "
-fit_content = true
-
-[node name="Controls_tab" type="TabContainer" parent="MarginContainer/Options"]
-layout_mode = 2
-current_tab = 0
-
 [node name="p1" type="Control" parent="MarginContainer/Options/Controls_tab"]
+visible = false
 layout_mode = 2
-metadata/_tab_index = 0
+metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Options/Controls_tab/p1"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -74.0
-offset_right = 74.0
-offset_bottom = 96.0
+offset_left = -66.0
+offset_right = 58.0
+offset_bottom = 173.0
 grow_horizontal = 2
+theme_override_constants/separation = 3
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_nrhvq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer"]
+layout_mode = 2
+text = "Customization"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="PlayerNameLine" type="MarginContainer" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/PlayerNameLine"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/PlayerNameLine/HBoxContainer"]
+layout_mode = 2
+text = "name"
+
+[node name="p1_name" type="LineEdit" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/PlayerNameLine/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "Player1"
+alignment = 3
+expand_to_text_length = true
+
+[node name="ColorCustomization" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_s76wx")
+stretch_mode = 4
+
+[node name="ColorContainer" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
+layout_mode = 2
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
+layout_mode = 2
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
+layout_mode = 2
+
+[node name="ColorPickerButton4" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxEmpty_nrhvq")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer"]
+layout_mode = 2
+text = "Controls "
+fit_content = true
+horizontal_alignment = 1
 
 [node name="RebindRow" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer" instance=ExtResource("3_ee5ln")]
 layout_mode = 2
@@ -150,19 +234,87 @@ action_name = &"ui_start"
 label_name = "Pause"
 
 [node name="p2" type="Control" parent="MarginContainer/Options/Controls_tab"]
-visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Options/Controls_tab/p2"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -74.0
-offset_right = 74.0
-offset_bottom = 96.0
+offset_left = -66.0
+offset_right = 58.0
+offset_bottom = 173.0
 grow_horizontal = 2
+theme_override_constants/separation = 3
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_nrhvq")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer"]
+layout_mode = 2
+text = "Customization"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="PlayerNameLine2" type="MarginContainer" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/PlayerNameLine2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/PlayerNameLine2/HBoxContainer"]
+layout_mode = 2
+text = "name"
+
+[node name="p2_name" type="LineEdit" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/PlayerNameLine2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "Player1"
+alignment = 3
+expand_to_text_length = true
+
+[node name="ColorCustomization2" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_sb1mt")
+stretch_mode = 4
+
+[node name="ColorContainer" type="HBoxContainer" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
+layout_mode = 2
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
+layout_mode = 2
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
+layout_mode = 2
+
+[node name="ColorPickerButton4" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
+layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxEmpty_nrhvq")
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer"]
+layout_mode = 2
+text = "Controls "
+fit_content = true
+horizontal_alignment = 1
 
 [node name="RebindRow" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer" instance=ExtResource("3_ee5ln")]
 layout_mode = 2

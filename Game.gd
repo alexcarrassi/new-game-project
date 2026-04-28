@@ -204,7 +204,6 @@ func pause_game() -> void:
 	root.screenlayer.add_child(pauseMenu)
 	tree.paused = true
 
-	print(SaveGame.serialize())
 	SaveGame.saveFile()
 	
 	Game.world.is_paused = true

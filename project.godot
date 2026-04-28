@@ -23,6 +23,7 @@ LevelDatabase="*res://Levels/LevelDatabase.tscn"
 ItemDB="*res://Things/Inventory/Items/ItemDB.tscn"
 gRewardTable="*res://Things/Inventory/RewardTable/RewardTable.tres"
 Settings="*res://SettingsManager.gd"
+PlayerCustomization="*res://CustomizationManager.gd"
 
 [display]
 
