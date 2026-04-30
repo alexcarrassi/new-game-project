@@ -8,6 +8,10 @@ class_name SettingsScreen extends Control
 @onready var p1_name: LineEdit = $MarginContainer/Options/Controls_tab/p1/VBoxContainer/PlayerNameLine/HBoxContainer/p1_name
 @onready var p2_name: LineEdit = $MarginContainer/Options/Controls_tab/p2/VBoxContainer/PlayerNameLine2/HBoxContainer/p2_name
 
+@onready var p1_colorpicker: Button = $MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer/ColorPickerButton
+@onready var p2_colorpicker: Button = $MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer/ColorPickerButton2
+
+@onready var colorEditPanel: ColorEditPanel = $ColorEditPanel
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	btn_exit.pressed.connect( 
@@ -35,6 +39,16 @@ func _ready() -> void:
 		PlayerCustomization.player_names[1] = new_text
 	)
 	
+	
+	p1_colorpicker.pressed.connect( func() -> void:
+		colorEditPanel.player_index = 0
+		colorEditPanel.popup()	
+	)
+	
+	p2_colorpicker.pressed.connect( func() ->void:
+		colorEditPanel.player_index = 1
+		colorEditPanel.popup()		
+	)
 	pass # Replace with function body.
 
 

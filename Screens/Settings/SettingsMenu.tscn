@@ -1,10 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://8wdqykiq61wg"]
+[gd_scene load_steps=13 format=3 uid="uid://8wdqykiq61wg"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_nrhvq"]
 [ext_resource type="Script" uid="uid://i7dysj0h7r1w" path="res://Screens/Settings/settings_menu.gd" id="2_nrhvq"]
+[ext_resource type="Script" uid="uid://bujh0ketfobg3" path="res://Screens/Settings/color_edit_panel.gd" id="3_77j5g"]
 [ext_resource type="PackedScene" uid="uid://dbyrr32or6l3v" path="res://UI/RebindRow/RebindRow.tscn" id="3_ee5ln"]
+[ext_resource type="Script" uid="uid://vcbnel1krs2x" path="res://UI/ButtonWithIcon/button_with_icon.gd" id="3_lwtsf"]
 [ext_resource type="Texture2D" uid="uid://3uaqti8yihmw" path="res://assets/sprites/Items/Player1.tres" id="3_s76wx"]
+[ext_resource type="Script" uid="uid://12wtylxnaiio" path="res://Screens/Settings/color_picker_button.gd" id="4_4miip"]
 [ext_resource type="Texture2D" uid="uid://h2nrxnila2ro" path="res://assets/sprites/Items/Player2.tres" id="5_sb1mt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwtsf"]
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.9098039)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_sb1mt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4miip"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78587395, 0.45932215, 0.14285758, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nrhvq"]
 
@@ -26,6 +46,184 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.79607844)
+
+[node name="ColorEditPanel" type="PopupPanel" parent="."]
+msaa_2d = 1
+oversampling = false
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(160, 228)
+visible = true
+always_on_top = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwtsf")
+script = ExtResource("3_77j5g")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorEditPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorEditPanel/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_sb1mt")
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="ColorEditPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Pick your colors"
+
+[node name="ColorContainer" type="HBoxContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="PlayerTexturePreview" type="TextureRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
+texture_filter = 1
+texture_repeat = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_s76wx")
+stretch_mode = 4
+
+[node name="ColorStateButton0" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_nrhvq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4miip")
+toggle_mode = true
+icon_alignment = 2
+script = ExtResource("4_4miip")
+metadata/_custom_type_script = "uid://vcbnel1krs2x"
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton0/MarginContainer"]
+layout_mode = 2
+
+[node name="ColorStateButton1" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxFlat_4miip")
+icon_alignment = 2
+script = ExtResource("4_4miip")
+metadata/_custom_type_script = "uid://vcbnel1krs2x"
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton1/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="ColorStateButton2" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxFlat_4miip")
+icon_alignment = 2
+script = ExtResource("4_4miip")
+metadata/_custom_type_script = "uid://vcbnel1krs2x"
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton2/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="ColorStateButton3" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxFlat_4miip")
+icon_alignment = 2
+script = ExtResource("4_4miip")
+metadata/_custom_type_script = "uid://vcbnel1krs2x"
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton3/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="ColorPicker" type="ColorPicker" parent="ColorEditPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin = 4
+theme_override_constants/label_width = 4
+theme_override_constants/sv_width = 120
+theme_override_constants/sv_height = 120
+theme_override_constants/h_width = 30
+alignment = 1
+edit_alpha = false
+edit_intensity = false
+picker_shape = 1
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="btn_reset" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Reset"
+script = ExtResource("3_lwtsf")
+metadata/_custom_type_script = "uid://vcbnel1krs2x"
+
+[node name="btn_save" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Save"
+script = ExtResource("3_lwtsf")
+metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -185,17 +383,9 @@ layout_mode = 2
 size_flags_horizontal = 10
 alignment = 2
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
+[node name="ColorPickerButton" type="Button" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
 layout_mode = 2
-
-[node name="ColorPickerButton2" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
-layout_mode = 2
-
-[node name="ColorPickerButton3" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
-layout_mode = 2
-
-[node name="ColorPickerButton4" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer"]
-layout_mode = 2
+text = "Set colors"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer"]
 layout_mode = 2
@@ -293,17 +483,9 @@ layout_mode = 2
 size_flags_horizontal = 10
 alignment = 2
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
+[node name="ColorPickerButton2" type="Button" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
 layout_mode = 2
-
-[node name="ColorPickerButton2" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
-layout_mode = 2
-
-[node name="ColorPickerButton3" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
-layout_mode = 2
-
-[node name="ColorPickerButton4" type="ColorPickerButton" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer"]
-layout_mode = 2
+text = "Set colors"
 
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer"]
 layout_mode = 2
