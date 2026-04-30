@@ -122,15 +122,15 @@ func apply_customization_settings(config: ConfigFile) -> void:
 	PlayerCustomization.player_names[0] = config.get_value("players", "p1_name", "Bub")
 	PlayerCustomization.player_names[1] = config.get_value("players", "p2_name", "Bob")
 
-	PlayerCustomization.player_colors[0][0] = config.get_value("players", "p1_color_0", Color.BLACK)
-	PlayerCustomization.player_colors[0][1] = config.get_value("players", "p1_color_1", Color.BLACK)
-	PlayerCustomization.player_colors[0][2] = config.get_value("players", "p1_color_2", Color.BLACK)
-	PlayerCustomization.player_colors[0][3] = config.get_value("players", "p1_color_3", Color.BLACK)
+	PlayerCustomization.player_colors[0][0] = config.get_value("players", "p1_color_0", Color.WHITE)
+	PlayerCustomization.player_colors[0][1] = config.get_value("players", "p1_color_1", Color.WHITE)
+	PlayerCustomization.player_colors[0][2] = config.get_value("players", "p1_color_2", Color.WHITE)
+	PlayerCustomization.player_colors[0][3] = config.get_value("players", "p1_color_3", Color.WHITE)
 
-	PlayerCustomization.player_colors[1][0] = config.get_value("players", "p2_color_0", Color.BLACK)
-	PlayerCustomization.player_colors[1][1] = config.get_value("players", "p2_color_1", Color.BLACK)
-	PlayerCustomization.player_colors[1][2] = config.get_value("players", "p2_color_2", Color.BLACK)
-	PlayerCustomization.player_colors[1][3] = config.get_value("players", "p2_color_3", Color.BLACK)
+	PlayerCustomization.player_colors[1][0] = config.get_value("players", "p2_color_0", Color.WHITE)
+	PlayerCustomization.player_colors[1][1] = config.get_value("players", "p2_color_1", Color.WHITE)
+	PlayerCustomization.player_colors[1][2] = config.get_value("players", "p2_color_2", Color.WHITE)
+	PlayerCustomization.player_colors[1][3] = config.get_value("players", "p2_color_3", Color.WHITE)
 
 	
 	pass	

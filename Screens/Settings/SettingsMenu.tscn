@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8wdqykiq61wg"]
+[gd_scene load_steps=14 format=3 uid="uid://8wdqykiq61wg"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_nrhvq"]
 [ext_resource type="Script" uid="uid://i7dysj0h7r1w" path="res://Screens/Settings/settings_menu.gd" id="2_nrhvq"]
@@ -17,6 +17,9 @@ bg_color = Color(0, 0, 0, 0.9098039)
 corner_detail = 1
 
 [sub_resource type="Theme" id="Theme_sb1mt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77j5g"]
+bg_color = Color(0.6, 0.6, 0.6, 0.61960787)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4miip"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -53,7 +56,6 @@ oversampling = false
 oversampling_override = 1.0
 initial_position = 1
 size = Vector2i(160, 228)
-visible = true
 always_on_top = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_lwtsf")
 script = ExtResource("3_77j5g")
@@ -97,6 +99,7 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("1_nrhvq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77j5g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_4miip")
 toggle_mode = true
 icon_alignment = 2
@@ -117,13 +120,18 @@ theme_override_constants/margin_bottom = 2
 
 [node name="ColorRect" type="ColorRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton0/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ColorStateButton1" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("1_nrhvq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77j5g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_4miip")
+toggle_mode = true
 icon_alignment = 2
 script = ExtResource("4_4miip")
+colorIndex = 1
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton1"]
@@ -139,15 +147,19 @@ theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="ColorRect" type="ColorRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton1/MarginContainer"]
-clip_contents = true
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ColorStateButton2" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("1_nrhvq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77j5g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_4miip")
+toggle_mode = true
 icon_alignment = 2
 script = ExtResource("4_4miip")
+colorIndex = 2
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton2"]
@@ -163,15 +175,19 @@ theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="ColorRect" type="ColorRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton2/MarginContainer"]
-clip_contents = true
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ColorStateButton3" type="Button" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("1_nrhvq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_77j5g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_4miip")
+toggle_mode = true
 icon_alignment = 2
 script = ExtResource("4_4miip")
+colorIndex = 3
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton3"]
@@ -187,8 +203,8 @@ theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="ColorRect" type="ColorRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer/ColorStateButton3/MarginContainer"]
-clip_contents = true
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ColorPicker" type="ColorPicker" parent="ColorEditPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -258,11 +274,10 @@ size_flags_horizontal = 4
 theme_override_constants/side_margin = 0
 theme_override_constants/icon_separation = 6
 tab_alignment = 2
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 
 [node name="Audio" type="Control" parent="MarginContainer/Options/Controls_tab"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -424,6 +439,7 @@ action_name = &"ui_start"
 label_name = "Pause"
 
 [node name="p2" type="Control" parent="MarginContainer/Options/Controls_tab"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

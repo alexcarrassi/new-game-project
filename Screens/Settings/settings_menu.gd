@@ -12,6 +12,8 @@ class_name SettingsScreen extends Control
 @onready var p2_colorpicker: Button = $MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer/ColorPickerButton2
 
 @onready var colorEditPanel: ColorEditPanel = $ColorEditPanel
+
+@onready var colorPicker: ColorPicker = $ColorEditPanel/MarginContainer/VBoxContainer/ColorPicker
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	btn_exit.pressed.connect( 
@@ -49,6 +51,10 @@ func _ready() -> void:
 		colorEditPanel.player_index = 1
 		colorEditPanel.popup()		
 	)
+	
+	
+	print(OS.get_user_data_dir())
+	
 	pass # Replace with function body.
 
 

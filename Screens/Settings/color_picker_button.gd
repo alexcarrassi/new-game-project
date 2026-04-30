@@ -6,10 +6,9 @@ class_name ColorStateButton extends ButtonWithIcon
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pressed.connect(func() -> void:
-		
-		print('pressed')
-		grab_click_focus()
-		)
+			print('pressed')
+			grab_click_focus()
+	)
 	pass # Replace with function body.
 
 func setColor( color: Color) -> void:
