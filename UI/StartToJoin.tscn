@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpdr1wuo3nem"]
+[gd_scene load_steps=13 format=3 uid="uid://dpdr1wuo3nem"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_v1ovx"]
 [ext_resource type="Script" uid="uid://1mlxxupyf45e" path="res://UI/start_to_join.gd" id="2_plmvt"]
+[ext_resource type="Material" uid="uid://qil8yl3ek85y" path="res://shaders/PlayerPaletteShader.tres" id="3_fvll4"]
 [ext_resource type="Texture2D" uid="uid://dl44hb8rywpxf" path="res://assets/sprites/ActorSheets/player_1.tres" id="3_plmvt"]
 
 [sub_resource type="Animation" id="Animation_plmvt"]
@@ -42,67 +43,6 @@ _data = {
 &"RESET": SubResource("Animation_fvll4")
 }
 
-[sub_resource type="Animation" id="Animation_wopl4"]
-resource_name = "Idle"
-length = 0.7500125
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Rect2(2, 35, 16, 16), Rect2(20, 35, 16, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_l236c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(2, 35, 16, 16)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_cawv6"]
-resource_name = "Lookup"
-length = 0.5000125
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(2, 53, 16, 16)]
-}
-
 [sub_resource type="Animation" id="Animation_7i6ue"]
 resource_name = "Flutter"
 length = 1.7500125
@@ -130,6 +70,67 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 0), Vector2(0, 1), Vector2(0, 0), Vector2(0, 1), Vector2(0, 0), Vector2(0, 1), Vector2(0, 0), Vector2(0, 1), Vector2(0, 0), Vector2(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wopl4"]
+resource_name = "Idle"
+length = 0.7500125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(2, 35, 16, 16), Rect2(20, 35, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_cawv6"]
+resource_name = "Lookup"
+length = 0.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2, 53, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_l236c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(2, 35, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cawv6"]
@@ -166,6 +167,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/CenterContainer"]
+material = ExtResource("3_fvll4")
 position = Vector2(49, -6.5)
 texture = ExtResource("3_plmvt")
 region_enabled = true

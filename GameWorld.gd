@@ -327,6 +327,7 @@ func createPlayer(index: int) -> Player:
 		playerNode.sm_status.state.finished.emit("SUSPENDED")
 		playerNode.player_index = index
 
+		playerNode.updateSpriteMaterial()
 		var transitionSlot = getTransitionSlot(playerNode.player_index)
 		playerNode.global_position = transitionSlot.global_position
 		

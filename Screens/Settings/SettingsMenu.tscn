@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://8wdqykiq61wg"]
+[gd_scene load_steps=18 format=3 uid="uid://8wdqykiq61wg"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_nrhvq"]
 [ext_resource type="Script" uid="uid://i7dysj0h7r1w" path="res://Screens/Settings/settings_menu.gd" id="2_nrhvq"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://vcbnel1krs2x" path="res://UI/ButtonWithIcon/button_with_icon.gd" id="3_lwtsf"]
 [ext_resource type="Texture2D" uid="uid://3uaqti8yihmw" path="res://assets/sprites/Items/Player1.tres" id="3_s76wx"]
 [ext_resource type="Script" uid="uid://12wtylxnaiio" path="res://Screens/Settings/color_picker_button.gd" id="4_4miip"]
+[ext_resource type="Material" uid="uid://qil8yl3ek85y" path="res://shaders/PlayerPaletteShader.tres" id="4_g6srv"]
 [ext_resource type="Texture2D" uid="uid://h2nrxnila2ro" path="res://assets/sprites/Items/Player2.tres" id="5_sb1mt"]
+[ext_resource type="Shader" uid="uid://6e6fmxtc55hb" path="res://Screens/Settings/SettingsMenu.gdshader" id="9_c6jen"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwtsf"]
 content_margin_top = 0.0
@@ -30,6 +32,22 @@ border_width_bottom = 1
 border_color = Color(0.78587395, 0.45932215, 0.14285758, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nrhvq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6jen"]
+shader = ExtResource("9_c6jen")
+shader_parameter/palette_size = 4.0
+shader_parameter/color_0 = Vector4(0, 0, 0, 0)
+shader_parameter/color_1 = Vector4(0, 0, 0, 0)
+shader_parameter/color_2 = Vector4(0, 0, 0, 0)
+shader_parameter/color_3 = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpiqg"]
+shader = ExtResource("9_c6jen")
+shader_parameter/palette_size = 4.0
+shader_parameter/color_0 = Vector4(0, 0, 0, 0)
+shader_parameter/color_1 = Vector4(0, 0, 0, 0)
+shader_parameter/color_2 = Vector4(0, 0, 0, 0)
+shader_parameter/color_3 = Vector4(0, 0, 0, 0)
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -89,6 +107,7 @@ alignment = 2
 [node name="PlayerTexturePreview" type="TextureRect" parent="ColorEditPanel/MarginContainer/VBoxContainer/ColorContainer"]
 texture_filter = 1
 texture_repeat = 1
+material = ExtResource("4_g6srv")
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -274,10 +293,11 @@ size_flags_horizontal = 4
 theme_override_constants/side_margin = 0
 theme_override_constants/icon_separation = 6
 tab_alignment = 2
-current_tab = 0
+current_tab = 2
 clip_tabs = false
 
 [node name="Audio" type="Control" parent="MarginContainer/Options/Controls_tab"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -388,6 +408,7 @@ expand_to_text_length = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization"]
+material = SubResource("ShaderMaterial_c6jen")
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_s76wx")
@@ -439,7 +460,6 @@ action_name = &"ui_start"
 label_name = "Pause"
 
 [node name="p2" type="Control" parent="MarginContainer/Options/Controls_tab"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -489,6 +509,7 @@ expand_to_text_length = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2"]
+material = SubResource("ShaderMaterial_hpiqg")
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_sb1mt")

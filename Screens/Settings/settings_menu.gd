@@ -11,6 +11,12 @@ class_name SettingsScreen extends Control
 @onready var p1_colorpicker: Button = $MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/ColorContainer/ColorPickerButton
 @onready var p2_colorpicker: Button = $MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/ColorContainer/ColorPickerButton2
 
+@onready var p1_page: Control = $MarginContainer/Options/Controls_tab/p1
+@onready var p2_page: Control = $MarginContainer/Options/Controls_tab/p2
+
+@onready var p1_preview: TextureRect = $MarginContainer/Options/Controls_tab/p1/VBoxContainer/ColorCustomization/TextureRect
+@onready var p2_preview: TextureRect = $MarginContainer/Options/Controls_tab/p2/VBoxContainer/ColorCustomization2/TextureRect
+
 @onready var colorEditPanel: ColorEditPanel = $ColorEditPanel
 
 @onready var colorPicker: ColorPicker = $ColorEditPanel/MarginContainer/VBoxContainer/ColorPicker
@@ -21,6 +27,11 @@ func _ready() -> void:
 			Settings.save_settings()
 			Game.exit_to_main_menu()
 	)
+	
+	updatePlayerSpritePreview(0)
+	updatePlayerSpritePreview(1)
+
+
 	slider_volume_master.value_changed.connect( setMasterVolume )
 	slider_volume_music.value_changed.connect( setMusicVolume )
 	slider_volume_sfx.value_changed.connect( setSFXVolume )
@@ -30,7 +41,6 @@ func _ready() -> void:
 	slider_volume_music.value = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("Music"))
 	slider_volume_sfx.value = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index("SFX"))
 
-	print(PlayerCustomization.player_names)
 	p1_name.text = PlayerCustomization.player_names[0]
 	p2_name.text = PlayerCustomization.player_names[1]
 	
@@ -52,11 +62,36 @@ func _ready() -> void:
 		colorEditPanel.popup()		
 	)
 	
+	colorEditPanel.visibility_changed.connect( func() -> void:
+		updatePlayerSpritePreview(0)
+		updatePlayerSpritePreview(1)
+	)
+
 	
-	print(OS.get_user_data_dir())
 	
+	p1_page.visibility_changed.connect( func() -> void:
+		updatePlayerSpritePreview(0)
+	)
+	p2_page.visibility_changed.connect( func() -> void:
+		updatePlayerSpritePreview(1)
+	)
 	pass # Replace with function body.
 
+
+func updatePlayerSpritePreview(index: int) -> void:
+	var mat: ShaderMaterial
+	
+	if(index == 0):
+		mat =  p1_preview.material as ShaderMaterial
+	else:
+		mat =  p2_preview.material as ShaderMaterial
+
+	mat.set_shader_parameter("color_0", PlayerCustomization.player_colors[index][0] )
+	mat.set_shader_parameter("color_1", PlayerCustomization.player_colors[index][1] )
+	mat.set_shader_parameter("color_2", PlayerCustomization.player_colors[index][2] )
+	mat.set_shader_parameter("color_3", PlayerCustomization.player_colors[index][3] )
+	
+	pass
 
 func setMasterVolume(value: float) -> void:
 	var bus_index = AudioServer.get_bus_index("Master")

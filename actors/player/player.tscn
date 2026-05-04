@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=43 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://actors/player/player.gd" id="1_ivps1"]
 [ext_resource type="Texture2D" uid="uid://dl44hb8rywpxf" path="res://assets/sprites/ActorSheets/player_1.tres" id="2_otn2r"]
+[ext_resource type="Material" uid="uid://qil8yl3ek85y" path="res://shaders/PlayerPaletteShader.tres" id="2_qct7d"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="3_bwjto"]
 [ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="4_606se"]
 [ext_resource type="Script" uid="uid://vwygst2u1v4o" path="res://actors/player/scripts/State_Locomotion_Idle.gd" id="5_u1c27"]
@@ -381,6 +382,7 @@ MAX_FALL_VELOCITY = 80.0
 health = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_qct7d")
 position = Vector2(0.5, -8.5)
 texture = ExtResource("2_otn2r")
 flip_h = true

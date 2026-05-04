@@ -20,7 +20,10 @@ var player_index: int = 0
 
 @onready var colorPicker: ColorPicker = $MarginContainer/VBoxContainer/ColorPicker
 
+@onready var playerTexturePreview: TextureRect = $MarginContainer/VBoxContainer/ColorContainer/PlayerTexturePreview
+
 var btn_colorActive: ColorStateButton
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,10 +44,19 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 	
+func updatePreview() -> void:
+	var mat: ShaderMaterial =  playerTexturePreview.material as ShaderMaterial
+	
+	mat.set_shader_parameter("color_0", btn_color_1.getColor() )
+	mat.set_shader_parameter("color_1", btn_color_1.getColor() )
+	mat.set_shader_parameter("color_2", btn_color_2.getColor() )
+	mat.set_shader_parameter("color_3", btn_color_3.getColor() )
+
 func setColor(color: Color) -> void:
 	if(btn_colorActive):	
 		btn_colorActive.setColor(color)
-	
+		
+	updatePreview()
 		
 func intialize_self() -> void:
 	print("Player index: %d" %[player_index])
@@ -54,7 +66,8 @@ func intialize_self() -> void:
 		colorBtns[i].setColor( PlayerCustomization.player_colors[player_index][i] )
 		
 		pass
-	
+	updatePreview()
+
 	
 func save_colors() -> void:
 	for i in range(colorBtns.size()):

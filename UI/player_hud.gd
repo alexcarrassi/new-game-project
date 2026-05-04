@@ -16,11 +16,13 @@ var playerEntry: PlayerEntry
 @onready var extend_N :TextureRect = $Ingame/Inventory/VBoxContainer/N
 @onready var extend_D :TextureRect = $Ingame/Inventory/VBoxContainer/D
 @export var font: Font
+@export var player_index: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
 	toggleIngame(false)
-	
+	startToJoin.updateShaderMaterials(player_index)
+
 	pass # Replace with function body.
 
 
@@ -44,6 +46,7 @@ func setPlayerEntry( new_playerEntry: PlayerEntry):
 		layout_direction = Control.LAYOUT_DIRECTION_LTR if playerEntry.player.player_index == 0 else Control.LAYOUT_DIRECTION_RTL
 		toggleIngame(true)
 
+		startToJoin.updateShaderMaterials(player_index)
 	
 func removePlayerEntry() -> void: 
 	clean_connections() 

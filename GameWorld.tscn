@@ -94,6 +94,7 @@ grow_vertical = 2
 [node name="PlayerHUD" parent="UI/Root/P2/HUD" instance=ExtResource("6_a0c47")]
 layout_direction = 3
 layout_mode = 2
+player_index = 1
 
 [node name="StartToJoin" parent="UI/Root/P2/HUD/PlayerHUD/MarginContainer2" index="0"]
 sprite = ExtResource("8_i451r")

@@ -2,6 +2,7 @@ class_name Player extends Actor
 #ITSIMSCET  
 
 var player_index : int = 0
+
 @export var ground_accel: float = 2800.0
 @export var ground_decel: float = 3000.0
 @export var air_accel: float = 2000.0
@@ -58,8 +59,17 @@ func _ready() -> void:
 	
 	self.comboTimer.timeout.connect( self.endCombo )
 	
-	
-	
+func updateSpriteMaterial() -> void:
+
+		#setting the material's palette
+	var mat: ShaderMaterial = sprite2D.material.duplicate() as ShaderMaterial
+	sprite2D.material = mat
+	mat.set_shader_parameter("color_0", PlayerCustomization.player_colors[player_index][0] )
+	mat.set_shader_parameter("color_1", PlayerCustomization.player_colors[player_index][1] )
+	mat.set_shader_parameter("color_2", PlayerCustomization.player_colors[player_index][2] )
+	mat.set_shader_parameter("color_3", PlayerCustomization.player_colors[player_index][3] )
+
+
 func onHurtboxEntered( body: Node2D ) :
 	if( body is Enemy):
 		if(body.sm_status.state.name == "ALIVE"):

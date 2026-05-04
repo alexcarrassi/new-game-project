@@ -19,3 +19,18 @@ var player_colors: Dictionary = {
 		3: Color.BLACK
 	}
 }
+
+const default_colors: Dictionary = {
+	0: {
+		0: Color(0, 90.5, 0),
+		1: Color(98.6, 99.6, 99.2) ,
+		2: Color(100.006, 51.282, 45.331, 1.0),
+		3: Color(0,0,0)
+	},
+	1: {
+		0: Color(0, 81.3 ,87.3) ,
+		1: Color(98.6, 99.6, 99.2) ,
+		2: Color(86, 46.6, 100),
+		3: Color(0,0,0)
+	}
+}

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://qil8yl3ek85y"]
+
+[ext_resource type="Shader" uid="uid://6e6fmxtc55hb" path="res://Screens/Settings/SettingsMenu.gdshader" id="1_utjmv"]
+
+[resource]
+shader = ExtResource("1_utjmv")
+shader_parameter/palette_size = 4.0
+shader_parameter/color_0 = Vector4(0, 0, 0, 0)
+shader_parameter/color_1 = Vector4(0, 0, 0, 0)
+shader_parameter/color_2 = Vector4(0, 0, 0, 0)
+shader_parameter/color_3 = Vector4(0, 0, 0, 0)

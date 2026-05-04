@@ -19,6 +19,17 @@ func _ready() -> void:
 	spriteAnimationPlayer.animation_finished.connect( onSpriteAnimationFinished)
 	pass # Replace with function body.
 
+func updateShaderMaterials(player_index: int) -> void:
+			#setting the material's palette
+	var mat: ShaderMaterial = _sprite.material.duplicate() as ShaderMaterial
+	_sprite.material = mat
+	mat.set_shader_parameter("color_0", PlayerCustomization.player_colors[player_index][0] )
+	mat.set_shader_parameter("color_1", PlayerCustomization.player_colors[player_index][1] )
+	mat.set_shader_parameter("color_2", PlayerCustomization.player_colors[player_index][2] )
+	mat.set_shader_parameter("color_3", PlayerCustomization.player_colors[player_index][3] )
+
+	
+	pass
 func onSpriteAnimationFinished(anim_name: String) -> void:
 	match anim_name:
 		"Idle":
