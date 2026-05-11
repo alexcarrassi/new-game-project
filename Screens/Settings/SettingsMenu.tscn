@@ -35,19 +35,17 @@ border_color = Color(0.78587395, 0.45932215, 0.14285758, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c6jen"]
 shader = ExtResource("9_c6jen")
-shader_parameter/palette_size = 4.0
-shader_parameter/color_0 = Vector4(0, 0, 0, 0)
-shader_parameter/color_1 = Vector4(0, 0, 0, 0)
-shader_parameter/color_2 = Vector4(0, 0, 0, 0)
-shader_parameter/color_3 = Vector4(0, 0, 0, 0)
+shader_parameter/color_0 = Color(0, 0, 0, 1)
+shader_parameter/color_1 = Color(0, 0, 0, 1)
+shader_parameter/color_2 = Color(0, 0, 0, 1)
+shader_parameter/color_3 = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hpiqg"]
 shader = ExtResource("9_c6jen")
-shader_parameter/palette_size = 4.0
-shader_parameter/color_0 = Vector4(0, 0, 0, 0)
-shader_parameter/color_1 = Vector4(0, 0, 0, 0)
-shader_parameter/color_2 = Vector4(0, 0, 0, 0)
-shader_parameter/color_3 = Vector4(0, 0, 0, 0)
+shader_parameter/color_0 = Color(0, 0, 0, 1)
+shader_parameter/color_1 = Color(0, 0, 0, 1)
+shader_parameter/color_2 = Color(0, 0, 0, 1)
+shader_parameter/color_3 = Color(0, 0, 0, 1)
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -82,6 +80,8 @@ script = ExtResource("3_77j5g")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 160.0
+offset_bottom = 228.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16

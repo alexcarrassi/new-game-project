@@ -43,11 +43,13 @@ func _ready() -> void:
 		)
 	pass # Replace with function body.
 
+
+
 	
 func updatePreview() -> void:
 	var mat: ShaderMaterial =  playerTexturePreview.material as ShaderMaterial
 	
-	mat.set_shader_parameter("color_0", btn_color_1.getColor() )
+	mat.set_shader_parameter("color_0", btn_color_0.getColor() )
 	mat.set_shader_parameter("color_1", btn_color_1.getColor() )
 	mat.set_shader_parameter("color_2", btn_color_2.getColor() )
 	mat.set_shader_parameter("color_3", btn_color_3.getColor() )
@@ -57,6 +59,9 @@ func setColor(color: Color) -> void:
 		btn_colorActive.setColor(color)
 		
 	updatePreview()
+	
+	
+	
 		
 func intialize_self() -> void:
 	print("Player index: %d" %[player_index])
@@ -77,6 +82,7 @@ func save_colors() -> void:
 func reset_colors() -> void:
 	for i in range(colorBtns.size()):
 		colorBtns[i].colorRect.color = PlayerCustomization.player_colors[player_index][i]
+		updatePreview()
 
 	
 		

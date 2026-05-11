@@ -41,7 +41,7 @@ movie_writer/movie_file="/Users/alex/Desktop/Work/movies/bubble_test.ogv"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/_Godot-IDE_/plugin.cfg")
+enabled=PackedStringArray("res://addons/_Godot-IDE_/plugin.cfg", "res://addons/image_indexer/plugin.cfg")
 
 [file_customization]
 
