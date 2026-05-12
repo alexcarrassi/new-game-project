@@ -8,7 +8,7 @@ var mainMenuScene :PackedScene = load("res://Screens/MainMenu/MainMenu.tscn")
 var titleScene :PackedScene    = load("res://Screens/Title/TitleScreen.tscn")
 var pauseMenuScene :PackedScene = load("res://Screens/PauseMenu/PauseMenu.tscn")
 var settingsMenuScene :PackedScene = load("res://Screens/Settings/SettingsMenu.tscn")
-
+var highScoresScene: PackedScene = load("res://Screens/HighScore/HighScore.tscn")
 
 var world: GameWorld 
 var playerEntries : Dictionary[int, PlayerEntry]
@@ -85,6 +85,7 @@ func ingame_input(event: InputEvent) -> void:
 				resume_game()
 		else:
 			# Spawn player 
+			
 			var player = world.createPlayer(0)
 			player.sm_status.state.finished.emit("ALIVE")
 			world.spawnPlayer(player)		
@@ -235,8 +236,6 @@ func start_new_game(params: Dictionary) -> void:
 	world.initialize(params)	
 		
 func continue_game() -> void:
-	print("continue")	
-
 	var saveData = SaveGame.loadFile()
 	if(saveData) :
 		Game.difficulty = saveData["gamestate"]["difficulty"]
@@ -275,6 +274,13 @@ func open_settings_menu() -> void:
 
 	var settingsMenu = settingsMenuScene.instantiate() as SettingsScreen
 	root.screenlayer.add_child(settingsMenu)		
+	
+func open_highscores() -> void:
+	clean_layers() 
+	
+	var highScoresScreen = 	highScoresScene.instantiate( ) as Screen_Highscore
+	root.screenlayer.add_child( highScoresScreen)
+	
 
 func exit_to_title() -> void: 
 	clean_layers()

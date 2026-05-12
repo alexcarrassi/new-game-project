@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=4 uid="uid://dcy7r15v3oqev"]
+[gd_scene load_steps=21 format=4 uid="uid://dcy7r15v3oqev"]
 
 [ext_resource type="Script" uid="uid://idf0f1ykdioa" path="res://Levels/Level.gd" id="1_yv7pr"]
 [ext_resource type="Texture2D" uid="uid://cnw6d84pc5ead" path="res://assets/tiles/Arrows.png" id="2_ybgs2"]
 [ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="3_bjdwr"]
+[ext_resource type="Texture2D" uid="uid://dp60pcoyrbdhu" path="res://assets/sprites/ActorSheets/zenchan.tres" id="4_oa3km"]
 [ext_resource type="PackedScene" uid="uid://c50spamxftvqt" path="res://actors/enemies/Munsta/Munsta.tscn" id="4_qqma4"]
 [ext_resource type="PackedScene" uid="uid://cjlxt5wg105ji" path="res://actors/enemies/PulPul/PulPul.tscn" id="5_oa3km"]
 [ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://Things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="6_gcywm"]
+[ext_resource type="Texture2D" uid="uid://50ucietf83mx" path="res://assets/sprites/ActorSheets/munsta.tres" id="6_it5wc"]
 [ext_resource type="Script" uid="uid://dwwu8nncg7gvt" path="res://Things/Bubbles/BubbleSpawner/ExtendBubbleSpawner.gd" id="7_it5wc"]
 [ext_resource type="PackedScene" uid="uid://cia1bm5ivt02" path="res://Things/Bubbles/ExtendBubble/ExtendBubble.tscn" id="8_b8iej"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="9_bm0aw"]
@@ -15,6 +17,7 @@
 [ext_resource type="TileSet" uid="uid://cp3h1xh3mnvam" path="res://assets/tiles/level_01.tres" id="13_02nov"]
 [ext_resource type="PackedScene" uid="uid://cmjp0yrptke8g" path="res://Things/ItemSpawn/ItemSpawn.tscn" id="14_wp571"]
 [ext_resource type="PackedScene" uid="uid://dwoyt67p86stw" path="res://actors/enemies/skelMunsta/skelMunsta.tscn" id="15_45b2a"]
+[ext_resource type="Texture2D" uid="uid://ba6jyv6mu4cul" path="res://assets/sprites/ActorSheets/skelmunsta.tres" id="18_b8iej"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_854xt"]
 texture = ExtResource("2_ybgs2")
@@ -51,10 +54,13 @@ tile_set = SubResource("TileSet_cl2jo")
 position = Vector2(72, -40)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
 position = Vector2(0, 164)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
+texture = ExtResource("4_oa3km")
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
 wait_time = 0.5
@@ -63,7 +69,6 @@ wait_time = 0.5
 position = Vector2(176, -40)
 spawn_defer_time = 0.5
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 disabled = true
 ActorScene = ExtResource("4_qqma4")
 
@@ -72,7 +77,8 @@ position = Vector2(0, 208)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
 modulate = Color(1, 1, 1, 0.3)
-region_rect = Rect2(5, 68, 16, 16)
+texture = ExtResource("6_it5wc")
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
 wait_time = 0.5
@@ -89,6 +95,8 @@ position = Vector2(0, 168)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
 modulate = Color(1, 1, 1, 0.3)
+texture = ExtResource("4_oa3km")
+region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
 wait_time = 0.5
@@ -96,7 +104,6 @@ wait_time = 0.5
 [node name="ActorSpawn3" parent="Enemy_Spawns" node_paths=PackedStringArray("spawn_node") instance=ExtResource("3_bjdwr")]
 position = Vector2(88, 48)
 spawn_node = NodePath("../../Enemies")
-actorStayPut = false
 disabled = true
 ActorScene = ExtResource("5_oa3km")
 
@@ -192,14 +199,14 @@ autostart = true
 [node name="Hurry_Enemy_spawn" parent="." instance=ExtResource("3_bjdwr")]
 position = Vector2(48, 56)
 spawn_defer_time = 2.0
-actorStayPut = false
 ActorScene = ExtResource("15_45b2a")
 
 [node name="Destination" parent="Hurry_Enemy_spawn" index="0"]
 position = Vector2(0, 0)
 
 [node name="Icon" parent="Hurry_Enemy_spawn" index="1"]
-region_rect = Rect2(5, 257, 16, 16)
+texture = ExtResource("18_b8iej")
+region_rect = Rect2(0, 0, 16, 15)
 
 [node name="Defer_Timer" parent="Hurry_Enemy_spawn" index="2"]
 wait_time = 2.0

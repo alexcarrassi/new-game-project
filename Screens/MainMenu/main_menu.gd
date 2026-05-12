@@ -5,6 +5,7 @@ class_name MainMenu extends Control
 @onready var btn_Continue: Button = $CenterContainer/Options/btn_Continue
 @onready var btn_Settings: Button = $CenterContainer/Options/btn_Settings
 @onready var optionsContainer: VBoxContainer = $CenterContainer/Options
+@onready var btn_highScores: Button = $CenterContainer/Options/btn_highscores
 
 @onready var cursor: TextureRect = $Cursor
 
@@ -18,6 +19,8 @@ func _ready() -> void:
 	btn_Exit.pressed.connect( func() -> void: Game.exit()  )
 	btn_Continue.pressed.connect( func() -> void: Game.continue_game() )
 	btn_Settings.pressed.connect( func() -> void: Game.open_settings_menu())
+	
+	btn_highScores.pressed.connect( func() -> void: Game.open_highscores() )
 	
 	btn_newGame.grab_focus()
 

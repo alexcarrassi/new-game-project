@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="6_8q3i6"]
 
 [node name="Level_01" instance=ExtResource("1_hb0y7")]
+position = Vector2(0, 0)
 
 [node name="ActorSpawn" parent="Enemy_Spawns" index="0" instance=ExtResource("6_8q3i6")]
 position = Vector2(128, -32)

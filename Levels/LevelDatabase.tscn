@@ -1,11 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://3yl1bxl5o8i5"]
+[gd_scene load_steps=27 format=3 uid="uid://3yl1bxl5o8i5"]
 
 [ext_resource type="Script" uid="uid://dedry2pqikg2d" path="res://Levels/LevelDatabase.gd" id="1_da1vx"]
 [ext_resource type="PackedScene" uid="uid://byvof7wuayhd8" path="res://Levels/level_00.tscn" id="3_11keg"]
 [ext_resource type="PackedScene" uid="uid://bf0462ur1u34s" path="res://Levels/level_02.tscn" id="5_a0wmx"]
 [ext_resource type="PackedScene" uid="uid://cey8bqayj4br0" path="res://Levels/level_1x.tscn" id="6_y7t6v"]
+[ext_resource type="PackedScene" uid="uid://rsg4qxaj1iki" path="res://Levels/level_03.tscn" id="7_5t0jc"]
+[ext_resource type="PackedScene" uid="uid://dh34roemy6nj6" path="res://Levels/level_04.tscn" id="8_nxx6f"]
+[ext_resource type="PackedScene" uid="uid://dwjh3fnbik0f6" path="res://Levels/level_05.tscn" id="9_oadg8"]
+[ext_resource type="PackedScene" uid="uid://detxwl8rmhe4i" path="res://Levels/level_06.tscn" id="10_40lhv"]
+[ext_resource type="PackedScene" uid="uid://bnu2bw2k4fmsd" path="res://Levels/level_07.tscn" id="11_sgjgs"]
+[ext_resource type="PackedScene" uid="uid://dl61myewkhnba" path="res://Levels/level_08.tscn" id="12_y5nj7"]
 [ext_resource type="Script" uid="uid://cvnjelfj5bn7f" path="res://Levels/LevelDefinition.gd" id="13_vjd8q"]
+[ext_resource type="PackedScene" uid="uid://yjwuclpljmfc" path="res://Levels/level_09.tscn" id="13_y7t6v"]
 [ext_resource type="PackedScene" uid="uid://behfohavlssx4" path="res://Levels/level_01.tscn" id="14_e2sgk"]
+[ext_resource type="PackedScene" uid="uid://jjrdvd47guus" path="res://Levels/level_10.tscn" id="14_y7t6v"]
 
 [sub_resource type="Resource" id="Resource_5t0jc"]
 script = ExtResource("13_vjd8q")
@@ -32,9 +40,64 @@ metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 script = ExtResource("13_vjd8q")
 id = "3"
 scene = ExtResource("5_a0wmx")
+default_next = "4"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_nxx6f"]
+script = ExtResource("13_vjd8q")
+id = "4"
+scene = ExtResource("7_5t0jc")
+default_next = "5"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_oadg8"]
+script = ExtResource("13_vjd8q")
+id = "5"
+scene = ExtResource("8_nxx6f")
+default_next = "6"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_40lhv"]
+script = ExtResource("13_vjd8q")
+id = "6"
+scene = ExtResource("9_oadg8")
+default_next = "7"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_sgjgs"]
+script = ExtResource("13_vjd8q")
+id = "7"
+scene = ExtResource("10_40lhv")
+default_next = "8"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_y5nj7"]
+script = ExtResource("13_vjd8q")
+id = "8"
+scene = ExtResource("11_sgjgs")
+default_next = "9"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_vjd8q"]
+script = ExtResource("13_vjd8q")
+id = "9"
+scene = ExtResource("12_y5nj7")
+default_next = "10"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_e2sgk"]
+script = ExtResource("13_vjd8q")
+id = "10"
+scene = ExtResource("13_y7t6v")
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_n6t2k"]
+script = ExtResource("13_vjd8q")
+id = "11"
+scene = ExtResource("14_y7t6v")
 default_next = "0"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [node name="LevelDatabase" type="Node"]
 script = ExtResource("1_da1vx")
-levels = Array[ExtResource("13_vjd8q")]([SubResource("Resource_5t0jc"), SubResource("Resource_27iff"), SubResource("Resource_1spmx"), SubResource("Resource_11keg")])
+levels = Array[ExtResource("13_vjd8q")]([SubResource("Resource_5t0jc"), SubResource("Resource_27iff"), SubResource("Resource_1spmx"), SubResource("Resource_11keg"), SubResource("Resource_nxx6f"), SubResource("Resource_oadg8"), SubResource("Resource_40lhv"), SubResource("Resource_sgjgs"), SubResource("Resource_y5nj7"), SubResource("Resource_vjd8q"), SubResource("Resource_e2sgk"), SubResource("Resource_n6t2k")])

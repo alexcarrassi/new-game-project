@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dp60pcoyrbdhu" path="res://assets/sprites/ActorSheets/zenchan.tres" id="3_x5tb4"]
 
 [node name="Level_01" instance=ExtResource("1_ot7dp")]
+position = Vector2(0, 0)
 
 [node name="ActorSpawn" parent="Enemy_Spawns" index="0" instance=ExtResource("2_d3ajd")]
 position = Vector2(160, -32)
