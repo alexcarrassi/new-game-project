@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PowerupItem" load_steps=20 format=3 uid="uid://c1cfkmnxtqg6k"]
+[gd_resource type="Resource" script_class="PowerupItem" format=3 uid="uid://c1cfkmnxtqg6k"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_4b7vv"]
 [ext_resource type="Texture2D" uid="uid://bpk8yn3wu4u6v" path="res://assets/sprites/Items/Heart.tres" id="3_4382n"]

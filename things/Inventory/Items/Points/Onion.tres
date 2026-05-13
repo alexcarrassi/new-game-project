@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CurrencyItem" load_steps=10 format=3 uid="uid://bb1nip4uhqh70"]
+[gd_resource type="Resource" script_class="CurrencyItem" format=3 uid="uid://bb1nip4uhqh70"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_63n3f"]
 [ext_resource type="Texture2D" uid="uid://c2tr3fl2aqit3" path="res://assets/sprites/Items.png" id="2_dr52y"]

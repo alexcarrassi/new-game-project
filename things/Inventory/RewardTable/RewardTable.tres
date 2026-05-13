@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RewardTable" load_steps=27 format=3 uid="uid://ci2ts12j3iqgq"]
+[gd_resource type="Resource" script_class="RewardTable" format=3 uid="uid://ci2ts12j3iqgq"]
 
 [ext_resource type="Script" uid="uid://df2d6ib26vtgc" path="res://Things/Inventory/RewardTable/RewardEntry.gd" id="1_uc88q"]
 [ext_resource type="Resource" uid="uid://m1glm1yl7340" path="res://actors/player/Stats/StatDefs/bubbles_blown.tres" id="2_m8nai"]

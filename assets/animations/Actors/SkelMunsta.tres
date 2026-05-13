@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=5 format=3 uid="uid://cepn4gbxppfon"]
+[gd_resource type="AnimationLibrary" format=3 uid="uid://cepn4gbxppfon"]
 
 [sub_resource type="Animation" id="Animation_phnyb"]
 resource_name = "idle"

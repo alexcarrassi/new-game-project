@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://bn0n8ed4irvmf"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://bn0n8ed4irvmf"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_h35iw"]
 [ext_resource type="Script" uid="uid://bhlqpid6gafka" path="res://Things/Inventory/ItemEffects/EmitOrb.gd" id="2_x4gbr"]

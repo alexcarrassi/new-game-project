@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://cf48yxnxw7y84"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cf48yxnxw7y84"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_6af8t"]
 [ext_resource type="Texture2D" uid="uid://trb6ygwwc3yo" path="res://assets/sprites/Items/Umbrella_blue.tres" id="3_ultdd"]

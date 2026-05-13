@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=9 format=3 uid="uid://1qwdmhna3p38"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://1qwdmhna3p38"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_82qua"]
 [ext_resource type="Script" uid="uid://dp0qpmk38px0h" path="res://Things/Inventory/ItemEffects/EmitExtendBubble.gd" id="2_7j24i"]

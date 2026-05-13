@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c30g70ajcytdv"]
+[gd_scene format=3 uid="uid://c30g70ajcytdv"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_chuao"]
 [ext_resource type="Script" uid="uid://c811nsq3f05yj" path="res://Screens/PauseMenu/pause_menu.gd" id="1_xi74f"]
@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://do6pox35o5xdy" path="res://assets/sfx/sfx_powerup.wav" id="3_kema0"]
 [ext_resource type="Script" uid="uid://vcbnel1krs2x" path="res://UI/ButtonWithIcon/button_with_icon.gd" id="4_kema0"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=1816556063]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -18,7 +18,7 @@ theme = ExtResource("1_chuao")
 script = ExtResource("1_xi74f")
 pauseSound = ExtResource("3_kema0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=502876814]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.79607844)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=78451451]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,62 +36,62 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=920825799]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1715837316]
 layout_mode = 2
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1061131463]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "PAUSE "
 horizontal_alignment = 1
 
-[node name="tab_Stats" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="tab_Stats" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1308748549]
 visible = false
 clip_contents = true
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/tab_Stats"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/tab_Stats" unique_id=1623609386]
 clip_contents = true
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 0
 
-[node name="StatTable_P1" parent="MarginContainer/VBoxContainer/tab_Stats/MarginContainer" instance=ExtResource("2_8trls")]
+[node name="StatTable_P1" parent="MarginContainer/VBoxContainer/tab_Stats/MarginContainer" unique_id=408707813 instance=ExtResource("2_8trls")]
 clip_contents = true
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/tab_Stats"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/tab_Stats" unique_id=1337266278]
 clip_contents = true
 layout_mode = 2
 theme_override_constants/margin_left = 20
 
-[node name="StatTable_P2" parent="MarginContainer/VBoxContainer/tab_Stats/MarginContainer2" instance=ExtResource("2_8trls")]
+[node name="StatTable_P2" parent="MarginContainer/VBoxContainer/tab_Stats/MarginContainer2" unique_id=1715535299 instance=ExtResource("2_8trls")]
 clip_contents = true
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=2077995434]
 layout_mode = 2
 alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2" unique_id=128518074]
 layout_mode = 2
 theme_override_constants/margin_bottom = 12
 
-[node name="tab_Pause" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/MarginContainer"]
+[node name="tab_Pause" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/MarginContainer" unique_id=777105000]
 layout_mode = 2
 alignment = 1
 
-[node name="btn_toGame" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/tab_Pause"]
+[node name="btn_toGame" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/tab_Pause" unique_id=785628639]
 layout_mode = 2
 text = "BACK TO GAME"
 script = ExtResource("4_kema0")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
-[node name="btn_toTitle" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/tab_Pause"]
+[node name="btn_toTitle" type="Button" parent="MarginContainer/VBoxContainer2/MarginContainer/tab_Pause" unique_id=2061461110]
 layout_mode = 2
 theme_override_constants/h_separation = 4
 text = "EXIT TO TITLE

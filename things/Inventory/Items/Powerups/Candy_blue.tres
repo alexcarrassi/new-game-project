@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PowerupItem" load_steps=15 format=3 uid="uid://571fo2fyg6o3"]
+[gd_resource type="Resource" script_class="PowerupItem" format=3 uid="uid://571fo2fyg6o3"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_eu3gw"]
 [ext_resource type="Script" uid="uid://ciwo76i33bb6a" path="res://actors/ActorMods/Mods/ActorMod.gd" id="2_yexgv"]

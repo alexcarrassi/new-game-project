@@ -2,6 +2,7 @@ class_name Player extends Actor
 #ITSIMSCET  
 
 var player_index : int = 0
+var playername = "player"
 
 @export var ground_accel: float = 2800.0
 @export var ground_decel: float = 3000.0
@@ -58,6 +59,7 @@ func _ready() -> void:
 	self.hurtbox.body_entered.connect( self.onHurtboxEntered)
 	
 	self.comboTimer.timeout.connect( self.endCombo )
+	
 	
 func updateSpriteMaterial() -> void:
 

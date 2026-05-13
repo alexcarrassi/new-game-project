@@ -414,6 +414,13 @@ func onEnemyDeath(enemy: Enemy) -> void:
 
 
 func onPlayerDeath(player: Player) -> void:
+	
+	#Queue a new Highscore entry 
+	var highscore_entry: HighscoreEntry = HighscoreEntry.new() 
+	highscore_entry.playername = PlayerCustomization.player_names[player.player_index]
+	highscore_entry.score = player.score 
+	HighScore.queue_entry( highscore_entry)
+	
 	Game.deregister_player(player.player_index)	
 	
 	
@@ -425,7 +432,8 @@ func onActorDeath( actor: Actor) -> void:
 	
 	# Check if there are no players anymore. If so, go back to main menu
 	if ( Game.playerEntries.values().size() < 1) :
-		Game.exit_to_main_menu()
+		
+		Game.open_highscores()
 		
 
 func getTransitionSlot( player_index: int) -> Marker2D:

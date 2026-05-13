@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvgiaukbuueyt"]
+[gd_scene format=3 uid="uid://cvgiaukbuueyt"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_68m3e"]
-[ext_resource type="Script" uid="uid://b5g22vm3jr7ku" path="res://Screens/HighScore/high_score.gd" id="1_sm1ua"]
+[ext_resource type="Script" uid="uid://b5g22vm3jr7ku" path="res://Screens/HighScore/screen_high_score.gd" id="1_sm1ua"]
+[ext_resource type="PackedScene" uid="uid://2igx7xu2xier" path="res://Screens/HighScore/HighscoreEntry.tscn" id="3_jk008"]
+[ext_resource type="Script" uid="uid://vcbnel1krs2x" path="res://UI/ButtonWithIcon/button_with_icon.gd" id="4_6mk3n"]
 
-[node name="Screen_Highscore" type="Control"]
+[node name="Screen_Highscore" type="Control" unique_id=1683863129]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,43 +15,83 @@ grow_vertical = 2
 theme = ExtResource("1_68m3e")
 script = ExtResource("1_sm1ua")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=268770863]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -56.0
-offset_right = 56.0
-offset_bottom = 50.0
-grow_horizontal = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
-layout_mode = 2
+offset_left = 40.0
+offset_right = 216.0
+offset_bottom = 68.0
 theme_override_constants/margin_top = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=439781092]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1651748316]
 layout_mode = 2
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=614374802]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "High Scores"
 
-[node name="container_highscores" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1598362881]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = -35
+
+[node name="container_highscores" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2" unique_id=1867898205]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/container_highscores"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/container_highscores" unique_id=262119012]
 layout_mode = 2
 
-[node name="playerlabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/container_highscores/HBoxContainer"]
+[node name="playerlabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/container_highscores/HBoxContainer" unique_id=1331165943]
 layout_mode = 2
 text = "Player 1"
 
-[node name="scorelabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/container_highscores/HBoxContainer"]
+[node name="scorelabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/container_highscores/HBoxContainer" unique_id=1892421620]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "45000"
+
+[node name="HighscoreEntry" parent="MarginContainer/VBoxContainer/MarginContainer2/container_highscores" unique_id=1957777766 instance=ExtResource("3_jk008")]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=183779442]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_right = 88.0
+offset_bottom = 68.0
+grow_horizontal = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=79442373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2" unique_id=1847120342]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer2" unique_id=754390219]
+layout_mode = 2
+theme_override_constants/margin_bottom = 12
+
+[node name="tab" type="HBoxContainer" parent="MarginContainer2/VBoxContainer2/MarginContainer" unique_id=1935826126]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_toTitle" type="Button" parent="MarginContainer2/VBoxContainer2/MarginContainer/tab" unique_id=1499828474]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/h_separation = 4
+text = "EXIT TO MAIN
+"
+script = ExtResource("4_6mk3n")
+metadata/_custom_type_script = "uid://vcbnel1krs2x"

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=10 format=3 uid="uid://bg2ur4fd854fq"]
+[gd_resource type="AnimationLibrary" format=3 uid="uid://bg2ur4fd854fq"]
 
 [sub_resource type="Animation" id="Animation_hlciv"]
 resource_name = "Bubbled"

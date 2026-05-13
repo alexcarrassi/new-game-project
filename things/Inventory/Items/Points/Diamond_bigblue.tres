@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CurrencyItem" load_steps=10 format=3 uid="uid://b5bj0ax5wbr3p"]
+[gd_resource type="Resource" script_class="CurrencyItem" format=3 uid="uid://b5bj0ax5wbr3p"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_nrt2i"]
 [ext_resource type="Script" uid="uid://basavn3wcvwg7" path="res://Things/Inventory/ItemEffects/AddCurrency.gd" id="2_tnc8d"]

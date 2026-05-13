@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=13 format=3 uid="uid://db366ksut54s"]
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://db366ksut54s"]
 
 [ext_resource type="Script" uid="uid://d0hqq05uugbsp" path="res://Things/Inventory/ItemEffects/ItemEffect.gd" id="1_7e1en"]
 [ext_resource type="Texture2D" uid="uid://dpe8ywgf18tsy" path="res://assets/sprites/Items/TreasureChest_purple.tres" id="2_gocdo"]
