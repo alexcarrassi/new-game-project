@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://yuxx7j4fd201"]
+[gd_scene format=3 uid="uid://yuxx7j4fd201"]
 
 [ext_resource type="Theme" uid="uid://cidakdiv2bhax" path="res://assets/themes/main_theme.tres" id="1_gpyco"]
 [ext_resource type="Script" uid="uid://do3pxjeiwr08k" path="res://Screens/MainMenu/main_menu.gd" id="2_bcgfw"]
 [ext_resource type="Script" uid="uid://vcbnel1krs2x" path="res://UI/ButtonWithIcon/button_with_icon.gd" id="3_me62i"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1829962203]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_vertical = 2
 theme = ExtResource("1_gpyco")
 script = ExtResource("2_bcgfw")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=767653045]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,27 +28,27 @@ offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Options" type="VBoxContainer" parent="CenterContainer"]
+[node name="Options" type="VBoxContainer" parent="CenterContainer" unique_id=1467320149]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Options"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Options" unique_id=1084893289]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_bottom = 11
 
-[node name="Label" type="Label" parent="CenterContainer/Options/MarginContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Options/MarginContainer" unique_id=2002687117]
 layout_mode = 2
-text = "BUBBLE BOBBLE BETA
+text = "BUBBLE BOBBLE DEMO
 BY CARRASSI"
 
-[node name="btn_New_Game" type="Button" parent="CenterContainer/Options"]
+[node name="btn_New_Game" type="Button" parent="CenterContainer/Options" unique_id=354028356]
 layout_mode = 2
 text = "NEW GAME"
 alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
-[node name="btn_New_Game_2players" type="Button" parent="CenterContainer/Options"]
+[node name="btn_New_Game_2players" type="Button" parent="CenterContainer/Options" unique_id=1076896288]
 visible = false
 layout_mode = 2
 text = "NEW GAME 2P"
@@ -56,7 +56,7 @@ alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
-[node name="Button3" type="Button" parent="CenterContainer/Options"]
+[node name="Button3" type="Button" parent="CenterContainer/Options" unique_id=908951964]
 visible = false
 layout_mode = 2
 text = "VERSUS MODE"
@@ -64,19 +64,19 @@ alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
-[node name="btn_Continue" type="Button" parent="CenterContainer/Options"]
+[node name="btn_Continue" type="Button" parent="CenterContainer/Options" unique_id=1769565809]
 layout_mode = 2
 text = "CONTINUE"
 alignment = 0
 script = ExtResource("3_me62i")
 
-[node name="btn_highscores" type="Button" parent="CenterContainer/Options"]
+[node name="btn_highscores" type="Button" parent="CenterContainer/Options" unique_id=309187058]
 layout_mode = 2
 text = "Highscores"
 alignment = 0
 script = ExtResource("3_me62i")
 
-[node name="Button4" type="Button" parent="CenterContainer/Options"]
+[node name="Button4" type="Button" parent="CenterContainer/Options" unique_id=552487075]
 visible = false
 layout_mode = 2
 text = "ONLINE
@@ -85,14 +85,14 @@ alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
-[node name="btn_Settings" type="Button" parent="CenterContainer/Options"]
+[node name="btn_Settings" type="Button" parent="CenterContainer/Options" unique_id=635477264]
 layout_mode = 2
 text = "Settings"
 alignment = 0
 script = ExtResource("3_me62i")
 metadata/_custom_type_script = "uid://vcbnel1krs2x"
 
-[node name="btn_Exit" type="Button" parent="CenterContainer/Options"]
+[node name="btn_Exit" type="Button" parent="CenterContainer/Options" unique_id=1274291339]
 layout_mode = 2
 text = "EXIT
 "

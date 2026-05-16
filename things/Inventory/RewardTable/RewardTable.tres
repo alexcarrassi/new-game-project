@@ -3,61 +3,70 @@
 [ext_resource type="Script" uid="uid://df2d6ib26vtgc" path="res://Things/Inventory/RewardTable/RewardEntry.gd" id="1_uc88q"]
 [ext_resource type="Resource" uid="uid://m1glm1yl7340" path="res://actors/player/Stats/StatDefs/bubbles_blown.tres" id="2_m8nai"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://Things/Inventory/ItemTypes/Item.gd" id="3_eemkf"]
-[ext_resource type="Resource" uid="uid://cj2h3xmscy0kc" path="res://Things/Inventory/Items/Powerups/Extra_Life.tres" id="4_qwji4"]
-[ext_resource type="Resource" uid="uid://w0o8dnt5jik6" path="res://Things/Inventory/Items/Emitters/Bracelent_green.tres" id="4_t51s0"]
 [ext_resource type="Resource" uid="uid://db366ksut54s" path="res://Things/Inventory/Items/Emitters/TreasureChest_blue.tres" id="4_v8ry1"]
 [ext_resource type="Script" uid="uid://blth5hxw1qdxr" path="res://Things/Inventory/RewardTable/RewardTable.gd" id="5_5fmew"]
 [ext_resource type="Resource" uid="uid://c5oxc07h8wyq2" path="res://actors/player/Stats/StatDefs/bubbles_popped.tres" id="5_vtrtj"]
 [ext_resource type="Resource" uid="uid://dqj4q5gh83vsv" path="res://Things/Inventory/Items/Powerups/Candy_green.tres" id="6_5fmew"]
-[ext_resource type="Resource" uid="uid://c1cfkmnxtqg6k" path="res://Things/Inventory/Items/Powerups/Heart.tres" id="6_v8ry1"]
-[ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://Things/Inventory/Items/Points/Peach.tres" id="6_vtrtj"]
 [ext_resource type="Resource" uid="uid://dlraaqtv40iun" path="res://actors/player/Stats/StatDefs/firebubbles_popped.tres" id="7_5fmew"]
 [ext_resource type="Resource" uid="uid://bq5kgs8mbrgaa" path="res://Things/Inventory/Items/Powerups/Shoes.tres" id="7_okgvs"]
 [ext_resource type="Resource" uid="uid://bqaa8f2qk7m1n" path="res://actors/player/Stats/StatDefs/bubbles_hopped.tres" id="9_baug5"]
 [ext_resource type="Resource" uid="uid://1qwdmhna3p38" path="res://Things/Inventory/Items/Emitters/Bracelet_blue.tres" id="9_n41j0"]
 [ext_resource type="Resource" uid="uid://cf48yxnxw7y84" path="res://Things/Inventory/Items/Powerups/Umbrella_blue.tres" id="10_g43x2"]
-[ext_resource type="Resource" uid="uid://bn0n8ed4irvmf" path="res://Things/Inventory/Items/Emitters/Bracelet_red.tres" id="10_qwji4"]
 [ext_resource type="Resource" uid="uid://cy1okudnmjm71" path="res://actors/player/Stats/StatDefs/bottom_to_top_Teleports.tres" id="11_ur3uh"]
 [ext_resource type="Resource" uid="uid://clbjtv8v5oky0" path="res://Things/Inventory/Items/Emitters/TreasureChest_purple.tres" id="12_t51s0"]
 [ext_resource type="Resource" uid="uid://571fo2fyg6o3" path="res://Things/Inventory/Items/Powerups/Candy_blue.tres" id="12_v8ry1"]
 [ext_resource type="Resource" uid="uid://cynfq4un7kwh2" path="res://Things/Inventory/Items/Emitters/TreasureChest_red.tres" id="13_dboje"]
+[ext_resource type="Resource" uid="uid://ccj3ghc35gpoa" path="res://actors/player/Stats/StatDefs/items_collected.tres" id="19_jmtfh"]
+[ext_resource type="Resource" uid="uid://bci2exi06pofb" path="res://actors/player/Stats/StatDefs/waterbubbles_popped.tres" id="20_lem1m"]
 
 [sub_resource type="Resource" id="Resource_3ebml"]
 script = ExtResource("1_uc88q")
-rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("6_v8ry1"), ExtResource("4_t51s0"), ExtResource("4_qwji4"), ExtResource("10_qwji4"), ExtResource("9_n41j0"), ExtResource("13_dboje"), ExtResource("12_t51s0"), ExtResource("4_v8ry1"), ExtResource("10_g43x2"), ExtResource("7_okgvs"), ExtResource("6_5fmew"), ExtResource("12_v8ry1")])
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("6_5fmew")])
 playerStatDef = ExtResource("2_m8nai")
-requirement = 1
+requirement = 35
 metadata/_custom_type_script = "uid://df2d6ib26vtgc"
 
 [sub_resource type="Resource" id="Resource_vusq6"]
 script = ExtResource("1_uc88q")
-rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("6_5fmew")])
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("12_v8ry1")])
 playerStatDef = ExtResource("5_vtrtj")
-requirement = 2
-metadata/_custom_type_script = "uid://df2d6ib26vtgc"
-
-[sub_resource type="Resource" id="Resource_baug5"]
-script = ExtResource("1_uc88q")
-rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("6_vtrtj")])
-playerStatDef = ExtResource("7_5fmew")
-requirement = 10
+requirement = 35
 metadata/_custom_type_script = "uid://df2d6ib26vtgc"
 
 [sub_resource type="Resource" id="Resource_ur3uh"]
 script = ExtResource("1_uc88q")
-rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("10_g43x2")])
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("7_okgvs")])
 playerStatDef = ExtResource("9_baug5")
-requirement = 2
+requirement = 15
 metadata/_custom_type_script = "uid://df2d6ib26vtgc"
 
 [sub_resource type="Resource" id="Resource_okgvs"]
 script = ExtResource("1_uc88q")
-rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("12_v8ry1")])
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("9_n41j0")])
 playerStatDef = ExtResource("11_ur3uh")
-requirement = 2
+requirement = 50
+metadata/_custom_type_script = "uid://df2d6ib26vtgc"
+
+[sub_resource type="Resource" id="Resource_baug5"]
+script = ExtResource("1_uc88q")
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("12_t51s0"), ExtResource("13_dboje"), ExtResource("4_v8ry1")])
+playerStatDef = ExtResource("19_jmtfh")
+requirement = 70
+metadata/_custom_type_script = "uid://df2d6ib26vtgc"
+
+[sub_resource type="Resource" id="Resource_oohw2"]
+script = ExtResource("1_uc88q")
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("10_g43x2")])
+playerStatDef = ExtResource("20_lem1m")
+metadata/_custom_type_script = "uid://df2d6ib26vtgc"
+
+[sub_resource type="Resource" id="Resource_oj7w1"]
+script = ExtResource("1_uc88q")
+rewardPool = Array[ExtResource("3_eemkf")]([ExtResource("13_dboje")])
+playerStatDef = ExtResource("7_5fmew")
 metadata/_custom_type_script = "uid://df2d6ib26vtgc"
 
 [resource]
 script = ExtResource("5_5fmew")
-rewardEntries = Array[ExtResource("1_uc88q")]([SubResource("Resource_3ebml"), SubResource("Resource_vusq6"), SubResource("Resource_baug5"), SubResource("Resource_ur3uh"), SubResource("Resource_okgvs")])
+rewardEntries = Array[ExtResource("1_uc88q")]([SubResource("Resource_3ebml"), SubResource("Resource_vusq6"), SubResource("Resource_ur3uh"), SubResource("Resource_okgvs"), SubResource("Resource_baug5"), SubResource("Resource_oohw2"), SubResource("Resource_oj7w1")])
 metadata/_custom_type_script = "uid://blth5hxw1qdxr"

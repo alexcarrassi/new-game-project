@@ -34,6 +34,7 @@ func add_entry(new_entry: HighscoreEntry) -> void:
 	
 	if( index < max_slots):
 		high_scores.insert(index, new_entry)
+		
 					
 	
 func load_highscores() -> Array[HighscoreEntry]:
@@ -66,12 +67,14 @@ pass
 
 func save_highscores() -> void:
 	var scoreFile = ConfigFile.new() 
-	
+	high_scores.resize(max_slots)	
+
 	for i in range(high_scores.size()):
 		var entry: HighscoreEntry = high_scores[i]
 		scoreFile.set_value(str(i), "score", entry.score)
 		scoreFile.set_value(str(i), "playername", entry.playername)
 
 		pass
+		
 		
 	scoreFile.save(PATH_NAME)	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rc7uixkgn22v"]
+[gd_scene format=3 uid="uid://rc7uixkgn22v"]
 
 [ext_resource type="Script" uid="uid://bm18piqa1njvi" path="res://Things/Projectiles/water_projectile.gd" id="1_5qpjs"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="2_2gu18"]
@@ -11,56 +11,56 @@ radius = 5.0
 height = 11.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qpjs"]
-size = Vector2(12, 14)
+size = Vector2(4, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2gu18"]
 radius = 7.0
 
-[node name="WaterProjectile" type="CharacterBody2D" groups=["Projectiles"]]
+[node name="WaterProjectile" type="CharacterBody2D" unique_id=1160459943 groups=["Projectiles"]]
 collision_layer = 8192
 collision_mask = 2049
 script = ExtResource("1_5qpjs")
 sfx_emission = ExtResource("2_n5qxc")
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=356207042]
 top_level = true
 curve = SubResource("Curve2D_0rnva")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=178652171]
 rotates = false
 loop = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=2111795565]
 texture = ExtResource("2_2gu18")
 region_enabled = true
 region_rect = Rect2(25, 46, 16, 16)
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1229199182]
 visible = false
 collision_layer = 16
 collision_mask = 2
 monitoring = false
 monitorable = false
 
-[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" unique_id=2005732844]
 shape = SubResource("CapsuleShape2D_5qpjs")
 debug_color = Color(0.956338, 3.85046e-06, 0.5538029, 0.41960785)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906168698]
 shape = SubResource("RectangleShape2D_5qpjs")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1517060997]
 collision_layer = 32
 collision_mask = 2304
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=611397625]
 shape = SubResource("CircleShape2D_2gu18")
 debug_color = Color(0.95659, 0.013139213, 0.5259454, 0.41960785)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=605887769]
 texture = ExtResource("2_2gu18")
 region_enabled = true
 region_rect = Rect2(25, 46, 16, 16)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=178822123]
 bus = &"SFX"

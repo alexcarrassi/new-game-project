@@ -1,7 +1,102 @@
-[gd_scene load_steps=2 format=3 uid="uid://yjwuclpljmfc"]
+[gd_scene format=4 uid="uid://yjwuclpljmfc"]
 
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level.tscn" id="1_3rvdf"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="2_crdlq"]
+[ext_resource type="PackedScene" uid="uid://8liyre5r0auf" path="res://actors/enemies/Maita/Maita.tscn" id="3_qd2hy"]
+[ext_resource type="Texture2D" uid="uid://eu217xj5s5to" path="res://assets/sprites/ActorSheets/maita.tres" id="4_qpfvw"]
 
-[node name="Level_01" instance=ExtResource("1_3rvdf")]
+[node name="Level_01" unique_id=1803727631 instance=ExtResource("1_3rvdf")]
 
+[node name="ActorSpawn5" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="0" unique_id=1090971953 instance=ExtResource("2_crdlq")]
+position = Vector2(200, -24)
+spawn_defer_time = 0.5
+ActorScene = ExtResource("3_qd2hy")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn5" index="0"]
+position = Vector2(0, 50)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn5" index="1"]
+texture = ExtResource("4_qpfvw")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn5" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn6" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="1" unique_id=1774069480 instance=ExtResource("2_crdlq")]
+position = Vector2(56, -24)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+ActorScene = ExtResource("3_qd2hy")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn6" index="0"]
+position = Vector2(0, 50)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn6" index="1"]
+texture = ExtResource("4_qpfvw")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn6" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn4" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="2" unique_id=188416306 instance=ExtResource("2_crdlq")]
+position = Vector2(215, -24)
+spawn_defer_time = 0.5
+ActorScene = ExtResource("3_qd2hy")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
+position = Vector2(0, 83)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
+texture = ExtResource("4_qpfvw")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn2" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="3" unique_id=467322685 instance=ExtResource("2_crdlq")]
+position = Vector2(128, -24)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+ActorScene = ExtResource("3_qd2hy")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
+position = Vector2(0, 114)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
+texture = ExtResource("4_qpfvw")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
+wait_time = 0.5
+
+[node name="ActorSpawn3" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="4" unique_id=378150257 instance=ExtResource("2_crdlq")]
+position = Vector2(42, -24)
+direction = Vector2(1, 0)
+spawn_defer_time = 0.5
+ActorScene = ExtResource("3_qd2hy")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
+position = Vector2(0, 81)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
+texture = ExtResource("4_qpfvw")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn3" index="2"]
+wait_time = 0.5
+
+[node name="Tiles" parent="." index="5" unique_id=1752610328]
+tile_map_data = PackedByteArray("AADy/wwAAQAAAAgAAgDz/wwAAQAAAAgAAgALAAwAAQAAAAgAAgAMAAwAAQAAAAgAAgANAAwAAQAAAAgAAgAOAPb/AQAAAAgAAAAOAPf/AQAAAAgAAAAOAPj/AQAAAAgAAAAOAPn/AQAAAAgAAAAOAPr/AQAAAAgAAAAOAPv/AQAAAAgAAAAOAPz/AQAAAAgAAAAOAP3/AQAAAAgAAAAOAP7/AQAAAAgAAAAOAP//AQAAAAgAAAAOAAAAAQAAAAgAAAAOAAEAAQAAAAgAAAAOAAIAAQAAAAgAAAAOAAMAAQAAAAgAAAAOAAQAAQAAAAgAAAAOAAUAAQAAAAgAAAAOAAYAAQAAAAgAAAAOAAcAAQAAAAgAAAAOAAgAAQAAAAgAAAAOAAkAAQAAAAgAAAAOAAoAAQAAAAgAAAAOAAsAAQAAAAgAAAAOAAwAAQAAAAgAAAAPAPb/AQAAAAgAAAAPAPf/AQAAAAgAAAAPAPj/AQAAAAgAAAAPAPn/AQAAAAgAAAAPAPr/AQAAAAgAAAAPAPv/AQAAAAgAAAAPAPz/AQAAAAgAAAAPAP3/AQAAAAgAAAAPAP7/AQAAAAgAAAAPAP//AQAAAAgAAAAPAAAAAQAAAAgAAAAPAAEAAQAAAAgAAAAPAAIAAQAAAAgAAAAPAAMAAQAAAAgAAAAPAAQAAQAAAAgAAAAPAAUAAQAAAAgAAAAPAAYAAQAAAAgAAAAPAAcAAQAAAAgAAAAPAAgAAQAAAAgAAAAPAAkAAQAAAAgAAAAPAAoAAQAAAAgAAAAPAAsAAQAAAAgAAAAPAAwAAQAAAAgAAAD0/wwAAQAAAAgAAgAPAPL/AQAOABcAAAAOAPL/AQAOABcAAAAOAPH/AQAOABcAAAAPAPH/AQAOABcAAADx//L/AQAOABcAAADx//H/AQAOABcAAADw//H/AQAOABcAAADw//L/AQAOABcAAADs/wsAAQAAAAcAAQAOAPP/AQAAAAgAAAAOAPT/AQAAAAgAAAAPAPP/AQAAAAgAAAAPAPT/AQAAAAgAAAD9//P/AQAAAAgAAQD+//P/AQAAAAgAAQD///P/AQABAAgAAAAAAPP/AQACAAgAAAABAPP/AQAAAAgAAQACAPP/AQAAAAgAAQAHAPP/AQAAAAgAAQAIAPP/AQAAAAgAAQAJAPP/AQAAAAgAAQAKAPP/AQAAAAgAAQALAPP/AQAAAAgAAQAMAPP/AQAAAAgAAQANAPP/AQAAAAgAAQAOAPX/AQAAAAgAAAAPAPX/AQAAAAgAAADx/wkAAQAAAAgAAADx/wgAAQAAAAgAAADx/wcAAQAAAAgAAADx/wYAAQAAAAgAAADx/wUAAQAAAAgAAADx/wQAAQAAAAgAAADx/wMAAQAAAAgAAADx/wIAAQAAAAgAAADx/wEAAQAAAAgAAADx/wAAAQAAAAgAAADx////AQAAAAgAAADx//7/AQAAAAgAAADx//3/AQAAAAgAAADx//z/AQAAAAgAAADx//v/AQAAAAgAAADx//r/AQAAAAgAAADx//n/AQAAAAgAAADx//j/AQAAAAgAAADx//f/AQAAAAgAAADx//b/AQAAAAgAAADx//X/AQAAAAgAAADx//T/AQAAAAgAAADx//P/AQAAAAgAAADw//P/AQAAAAgAAADw//T/AQAAAAgAAADw//X/AQAAAAgAAADw//b/AQAAAAgAAADw//f/AQAAAAgAAADw//j/AQAAAAgAAADw//n/AQAAAAgAAADw//r/AQAAAAgAAADw//v/AQAAAAgAAADw//z/AQAAAAgAAADw//3/AQAAAAgAAADw//7/AQAAAAgAAADw////AQAAAAgAAADw/wAAAQAAAAgAAADw/wEAAQAAAAgAAADw/wIAAQAAAAgAAADw/wMAAQAAAAgAAADw/wQAAQAAAAgAAADw/wUAAQAAAAgAAADw/wYAAQAAAAgAAADw/wcAAQAAAAgAAADw/wgAAQAAAAgAAADw/wkAAQAAAAgAAADw/woAAQAAAAgAAADw/wsAAQAAAAgAAADw/wwAAQAAAAgAAADx/wwAAQAAAAgAAADx/wsAAQAAAAgAAADx/woAAQAAAAgAAAD4//P/AQAAAAgAAQD0//v/AQAAAAgAAgD1//f/AQAAAAgAAgD1//v/AQAAAAgAAgD1////AQAAAAgAAgD2//f/AQAAAAgAAgD2//v/AQAAAAgAAgD2////AQAAAAgAAgD2/wMAAQAAAAgAAgD3//f/AQAAAAgAAgD3//v/AQAAAAgAAgD3/wMAAQAAAAgAAgD4//f/AQAAAAgAAgD4/wMAAQAAAAgAAgD5/wMAAQAAAAgAAgD///f/AQAAAAgAAgAAAPf/AQAAAAgAAgDy//P/AQAAAAgAAQDz//P/AQAAAAgAAQD0//P/AQAAAAgAAQD1//P/AQAAAAgAAQD2//P/AQAAAAgAAQD3//P/AQAAAAgAAQD4/wgAAQAAAAgAAgD5/wgAAQAAAAgAAgD6/wgAAQAAAAgAAgD7/wgAAQAAAAgAAgAHAAgAAQAAAAgAAgAIAAgAAQAAAAgAAgAKAAwAAQAAAAgAAgAJAAwAAQAAAAgAAgAIAAwAAQAAAAgAAgAHAAwAAQAAAAgAAgAGAAwAAQAAAAgAAgAFAAwAAQAAAAgAAgAEAAwAAQAAAAgAAgACAAwAAQAAAAgAAgAGAAgAAQAAAAgAAgAFAAgAAQAAAAgAAgAEAAgAAQAAAAgAAgADAAgAAQAAAAgAAgD8/wMAAQAAAAgAAgD9/wMAAQAAAAgAAgD+/wMAAQAAAAgAAgABAAMAAQAAAAgAAgACAAMAAQAAAAgAAgADAAMAAQAAAAgAAgAGAAMAAQAAAAgAAgAHAAMAAQAAAAgAAgAIAAMAAQAAAAgAAgAJAAMAAQAAAAgAAgD///v/AQAAAAgAAgD4/wwAAQAAAAgAAgD3/wwAAQAAAAgAAgD2/wwAAQAAAAgAAgD1/wwAAQAAAAgAAgAHAPf/AQAAAAgAAgAIAPf/AQAAAAgAAgAJAPf/AQAAAAgAAgAKAPf/AQAAAAgAAgAIAPv/AQAAAAgAAgAJAPv/AQAAAAgAAgAKAPv/AQAAAAgAAgALAPv/AQAAAAgAAgAAAPv/AQAAAAgAAgABAPv/AQAAAAgAAgD+//v/AQAAAAgAAgD9////AQAAAAgAAgD+////AQAAAAgAAgD/////AQAAAAgAAgAAAP//AQAAAAgAAgABAP//AQAAAAgAAgACAP//AQAAAAgAAgD3////AQAAAAgAAgD4////AQAAAAgAAgAHAP//AQAAAAgAAgAIAP//AQAAAAgAAgAJAP//AQAAAAgAAgAKAP//AQAAAAgAAgADAAwAAQAAAAgAAgABAAwAAQAAAAgAAgAAAAwAAQAAAAgAAgD//wwAAQAAAAgAAgD+/wwAAQAAAAgAAgD9/wwAAQAAAAgAAgD8/wwAAQAAAAgAAgD7/wwAAQAAAAgAAgD6/wwAAQAAAAgAAgD5/wwAAQAAAAgAAgD8/wgAAQAAAAgAAgD9/wgAAQAAAAgAAgA=")
+
+[node name="ItemSpawn_6sec" parent="Item_Spawns" parent_id_path=PackedInt32Array(872982572) index="0" unique_id=246338360]
+position = Vector2(64, 120)
+
+[editable path="Enemy_Spawns/ActorSpawn5"]
+[editable path="Enemy_Spawns/ActorSpawn6"]
+[editable path="Enemy_Spawns/ActorSpawn4"]
+[editable path="Enemy_Spawns/ActorSpawn2"]
+[editable path="Enemy_Spawns/ActorSpawn3"]
 [editable path="Hurry_Enemy_spawn"]

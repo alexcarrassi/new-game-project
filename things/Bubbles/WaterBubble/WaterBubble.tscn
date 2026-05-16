@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0qbs3c111ic0"]
+[gd_scene format=3 uid="uid://0qbs3c111ic0"]
 
 [ext_resource type="PackedScene" uid="uid://wraeqkcnwm3t" path="res://Things/Bubbles/Bubble.tscn" id="1_p0uk1"]
 [ext_resource type="Script" uid="uid://bjnd4fpfta08t" path="res://Things/Bubbles/WaterBubble/WaterBubble.gd" id="2_gnaoe"]
@@ -113,9 +113,9 @@ _data = {
 &"TIDE": SubResource("Animation_gnaoe")
 }
 
-[node name="WaterBubble" instance=ExtResource("1_p0uk1")]
+[node name="WaterBubble" unique_id=585950631 instance=ExtResource("1_p0uk1")]
 collision_layer = 8
-collision_mask = 2051
+collision_mask = 2050
 max_contacts_reported = 3
 script = ExtResource("2_gnaoe")
 projectile = ExtResource("3_rkt23")
@@ -129,9 +129,7 @@ shape = SubResource("CircleShape2D_gnaoe")
 region_rect = Rect2(4, 46, 16, 16)
 
 [node name="AnimationPlayer" parent="." index="3"]
-libraries = {
-&"": SubResource("AnimationLibrary_gnaoe")
-}
+libraries/ = SubResource("AnimationLibrary_gnaoe")
 
 [node name="HitboxShape" parent="Hitbox" index="0"]
 visible = true

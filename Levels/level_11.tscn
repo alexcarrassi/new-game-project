@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b033dsx8kxdy7"]
+
+[ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level.tscn" id="1_5ki4g"]
+
+[node name="Level_01" unique_id=665564001 instance=ExtResource("1_5ki4g")]
+
+[editable path="Hurry_Enemy_spawn"]

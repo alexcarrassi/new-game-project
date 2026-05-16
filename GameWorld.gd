@@ -227,7 +227,7 @@ func queue_items_for_spawn() -> void:
 	var reward = self.rewardTable.returnFirstReward(talliedStats)
 	if(level.item_spawn_6sec):
 		level.item_spawn_6sec.items.append( reward )
-		level.item_spawn_6sec.spawnItem()
+		#level.item_spawn_6sec.spawnItem()
 	pass	
 
 

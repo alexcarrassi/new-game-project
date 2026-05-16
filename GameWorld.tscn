@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c77k1tce7y5xe"]
+[gd_scene format=3 uid="uid://c77k1tce7y5xe"]
 
 [ext_resource type="Script" uid="uid://cqhdcplaqrury" path="res://GameWorld.gd" id="1_c1plj"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://actors/player/player.tscn" id="2_28gir"]
@@ -22,7 +22,7 @@ size = Vector2(16, 307)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0c47"]
 size = Vector2(16, 308.5)
 
-[node name="GameWorld" type="Node"]
+[node name="GameWorld" type="Node" unique_id=2018377645]
 script = ExtResource("1_c1plj")
 playerScene = ExtResource("2_28gir")
 playerHUDScene = ExtResource("6_a0c47")
@@ -30,11 +30,11 @@ rewardTable = ExtResource("4_waypw")
 start_debug = true
 start_level_id = "1"
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=289357461]
 process_mode = 3
 script = ExtResource("3_jih74")
 
-[node name="Root" type="Control" parent="UI"]
+[node name="Root" type="Control" parent="UI" unique_id=841776908]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,14 +43,14 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Hurry!" type="TextureRect" parent="UI/Root"]
+[node name="Hurry!" type="TextureRect" parent="UI/Root" unique_id=1788336790]
 visible = false
 layout_mode = 1
 offset_right = 38.0
 offset_bottom = 9.0
 texture = ExtResource("4_2dy0i")
 
-[node name="P1" type="Control" parent="UI/Root"]
+[node name="P1" type="Control" parent="UI/Root" unique_id=1485868164]
 layout_direction = 2
 layout_mode = 1
 anchors_preset = 15
@@ -59,7 +59,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HUD" type="MarginContainer" parent="UI/Root/P1"]
+[node name="HUD" type="MarginContainer" parent="UI/Root/P1" unique_id=1574210856]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,13 +67,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerHUD" parent="UI/Root/P1/HUD" instance=ExtResource("6_a0c47")]
+[node name="PlayerHUD" parent="UI/Root/P1/HUD" unique_id=84671854 instance=ExtResource("6_a0c47")]
 layout_mode = 2
 
 [node name="StartToJoin" parent="UI/Root/P1/HUD/PlayerHUD/MarginContainer2" index="0"]
 sprite = ExtResource("7_oql0q")
 
-[node name="P2" type="Control" parent="UI/Root"]
+[node name="P2" type="Control" parent="UI/Root" unique_id=1513031475]
 layout_direction = 3
 layout_mode = 1
 anchors_preset = 15
@@ -82,7 +82,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HUD" type="MarginContainer" parent="UI/Root/P2"]
+[node name="HUD" type="MarginContainer" parent="UI/Root/P2" unique_id=1894337367]
 layout_direction = 3
 layout_mode = 1
 anchors_preset = 15
@@ -91,7 +91,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerHUD" parent="UI/Root/P2/HUD" instance=ExtResource("6_a0c47")]
+[node name="PlayerHUD" parent="UI/Root/P2/HUD" unique_id=1107434415 instance=ExtResource("6_a0c47")]
 layout_direction = 3
 layout_mode = 2
 player_index = 1
@@ -100,64 +100,64 @@ player_index = 1
 sprite = ExtResource("8_i451r")
 flip_sprite = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=372011027]
 anchor_mode = 0
 
-[node name="TeleporterTop" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
+[node name="TeleporterTop" parent="." unique_id=1008717905 node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
 position = Vector2(128, -8)
 monitoring = false
 monitorable = false
 Destination = NodePath("../TeleporterBottom")
 incrementStat = true
 
-[node name="TeleporterBottom" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
+[node name="TeleporterBottom" parent="." unique_id=1534152589 node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
 position = Vector2(128, 225)
 Destination = NodePath("../TeleporterTop")
 
 [node name="Area" parent="TeleporterBottom" index="0"]
 position = Vector2(0, 5.5)
 
-[node name="TeleporterBottom2" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
+[node name="TeleporterBottom2" parent="." unique_id=2038963207 node_paths=PackedStringArray("Destination") instance=ExtResource("6_hej4t")]
 position = Vector2(128, 253)
 Destination = NodePath("../TeleporterTop")
 
-[node name="NextLevelMarker" type="Marker2D" parent="."]
+[node name="NextLevelMarker" type="Marker2D" parent="." unique_id=2097169760]
 position = Vector2(0, 280)
 
-[node name="TransitionSlots" type="Node2D" parent="."]
+[node name="TransitionSlots" type="Node2D" parent="." unique_id=856275728]
 
-[node name="P1" type="Marker2D" parent="TransitionSlots"]
+[node name="P1" type="Marker2D" parent="TransitionSlots" unique_id=309166484]
 position = Vector2(48, 64)
 
-[node name="P2" type="Marker2D" parent="TransitionSlots"]
+[node name="P2" type="Marker2D" parent="TransitionSlots" unique_id=580990705]
 position = Vector2(208, 64)
 
-[node name="P3" type="Marker2D" parent="TransitionSlots"]
+[node name="P3" type="Marker2D" parent="TransitionSlots" unique_id=1183254015]
 position = Vector2(48, 160)
 
-[node name="P4" type="Marker2D" parent="TransitionSlots"]
+[node name="P4" type="Marker2D" parent="TransitionSlots" unique_id=1527625817]
 position = Vector2(208, 160)
 
-[node name="Wall_Left" type="StaticBody2D" parent="."]
-collision_layer = 20481
+[node name="Wall_Left" type="StaticBody2D" parent="." unique_id=1906394011]
+collision_layer = 20480
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left" unique_id=1519743903]
 position = Vector2(8, 99.5)
 shape = SubResource("RectangleShape2D_n5c08")
 
-[node name="Wall_Right" type="StaticBody2D" parent="."]
+[node name="Wall_Right" type="StaticBody2D" parent="." unique_id=233396685]
 collision_layer = 16385
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right" unique_id=671416526]
 position = Vector2(248, 99.25)
 shape = SubResource("RectangleShape2D_a0c47")
 
-[node name="ExtendBubble_left" parent="." instance=ExtResource("8_28gir")]
+[node name="ExtendBubble_left" parent="." unique_id=1072493802 instance=ExtResource("8_28gir")]
 position = Vector2(56, 268)
 script = ExtResource("9_2dy0i")
-bubbleQueue = Array[StringName]([&"extend_D"])
+bubbleQueue = Array[StringName]([])
 bubbleScene = ExtResource("9_jih74")
 
 [node name="IntervalTimer" parent="ExtendBubble_left" index="0"]
@@ -168,10 +168,10 @@ modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("10_2dy0i")
 region_rect = Rect2(5, 67, 14, 16)
 
-[node name="ExtendBubble_right" parent="." instance=ExtResource("8_28gir")]
+[node name="ExtendBubble_right" parent="." unique_id=1371730120 instance=ExtResource("8_28gir")]
 position = Vector2(190, 268)
 script = ExtResource("9_2dy0i")
-bubbleQueue = Array[StringName]([&"extend_E2"])
+bubbleQueue = Array[StringName]([])
 bubbleScene = ExtResource("9_jih74")
 
 [node name="IntervalTimer" parent="ExtendBubble_right" index="0"]
@@ -182,15 +182,15 @@ modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("10_2dy0i")
 region_rect = Rect2(5, 67, 14, 16)
 
-[node name="EndLevelItemSpawn" parent="." instance=ExtResource("13_waypw")]
+[node name="EndLevelItemSpawn" parent="." unique_id=1902340671 instance=ExtResource("13_waypw")]
 position = Vector2(128, -52)
 spawnTime = 0.0
 autoStart = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1892916638]
 bus = &"SFX"
 
-[node name="audio_bgm" type="AudioStreamPlayer" parent="."]
+[node name="audio_bgm" type="AudioStreamPlayer" parent="." unique_id=529460940]
 stream = ExtResource("15_i451r")
 volume_db = -4.963
 autoplay = true

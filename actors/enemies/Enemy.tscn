@@ -1,19 +1,31 @@
-[gd_scene load_steps=19 format=3 uid="uid://jbkj40qgwjk8"]
+[gd_scene format=3 uid="uid://jbkj40qgwjk8"]
 
 [ext_resource type="Script" uid="uid://cx828ycxarj3w" path="res://actors/enemies/Enemy.gd" id="1_s6a2x"]
 [ext_resource type="Script" uid="uid://dqjjif8wmykqb" path="res://Things/Inventory/ItemTypes/Item.gd" id="2_n721a"]
 [ext_resource type="Resource" uid="uid://8mpuv7p54h3g" path="res://Things/Inventory/Items/Points/Peach.tres" id="3_texev"]
 [ext_resource type="AnimationLibrary" uid="uid://bg2ur4fd854fq" path="res://assets/animations/Actors/enemy.tres" id="4_7x0wi"]
+[ext_resource type="Resource" uid="uid://c2ddgjwf7aef7" path="res://Things/Inventory/Items/Points/BellPepper.tres" id="4_ed4ov"]
+[ext_resource type="Resource" uid="uid://14hxd5ild1x1" path="res://Things/Inventory/Items/Points/Carrot.tres" id="5_bcwyw"]
 [ext_resource type="AnimationLibrary" uid="uid://b3p7t8jfoligj" path="res://assets/animations/Actors/enemy_RED.tres" id="5_vtx8q"]
 [ext_resource type="Script" uid="uid://cxwldrhfsres7" path="res://actors/scripts/animation_player.gd" id="6_65ebo"]
+[ext_resource type="Resource" uid="uid://wyproy3x652p" path="res://Things/Inventory/Items/Points/Cherry.tres" id="6_goxwd"]
 [ext_resource type="Texture2D" uid="uid://dp60pcoyrbdhu" path="res://assets/sprites/ActorSheets/zenchan.tres" id="7_s6a2x"]
+[ext_resource type="Resource" uid="uid://bjnw1pe5yi2gb" path="res://Things/Inventory/Items/Points/Fries.tres" id="7_uwts2"]
+[ext_resource type="Resource" uid="uid://qey7a6b8e2w3" path="res://Things/Inventory/Items/Points/Grapes.tres" id="8_b2dv5"]
 [ext_resource type="Script" uid="uid://bjbytyi2fepmq" path="res://actors/scripts/StateMachine_Locomotion.gd" id="8_bffln"]
+[ext_resource type="Resource" uid="uid://dk00b4nr5yn0m" path="res://Things/Inventory/Items/Points/Icecream.tres" id="9_e4ca6"]
+[ext_resource type="Resource" uid="uid://cdgka4vleelqh" path="res://Things/Inventory/Items/Points/Melon.tres" id="10_uyg82"]
 [ext_resource type="Script" uid="uid://b358k753egjwi" path="res://Presentation/ActorPresentation.gd" id="11_62adu"]
+[ext_resource type="Resource" uid="uid://dq3jiks27mbyv" path="res://Things/Inventory/Items/Points/Mushroom.tres" id="11_bnax6"]
 [ext_resource type="Script" uid="uid://bo4dnu1crabju" path="res://actors/player/player_sfx.gd" id="12_c71fg"]
+[ext_resource type="Resource" uid="uid://bb1nip4uhqh70" path="res://Things/Inventory/Items/Points/Onion.tres" id="12_nynbe"]
+[ext_resource type="Resource" uid="uid://cvj43d00db81i" path="res://Things/Inventory/Items/Points/Pickle.tres" id="13_3g6u3"]
 [ext_resource type="AudioStream" uid="uid://ebck7cltdt74" path="res://assets/sfx/sfx_jump.wav" id="13_kb25k"]
 [ext_resource type="AudioStream" uid="uid://brmtqowp6kx0l" path="res://assets/sfx/sfx_bubblepop_multipleenemies.wav" id="14_c71fg"]
 [ext_resource type="AudioStream" uid="uid://bojgf82dx2gac" path="res://assets/sfx/sfx_bubbleshot.wav" id="14_nia3g"]
+[ext_resource type="Resource" uid="uid://cu3vr3rk22776" path="res://Things/Inventory/Items/Points/RedPepper.tres" id="14_vkrjb"]
 [ext_resource type="Script" uid="uid://rlf241v6q1mt" path="res://actors/scripts/StateMachine_Status.gd" id="15_gpg4s"]
+[ext_resource type="Resource" uid="uid://bvbgvb2pr5bsd" path="res://Things/Inventory/Items/Points/Tomato.tres" id="15_rtqu4"]
 [ext_resource type="AudioStream" uid="uid://ca3r8xe7ukrs" path="res://assets/sfx/sfx_hurt.wav" id="15_vm34l"]
 [ext_resource type="Script" uid="uid://pbqf3u3hfeho" path="res://actors/scripts/StateMachine_Act.gd" id="19_a4hre"]
 
@@ -24,73 +36,71 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbd71"]
 size = Vector2(13.5, 14)
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1487384655 groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 16513
 script = ExtResource("1_s6a2x")
-LootTable = Array[ExtResource("2_n721a")]([ExtResource("3_texev")])
+LootTable = Array[ExtResource("2_n721a")]([ExtResource("3_texev"), ExtResource("4_ed4ov"), ExtResource("5_bcwyw"), ExtResource("6_goxwd"), ExtResource("7_uwts2"), ExtResource("8_b2dv5"), ExtResource("9_e4ca6"), ExtResource("10_uyg82"), ExtResource("11_bnax6"), ExtResource("12_nynbe"), ExtResource("3_texev"), ExtResource("13_3g6u3"), ExtResource("14_vkrjb"), ExtResource("15_rtqu4")])
 JUMP_VELOCITY = 220.0
 MAX_RUN_VELOCITY = 45.0
 MAX_RISE_VELOCITY = 260.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=998007768]
 shape = SubResource("CapsuleShape2D_rfo4i")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": ExtResource("4_7x0wi"),
-&"RED": ExtResource("5_vtx8q")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=456072169]
+libraries/ = ExtResource("4_7x0wi")
+libraries/RED = ExtResource("5_vtx8q")
 script = ExtResource("6_65ebo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1054913346]
 texture = ExtResource("7_s6a2x")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="Sensors" type="Node2D" parent="."]
+[node name="Sensors" type="Node2D" parent="." unique_id=1874826176]
 
-[node name="Wall_front" type="RayCast2D" parent="Sensors"]
+[node name="Wall_front" type="RayCast2D" parent="Sensors" unique_id=513359323]
 position = Vector2(0, 3)
 target_position = Vector2(9, 0)
-collision_mask = 129
+collision_mask = 16513
 
-[node name="Floor_above" type="RayCast2D" parent="Sensors"]
+[node name="Floor_above" type="RayCast2D" parent="Sensors" unique_id=1420927765]
 position = Vector2(0, -7)
 target_position = Vector2(0, -34)
 collision_mask = 129
 
-[node name="Floor_front" type="RayCast2D" parent="Sensors"]
+[node name="Floor_front" type="RayCast2D" parent="Sensors" unique_id=1049990252]
 target_position = Vector2(9, 10)
 collision_mask = 129
 
-[node name="Decision_Timer" type="Timer" parent="."]
+[node name="Decision_Timer" type="Timer" parent="." unique_id=597223758]
 one_shot = true
 
-[node name="StateMachine_Locomotion" type="Node" parent="."]
+[node name="StateMachine_Locomotion" type="Node" parent="." unique_id=334373779]
 script = ExtResource("8_bffln")
 
-[node name="StateMachine_Status" type="Node" parent="."]
+[node name="StateMachine_Status" type="Node" parent="." unique_id=888526344]
 script = ExtResource("15_gpg4s")
 
-[node name="StateMachine_Act" type="Node" parent="."]
+[node name="StateMachine_Act" type="Node" parent="." unique_id=890947008]
 script = ExtResource("19_a4hre")
 metadata/_custom_type_script = "uid://pbqf3u3hfeho"
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=941595302]
 position = Vector2(0, 7)
 collision_layer = 256
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1299310609]
 position = Vector2(0.25, -7)
 shape = SubResource("RectangleShape2D_gbd71")
 debug_color = Color(0.29961187, 0.5557529, 0, 0.41960785)
 
-[node name="Presentation" type="Node" parent="."]
+[node name="Presentation" type="Node" parent="." unique_id=1454695215]
 script = ExtResource("11_62adu")
 
-[node name="SFX" type="Node" parent="Presentation"]
+[node name="SFX" type="Node" parent="Presentation" unique_id=627210870]
 script = ExtResource("12_c71fg")
 sfx = Dictionary[StringName, AudioStream]({
 &"bubbleshot": ExtResource("14_nia3g"),
@@ -99,11 +109,11 @@ sfx = Dictionary[StringName, AudioStream]({
 &"jump": ExtResource("13_kb25k")
 })
 
-[node name="channel_action" type="AudioStreamPlayer2D" parent="Presentation/SFX"]
+[node name="channel_action" type="AudioStreamPlayer2D" parent="Presentation/SFX" unique_id=1405483775]
 bus = &"SFX"
 
-[node name="channel_locomotion" type="AudioStreamPlayer2D" parent="Presentation/SFX"]
+[node name="channel_locomotion" type="AudioStreamPlayer2D" parent="Presentation/SFX" unique_id=217916532]
 bus = &"SFX"
 
-[node name="channel_status" type="AudioStreamPlayer2D" parent="Presentation/SFX"]
+[node name="channel_status" type="AudioStreamPlayer2D" parent="Presentation/SFX" unique_id=1630260867]
 bus = &"SFX"

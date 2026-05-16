@@ -1,23 +1,20 @@
-[gd_scene load_steps=4 format=4 uid="uid://bf0462ur1u34s"]
+[gd_scene format=4 uid="uid://bf0462ur1u34s"]
 
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level.tscn" id="1_ot7dp"]
 [ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="2_d3ajd"]
 [ext_resource type="Texture2D" uid="uid://dp60pcoyrbdhu" path="res://assets/sprites/ActorSheets/zenchan.tres" id="3_x5tb4"]
 
-[node name="Level_01" instance=ExtResource("1_ot7dp")]
-position = Vector2(0, 0)
+[node name="Level_01" unique_id=60083093 instance=ExtResource("1_ot7dp")]
 
-[node name="ActorSpawn" parent="Enemy_Spawns" index="0" instance=ExtResource("2_d3ajd")]
+[node name="ActorSpawn" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="0" unique_id=836287382 instance=ExtResource("2_d3ajd")]
 position = Vector2(160, -32)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
-disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
-position = Vector2(0, 112)
+position = Vector2(0, 107)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
-modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("3_x5tb4")
 flip_h = true
 region_rect = Rect2(0, 0, 16, 16)
@@ -25,17 +22,15 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn" index="2"]
 wait_time = 0.5
 
-[node name="ActorSpawn3" parent="Enemy_Spawns" index="1" instance=ExtResource("2_d3ajd")]
+[node name="ActorSpawn3" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="1" unique_id=515209860 instance=ExtResource("2_d3ajd")]
 position = Vector2(136, -32)
 direction = Vector2(1, 0)
 spawn_defer_time = 0.5
-disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
-position = Vector2(0, 76)
+position = Vector2(0, 67)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
-modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("3_x5tb4")
 flip_h = true
 region_rect = Rect2(0, 0, 16, 16)
@@ -43,28 +38,26 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn3" index="2"]
 wait_time = 0.5
 
-[node name="ActorSpawn4" parent="Enemy_Spawns" index="2" instance=ExtResource("2_d3ajd")]
+[node name="ActorSpawn4" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="2" unique_id=1950994874 instance=ExtResource("2_d3ajd")]
 position = Vector2(120, -32)
 spawn_defer_time = 0.5
-disabled = true
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
-position = Vector2(0, 76)
+position = Vector2(0, 67)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
-modulate = Color(1, 1, 1, 0.3)
 texture = ExtResource("3_x5tb4")
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn4" index="2"]
 wait_time = 0.5
 
-[node name="ActorSpawn2" parent="Enemy_Spawns" index="3" instance=ExtResource("2_d3ajd")]
-position = Vector2(96, -29)
+[node name="ActorSpawn2" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="3" unique_id=1414758967 instance=ExtResource("2_d3ajd")]
+position = Vector2(96, -32)
 spawn_defer_time = 0.5
 
 [node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
-position = Vector2(0, 109)
+position = Vector2(0, 107)
 
 [node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
 texture = ExtResource("3_x5tb4")
@@ -73,8 +66,11 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="Defer_Timer" parent="Enemy_Spawns/ActorSpawn2" index="2"]
 wait_time = 0.5
 
-[node name="Tiles" parent="." index="5"]
+[node name="Tiles" parent="." index="5" unique_id=1752610328]
 tile_map_data = PackedByteArray("AADy/wwAAQAAAAEAAADz/wwAAQAAAAEAAAALAAwAAQAAAAEAAAAMAAwAAQAAAAEAAAANAAwAAQAAAAEAAAAOAPb/AQAAAAEAAAAOAPf/AQAAAAEAAAAOAPj/AQAAAAEAAAAOAPn/AQAAAAEAAAAOAPr/AQAAAAEAAAAOAPv/AQAAAAEAAAAOAPz/AQAAAAEAAAAOAP3/AQAAAAEAAAAOAP7/AQAAAAEAAAAOAP//AQAAAAEAAAAOAAAAAQAAAAEAAAAOAAEAAQAAAAEAAAAOAAIAAQAAAAEAAAAOAAMAAQAAAAEAAAAOAAQAAQAAAAEAAAAOAAUAAQAAAAEAAAAOAAYAAQAAAAEAAAAOAAcAAQAAAAEAAAAOAAgAAQAAAAEAAAAOAAkAAQAAAAEAAAAOAAoAAQAAAAEAAAAOAAsAAQAAAAEAAAAOAAwAAQAAAAEAAAAPAPb/AQAAAAEAAAAPAPf/AQAAAAEAAAAPAPj/AQAAAAEAAAAPAPn/AQAAAAEAAAAPAPr/AQAAAAEAAAAPAPv/AQAAAAEAAAAPAPz/AQAAAAEAAAAPAP3/AQAAAAEAAAAPAP7/AQAAAAEAAAAPAP//AQAAAAEAAAAPAAAAAQAAAAEAAAAPAAEAAQAAAAEAAAAPAAIAAQAAAAEAAAAPAAMAAQAAAAEAAAAPAAQAAQAAAAEAAAAPAAUAAQAAAAEAAAAPAAYAAQAAAAEAAAAPAAcAAQAAAAEAAAAPAAgAAQAAAAEAAAAPAAkAAQAAAAEAAAAPAAoAAQAAAAEAAAAPAAsAAQAAAAEAAAAPAAwAAQAAAAEAAAD0/wwAAQAAAAEAAAAPAPL/AQAOABcAAAAOAPL/AQAOABcAAAAOAPH/AQAOABcAAAAPAPH/AQAOABcAAADx//L/AQAOABcAAADx//H/AQAOABcAAADw//H/AQAOABcAAADw//L/AQAOABcAAADs/wsAAQAAAAcAAQAOAPP/AQAAAAEAAAAOAPT/AQAAAAEAAAAPAPP/AQAAAAEAAAAPAPT/AQAAAAEAAAD9//P/AQAAAAEAAQD+//P/AQAAAAEAAQD///P/AQABAAEAAAAAAPP/AQACAAEAAAABAPP/AQAAAAEAAQACAPP/AQAAAAEAAQAHAPP/AQAAAAEAAQAIAPP/AQAAAAEAAQAJAPP/AQAAAAEAAQAKAPP/AQAAAAEAAQALAPP/AQAAAAEAAQAMAPP/AQAAAAEAAQANAPP/AQAAAAEAAQAOAPX/AQAAAAEAAAAPAPX/AQAAAAEAAADx/wkAAQAAAAEAAADx/wgAAQAAAAEAAADx/wcAAQAAAAEAAADx/wYAAQAAAAEAAADx/wUAAQAAAAEAAADx/wQAAQAAAAEAAADx/wMAAQAAAAEAAADx/wIAAQAAAAEAAADx/wEAAQAAAAEAAADx/wAAAQAAAAEAAADx////AQAAAAEAAADx//7/AQAAAAEAAADx//3/AQAAAAEAAADx//z/AQAAAAEAAADx//v/AQAAAAEAAADx//r/AQAAAAEAAADx//n/AQAAAAEAAADx//j/AQAAAAEAAADx//f/AQAAAAEAAADx//b/AQAAAAEAAADx//X/AQAAAAEAAADx//T/AQAAAAEAAADx//P/AQAAAAEAAADw//P/AQAAAAEAAADw//T/AQAAAAEAAADw//X/AQAAAAEAAADw//b/AQAAAAEAAADw//f/AQAAAAEAAADw//j/AQAAAAEAAADw//n/AQAAAAEAAADw//r/AQAAAAEAAADw//v/AQAAAAEAAADw//z/AQAAAAEAAADw//3/AQAAAAEAAADw//7/AQAAAAEAAADw////AQAAAAEAAADw/wAAAQAAAAEAAADw/wEAAQAAAAEAAADw/wIAAQAAAAEAAADw/wMAAQAAAAEAAADw/wQAAQAAAAEAAADw/wUAAQAAAAEAAADw/wYAAQAAAAEAAADw/wcAAQAAAAEAAADw/wgAAQAAAAEAAADw/wkAAQAAAAEAAADw/woAAQAAAAEAAADw/wsAAQAAAAEAAADw/wwAAQAAAAEAAADx/wwAAQAAAAEAAADx/wsAAQAAAAEAAADx/woAAQAAAAEAAAD4//P/AQAAAAEAAQDy//P/AQAAAAEAAQDz//P/AQAAAAEAAQD0//P/AQAAAAEAAQD1//P/AQAAAAEAAQD2//P/AQAAAAEAAQD3//P/AQAAAAEAAQAKAAwAAQAAAAEAAAAJAAwAAQAAAAEAAAAIAAwAAQAAAAEAAAAHAAwAAQAAAAEAAAAGAAwAAQAAAAEAAAAFAAwAAQAAAAEAAAAEAAwAAQAAAAEAAAADAAwAAQAAAAEAAAACAAwAAQAAAAEAAAD4/wwAAQAAAAEAAAD3/wwAAQAAAAEAAAD2/wwAAQAAAAEAAAD1/wwAAQAAAAEAAAD0/wcAAQAAAAEAAgD1/wcAAQAAAAEAAgD2/wcAAQAAAAEAAgD3/wIAAQAAAAEAAgD3/wcAAQAAAAEAAgD4/wIAAQAAAAEAAgD4/wcAAQAAAAEAAgD5//P/AQAAAAEAAQD5/wIAAQAAAAEAAgD5/wcAAQAAAAEAAgD5/wwAAQAAAAEAAAD6//P/AQAAAAEAAQD6//3/AQAAAAEAAgD6/wIAAQAAAAEAAgD6/wwAAQAAAAEAAAD7//P/AQAAAAEAAQD7//3/AQAAAAEAAgD7/wIAAQAAAAEAAgD7/wwAAQAAAAEAAAD8//P/AQAAAAEAAQD8//3/AQAAAAEAAgD8/wIAAQAAAAEAAgD8/wcAAQAAAAEAAgD8/wwAAQAAAAEAAAD9//j/AQAAAAEAAgD9//3/AQAAAAEAAgD9/wIAAQAAAAEAAgD9/wcAAQAAAAEAAgD9/wwAAQAAAAEAAAD+//j/AQAAAAEAAgD+//3/AQAAAAEAAgD+/wIAAQAAAAEAAgD+/wcAAQAAAAEAAgD+/wwAAQAAAAEAAAD///j/AQAAAAEAAgD//wIAAQAAAAEAAgD//wcAAQAAAAEAAgD//wwAAQAAAAEAAAAAAPj/AQAAAAEAAgAAAAIAAQAAAAEAAgAAAAcAAQAAAAEAAgAAAAwAAQAAAAEAAAABAPj/AQAAAAEAAgABAP3/AQAAAAEAAgABAAIAAQAAAAEAAgABAAcAAQAAAAEAAgABAAwAAQAAAAEAAAACAPj/AQAAAAEAAgACAP3/AQAAAAEAAgACAAIAAQAAAAEAAgACAAcAAQAAAAEAAgADAPP/AQAAAAEAAQADAP3/AQAAAAEAAgADAAIAAQAAAAEAAgAEAPP/AQAAAAEAAQAEAP3/AQAAAAEAAgAEAAIAAQAAAAEAAgAFAPP/AQAAAAEAAQAFAP3/AQAAAAEAAgAFAAIAAQAAAAEAAgAFAAcAAQAAAAEAAgAGAPP/AQAAAAEAAQAGAAIAAQAAAAEAAgAGAAcAAQAAAAEAAgAHAAIAAQAAAAEAAgAHAAcAAQAAAAEAAgAIAAIAAQAAAAEAAgAIAAcAAQAAAAEAAgAJAAcAAQAAAAEAAgAKAAcAAQAAAAEAAgALAAcAAQAAAAEAAgA=")
+
+[node name="ItemSpawn_6sec" parent="Item_Spawns" parent_id_path=PackedInt32Array(872982572) index="0" unique_id=246338360]
+position = Vector2(204, 155)
 
 [editable path="Enemy_Spawns/ActorSpawn"]
 [editable path="Enemy_Spawns/ActorSpawn3"]

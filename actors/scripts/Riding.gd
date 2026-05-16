@@ -12,6 +12,8 @@ func enter(prev_state: State, data: Dictionary) -> void:
 	self.body.velocity = Vector2.ZERO
 	self.body.hurtbox.monitorable = false 
 	self.body.hurtbox.monitoring = false
+	
+	body.collisionShape.disabled = true
 
 	var owner = data.get("owner", null)
 	if(owner) :
@@ -36,7 +38,8 @@ func exit() -> void:
 	self.body.hurtbox.monitorable = true 
 	self.body.hurtbox.monitoring = true 
 	self.body.sm_act.physics_process_paused = false 
-	
+	body.collisionShape.disabled = false
+
 	self.body.reparent(Game.world.level)
 	#self.body.collisionShape.disabled = false
 	
