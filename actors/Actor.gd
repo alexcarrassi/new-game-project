@@ -39,6 +39,8 @@ signal actorHurt()
 signal actorHurtStart()
 signal actorLifeUp()
 
+signal pre_move_and_slide(delta: float)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.up_direction = Vector2.UP
@@ -84,6 +86,8 @@ func _physics_process(delta: float) -> void:
 # An automated (AI, basically) implementation of the Intent part of ITSIMSCET
 func think() -> void:
 	pass	
+	
+	
 
 func post_move_and_slide() -> void:
 	pass	

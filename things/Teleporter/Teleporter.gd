@@ -18,7 +18,7 @@ func _ready() -> void:
 #Handles teleportation to the Destination node 
 func onAreaEntered(body: Node2D) -> void:
 	
-	if(body is CharacterBody2D):
+	if(body is CharacterBody2D || body is Bubble):
 		#If we find the actor in the destined array, don't teleport. We are their destination, not their starting point.
 		if( self.actors_destined.find( body) == -1 && self.Destination != null):
 			self.teleportActor( body )

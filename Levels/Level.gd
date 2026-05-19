@@ -13,6 +13,8 @@ class_name Level extends Node2D
 #The item spawn for rewards, based on PlayerStats.
 @onready var item_spawn_6sec: ItemSpawn = $Item_Spawns/ItemSpawn_6sec
 
+@export var tileset_index: int =  0
+
 var definition: LevelDefinition
 
 signal hurry()

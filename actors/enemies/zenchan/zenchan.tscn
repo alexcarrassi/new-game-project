@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1pgsrwvsoer3"]
+[gd_scene format=3 uid="uid://c1pgsrwvsoer3"]
 
 [ext_resource type="PackedScene" uid="uid://jbkj40qgwjk8" path="res://actors/enemies/Enemy.tscn" id="1_0ipqe"]
 [ext_resource type="PackedScene" uid="uid://cufsaqpabnav" path="res://actors/enemies/States/Locomotion/bubbled.tscn" id="2_d746r"]
@@ -13,28 +13,28 @@
 [ext_resource type="PackedScene" uid="uid://biyjbn7hgj0q7" path="res://actors/enemies/States/Status/spawning.tscn" id="10_l8m8o"]
 [ext_resource type="PackedScene" uid="uid://t5s0sxumquql" path="res://actors/enemies/States/Act/None.tscn" id="11_8kfm4"]
 
-[node name="Zenchan" instance=ExtResource("1_0ipqe")]
+[node name="Zenchan" unique_id=1029867084 instance=ExtResource("1_0ipqe")]
 script = ExtResource("2_l8m8o")
 
-[node name="StateMachine_Locomotion" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine_Locomotion" parent="." index="5" unique_id=334373779 node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("IDLE")
 
-[node name="IDLE" parent="StateMachine_Locomotion" index="0" instance=ExtResource("4_nh11d")]
+[node name="IDLE" parent="StateMachine_Locomotion" index="0" unique_id=787192894 instance=ExtResource("4_nh11d")]
 
-[node name="BUBBLED" parent="StateMachine_Locomotion" index="1" instance=ExtResource("2_d746r")]
+[node name="BUBBLED" parent="StateMachine_Locomotion" index="1" unique_id=171671176 instance=ExtResource("2_d746r")]
 
-[node name="FALLING" parent="StateMachine_Locomotion" index="2" instance=ExtResource("3_a7m12")]
+[node name="FALLING" parent="StateMachine_Locomotion" index="2" unique_id=1796291753 instance=ExtResource("3_a7m12")]
 
-[node name="JUMP_FORWARD" parent="StateMachine_Locomotion" index="3" instance=ExtResource("5_d88in")]
+[node name="JUMP_FORWARD" parent="StateMachine_Locomotion" index="3" unique_id=1552953235 instance=ExtResource("5_d88in")]
 
-[node name="JUMP_UP" parent="StateMachine_Locomotion" index="4" instance=ExtResource("6_8kfm4")]
+[node name="JUMP_UP" parent="StateMachine_Locomotion" index="4" unique_id=859279903 instance=ExtResource("6_8kfm4")]
 
-[node name="RUNNING" parent="StateMachine_Locomotion" index="5" instance=ExtResource("7_l8m8o")]
+[node name="RUNNING" parent="StateMachine_Locomotion" index="5" unique_id=888868213 instance=ExtResource("7_l8m8o")]
 
-[node name="SPAWNING" parent="StateMachine_Status" index="0" instance=ExtResource("10_l8m8o")]
+[node name="SPAWNING" parent="StateMachine_Status" parent_id_path=PackedInt32Array(888526344) index="0" unique_id=1867333272 instance=ExtResource("10_l8m8o")]
 
-[node name="ALIVE" parent="StateMachine_Status" index="1" instance=ExtResource("8_d88in")]
+[node name="ALIVE" parent="StateMachine_Status" parent_id_path=PackedInt32Array(888526344) index="1" unique_id=1759497279 instance=ExtResource("8_d88in")]
 
-[node name="DEAD" parent="StateMachine_Status" index="2" instance=ExtResource("9_8kfm4")]
+[node name="DEAD" parent="StateMachine_Status" parent_id_path=PackedInt32Array(888526344) index="2" unique_id=1500471581 instance=ExtResource("9_8kfm4")]
 
-[node name="State_act_None" parent="StateMachine_Act" index="0" instance=ExtResource("11_8kfm4")]
+[node name="State_act_None" parent="StateMachine_Act" parent_id_path=PackedInt32Array(890947008) index="0" unique_id=56330791 instance=ExtResource("11_8kfm4")]

@@ -38,7 +38,7 @@ size = Vector2(13.5, 14)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1487384655 groups=["Enemies"]]
 collision_layer = 4
-collision_mask = 16513
+collision_mask = 20609
 script = ExtResource("1_s6a2x")
 LootTable = Array[ExtResource("2_n721a")]([ExtResource("3_texev"), ExtResource("4_ed4ov"), ExtResource("5_bcwyw"), ExtResource("6_goxwd"), ExtResource("7_uwts2"), ExtResource("8_b2dv5"), ExtResource("9_e4ca6"), ExtResource("10_uyg82"), ExtResource("11_bnax6"), ExtResource("12_nynbe"), ExtResource("3_texev"), ExtResource("13_3g6u3"), ExtResource("14_vkrjb"), ExtResource("15_rtqu4")])
 JUMP_VELOCITY = 220.0
@@ -68,11 +68,11 @@ collision_mask = 16513
 [node name="Floor_above" type="RayCast2D" parent="Sensors" unique_id=1420927765]
 position = Vector2(0, -7)
 target_position = Vector2(0, -34)
-collision_mask = 129
+collision_mask = 4225
 
 [node name="Floor_front" type="RayCast2D" parent="Sensors" unique_id=1049990252]
 target_position = Vector2(9, 10)
-collision_mask = 129
+collision_mask = 4225
 
 [node name="Decision_Timer" type="Timer" parent="." unique_id=597223758]
 one_shot = true

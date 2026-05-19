@@ -54,6 +54,8 @@ func physics_update(delta: float) -> void:
 	body.velocity.y += body.get_gravity().y * applied_gravity * delta
 	body.velocity.y = clamp(body.velocity.y, -body.MAX_RISE_VELOCITY, body.MAX_FALL_VELOCITY)
 	
+	body.pre_move_and_slide.emit(delta)
+	
 	body.move_and_slide()
 	body.post_move_and_slide()
 

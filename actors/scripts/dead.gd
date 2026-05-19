@@ -52,6 +52,7 @@ func reEnableCollision() -> void:
 	var actor = self.body
 	print("RECOLLIDE")
 	actor.set_collision_mask_value(1, true)
+	actor.set_collision_mask_value(13, true)
 	
 func physics_update(delta: float) -> void:
 	var actor = self.body

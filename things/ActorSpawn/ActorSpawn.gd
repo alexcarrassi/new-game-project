@@ -30,18 +30,26 @@ class_name ActorSpawn extends Marker2D
 @onready var destination: Marker2D = $Destination
 
 
-
 var is_spawning: bool = false
-@export var ActorScene: PackedScene:
-	get:
-		return ActorScene
-	set(value):
-		ActorScene = value 
-		if(Engine.is_editor_hint()) :
-			call_deferred("_update_icon")
 
+@export_enum("Zenchan", "Maita", "Monsta")
+var actor_type: int = 0:
+	set(value):
+		actor_type = value
+		if value >= 0 and value < actor_scenes.size():
+			self.ActorScene = actor_scenes[value]
+			
+		if Engine.is_editor_hint():
+			call_deferred("_update_icon")
 			
 			
+var actor_scenes: Array[PackedScene] = [
+	preload("res://actors/enemies/zenchan/Zenchan.tscn"),
+	preload("res://actors/enemies/Maita/Maita.tscn"),
+	preload("res://actors/enemies/Munsta/Munsta.tscn")
+]
+var ActorScene: PackedScene
+
 var actor: Actor			
 
 signal actorSpawned(actor: Actor)

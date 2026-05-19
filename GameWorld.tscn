@@ -139,7 +139,7 @@ position = Vector2(48, 160)
 position = Vector2(208, 160)
 
 [node name="Wall_Left" type="StaticBody2D" parent="." unique_id=1906394011]
-collision_layer = 20480
+collision_layer = 20481
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left" unique_id=1519743903]
@@ -147,7 +147,7 @@ position = Vector2(8, 99.5)
 shape = SubResource("RectangleShape2D_n5c08")
 
 [node name="Wall_Right" type="StaticBody2D" parent="." unique_id=233396685]
-collision_layer = 16385
+collision_layer = 20481
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Right" unique_id=671416526]

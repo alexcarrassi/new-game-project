@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5afnxmv4ewbe"]
+[gd_scene format=3 uid="uid://c5afnxmv4ewbe"]
 
 [ext_resource type="Script" uid="uid://cfmxlohsnml8m" path="res://Things/Projectiles/FireProjectile.gd" id="1_pvg81"]
 [ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="1_pycr3"]
@@ -63,35 +63,34 @@ _data = {
 &"spawn": SubResource("Animation_pvg81")
 }
 
-[node name="FireProjectile" type="CharacterBody2D" groups=["Projectiles"]]
+[node name="FireProjectile" type="CharacterBody2D" unique_id=1353489116 groups=["Projectiles"]]
 collision_layer = 0
+collision_mask = 4097
 script = ExtResource("1_pvg81")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=403680367]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_qy6gl")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=2085129358]
 collision_layer = 32
 collision_mask = 256
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=1447184774]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_pvg81")
 debug_color = Color(0.95659, 0.013139213, 0.5259454, 0.41960785)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1754753508]
 texture = ExtResource("1_pycr3")
 region_enabled = true
 region_rect = Rect2(173, 46, 16, 16)
 
-[node name="DissolveTimer" type="Timer" parent="."]
+[node name="DissolveTimer" type="Timer" parent="." unique_id=663650032]
 wait_time = 5.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_xnnyl")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=67545357]
+libraries/ = SubResource("AnimationLibrary_xnnyl")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=937407773]
 bus = &"SFX"

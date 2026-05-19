@@ -83,9 +83,13 @@ func get_airCurrent_velocity() -> Vector2:
 		var pos = airCurrent.local_to_map(localMapPos )
 		var cellData = airCurrent.get_cell_tile_data(pos)
 		var current_dir = Vector2.UP
+		var destroy : bool = false 
 		if(cellData):
 			current_dir =  cellData.get_custom_data("Direction")
-		
+			destroy = cellData.get_custom_data("Destroy")
+			
+		if(destroy):
+			queue_free()	
 		if(current_dir == Vector2.ZERO):
 			# Swirl tile.
 			var local_center = airCurrent.map_to_local(pos)
@@ -93,7 +97,6 @@ func get_airCurrent_velocity() -> Vector2:
 			
 			return get_swirl_velocity(global_center)
 			#return dir * Vector2(self.float_hor_speed, self.float_vert_speed)
-
 		else:
 			dir = current_dir
 		return current_dir * Vector2(self.float_hor_speed, self.float_vert_speed)
