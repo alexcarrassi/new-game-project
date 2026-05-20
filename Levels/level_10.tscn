@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dp60pcoyrbdhu" path="res://assets/sprites/ActorSheets/zenchan.tres" id="3_w76ts"]
 [ext_resource type="PackedScene" uid="uid://c50spamxftvqt" path="res://actors/enemies/Munsta/Munsta.tscn" id="4_752rg"]
 [ext_resource type="Texture2D" uid="uid://50ucietf83mx" path="res://assets/sprites/ActorSheets/munsta.tres" id="5_gu58g"]
+[ext_resource type="PackedScene" uid="uid://g08fjx0x6f4v" path="res://things/Bubbles/BubbleSpawner/BubbleSpawner.tscn" id="6_wn6d5"]
+[ext_resource type="PackedScene" uid="uid://0qbs3c111ic0" path="res://Things/Bubbles/WaterBubble/WaterBubble.tscn" id="7_i2ob1"]
+[ext_resource type="Texture2D" uid="uid://d3oiukttuhiq1" path="res://assets/sprites/Bubble_types.png" id="8_d8hbd"]
 
 [node name="Level_01" unique_id=9230426 instance=ExtResource("1_s60kp")]
 
@@ -129,6 +132,15 @@ tile_map_data = PackedByteArray("AADy//f/AAAAAAkAAADy//v/AAAAAAkAAADy////AAAAAAk
 [node name="ItemSpawn_6sec" parent="Item_Spawns" parent_id_path=PackedInt32Array(872982572) index="0" unique_id=246338360]
 position = Vector2(73, 70)
 
+[node name="BubbleSpawner" parent="." index="11" unique_id=60079303 instance=ExtResource("6_wn6d5")]
+position = Vector2(175.22066, -32.75142)
+bubbleScene = ExtResource("7_i2ob1")
+
+[node name="Icon" parent="BubbleSpawner" index="1"]
+modulate = Color(1, 1, 1, 0.7)
+texture = ExtResource("8_d8hbd")
+region_rect = Rect2(4, 46, 16, 16)
+
 [editable path="Enemy_Spawns/ActorSpawn5"]
 [editable path="Enemy_Spawns/ActorSpawn7"]
 [editable path="Enemy_Spawns/ActorSpawn8"]
@@ -137,3 +149,4 @@ position = Vector2(73, 70)
 [editable path="Enemy_Spawns/ActorSpawn2"]
 [editable path="Enemy_Spawns/ActorSpawn3"]
 [editable path="Hurry_Enemy_spawn"]
+[editable path="BubbleSpawner"]

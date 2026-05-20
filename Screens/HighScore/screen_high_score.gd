@@ -10,6 +10,7 @@ var HighscoreEntry_ControlScene: PackedScene = load("res://Screens/HighScore/Hig
 func _ready() -> void:
 	load_highscores()
 	
+	btn_toTitle.grab_focus()
 	btn_toTitle.pressed.connect( func() -> void: Game.exit_to_main_menu() )
 
 func load_highscores() -> void:

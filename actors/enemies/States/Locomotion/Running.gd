@@ -27,9 +27,11 @@ func physics_update(delta: float) -> void:
 	
 	var position_compared_to_player = self.body.player_above()
 
-	if(! self.body.floor_front() and position_compared_to_player >= 0) :
+	#if(! self.body.floor_front() and position_compared_to_player >= 0) :
+	if(!self.body.is_on_floor() and position_compared_to_player >= 0 ) :
+
 		self.finished.emit("JUMP_FORWARD")
-	elif(!self.body.is_on_floor()) :
+	elif(!self.body.is_on_floor() ) :
 		self.finished.emit("FALLING")	
 		
 		

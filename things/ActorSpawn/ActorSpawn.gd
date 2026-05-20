@@ -48,7 +48,7 @@ var actor_scenes: Array[PackedScene] = [
 	preload("res://actors/enemies/Maita/Maita.tscn"),
 	preload("res://actors/enemies/Munsta/Munsta.tscn")
 ]
-var ActorScene: PackedScene
+@export var ActorScene: PackedScene
 
 var actor: Actor			
 

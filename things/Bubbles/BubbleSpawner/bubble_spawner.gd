@@ -1,13 +1,26 @@
 @tool
 class_name BubbleSpawner extends Node2D
 
-@export var bubbleScene: PackedScene:
-	get:
-		return bubbleScene 
+
+@export_enum("Water", "Thunder", "Fire") 
+var bubbleType: int = 0:
 	set(value):
-		bubbleScene = value
+		bubbleType = value
+		if value >= 0 and value < bubble_scenes.size():
+
+			self.bubbleScene = bubble_scenes[value]
 		if(Engine.is_editor_hint()):
-			call_deferred("update_icon")	
+			call_deferred("update_icon")
+
+var bubble_scenes: Array[PackedScene] = [
+	preload("res://Things/Bubbles/WaterBubble/WaterBubble.tscn"),
+	preload("res://Things/Bubbles/ZapBubble/ZapBubble.tscn"),
+	preload("res://Things/Bubbles/FireBubble/FireBubble.tscn"),
+]
+
+@export var bubbleScene: PackedScene
+
+	
 @export var disabled: bool:
 	get:
 		return disabled
@@ -35,9 +48,9 @@ func _ready() -> void:
 	else:	
 		self.Icon.visible = false
 		self.Icon.queue_free()
-		self.intervalTimer.timeout.connect( self.spawnBubble)
-		if(self.disabled) :
-			self.intervalTimer.stop()
+	self.intervalTimer.timeout.connect( self.spawnBubble)
+	if(self.disabled) :
+		self.intervalTimer.stop()
 
 
 func update_icon() -> void:

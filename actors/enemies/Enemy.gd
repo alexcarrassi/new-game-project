@@ -112,7 +112,7 @@ func get_floor_above_y() -> float:
 	return sensor_floor_above.get_collision_point().y - shape_offset - current_tilesize.y
 
 func floor_front() -> bool:
-	var sensor_floor_front = $Sensors/Floor_front as RayCast2D 
+	var sensor_floor_front = $Sensors/Floor_front as ShapeCast2D 
 	return sensor_floor_front.is_colliding()
 	
 # Assess current situation, state your intents\

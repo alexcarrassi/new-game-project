@@ -14,7 +14,7 @@ var modController: ModController
 @export var GRAVITY_MULTIPLIER = 1.0
 @export var GRAVITY_MULTIPLIER_RISING: float = 1.0
 @export var GRAVITY_MULTIPLIER_FALLING: float = 2.0
-@export var JUMP_VELOCITY: float = 10.0
+@export var JUMP_VELOCITY: float = 4.0
 @export var MAX_RUN_VELOCITY: float = 200.0
 @export var MAX_FALL_VELOCITY: float = 100.0
 @export var MAX_RISE_VELOCITY: float = 350.0
