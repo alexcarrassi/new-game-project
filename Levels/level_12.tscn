@@ -1,0 +1,106 @@
+[gd_scene format=4 uid="uid://ysrj5s8onpo"]
+
+[ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level.tscn" id="1_i0h61"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="2_dd32q"]
+[ext_resource type="PackedScene" uid="uid://c50spamxftvqt" path="res://actors/enemies/Munsta/Munsta.tscn" id="3_4dfmg"]
+[ext_resource type="Texture2D" uid="uid://50ucietf83mx" path="res://assets/sprites/ActorSheets/munsta.tres" id="4_7dtl5"]
+
+[node name="Level_01" unique_id=665564001 instance=ExtResource("1_i0h61")]
+
+[node name="ActorSpawn" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="0" unique_id=673623754 instance=ExtResource("2_dd32q")]
+position = Vector2(26.399979, -22.58889)
+direction = Vector2(1, 0)
+actor_type = 2
+ActorScene = ExtResource("3_4dfmg")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
+position = Vector2(0, 165)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
+texture = ExtResource("4_7dtl5")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn3" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="1" unique_id=1004854453 instance=ExtResource("2_dd32q")]
+position = Vector2(26.399979, -22.58889)
+direction = Vector2(1, 0)
+actor_type = 2
+ActorScene = ExtResource("3_4dfmg")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
+position = Vector2(0, 116)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
+texture = ExtResource("4_7dtl5")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn2" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="2" unique_id=648286775 instance=ExtResource("2_dd32q")]
+position = Vector2(26.399979, -22.58889)
+direction = Vector2(1, 0)
+actor_type = 2
+ActorScene = ExtResource("3_4dfmg")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
+position = Vector2(0, 143)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
+texture = ExtResource("4_7dtl5")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn4" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="3" unique_id=1281552619 instance=ExtResource("2_dd32q")]
+position = Vector2(227.39998, -22.58889)
+actor_type = 2
+ActorScene = ExtResource("3_4dfmg")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
+position = Vector2(0, 165)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
+texture = ExtResource("4_7dtl5")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn5" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="4" unique_id=1819022236 instance=ExtResource("2_dd32q")]
+position = Vector2(227.39998, -22.58889)
+actor_type = 2
+ActorScene = ExtResource("3_4dfmg")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn5" index="0"]
+position = Vector2(0, 116)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn5" index="1"]
+texture = ExtResource("4_7dtl5")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn6" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="5" unique_id=1272957669 instance=ExtResource("2_dd32q")]
+position = Vector2(227.39998, -22.58889)
+actor_type = 2
+ActorScene = ExtResource("3_4dfmg")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn6" index="0"]
+position = Vector2(0, 143)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn6" index="1"]
+texture = ExtResource("4_7dtl5")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Tiles" parent="." index="5" unique_id=1752610328]
+tile_map_data = PackedByteArray("AAAOAPb/AAAAAAsAAAAOAPf/AAAAAAsAAAAOAPj/AAAAAAsAAAAOAPn/AAAAAAsAAAAOAPr/AAAAAAsAAAAOAPv/AAAAAAsAAAAOAPz/AAAAAAsAAAAOAP3/AAAAAAsAAAAOAP7/AAAAAAsAAAAOAP//AAAAAAsAAAAOAAAAAAAAAAsAAAAOAAEAAAAAAAsAAAAOAAIAAAAAAAsAAAAOAAMAAAAAAAsAAAAOAAQAAAAAAAsAAAAOAAUAAAAAAAsAAAAOAAYAAAAAAAsAAAAOAAcAAAAAAAsAAAAOAAgAAAAAAAsAAAAOAAkAAAAAAAsAAAAOAAoAAAAAAAsAAAAOAAsAAAAAAAsAAAAOAAwAAAAAAAsAAAAPAPb/AAAAAAsAAAAPAPf/AAAAAAsAAAAPAPj/AAAAAAsAAAAPAPn/AAAAAAsAAAAPAPr/AAAAAAsAAAAPAPv/AAAAAAsAAAAPAPz/AAAAAAsAAAAPAP3/AAAAAAsAAAAPAP7/AAAAAAsAAAAPAP//AAAAAAsAAAAPAAAAAAAAAAsAAAAPAAEAAAAAAAsAAAAPAAIAAAAAAAsAAAAPAAMAAAAAAAsAAAAPAAQAAAAAAAsAAAAPAAUAAAAAAAsAAAAPAAYAAAAAAAsAAAAPAAcAAAAAAAsAAAAPAAgAAAAAAAsAAAAPAAkAAAAAAAsAAAAPAAoAAAAAAAsAAAAPAAsAAAAAAAsAAAAPAAwAAAAAAAsAAAAPAPL/AAAAAAsAAAAOAPL/AAAAAAsAAAAOAPH/AAAAAAsAAAAPAPH/AAAAAAsAAADs/wsAAQAAAAcAAQAOAPP/AAAAAAsAAAAOAPT/AAAAAAsAAAAPAPP/AAAAAAsAAAAPAPT/AAAAAAsAAAAOAPX/AAAAAAsAAAAPAPX/AAAAAAsAAADx/wkAAAAAAAsAAADx/wgAAAAAAAsAAADx/wcAAAAAAAsAAADx/wYAAAAAAAsAAADx/wUAAAAAAAsAAADx/wQAAAAAAAsAAADx/wMAAAAAAAsAAADx/wIAAAAAAAsAAADx/wEAAAAAAAsAAADx/wAAAAAAAAsAAADx////AAAAAAsAAADx//7/AAAAAAsAAADx//3/AAAAAAsAAADx//z/AAAAAAsAAADx//v/AAAAAAsAAADx//r/AAAAAAsAAADx//n/AAAAAAsAAADx//j/AAAAAAsAAADx//f/AAAAAAsAAADx//b/AAAAAAsAAADx//X/AAAAAAsAAADx//T/AAAAAAsAAADx//P/AAAAAAsAAADw//P/AAAAAAsAAADw//T/AAAAAAsAAADw//X/AAAAAAsAAADw//b/AAAAAAsAAADw//f/AAAAAAsAAADw//j/AAAAAAsAAADw//n/AAAAAAsAAADw//r/AAAAAAsAAADw//v/AAAAAAsAAADw//z/AAAAAAsAAADw//3/AAAAAAsAAADw//7/AAAAAAsAAADw////AAAAAAsAAADw/wAAAAAAAAsAAADw/wEAAAAAAAsAAADw/wIAAAAAAAsAAADw/wMAAAAAAAsAAADw/wQAAAAAAAsAAADw/wUAAAAAAAsAAADw/wYAAAAAAAsAAADw/wcAAAAAAAsAAADw/wgAAAAAAAsAAADw/wkAAAAAAAsAAADw/woAAAAAAAsAAADw/wsAAAAAAAsAAADw/wwAAAAAAAsAAADx/wwAAAAAAAsAAADx/wsAAAAAAAsAAADx/woAAAAAAAsAAADx//L/AAAAAAsAAADw//L/AAAAAAsAAADw//H/AAAAAAsAAADx//H/AAAAAAsAAAD1/wYAAAAAAAsAAAD1/wUAAAAAAAsAAAD1/wQAAAAAAAsAAAD1/wMAAAAAAAsAAAD1/wIAAAAAAAsAAAD1/wEAAAAAAAsAAAD1/wAAAAAAAAsAAAD1////AAAAAAsAAAD1//7/AAAAAAsAAAD1//3/AAAAAAsAAAD1//z/AAAAAAsAAAD1//v/AAAAAAsAAAD1//r/AAAAAAsAAAAKAPr/AAAAAAsAAAAKAPv/AAAAAAsAAAAKAPz/AAAAAAsAAAAKAP3/AAAAAAsAAAAKAP7/AAAAAAsAAAAKAP//AAAAAAsAAAAKAAAAAAAAAAsAAAAKAAEAAAAAAAsAAAAKAAIAAAAAAAsAAAAKAAMAAAAAAAsAAAAKAAQAAAAAAAsAAAAKAAUAAAAAAAsAAAAKAAYAAAAAAAsAAAA=")
+
+[node name="Tiles_Ceiling" parent="." index="6" unique_id=1632750305]
+tile_map_data = PackedByteArray("AADs/wsAAQAAAAcAAQDy//P/AAAAAAsAAADz//P/AAAAAAsAAAD0//P/AAAAAAsAAAD1//P/AAAAAAsAAAD2//P/AAAAAAsAAAD3//P/AAAAAAsAAAD4//P/AAAAAAsAAAD+//P/AAAAAAsAAAD///P/AAAAAAsAAAAAAPP/AAAAAAsAAAABAPP/AAAAAAsAAAAHAPP/AAAAAAsAAAAIAPP/AAAAAAsAAAAJAPP/AAAAAAsAAAAKAPP/AAAAAAsAAAALAPP/AAAAAAsAAAAMAPP/AAAAAAsAAAANAPP/AAAAAAsAAAA=")
+
+[node name="Tiles_Floor" parent="." index="7" unique_id=870786221]
+tile_map_data = PackedByteArray("AADy/wwAAAAAAAsAAADz/wwAAAAAAAsAAAD0/wwAAAAAAAsAAAD1/wwAAAAAAAsAAAD2/wwAAAAAAAsAAAD3/wwAAAAAAAsAAAD4/wwAAAAAAAsAAAANAAwAAAAAAAsAAAAMAAwAAAAAAAsAAAALAAwAAAAAAAsAAAAKAAwAAAAAAAsAAAAJAAwAAAAAAAsAAAAIAAwAAAAAAAsAAAAHAAwAAAAAAAsAAAD+/wwAAAAAAAsAAAD//wwAAAAAAAsAAAAAAAwAAAAAAAsAAAABAAwAAAAAAAsAAADy/wYAAAAAAAsAAAD0/wYAAAAAAAsAAAD3/wMAAAAAAAsAAAD3/wQAAAAAAAsAAAD4/wQAAAAAAAsAAAD5/wMAAAAAAAsAAAD5/wQAAAAAAAsAAAD6/wMAAAAAAAsAAAD6/wQAAAAAAAsAAAD4/wIAAAAAAAsAAAD5/wIAAAAAAAsAAAD4/wUAAAAAAAsAAAD5/wUAAAAAAAsAAAD6/wUAAAAAAAsAAAD7/wUAAAAAAAsAAAD5/wYAAAAAAAsAAAD6/wYAAAAAAAsAAAD7/wYAAAAAAAsAAAD6/wcAAAAAAAsAAAD7/wcAAAAAAAsAAAD8/wcAAAAAAAsAAAD7/wgAAAAAAAsAAAD8/wgAAAAAAAsAAAANAAYAAAAAAAsAAAALAAYAAAAAAAsAAAAEAAcAAAAAAAsAAAAEAAgAAAAAAAsAAAAFAAUAAAAAAAsAAAAFAAYAAAAAAAsAAAAFAAcAAAAAAAsAAAAGAAMAAAAAAAsAAAAGAAQAAAAAAAsAAAAGAAUAAAAAAAsAAAAGAAYAAAAAAAsAAAAHAAIAAAAAAAsAAAAHAAQAAAAAAAsAAAAHAAUAAAAAAAsAAAAIAAQAAAAAAAsAAAADAAcAAAAAAAsAAAADAAgAAAAAAAsAAAAEAAUAAAAAAAsAAAAEAAYAAAAAAAsAAAAFAAMAAAAAAAsAAAAFAAQAAAAAAAsAAAAGAAIAAAAAAAsAAAAIAAMAAAAAAAsAAAD5//j/AAAAAAsAAAD6//j/AAAAAAsAAAD7//f/AAAAAAsAAAD7//n/AAAAAAsAAAD8//j/AAAAAAsAAAD9//j/AAAAAAsAAAACAPj/AAAAAAsAAAADAPf/AAAAAAsAAAADAPn/AAAAAAsAAAAEAPf/AAAAAAsAAAAEAPj/AAAAAAsAAAAEAPn/AAAAAAsAAAAFAPf/AAAAAAsAAAAFAPn/AAAAAAsAAAAGAPj/AAAAAAsAAAD1//b/AAAAAAsAAAD5//n/AAAAAAsAAAD5//r/AAAAAAsAAAD6//f/AAAAAAsAAAD6//r/AAAAAAsAAAD6//v/AAAAAAsAAAD7//v/AAAAAAsAAAD8//f/AAAAAAsAAAD8//r/AAAAAAsAAAD8//v/AAAAAAsAAAD9//n/AAAAAAsAAAD9//r/AAAAAAsAAAD///7/AAAAAAsAAAD/////AAAAAAsAAAAAAP7/AAAAAAsAAAAAAP//AAAAAAsAAAACAPn/AAAAAAsAAAACAPr/AAAAAAsAAAADAPv/AAAAAAsAAAAEAPr/AAAAAAsAAAAEAPv/AAAAAAsAAAAFAPv/AAAAAAsAAAAGAPn/AAAAAAsAAAAGAPr/AAAAAAsAAAALAPb/AAAAAAsAAAA=")
+
+[node name="ItemSpawn_6sec" parent="Item_Spawns" parent_id_path=PackedInt32Array(872982572) index="0" unique_id=246338360]
+position = Vector2(128, 60)
+
+[editable path="Enemy_Spawns/ActorSpawn"]
+[editable path="Enemy_Spawns/ActorSpawn3"]
+[editable path="Enemy_Spawns/ActorSpawn2"]
+[editable path="Enemy_Spawns/ActorSpawn4"]
+[editable path="Enemy_Spawns/ActorSpawn5"]
+[editable path="Enemy_Spawns/ActorSpawn6"]
+[editable path="Hurry_Enemy_spawn"]

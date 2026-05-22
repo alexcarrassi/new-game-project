@@ -31,15 +31,16 @@ func setTileState(tileState: TileState) -> void:
 	var parent = get_parent()
 	match tileState:
 		TileState.FULL_PASS:
-			parent.set_collision_mask_value(1, false)
+			#parent.set_collision_mask_value(1, false)
 			parent.set_collision_mask_value(13, false)
 
 		TileState.FRONT_PROC:
-			parent.set_collision_mask_value(1, true)
+			#parent.set_collision_mask_value(1, true)
+			pass
 		TileState.FRONT_TOP_PROC: 
 			parent.set_collision_mask_value(13, false)
 		TileState.NONE:
-			parent.set_collision_mask_value(1, true)
+			#parent.set_collision_mask_value(1, true)
 			parent.set_collision_mask_value(13, true)
 
 	#parent.set_collision_mask_value(1, false)
@@ -72,7 +73,7 @@ func _physics_process(delta: float) -> void:
 			if(sensor_top.is_colliding()):
 				setTileState(TileState.FRONT_TOP_PROC)
 						
-	else:
+	elif(parent.velocity.y > 0.0):
 		#falling down tries to reset the state to not ignoring. But only if we're not colliding anymore.
 		if(tileState != TileState.NONE):
 			if(!sensor_full.is_colliding()):

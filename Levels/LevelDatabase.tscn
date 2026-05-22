@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://3yl1bxl5o8i5"]
+[gd_scene format=3 uid="uid://3yl1bxl5o8i5"]
 
 [ext_resource type="Script" uid="uid://dedry2pqikg2d" path="res://Levels/LevelDatabase.gd" id="1_da1vx"]
 [ext_resource type="PackedScene" uid="uid://byvof7wuayhd8" path="res://Levels/level_00.tscn" id="3_11keg"]
@@ -14,6 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://yjwuclpljmfc" path="res://Levels/level_09.tscn" id="13_y7t6v"]
 [ext_resource type="PackedScene" uid="uid://behfohavlssx4" path="res://Levels/level_01.tscn" id="14_e2sgk"]
 [ext_resource type="PackedScene" uid="uid://jjrdvd47guus" path="res://Levels/level_10.tscn" id="14_y7t6v"]
+[ext_resource type="PackedScene" uid="uid://b033dsx8kxdy7" path="res://Levels/level_11.tscn" id="15_pguow"]
+[ext_resource type="PackedScene" uid="uid://ysrj5s8onpo" path="res://Levels/level_12.tscn" id="16_pe6lb"]
+[ext_resource type="PackedScene" uid="uid://3340s6x20jix" path="res://Levels/level_13.tscn" id="17_yg2qx"]
+[ext_resource type="PackedScene" uid="uid://co5lph3neu14v" path="res://Levels/level_14.tscn" id="18_lgu4n"]
+[ext_resource type="PackedScene" uid="uid://dg5xkiqer7xnv" path="res://Levels/level_15.tscn" id="19_1spmx"]
+[ext_resource type="PackedScene" uid="uid://0bqyfsskq04b" path="res://Levels/level_16.tscn" id="20_27iff"]
 
 [sub_resource type="Resource" id="Resource_5t0jc"]
 script = ExtResource("13_vjd8q")
@@ -89,15 +95,58 @@ metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 script = ExtResource("13_vjd8q")
 id = "10"
 scene = ExtResource("13_y7t6v")
+default_next = "11"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
 [sub_resource type="Resource" id="Resource_n6t2k"]
 script = ExtResource("13_vjd8q")
 id = "11"
 scene = ExtResource("14_y7t6v")
+default_next = "12"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_5hkv0"]
+script = ExtResource("13_vjd8q")
+id = "12"
+scene = ExtResource("15_pguow")
+default_next = "13"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_dc63h"]
+script = ExtResource("13_vjd8q")
+id = "13"
+scene = ExtResource("16_pe6lb")
+default_next = "14"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_sdrd8"]
+script = ExtResource("13_vjd8q")
+id = "14"
+scene = ExtResource("17_yg2qx")
+default_next = "15"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_xooek"]
+script = ExtResource("13_vjd8q")
+id = "15"
+scene = ExtResource("18_lgu4n")
+default_next = "16"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_c1pne"]
+script = ExtResource("13_vjd8q")
+id = "16"
+scene = ExtResource("19_1spmx")
+default_next = "17"
+metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
+
+[sub_resource type="Resource" id="Resource_7gcb8"]
+script = ExtResource("13_vjd8q")
+id = "17"
+scene = ExtResource("20_27iff")
 default_next = "0"
 metadata/_custom_type_script = "uid://cvnjelfj5bn7f"
 
-[node name="LevelDatabase" type="Node"]
+[node name="LevelDatabase" type="Node" unique_id=1175722096]
 script = ExtResource("1_da1vx")
-levels = Array[ExtResource("13_vjd8q")]([SubResource("Resource_5t0jc"), SubResource("Resource_27iff"), SubResource("Resource_1spmx"), SubResource("Resource_11keg"), SubResource("Resource_nxx6f"), SubResource("Resource_oadg8"), SubResource("Resource_40lhv"), SubResource("Resource_sgjgs"), SubResource("Resource_y5nj7"), SubResource("Resource_vjd8q"), SubResource("Resource_e2sgk"), SubResource("Resource_n6t2k")])
+levels = Array[ExtResource("13_vjd8q")]([SubResource("Resource_5t0jc"), SubResource("Resource_27iff"), SubResource("Resource_1spmx"), SubResource("Resource_11keg"), SubResource("Resource_nxx6f"), SubResource("Resource_oadg8"), SubResource("Resource_40lhv"), SubResource("Resource_sgjgs"), SubResource("Resource_y5nj7"), SubResource("Resource_vjd8q"), SubResource("Resource_e2sgk"), SubResource("Resource_n6t2k"), SubResource("Resource_5hkv0"), SubResource("Resource_dc63h"), SubResource("Resource_sdrd8"), SubResource("Resource_xooek"), SubResource("Resource_c1pne"), SubResource("Resource_7gcb8")])

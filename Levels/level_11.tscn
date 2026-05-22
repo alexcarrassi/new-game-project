@@ -1,7 +1,114 @@
-[gd_scene format=3 uid="uid://b033dsx8kxdy7"]
+[gd_scene format=4 uid="uid://b033dsx8kxdy7"]
 
 [ext_resource type="PackedScene" uid="uid://dogcjld36l5xs" path="res://Levels/level.tscn" id="1_5ki4g"]
+[ext_resource type="PackedScene" uid="uid://c5mn46uie1m02" path="res://Things/ActorSpawn/ActorSpawn.tscn" id="2_5qrgj"]
+[ext_resource type="Texture2D" uid="uid://dp60pcoyrbdhu" path="res://assets/sprites/ActorSheets/zenchan.tres" id="3_f2m3h"]
+[ext_resource type="PackedScene" uid="uid://c50spamxftvqt" path="res://actors/enemies/Munsta/Munsta.tscn" id="4_syb1a"]
+[ext_resource type="Texture2D" uid="uid://50ucietf83mx" path="res://assets/sprites/ActorSheets/munsta.tres" id="5_3urec"]
 
 [node name="Level_01" unique_id=665564001 instance=ExtResource("1_5ki4g")]
 
+[node name="ActorSpawn" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="0" unique_id=268059724 instance=ExtResource("2_5qrgj")]
+position = Vector2(109, -29)
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn" index="0"]
+position = Vector2(0, 46)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn" index="1"]
+texture = ExtResource("3_f2m3h")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn2" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="1" unique_id=1832350094 instance=ExtResource("2_5qrgj")]
+position = Vector2(128, -29)
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn2" index="0"]
+position = Vector2(0, 46)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn2" index="1"]
+texture = ExtResource("3_f2m3h")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn3" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="2" unique_id=454549400 instance=ExtResource("2_5qrgj")]
+position = Vector2(146, -29)
+direction = Vector2(1, 0)
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn3" index="0"]
+position = Vector2(0, 46)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn3" index="1"]
+texture = ExtResource("3_f2m3h")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn5" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="3" unique_id=242978659 instance=ExtResource("2_5qrgj")]
+position = Vector2(43, -26)
+actor_type = 2
+ActorScene = ExtResource("4_syb1a")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn5" index="0"]
+position = Vector2(0, 67)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn5" index="1"]
+texture = ExtResource("5_3urec")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn4" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="4" unique_id=1300536169 instance=ExtResource("2_5qrgj")]
+position = Vector2(62.96939, -26.257015)
+actor_type = 2
+ActorScene = ExtResource("4_syb1a")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn4" index="0"]
+position = Vector2(0, 51)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn4" index="1"]
+texture = ExtResource("5_3urec")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn6" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="5" unique_id=1785455855 instance=ExtResource("2_5qrgj")]
+position = Vector2(190, -26)
+direction = Vector2(1, 0)
+actor_type = 2
+ActorScene = ExtResource("4_syb1a")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn6" index="0"]
+position = Vector2(0, 50)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn6" index="1"]
+texture = ExtResource("5_3urec")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="ActorSpawn7" parent="Enemy_Spawns" parent_id_path=PackedInt32Array(323187574) index="6" unique_id=2040702767 instance=ExtResource("2_5qrgj")]
+position = Vector2(209.96939, -26.257015)
+direction = Vector2(1, 0)
+actor_type = 2
+ActorScene = ExtResource("4_syb1a")
+
+[node name="Destination" parent="Enemy_Spawns/ActorSpawn7" index="0"]
+position = Vector2(0, 66)
+
+[node name="Icon" parent="Enemy_Spawns/ActorSpawn7" index="1"]
+texture = ExtResource("5_3urec")
+flip_h = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Tiles" parent="." index="5" unique_id=1752610328]
+tile_map_data = PackedByteArray("AAAOAPb/AAAAAAoAAAAOAPf/AAAAAAoAAAAOAPj/AAAAAAoAAAAOAPn/AAAAAAoAAAAOAPr/AAAAAAoAAAAOAPv/AAAAAAoAAAAOAPz/AAAAAAoAAAAOAP3/AAAAAAoAAAAOAP7/AAAAAAoAAAAOAP//AAAAAAoAAAAOAAAAAAAAAAoAAAAOAAEAAAAAAAoAAAAOAAIAAAAAAAoAAAAOAAMAAAAAAAoAAAAOAAQAAAAAAAoAAAAOAAUAAAAAAAoAAAAOAAYAAAAAAAoAAAAOAAcAAAAAAAoAAAAOAAgAAAAAAAoAAAAOAAkAAAAAAAoAAAAOAAoAAAAAAAoAAAAOAAsAAAAAAAoAAAAOAAwAAAAAAAoAAAAPAPb/AAAAAAoAAAAPAPf/AAAAAAoAAAAPAPj/AAAAAAoAAAAPAPn/AAAAAAoAAAAPAPr/AAAAAAoAAAAPAPv/AAAAAAoAAAAPAPz/AAAAAAoAAAAPAP3/AAAAAAoAAAAPAP7/AAAAAAoAAAAPAP//AAAAAAoAAAAPAAAAAAAAAAoAAAAPAAEAAAAAAAoAAAAPAAIAAAAAAAoAAAAPAAMAAAAAAAoAAAAPAAQAAAAAAAoAAAAPAAUAAAAAAAoAAAAPAAYAAAAAAAoAAAAPAAcAAAAAAAoAAAAPAAgAAAAAAAoAAAAPAAkAAAAAAAoAAAAPAAoAAAAAAAoAAAAPAAsAAAAAAAoAAAAPAAwAAAAAAAoAAAAPAPL/AAAAAAoAAAAOAPL/AAAAAAoAAAAOAPH/AAAAAAoAAAAPAPH/AAAAAAoAAADs/wsAAQAAAAcAAQAOAPP/AAAAAAoAAAAOAPT/AAAAAAoAAAAPAPP/AAAAAAoAAAAPAPT/AAAAAAoAAAAOAPX/AAAAAAoAAAAPAPX/AAAAAAoAAADx/wkAAAAAAAoAAADx/wgAAAAAAAoAAADx/wcAAAAAAAoAAADx/wYAAAAAAAoAAADx/wUAAAAAAAoAAADx/wQAAAAAAAoAAADx/wMAAAAAAAoAAADx/wIAAAAAAAoAAADx/wEAAAAAAAoAAADx/wAAAAAAAAoAAADx////AAAAAAoAAADx//7/AAAAAAoAAADx//3/AAAAAAoAAADx//z/AAAAAAoAAADx//v/AAAAAAoAAADx//r/AAAAAAoAAADx//n/AAAAAAoAAADx//j/AAAAAAoAAADx//f/AAAAAAoAAADx//b/AAAAAAoAAADx//X/AAAAAAoAAADx//T/AAAAAAoAAADx//P/AAAAAAoAAADw//P/AAAAAAoAAADw//T/AAAAAAoAAADw//X/AAAAAAoAAADw//b/AAAAAAoAAADw//f/AAAAAAoAAADw//j/AAAAAAoAAADw//n/AAAAAAoAAADw//r/AAAAAAoAAADw//v/AAAAAAoAAADw//z/AAAAAAoAAADw//3/AAAAAAoAAADw//7/AAAAAAoAAADw////AAAAAAoAAADw/wAAAAAAAAoAAADw/wEAAAAAAAoAAADw/wIAAAAAAAoAAADw/wMAAAAAAAoAAADw/wQAAAAAAAoAAADw/wUAAAAAAAoAAADw/wYAAAAAAAoAAADw/wcAAAAAAAoAAADw/wgAAAAAAAoAAADw/wkAAAAAAAoAAADw/woAAAAAAAoAAADw/wsAAAAAAAoAAADw/wwAAAAAAAoAAADx/wwAAAAAAAoAAADx/wsAAAAAAAoAAADx/woAAAAAAAoAAADx//L/AAAAAAoAAADw//L/AAAAAAoAAADw//H/AAAAAAoAAADx//H/AAAAAAoAAAD9/woAAAAAAAoAAAD9/wsAAAAAAAoAAAD+/woAAAAAAAoAAAD+/wsAAAAAAAoAAAD//woAAAAAAAoAAAD//wsAAAAAAAoAAAAAAAoAAAAAAAoAAAAAAAsAAAAAAAoAAAABAAoAAAAAAAoAAAABAAsAAAAAAAoAAAACAAoAAAAAAAoAAAACAAsAAAAAAAoAAAD//wgAAAAAAAoAAAD//wkAAAAAAAoAAAAAAAgAAAAAAAoAAAAAAAkAAAAAAAoAAAA=")
+
+[node name="Tiles_Ceiling" parent="." index="6" unique_id=1632750305]
+tile_map_data = PackedByteArray("AADs/wsAAQAAAAcAAQDy//P/AAAAAAoAAADz//P/AAAAAAoAAAD0//P/AAAAAAoAAAD1//P/AAAAAAoAAAD2//P/AAAAAAoAAAD3//P/AAAAAAoAAAD4//P/AAAAAAoAAAD+//P/AAAAAAoAAAD///P/AAAAAAoAAAAAAPP/AAAAAAoAAAABAPP/AAAAAAoAAAAHAPP/AAAAAAoAAAAIAPP/AAAAAAoAAAAJAPP/AAAAAAoAAAAKAPP/AAAAAAoAAAALAPP/AAAAAAoAAAAMAPP/AAAAAAoAAAANAPP/AAAAAAoAAAA=")
+
+[node name="Tiles_Floor" parent="." index="7" unique_id=870786221]
+tile_map_data = PackedByteArray("AADy/wwAAAAAAAoAAADz/wwAAAAAAAoAAAD0/wwAAAAAAAoAAAD1/wwAAAAAAAoAAAD2/wwAAAAAAAoAAAD3/wwAAAAAAAoAAAD4/wwAAAAAAAoAAAANAAwAAAAAAAoAAAAMAAwAAAAAAAoAAAALAAwAAAAAAAoAAAAKAAwAAAAAAAoAAAAJAAwAAAAAAAoAAAAIAAwAAAAAAAoAAAAHAAwAAAAAAAoAAAD9/wwAAAAAAAoAAAD+/wwAAAAAAAoAAAD//wwAAAAAAAoAAAAAAAwAAAAAAAoAAAABAAwAAAAAAAoAAAACAAwAAAAAAAoAAAD1/wQAAAAAAAoAAAD2/wQAAAAAAAoAAAD3/wQAAAAAAAoAAAD4/wQAAAAAAAoAAAD5/wQAAAAAAAoAAAD9/wQAAAAAAAoAAAD+/wQAAAAAAAoAAAD//wQAAAAAAAoAAAAAAAQAAAAAAAoAAAABAAQAAAAAAAoAAAACAAQAAAAAAAoAAAAGAAQAAAAAAAoAAAAHAAQAAAAAAAoAAAAIAAQAAAAAAAoAAAAJAAQAAAAAAAoAAAAKAAQAAAAAAAoAAAD4//n/AAAAAAoAAAD5//n/AAAAAAoAAAD6//j/AAAAAAoAAAD6//n/AAAAAAoAAAD6//r/AAAAAAoAAAD6//v/AAAAAAoAAAD7//f/AAAAAAoAAAD7//j/AAAAAAoAAAD7//n/AAAAAAoAAAD7//r/AAAAAAoAAAD7//v/AAAAAAoAAAD8//f/AAAAAAoAAAD8//j/AAAAAAoAAAD8//n/AAAAAAoAAAD8//r/AAAAAAoAAAD9//b/AAAAAAoAAAD9//f/AAAAAAoAAAD9//n/AAAAAAoAAAD+//b/AAAAAAoAAAD+//f/AAAAAAoAAAD+//j/AAAAAAoAAAD+//n/AAAAAAoAAAD///b/AAAAAAoAAAD///f/AAAAAAoAAAD///j/AAAAAAoAAAD///n/AAAAAAoAAAD///r/AAAAAAoAAAAAAPb/AAAAAAoAAAAAAPf/AAAAAAoAAAAAAPj/AAAAAAoAAAAAAPn/AAAAAAoAAAAAAPr/AAAAAAoAAAABAPb/AAAAAAoAAAABAPf/AAAAAAoAAAABAPj/AAAAAAoAAAABAPn/AAAAAAoAAAACAPb/AAAAAAoAAAACAPf/AAAAAAoAAAACAPn/AAAAAAoAAAADAPf/AAAAAAoAAAADAPj/AAAAAAoAAAADAPn/AAAAAAoAAAADAPr/AAAAAAoAAAAEAPf/AAAAAAoAAAAEAPj/AAAAAAoAAAAEAPn/AAAAAAoAAAAEAPr/AAAAAAoAAAAEAPv/AAAAAAoAAAAFAPj/AAAAAAoAAAAFAPn/AAAAAAoAAAAFAPr/AAAAAAoAAAAFAPv/AAAAAAoAAAAGAPn/AAAAAAoAAAAHAPn/AAAAAAoAAAD2//v/AAAAAAoAAAD3//r/AAAAAAoAAAD3//v/AAAAAAoAAAD4//r/AAAAAAoAAAD4//v/AAAAAAoAAAD5//j/AAAAAAoAAAD5//v/AAAAAAoAAAD5//z/AAAAAAoAAAD6//z/AAAAAAoAAAD6//3/AAAAAAoAAAD7//z/AAAAAAoAAAD7//3/AAAAAAoAAAD8//v/AAAAAAoAAAD8//z/AAAAAAoAAAD9//j/AAAAAAoAAAD9//v/AAAAAAoAAAD+//r/AAAAAAoAAAD+//v/AAAAAAoAAAD///v/AAAAAAoAAAD///z/AAAAAAoAAAAAAPv/AAAAAAoAAAAAAPz/AAAAAAoAAAABAPr/AAAAAAoAAAABAPv/AAAAAAoAAAACAPj/AAAAAAoAAAACAPv/AAAAAAoAAAADAPv/AAAAAAoAAAADAPz/AAAAAAoAAAAEAPz/AAAAAAoAAAAEAP3/AAAAAAoAAAAFAPz/AAAAAAoAAAAFAP3/AAAAAAoAAAAGAPj/AAAAAAoAAAAGAPv/AAAAAAoAAAAGAPz/AAAAAAoAAAAHAPr/AAAAAAoAAAAHAPv/AAAAAAoAAAAIAPr/AAAAAAoAAAAIAPv/AAAAAAoAAAAJAPv/AAAAAAoAAAA=")
+
+[node name="ItemSpawn_6sec" parent="Item_Spawns" parent_id_path=PackedInt32Array(872982572) index="0" unique_id=246338360]
+position = Vector2(129, 128)
+
+[editable path="Enemy_Spawns/ActorSpawn"]
+[editable path="Enemy_Spawns/ActorSpawn2"]
+[editable path="Enemy_Spawns/ActorSpawn3"]
+[editable path="Enemy_Spawns/ActorSpawn5"]
+[editable path="Enemy_Spawns/ActorSpawn4"]
+[editable path="Enemy_Spawns/ActorSpawn6"]
+[editable path="Enemy_Spawns/ActorSpawn7"]
 [editable path="Hurry_Enemy_spawn"]

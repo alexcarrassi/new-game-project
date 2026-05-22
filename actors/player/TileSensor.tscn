@@ -19,16 +19,18 @@ modulate = Color(1, 0.18431373, 1, 1)
 position = Vector2(0, -17.5)
 shape = SubResource("RectangleShape2D_2vokq")
 target_position = Vector2(0, 0)
-collision_mask = 4097
+collision_mask = 4096
 
 [node name="sensor_full" type="ShapeCast2D" parent="." unique_id=2049064651]
 modulate = Color(0.38701278, 0.4225196, 0.48058254, 1)
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_tpopl")
 target_position = Vector2(0, 0)
+collision_mask = 4096
 
 [node name="sensor_front" type="ShapeCast2D" parent="." unique_id=431436371]
 modulate = Color(0.8901961, 0.7137255, 0, 1)
 position = Vector2(-8, -13)
 shape = SubResource("RectangleShape2D_qct7d")
 target_position = Vector2(0, 0)
+collision_mask = 4096
