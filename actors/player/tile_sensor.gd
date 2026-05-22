@@ -7,6 +7,7 @@ class_name TileSensor extends Node2D
 
 @export var tileState: TileState = TileState.NONE
 
+var copy_parent_max_run_velocity: float = 0.0
 
 enum TileState {
 	NONE,
@@ -18,6 +19,8 @@ enum TileState {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	var parent: Actor = get_parent() as Actor
+	copy_parent_max_run_velocity = parent.MAX_RUN_VELOCITY
 	pass # Replace with function body.
 
 
@@ -28,20 +31,22 @@ func _process(delta: float) -> void:
 	
 
 func setTileState(tileState: TileState) -> void:
-	var parent = get_parent()
+	var parent: Actor = get_parent() as Actor
 	match tileState:
 		TileState.FULL_PASS:
 			#parent.set_collision_mask_value(1, false)
 			parent.set_collision_mask_value(13, false)
-
 		TileState.FRONT_PROC:
 			#parent.set_collision_mask_value(1, true)
 			pass
 		TileState.FRONT_TOP_PROC: 
 			parent.set_collision_mask_value(13, false)
+
 		TileState.NONE:
 			#parent.set_collision_mask_value(1, true)
 			parent.set_collision_mask_value(13, true)
+			parent.MAX_RUN_VELOCITY = copy_parent_max_run_velocity
+
 
 	#parent.set_collision_mask_value(1, false)
 	self.tileState = tileState
@@ -80,7 +85,8 @@ func _physics_process(delta: float) -> void:
 				setTileState(TileState.NONE)
 	
 	
-	
+	if(tileState != TileState.NONE):
+		parent.MAX_RUN_VELOCITY = move_toward(parent.MAX_RUN_VELOCITY, 0, delta * 100)
 	pass
 	
 	
